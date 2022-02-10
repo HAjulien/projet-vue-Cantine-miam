@@ -1,4 +1,4 @@
-# tailwind_project
+# vue3-tailwindcss
 
 ## Project setup
 ```
