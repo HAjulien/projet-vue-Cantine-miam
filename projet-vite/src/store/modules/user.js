@@ -10,7 +10,7 @@ export default{
     },
     actions: {
         saveName( { commit }, data) {
-            commit(' SET_NAME', data)
+            commit('SET_NAME', data)
         },
     },
 
