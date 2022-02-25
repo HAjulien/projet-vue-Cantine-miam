@@ -1,10 +1,18 @@
 <template>
 
-<div id="app">
+<div class="app ">
 
-    <main>
-        <header>
+    <main :class="isDark ? 'dark' : ''">
+        <header class="dark:bg-lime-300">
             <h1>Scroll Progress bar</h1>
+            <button
+            @click="isDark = !isDark"
+            >
+            <div class="2xl:w-16 text-blue-300 ">
+            <div v-if="isDark" class="text-stone-600">mode lumiere</div>
+            <div v-else> mode noire</div>
+            </div>
+            </button>
 
         </header>
         <ProgressBar :progress='progress'/>
@@ -32,8 +40,11 @@ export default {
         ProgressBar,
     },
     data() {
+
         return {
-            progress:0
+            isDark: true,
+            progress:0,
+
         }
     },
     methods: {
@@ -54,6 +65,7 @@ export default {
 
     body{
         font-family: 'montseratt', sans-serif;
+
     }
     main{
         display: flex;
@@ -67,6 +79,8 @@ export default {
         display: flex;
         justify-content: center;
         align-items: center;
+        transition: all 1s ease-in-out;
+
     }
     header h1{
         color: #f8f8f8;

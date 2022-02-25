@@ -1,9 +1,9 @@
 /<template>
   <article>
-      <div class="content">
-          <h2>The article Title</h2>
+      <div class="content dark:bg-yellow-200">
+          <h2>The article Title </h2>
           <h3>subscribe to the channel</h3>
-          <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Obcaecati optio nesciunt dolore, enim exercitationem nemo voluptatibus! Possimus, molestiae! Neque asperiores cum fuga quis nobis perferendis laborum, commodi, quae dolores est temporibus mollitia libero, aut eos ducimus totam? Natus consequuntur magni sequi necessitatibus, fuga explicabo fugit praesentium ratione, amet quos vitae?</p>
+          <p class="dark: dark:text-fuchsia-600"> Lorem ipsum dolor sit amet consectetur adipisicing elit. Obcaecati optio nesciunt dolore, enim exercitationem nemo voluptatibus! Possimus, molestiae! Neque asperiores cum fuga quis nobis perferendis laborum, commodi, quae dolores est temporibus mollitia libero, aut eos ducimus totam? Natus consequuntur magni sequi necessitatibus, fuga explicabo fugit praesentium ratione, amet quos vitae?</p>
           <p>Blanditiis dolorem quo quidem dolore, quas magni voluptate repellat placeat aut, ratione nobis odit reprehenderit reiciendis. Laboriosam deleniti molestiae odio cupiditate autem laudantium ullam quam corrupti mollitia sapiente aliquam, similique, eius dicta iusto maiores. Deserunt facilis quis accusantium fugiat quod incidunt fugit officiis molestias necessitatibus, vero error odit omnis eligendi!</p>
           <p>Magni perspiciatis tempora, obcaecati aperiam maiores ex ea vitae delectus nam, nisi distinctio! Nemo repellendus iure quam, eveniet animi aspernatur incidunt ab saepe molestias qui, culpa modi perferendis corrupti nisi aut deleniti sunt doloribus maxime velit consequatur eum fugit accusamus provident. Tenetur quo, odit eos illo molestias dignissimos similique voluptate.</p>
           <p>Iure libero a nesciunt aliquid qui facilis corrupti, rem temporibus magnam, quidem perspiciatis voluptatem nulla maiores sunt nostrum, impedit laboriosam enim veniam quos consectetur quia esse earum rerum? Voluptas, natus ea aperiam consequuntur ad nesciunt ullam? Provident porro, accusamus nihil perspiciatis enim placeat vel, in, quae architecto quasi at necessitatibus.</p>
@@ -44,6 +44,8 @@ export default {
     }
     .content {
         padding: 25px;
+        transition: all 1s ease-in-out;
+
     }
     h2{
         color: #11224F;
@@ -60,6 +62,8 @@ export default {
     p{
         color: #313131;
         font-size: 18px;
+        transition: all 1s ease-in-out;
+
     }
 
 </style>
