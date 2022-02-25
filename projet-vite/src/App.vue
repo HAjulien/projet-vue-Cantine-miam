@@ -15,12 +15,10 @@
             </button>
 
         </header>
-        <ProgressBar :progress='progress'/>
-        <Post @progressUpdate="setProgress"/>
-
-        <div class="p-4">
+        <div>
             <router-view/>
         </div>
+
     </main>
 
 </div>
@@ -30,28 +28,15 @@
 
 <script>
 
-import Post from './components/Post.vue';
-import ProgressBar from './components/ProgressBar.vue';
 
 export default {
     name: 'app',
-    components:{
-        Post,
-        ProgressBar,
-    },
-    data() {
-
-        return {
-            isDark: true,
-            progress:0,
-
-        }
-    },
-    methods: {
-        setProgress (progress) {
-            this.progress = progress;
+    data(){
+        return{
+        isDark: true,
         }
     }
+
 }
 </script>
 
