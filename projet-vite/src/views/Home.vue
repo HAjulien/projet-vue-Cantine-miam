@@ -2,17 +2,17 @@
   <div>
         <ProgressBar :progress='progress'/>
         <div >
-            <div class="text-center">
+            <div class="test text-center">
                 <transition name="bounce">
-                    <p v-show="isActive" class="tt">
+                    <p v-show="isActive" >
                             test
                     </p>
                 </transition>
             </div>
             <button 
-            class=" zaa text-white font-bold py-2 px-4 rounded"
+            class=" button text-white font-bold py-2 px-4 rounded"
             @click="isActive = !isActive"
-            :class="[isActive ? 'bg-lime-300' : 'bg-pink-300']"
+            :class="[isActive ? 'bg-lime-500' : 'bg-pink-500']"
             >{{ isActive ? 'menu' : 'x' }}
             </button>
         </div>
@@ -52,12 +52,14 @@ export default {
 </script>
 
 <style>
-    .zaa{
+    .button{
         width: 150px;
         height: 50px;
         text-align: center;
         transition: all .4s linear;
     }
+
+
 
     .bounce-enter-active {
     animation: bounce-in .5s;
