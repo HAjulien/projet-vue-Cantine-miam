@@ -21,11 +21,14 @@
         </header>
         <div>
             <router-view/>
+        </div>  
+        <div class="ml-56">
+            <fa :style="{color: '#000', height: '40px'}" icon='coffee' />
+            <fa :style="{color: 'pink', height: '40px'}" icon='clock' />
+            <fa :style="{color: 'red', height: '40px'}" :icon="[ 'fab', 'youtube' ]"/>
+            <fa :style="{color: 'blue', height: '40px'}" :icon="[ 'fab', 'twitter' ]"/>
+            
         </div>
-            <img src="./assets/accueil2.jpg" alt="">
-            <img src="./assets/accueil3.jpg" alt="">
-            <img src="./assets/cafe.jpg" alt="">
-
     </main>
 
 </div>
