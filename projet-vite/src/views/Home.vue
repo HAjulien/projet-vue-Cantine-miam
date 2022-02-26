@@ -6,14 +6,21 @@
                 <transition name="bounce">
                     <p v-show="isActive" >
                             test
+                            <button 
+                            class=" button text-white font-bold py-2 px-4 rounded"
+                            @click=" isActive = !isActive"
+                            :class="[isActive ? 'bg-pink-500' : 'bg-pink-500']"
+                            >x
+                            </button>
+
                     </p>
                 </transition>
             </div>
             <button 
             class=" button text-white font-bold py-2 px-4 rounded"
             @click="isActive = !isActive"
-            :class="[isActive ? 'bg-lime-500' : 'bg-pink-500']"
-            >{{ isActive ? 'menu' : 'x' }}
+            :class="[isActive ? 'bg-pink-500' : 'bg-lime-500']"
+            >{{ isActive ? 'x' : 'menu' }}
             </button>
         </div>
 
