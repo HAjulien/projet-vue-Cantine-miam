@@ -2,7 +2,7 @@
 
 <div class="app ">
 
-    <PageLoader />  
+    <!-- <PageLoader />   -->
 
     <main :class="isDark ? 'dark' : ''">
         <header class="dark:bg-lime-300">
@@ -23,10 +23,21 @@
             <router-view/>
         </div>  
         <div class="ml-56">
-            <fa :style="{color: '#000', height: '40px'}" icon='coffee' />
-            <fa :style="{color: 'pink', height: '40px'}" icon='clock' />
-            <fa :style="{color: 'red', height: '40px'}" :icon="[ 'fab', 'youtube' ]"/>
-            <fa :style="{color: 'blue', height: '40px'}" :icon="[ 'fab', 'twitter' ]"/>
+            <button @click=" icon1 = !icon1">
+            <fa :style="{ height: '40px'}" icon='coffee'  :class="[icon1 ? 'text-pink-500' : 'text-lime-400']" />
+            </button>
+            <button @click=" icon2 = !icon2">
+            <fa :style="{ height: '40px'}" icon='clock' :class="[icon2 ? 'text-sky-500' : 'text-fuchsia-400']" />
+            </button>
+
+            <button @click=" icon3 = !icon3">
+            <fa :style="{ height: '40px'}" :icon="[ 'fab', 'youtube' ]" :class="[icon3 ? 'text-teal-500' : 'text-amber-600']"/>
+            </button>
+            <button @click=" icon4 = !icon4">
+            <fa :style="{ height: '40px'}" :icon="[ 'fab', 'twitter' ]" :class="[icon4 ? 'text-red-500' : 'text-zinc-400']"/>
+            </button>
+
+
             
         </div>
     </main>
@@ -48,6 +59,10 @@ export default {
     data(){
         return{
         isDark: true,
+        icon1: true,
+        icon2: true,
+        icon3: true,
+        icon4: true,
         }
     }
 

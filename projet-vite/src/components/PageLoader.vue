@@ -39,8 +39,6 @@ export default {
             height: 100vh;
             background-color: #333;
             z-index: 999;
-            opacity: 0;
-            animation: appear 50s linear .2s;
         }
 
         .cube {
@@ -88,13 +86,6 @@ export default {
                 transform: translateX(0px);
             }
         }
-        @keyframes appear {
-        0%{
-            opacity: .8;
-        }            
-        1%{
-            opacity: 1;
-        }            
-        }
+
 
 </style>
