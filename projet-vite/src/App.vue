@@ -10,8 +10,8 @@
             >
             <div class="2xl:w-16 text-blue-300 ml-20 ">
                   <transition name="fade" mode="out-in">
-            <div  v-if="isDark" class="test text-stone-600 bg-pink-500">mode lumiere</div>
-            <div  v-else class="test bg-red-500"> mode noire</div>
+            <div  v-if="isDark" class=" text-stone-600 bg-pink-500">mode lumiere</div>
+            <div  v-else class="bg-gray-600"> mode noire</div>
                   </transition>
 
             </div>
