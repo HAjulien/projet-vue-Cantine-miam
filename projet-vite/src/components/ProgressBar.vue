@@ -14,7 +14,7 @@ export default {
 }
 </script>
 
-<style scoped>
+<style lang="scss" scoped>
     .progress-bar{
         width: 100%;
         height: 20px;
@@ -32,7 +32,7 @@ export default {
         top: 50%;
         left: 50%;
         transform: translate(-50%, -50%);
-        color: #313131;
+        color: $orange;
         font-size: 14px;
     }
     .progress-inner span.white{

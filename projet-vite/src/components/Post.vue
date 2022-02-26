@@ -33,7 +33,8 @@ export default {
 }
 </script>
 
-<style scoped>
+<style  lang="scss" scoped>
+
     article{
         width: 100vw;
         flex: 1 1 100%;
@@ -48,8 +49,8 @@ export default {
 
     }
     h2{
-        color: #11224F;
-        font-size: 32px;
+        color: $green;
+        font-size: 40px;
         font-weight: 900;
         margin-bottom: 10px;
     }
