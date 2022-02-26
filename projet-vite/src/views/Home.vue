@@ -35,12 +35,11 @@
 import Post from '../components/Post.vue';
 import ProgressBar from '../components/ProgressBar.vue';
 
-
 export default {
   name:'home',
     components:{
         ProgressBar,
-        Post
+        Post,
     },
     data() {
 

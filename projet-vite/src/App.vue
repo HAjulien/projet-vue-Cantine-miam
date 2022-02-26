@@ -2,6 +2,8 @@
 
 <div class="app ">
 
+    <PageLoader />  
+
     <main :class="isDark ? 'dark' : ''">
         <header class="dark:bg-lime-300">
             <h1>Scroll Progress bar</h1>
@@ -13,7 +15,6 @@
             <div  v-if="isDark" class=" text-stone-600 bg-pink-500">mode lumiere</div>
             <div  v-else class="bg-gray-600"> mode noire</div>
                   </transition>
-
             </div>
             </button>
 
@@ -21,6 +22,9 @@
         <div>
             <router-view/>
         </div>
+            <img src="./assets/accueil2.jpg" alt="">
+            <img src="./assets/accueil3.jpg" alt="">
+            <img src="./assets/cafe.jpg" alt="">
 
     </main>
 
@@ -31,9 +35,13 @@
 
 <script>
 
+import PageLoader from './components/PageLoader.vue'
 
 export default {
     name: 'app',
+    components: {
+        PageLoader,
+    },
     data(){
         return{
         isDark: true,
