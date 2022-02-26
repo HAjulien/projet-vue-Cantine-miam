@@ -23,6 +23,7 @@
             >{{ isActive ? 'x' : 'menu' }}
             </button>
         </div>
+        <h2>tret</h2>
 
         <Post @progressUpdate="setProgress"/>
   </div>
@@ -31,7 +32,6 @@
 </template>
 
 <script>
-
 import Post from '../components/Post.vue';
 import ProgressBar from '../components/ProgressBar.vue';
 
@@ -55,11 +55,15 @@ export default {
         },
     }
 }
+
 </script>
 
-<style>
+<style lang="scss">
+@import '../scss/_variables.scss';
+
+
     .button{
-        width: 150px;
+        width: 120px;
         height: 50px;
         text-align: center;
         transition: all .4s linear;
@@ -85,7 +89,9 @@ export default {
     }
 
     }
-
+    h2{
+        color: $blue;
+    }
 
 </style>
 
