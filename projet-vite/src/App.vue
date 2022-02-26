@@ -2,7 +2,7 @@
 
 <div class="app ">
 
-    <!-- <PageLoader />   -->
+    <PageLoader />  
 
     <main :class="isDark ? 'dark' : ''">
         <header class="dark:bg-lime-300">
