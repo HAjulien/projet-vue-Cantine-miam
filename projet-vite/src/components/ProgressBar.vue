@@ -17,7 +17,7 @@ export default {
 <style lang="scss" scoped>
     .progress-bar{
         width: 100%;
-        height: 20px;
+        height: 15px;
         background-color: #fff;
         position: relative;
         transition: all 1s ease-in-out;
@@ -33,7 +33,7 @@ export default {
         left: 50%;
         transform: translate(-50%, -50%);
         color: $orange;
-        font-size: 14px;
+        font-size: 13px;
     }
     .progress-inner span.white{
         color: #fff;
