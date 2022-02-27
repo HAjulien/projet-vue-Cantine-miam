@@ -2,18 +2,27 @@
 
 <div class="app ">
 
-    <PageLoader />  
-
+    <PageLoader/>  
     <main :class="isDark ? 'dark' : ''">
         <header class="dark:bg-lime-300">
             <h1>Scroll Progress bar</h1>
             <button
             @click="isDark = !isDark"
             >
-            <div class="2xl:w-16 text-blue-300 ml-20 ">
+            <div class="2xl:w-16 ml-20  ">
                   <transition name="fade" mode="out-in">
-            <div  v-if="isDark" class=" text-stone-600 bg-pink-500">mode lumiere</div>
-            <div  v-else class="bg-gray-600"> mode noire</div>
+            <div  v-if="isDark" class=" bg-amber-300	shadow-inner  rounded-xl flex h-8 items-center w-20 justify-evenly">
+                <span class="text-xs font-bold text-white"> JOUR </span>
+                <div class="w-6 h-6 bg-white rounded-full flex justify-center items-center">
+                    <fa :style="{height: '16px', color:'yellow'}" icon='sun' />
+                </div>
+            </div>
+            <div  v-else class=" bg-gray-800 shadow-inner  rounded-xl flex h-8 items-center w-20 justify-evenly"> 
+                <span class="text-xs font-bold text-white"> NUIT </span> 
+                <div class="w-7 h-7 bg-black rounded-full flex justify-center items-center">
+                    <fa :style="{ height: '16px', color:'yellow'}" icon='moon' />
+                </div>
+            </div>
                   </transition>
             </div>
             </button>
@@ -23,9 +32,9 @@
             <router-view/>
         </div>  
         <div class="ml-56">
-            <button @click=" icon1 = !icon1">
+            <button @click=" icon1 = !icon1"> <router-link to="/about" >
             <fa :style="{ height: '40px'}" icon='coffee'  :class="[icon1 ? 'text-pink-500' : 'text-lime-400']" />
-            </button>
+            </router-link></button>
             <button @click=" icon2 = !icon2">
             <fa :style="{ height: '40px'}" icon='clock' :class="[icon2 ? 'text-sky-500' : 'text-fuchsia-400']" />
             </button>
@@ -36,10 +45,9 @@
             <button @click=" icon4 = !icon4">
             <fa :style="{ height: '40px'}" :icon="[ 'fab', 'twitter' ]" :class="[icon4 ? 'text-red-500' : 'text-zinc-400']"/>
             </button>
+        
+      </div>
 
-
-            
-        </div>
     </main>
 
 </div>
@@ -58,9 +66,9 @@ export default {
     },
     data(){
         return{
-        isDark: true,
+        isDark: false,
         icon1: true,
-        icon2: true,
+        icon2: false,
         icon3: true,
         icon4: true,
         }
@@ -88,7 +96,7 @@ export default {
         overflow: hidden;
     }
     header{
-        background-color: #313131;
+        background-color: #e21818;
         height: 60px;
         display: flex;
         justify-content: center;

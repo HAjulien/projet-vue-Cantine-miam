@@ -4,6 +4,9 @@
         <swiper-slide> <img src="../assets/accueil2.jpg" alt=""> </swiper-slide>
         <swiper-slide><img src="../assets/accueil3.jpg" alt=""></swiper-slide>
         <swiper-slide> <img src="../assets/cafe.jpg" alt=""> </swiper-slide>
+        <swiper-slide> <img src="../assets/burger.jpg" alt=""> </swiper-slide>
+        <swiper-slide> <img src="../assets/ChefDELLORE.png" alt=""> </swiper-slide>
+        <swiper-slide> <img src="../assets/PageAccueil2.png" alt=""> </swiper-slide>
       </swiper>
 </div>
 </template>
