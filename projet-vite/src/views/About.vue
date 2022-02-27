@@ -1,13 +1,15 @@
 <template>
-<div id="app">
-      <swiper :pagination="pagination" :modules="modules" class="mySwiper">
-        <swiper-slide> <img src="../assets/accueil2.jpg" alt=""> </swiper-slide>
-        <swiper-slide><img src="../assets/accueil3.jpg" alt=""></swiper-slide>
-        <swiper-slide> <img src="../assets/cafe.jpg" alt=""> </swiper-slide>
-        <swiper-slide> <img src="../assets/burger.jpg" alt=""> </swiper-slide>
-        <swiper-slide> <img src="../assets/ChefDELLORE.png" alt=""> </swiper-slide>
-        <swiper-slide> <img src="../assets/PageAccueil2.png" alt=""> </swiper-slide>
-      </swiper>
+<div class="test">
+  <div id="app">
+        <swiper :pagination="pagination" :modules="modules" class="mySwiper">
+          <swiper-slide> <img src="../assets/accueil2.jpg" alt=""> </swiper-slide>
+          <swiper-slide><img src="../assets/accueil3.jpg" alt=""></swiper-slide>
+          <swiper-slide> <img src="../assets/cafe.jpg" alt=""> </swiper-slide>
+          <swiper-slide> <img src="../assets/burger.jpg" alt=""> </swiper-slide>
+          <swiper-slide> <img src="../assets/ChefDELLORE.png" alt=""> </swiper-slide>
+          <swiper-slide> <img src="../assets/PageAccueil2.png" alt=""> </swiper-slide>
+        </swiper>
+  </div>
 </div>
 </template>
 <script>
@@ -36,21 +38,32 @@ export default {
       modules: [Pagination],
     };
   },
+      mounted () {
+        this.$el.addEventListener('scroll', function(){
+            let scrollTop = this.$el.scrollTop;
+            let clientHeight = this.$el.clientHeight;
+            let scrollHeight = this.$el.scrollHeight;
+
+            let scrollPercent = Math.round((scrollTop) / (scrollHeight - clientHeight) * 100);
+
+            this.$emit('progressUpdate', scrollPercent);
+        }.bind(this));
+    },
 };
 </script>
 
 <style scoped>
 
-#app { 
-    height: 92vh
-    }
-html,
-body {
-  position: relative;
-  height: 100%;
+.test{
+  width: 100vw;
+  flex: 1 1 100%;
+  max-height: calc(100vh - 75px);
+  overflow: scroll;
+  overflow-x: hidden;
 }
 
-body {
+#app { 
+  height: 92vh;
   background: #eee;
   font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
   font-size: 14px;

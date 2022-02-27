@@ -19,17 +19,7 @@
 <script>
 export default {
     name: 'post',
-    mounted () {
-        this.$el.addEventListener('scroll', function(){
-            let scrollTop = this.$el.scrollTop;
-            let clientHeight = this.$el.clientHeight;
-            let scrollHeight = this.$el.scrollHeight;
 
-            let scrollPercent = Math.round((scrollTop) / (scrollHeight - clientHeight) * 100);
-
-            this.$emit('progressUpdate', scrollPercent);
-        }.bind(this));
-    },
 }
 </script>
 
@@ -38,7 +28,6 @@ export default {
     article{
         width: 100vw;
         flex: 1 1 100%;
-        max-height: calc(100vh - 80px);
         background-color: #f8f8f8;
         overflow: scroll;
         overflow-x: hidden;

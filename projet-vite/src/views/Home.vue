@@ -1,6 +1,5 @@
 /<template>
-  <div>
-        <ProgressBar :progress='progress'/>
+  <div id="app"> 
         <div >
             <div class="test text-center">
                 <transition name="bounce">
@@ -25,7 +24,11 @@
         </div>
         <h2>tret</h2>
 
-        <Post @progressUpdate="setProgress"/>
+        <Post/>
+        <Post/>
+        <Post/>
+        <Post/>
+        <Post/>
   </div>
 
 
@@ -33,33 +36,46 @@
 
 <script>
 import Post from '../components/Post.vue';
-import ProgressBar from '../components/ProgressBar.vue';
 
 export default {
   name:'home',
     components:{
-        ProgressBar,
         Post,
     },
     data() {
 
         return {
-            progress:0,
             isActive:false,
+            progress:0,
+
 
         }
     },
-    methods: {
-        setProgress (progress) {
-            this.progress = progress;
-        },
-    }
+    mounted () {
+        this.$el.addEventListener('scroll', function(){
+            let scrollTop = this.$el.scrollTop;
+            let clientHeight = this.$el.clientHeight;
+            let scrollHeight = this.$el.scrollHeight;
+
+            let scrollPercent = Math.round((scrollTop) / (scrollHeight - clientHeight) * 100);
+
+            this.$emit('progressUpdate', scrollPercent);
+        }.bind(this));
+    },
+
 }
 
 </script>
 
-<style lang="scss">
-
+<style lang="scss" scoped>
+    
+    #app{
+        width: 100vw;
+        flex: 1 1 100%;
+        max-height: calc(100vh - 80px);
+        overflow: scroll;
+        overflow-x: hidden;
+    }
 
     .button{
         width: 120px;

@@ -28,8 +28,9 @@
             </button>
 
         </header>
+        <ProgressBar :progress='progress'/>
         <div>
-            <router-view/>
+            <router-view  @progressUpdate="setProgress" />
         </div>  
         <div class="ml-56">
             <button @click=" icon1 = !icon1"> <router-link to="/about" >
@@ -58,11 +59,14 @@
 <script>
 
 import PageLoader from './components/PageLoader.vue'
+import ProgressBar from './components/ProgressBar.vue';
+
 
 export default {
     name: 'app',
     components: {
         PageLoader,
+        ProgressBar
     },
     data(){
         return{
@@ -71,7 +75,14 @@ export default {
         icon2: false,
         icon3: true,
         icon4: true,
+        progress:0,
+
         }
+    },
+    methods: {
+        setProgress (progress) {
+            this.progress = progress;
+        },
     }
 
 }
