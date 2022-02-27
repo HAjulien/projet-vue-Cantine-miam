@@ -33,9 +33,9 @@
             <router-view  @progressUpdate="setProgress" />
         </div>  
         <div class="ml-56">
-            <button @click=" icon1 = !icon1"> <router-link to="/about" >
+            <button @click=" icon1 = !icon1">
             <fa :style="{ height: '40px'}" icon='coffee'  :class="[icon1 ? 'text-pink-500' : 'text-lime-400']" />
-            </router-link></button>
+            </button>
             <button @click=" icon2 = !icon2">
             <fa :style="{ height: '40px'}" icon='clock' :class="[icon2 ? 'text-sky-500' : 'text-fuchsia-400']" />
             </button>
@@ -46,6 +46,19 @@
             <button @click=" icon4 = !icon4">
             <fa :style="{ height: '40px'}" :icon="[ 'fab', 'twitter' ]" :class="[icon4 ? 'text-red-500' : 'text-zinc-400']"/>
             </button>
+
+            <button>
+                <ul class=" flex m-12 text-[30px] text-pink-400">
+                    <li class="mr-2 ml-4 ">
+                        <router-link to="/about" >  <fa :icon="[ 'fab', 'twitter' ]"/>
+                        </router-link> 
+                    </li>
+                    <li class="ml-2">
+                        <router-link to="/" ><fa  icon='clock' /> </router-link>
+                    </li>
+                </ul>
+            </button>
+
         
       </div>
 
@@ -127,5 +140,13 @@ export default {
 .fade-enter, .fade-leave-to {
   opacity: 0;
 }
+
+.router-link-active{
+    transition: all .5s linear;
+    color: green;
+    font-size: 35px;
+    
+}
+
 
 </style>
