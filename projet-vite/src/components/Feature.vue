@@ -3,7 +3,7 @@
 
 <!-- component -->
   
-  <div class=" md:flex space-x-6 m-5 dark:bg-gray-500 ">
+  <div class="md:width-[45vw] cards flex md:inline-flex space-x-6 m-2 mb-7 dark:bg-gray-500  inline-block	border-solid border-2	">
     <div class="shadow-md">
       <div class="p-4">
         <h1 class="mt-3 text-gray-800 text-2xl font-bold my-2">{{title}}</h1>
@@ -37,5 +37,7 @@ export default {
 </script>
 
 <style lang="scss">
+
+
 
 </style>

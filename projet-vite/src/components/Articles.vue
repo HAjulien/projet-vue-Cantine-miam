@@ -1,6 +1,6 @@
 /<template>
 
-    <div>
+    <div class="mt-16">
         <Feature v-for="(feature, index) in features" :key="index" :title="feature.title" :image="feature.image" :paragraphe="feature.paragraphe" :button="feature.button"/>
     </div>
 
