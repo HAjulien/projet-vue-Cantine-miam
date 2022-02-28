@@ -2,11 +2,11 @@
 
 
 <!-- component -->
-<main class="py-12 md:px-20 sm:px-14 px-6 ">
+<main class=" ">
   
-  <div class="mt-6 md:flex space-x-6 ">
+  <div class="mt-1 md:flex space-x-6 ">
     <div class="shadow-md">
-      <img :src="require(`../assets/images/${image}`)">
+      <img v-bind:src="'src/assets/images/' + image" />
       <div class="px-4">
         <h1 class="mt-3 text-gray-800 text-2xl font-bold my-2">{{ titre }}></h1>
         <p class="text-gray-700 mb-2">

@@ -11,7 +11,7 @@
     [
         { 
         "id":1,
-        "titre": "titre1",
+        "titre": "EZ",
         "image": "burgers.jpg",
         "paragraphe":"test",
         "button":"plus"
