@@ -1,11 +1,11 @@
 <template>
 
-  <ul class=" md:hidden navigation flex items-center justify-between bg-red-200 p-1" >
+  <ul class=" md:hidden navigation flex items-center justify-between bg-gray-700 text-white dark:bg-gray-200 dark:text-gray-700  p-1" >
     <li class="flex-1 ">
       <router-link to="/" class="text-center block " >click&collect </router-link>
     </li>
     <li class="flex-1 ">
-      <router-link to="/" class="text-center block  " > Horaires</router-link>
+      <router-link to="/about" class="text-center block  " > Horaires</router-link>
     </li>
     <li class="flex-1">
       <div class="text-center block  " > 
@@ -74,4 +74,10 @@ export default {
   opacity: 0;
 }
   
+a.router-link-active{
+    color: green;
+    font-weight: 800;
+    font-size: 20px;
+    transition: all .5s ease-in-out;
+}
 </style>

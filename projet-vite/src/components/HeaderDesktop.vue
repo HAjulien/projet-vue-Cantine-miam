@@ -22,7 +22,7 @@ export default {
 }
 </script>
 
-<style>
+<style scoped>
     .headerDesktop {
       display: flex;
       align-items: center;
