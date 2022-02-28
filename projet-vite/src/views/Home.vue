@@ -2,6 +2,7 @@
   <div id="app"> 
        
         <Carousel/>
+        
         <Post/>
   </div>
 
