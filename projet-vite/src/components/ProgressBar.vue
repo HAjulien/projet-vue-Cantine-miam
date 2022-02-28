@@ -1,5 +1,5 @@
 /<template>
-  <div class="progress-bar dark:bg-yellow-200">
+  <div class="progress-bar dark:bg-gray-700">
       <div :class="(progress == 100) ? 'progress-inner complete' : 'progress-inner'" 
            :style="`width: ${progress}%`">
           <span :class="(progress > 50) ? 'white' : ''"> {{ progress }}% </span>

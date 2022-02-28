@@ -19,7 +19,7 @@
                 <transition name="fade">
                     <div v-show="isActive" class="test block" >
                             <button 
-                            class=" button text-white font-bold py-2 px-4 rounded block m-auto	"
+                            class=" button text-white font-bold py-2 px-4 rounded block m-auto mt-6 mb-6	"
                             @click=" isActive = !isActive"
                             :class="[isActive ? 'bg-pink-500' : 'bg-pink-500']"
                             >x
@@ -41,7 +41,7 @@ export default {
       data() {
 
         return {
-            isActive:true,
+            isActive:false,
 
         }
     },

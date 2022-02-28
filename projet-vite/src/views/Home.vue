@@ -45,7 +45,7 @@ export default {
     #app{
         width: 100vw;
         flex: 1 1 100%;
-        max-height: calc(93vh - 80px);
+        max-height: calc(93vh - 75px);
         overflow: scroll;
         overflow-x: hidden;
     }

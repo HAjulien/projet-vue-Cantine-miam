@@ -1,5 +1,5 @@
 <template>
-    <footer class="footerMobile px-2 bg-gray-200 ">
+    <footer class="footerMobile px-2 bg-gray-200 dark:bg-gray-700 ">
 
         <p class="text-center"> nous suivre sur :</p>
         <ul class=" flex justify-around">

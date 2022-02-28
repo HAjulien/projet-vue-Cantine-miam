@@ -6,7 +6,7 @@
     <main :class="isDark ? 'dark' : ''">
 
 
-        <header class=" md:hidden lg:hidden headerMobile flex justify-between items-center px-2 bg-gray-600 h-16">
+        <header class=" md:hidden lg:hidden headerMobile flex justify-between items-center px-2 dark:bg-gray-700 bg-gray-200	 h-16">
             <img src="./assets/logo.png" class="w-24 h-10" />
             <div class=" flex justify-around items-center w-32">
                 <button
@@ -31,7 +31,7 @@
                 </div>
                 </button>
                 <router-link to="" class=" flex items-center ml-3 ">
-                               <fa :style="{height: '24px', color: 'white', }"   icon='user'/>
+                               <fa :style="{height: '24px', color: 'green', }"   icon='user' />
                 </router-link>
             </div>
         </header>
@@ -136,20 +136,7 @@ export default {
         min-height: 100vh;
         overflow: hidden;
     }
-    header{
-        background-color: #e21818;
-        height: 60px;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        transition: all 1s ease-in-out;
 
-    }
-    header h1{
-        color: #f8f8f8;
-        font-size: 1.8rem;
-        text-align: center;
-    }
 
 .fade-enter-active, .fade-leave-active {
   transition: opacity .5s;
