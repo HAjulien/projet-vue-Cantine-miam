@@ -42,7 +42,7 @@
 
 
         <div>
-            <router-view  @progressUpdate="setProgress" />
+            <router-view @progressUpdate="setProgress" />
         </div>  
         <ProgressBar :progress='progress'/>
         <TapBar/>

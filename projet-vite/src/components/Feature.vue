@@ -6,7 +6,7 @@
   <div class=" card md:width-[45vw] cards flex md:inline-flex space-x-6 m-2 mb-7 dark:bg-gray-500  inline-block	border-solid border-2	">
     <div class="shadow-md">
       <div class="p-4">
-        <h1 class="mt-3 text-gray-800 text-2xl font-bold my-2">{{title}}</h1>
+        <h1 class="mt-3 text-gray-800 text-2xl font-bold my-2 dark:text-black">{{title}}</h1>
         <p class="text-gray-700 mb-2  dark:text-slate-300">{{ paragraphe }}</p>
         
         <div class="flex justify-between items-center mt-4 pb-2">
