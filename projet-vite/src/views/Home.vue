@@ -2,27 +2,29 @@
   <div id="app"> 
        
         <Carousel/>
-        
-        <Post/>
+        <Articles/>
   </div>
 
 
 </template>
 
 <script>
-import Post from '../components/Post.vue';
+import Feature from '../components/Feature.vue';
 import Carousel from '../components/Carousel.vue';
+import Articles from '../components/Articles.vue';
 
 export default {
   name:'home',
     components:{
-        Post,
+        Feature,
         Carousel,
+        Articles,
     },
     data() {
 
         return {
             progress:0,
+
         }
     },
     mounted () {
