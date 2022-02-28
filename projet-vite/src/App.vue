@@ -7,7 +7,7 @@
 
 
         <header class=" md:hidden lg:hidden headerMobile flex justify-between items-center px-2 dark:bg-gray-700 bg-gray-200	 h-16">
-            <img src="./assets/logo.png" class="w-24 h-10" />
+            <img src="./assets/images/logo.png" class="w-24 h-10" />
             <div class=" flex justify-around items-center w-32">
                 <button
                 @click="isDark = !isDark"

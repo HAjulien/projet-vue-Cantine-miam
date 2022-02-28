@@ -1,9 +1,9 @@
 <template>
   <div id="carousel">
         <swiper :pagination="pagination" :modules="modules" class="mySwiper">
-          <swiper-slide> <img src="../assets/accueil1.jpg" alt=""> </swiper-slide>
-          <swiper-slide><img src="../assets/accueil2.jpg" alt=""></swiper-slide>
-          <swiper-slide> <img src="../assets/accueil3.jpg" alt=""> </swiper-slide>
+          <swiper-slide> <img src="../assets/images/accueil1.jpg" alt=""> </swiper-slide>
+          <swiper-slide><img src="../assets/images/accueil2.jpg" alt=""></swiper-slide>
+          <swiper-slide> <img src="../assets/images/accueil3.jpg" alt=""> </swiper-slide>
 
         </swiper>
   </div>
