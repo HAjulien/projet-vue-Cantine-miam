@@ -1,36 +1,36 @@
 <template>
 
-<ul class=" md:hidden navigation flex items-center justify-between bg-red-200 p-1" >
-  <li class="flex-1 ">
-    <router-link to="/" class="text-center block " >click&collect </router-link>
-  </li>
-  <li class="flex-1 ">
-    <router-link to="/" class="text-center block  " > Horaires</router-link>
-  </li>
+  <ul class=" md:hidden navigation flex items-center justify-between bg-red-200 p-1" >
+    <li class="flex-1 ">
+      <router-link to="/" class="text-center block " >click&collect </router-link>
+    </li>
+    <li class="flex-1 ">
+      <router-link to="/" class="text-center block  " > Horaires</router-link>
+    </li>
     <li class="flex-1">
-    <div class="text-center block  " > 
+      <div class="text-center block  " > 
 
+        <button 
+        class=" button text-white font-bold py-2 px-4 rounded"
+        @click="isActive = !isActive"
+        :class="[isActive ? 'bg-pink-500' : 'bg-lime-500']"
+        >{{ isActive ? 'x' : 'menu' }}
+        </button>
+        <transition name="fade">
+          <div v-show="isActive" class="test block" >
             <button 
-            class=" button text-white font-bold py-2 px-4 rounded"
-            @click="isActive = !isActive"
-            :class="[isActive ? 'bg-pink-500' : 'bg-lime-500']"
-            >{{ isActive ? 'x' : 'menu' }}
+            class=" button text-white font-bold py-2 px-4 rounded block m-auto mt-6 mb-6	"
+            @click=" isActive = !isActive"
+            :class="[isActive ? 'bg-pink-500' : 'bg-pink-500']"
+            >x
             </button>
-                <transition name="fade">
-                    <div v-show="isActive" class="test block" >
-                            <button 
-                            class=" button text-white font-bold py-2 px-4 rounded block m-auto mt-6 mb-6	"
-                            @click=" isActive = !isActive"
-                            :class="[isActive ? 'bg-pink-500' : 'bg-pink-500']"
-                            >x
-                            </button>
-                            test
-                    </div>
-                </transition>
-    </div>
-  </li>
+              test
+          </div>
+        </transition>
+          </div>
+    </li>
 
-</ul>
+  </ul>
 
 
 </template>
