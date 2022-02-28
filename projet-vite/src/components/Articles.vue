@@ -1,7 +1,7 @@
 /<template>
 
     <div>
-        <Feature v-for="(feature, index) in features" :key="index"  :titre="features.titre" :image="feature.image" :paragraphe="feature.paragraphe" :button="features.button"/>
+        <Feature v-for="(feature, index) in features" :key="index" :title="feature.title" :image="feature.image" :paragraphe="feature.paragraphe" :button="feature.button"/>
     </div>
 
 </template>
