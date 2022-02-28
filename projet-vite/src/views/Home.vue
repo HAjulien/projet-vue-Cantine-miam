@@ -1,7 +1,7 @@
 /<template>
   <div id="app"> 
        
-        <Carousel />
+        <Carousel/>
         <Post/>
   </div>
 

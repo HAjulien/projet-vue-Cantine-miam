@@ -1,5 +1,5 @@
 <template>
-  <div id="carousel">
+  <div id="carousel" class="md:hidden">
         <swiper :pagination="pagination" :modules="modules" class="mySwiper">
           <swiper-slide> <img src="../assets/images/accueil1.jpg" alt=""> </swiper-slide>
           <swiper-slide><img src="../assets/images/accueil2.jpg" alt=""></swiper-slide>
@@ -41,8 +41,7 @@ export default {
 <style scoped>
 
 
-#app { 
-  height: 92vh;
+#carousel { 
   background: #eee;
   font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
   font-size: 14px;

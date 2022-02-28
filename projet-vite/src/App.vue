@@ -4,8 +4,8 @@
 
     <PageLoader/>  
     <main :class="isDark ? 'dark' : ''">
-
-
+        <HeaderDesktop/>
+        <BannerDesktop/>
         <header class=" md:hidden lg:hidden headerMobile flex justify-between items-center px-2 dark:bg-gray-700 bg-gray-200	 h-16">
             <img src="./assets/images/logo.png" class="w-24 h-10" />
             <div class=" flex justify-around items-center w-32">
@@ -85,6 +85,8 @@
 <script>
 
 import PageLoader from './components/PageLoader.vue'
+import HeaderDesktop from './components/HeaderDesktop.vue'
+import BannerDesktop from './components/BannerDesktop.vue'
 import ProgressBar from './components/ProgressBar.vue';
 import TapBar from './components/TapBar.vue';
 import FooterMobile from './components/FooterMobile.vue';
@@ -94,6 +96,8 @@ export default {
     name: 'app',
     components: {
         PageLoader,
+        HeaderDesktop,
+        BannerDesktop,
         ProgressBar,
         FooterMobile,
         TapBar,
@@ -143,13 +147,6 @@ export default {
 }
 .fade-enter, .fade-leave-to {
   opacity: 0;
-}
-
-.router-link-active{
-    transition: all .5s linear;
-    color: green;
-    font-size: 15px;
-    
 }
 
 
