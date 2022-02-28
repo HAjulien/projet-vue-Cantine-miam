@@ -75,7 +75,7 @@ export default {
 }
   
 a.router-link-active{
-    color: green;
+    color: $green;
     font-weight: 800;
     font-size: 20px;
     transition: all .5s ease-in-out;

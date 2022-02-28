@@ -32,7 +32,7 @@
                 </div>
                 </button>
                 <router-link to="" class=" flex items-center ml-3 ">
-                               <fa :style="{height: '24px', color: 'green', }"   icon='user' />
+                               <fa :style="{height: '24px', color: '#097770', }"   icon='user' />
                 </router-link>
             </div>
         </header>
@@ -90,7 +90,7 @@ export default {
 }
 </script>
 
-<style >
+<style lang="scss">
 
     *{
         margin: 0;
@@ -110,11 +110,37 @@ export default {
     }
 
 
-.fade-enter-active, .fade-leave-active {
-  transition: opacity .5s;
-}
-.fade-enter, .fade-leave-to {
-  opacity: 0;
+    .fade-enter-active, .fade-leave-active {
+    transition: opacity .5s;
+    }
+    .fade-enter, .fade-leave-to {
+    opacity: 0;
+    }
+
+@media screen and (min-width:766px){
+
+    body::-webkit-scrollbar{
+    width: 17px;
+    }
+
+/* Works on Firefox */
+    * {
+    scrollbar-width: thin;
+    scrollbar-color: $principale #bdb1ac80;
+    }
+
+/* Works on Chrome, Edge, and Safari */
+
+
+    *::-webkit-scrollbar-track {
+    background-color: $green;
+    }
+
+    *::-webkit-scrollbar-thumb {
+    background-color: #edca82;
+    border-radius: 20px;
+    border: 4px solid #a9c0a6;
+    }
 }
 
 </style>
