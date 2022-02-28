@@ -4,35 +4,47 @@
 
     <PageLoader/>  
     <main :class="isDark ? 'dark' : ''">
-        <header class="dark:bg-lime-300">
-            <h1>Scroll Progress bar</h1>
-            <button
-            @click="isDark = !isDark"
-            >
-            <div class="2xl:w-16 ml-20  ">
-                  <transition name="fade" mode="out-in">
-            <div  v-if="isDark" class=" bg-amber-300	shadow-inner  rounded-xl flex h-8 items-center w-20 justify-evenly">
-                <span class="text-xs font-bold text-white"> JOUR </span>
-                <div class="w-6 h-6 bg-white rounded-full flex justify-center items-center">
-                    <fa :style="{height: '16px', color:'yellow'}" icon='sun' />
-                </div>
-            </div>
-            <div  v-else class=" bg-gray-800 shadow-inner  rounded-xl flex h-8 items-center w-20 justify-evenly"> 
-                <span class="text-xs font-bold text-white"> NUIT </span> 
-                <div class="w-7 h-7 bg-black rounded-full flex justify-center items-center">
-                    <fa :style="{ height: '16px', color:'yellow'}" icon='moon' />
-                </div>
-            </div>
-                  </transition>
-            </div>
-            </button>
 
+
+        <header class=" md:hidden lg:hidden headerMobile flex justify-between items-center px-2 bg-gray-600 h-16">
+            <img src="./assets/logo.png" class="w-24 h-10" />
+            <div class=" flex justify-around items-center w-32">
+                <button
+                @click="isDark = !isDark"
+                >
+                <div>
+                      <transition name="fade" mode="out-in">
+                <div  v-if="isDark" class=" bg-amber-300	shadow-inner  rounded-xl flex h-8 items-center w-20 justify-evenly">
+                    <span class="text-xs font-bold text-white"> JOUR </span>
+                    <div class="w-6 h-6 bg-white rounded-full flex justify-center items-center">
+                        <fa :style="{height: '16px', color:'yellow'}" icon='sun' />
+                    </div>
+                </div>
+                <div  v-else class=" bg-gray-800 shadow-inner  rounded-xl flex h-8 items-center w-20 justify-evenly"> 
+                    <span class="text-xs font-bold text-white"> NUIT </span> 
+                    <div class="w-7 h-7 bg-black rounded-full flex justify-center items-center">
+                        <fa :style="{ height: '16px', color:'yellow'}" icon='moon' />
+                    </div>
+                    
+                </div>
+                      </transition>
+                </div>
+                </button>
+                <router-link to="" class=" flex items-center ml-3 ">
+                               <fa :style="{height: '24px', color: 'white', }"   icon='user'/>
+                </router-link>
+            </div>
         </header>
-        <ProgressBar :progress='progress'/>
+
+
+
+
+
         <div>
             <router-view  @progressUpdate="setProgress" />
         </div>  
-        <div class="ml-56">
+        <ProgressBar :progress='progress'/>
+        <!-- <div class="ml-56">
             <button @click=" icon1 = !icon1">
             <fa :style="{ height: '40px'}" icon='coffee'  :class="[icon1 ? 'text-pink-500' : 'text-lime-400']" />
             </button>
@@ -45,9 +57,9 @@
             </button>
             <button @click=" icon4 = !icon4">
             <fa :style="{ height: '40px'}" :icon="[ 'fab', 'twitter' ]" :class="[icon4 ? 'text-red-500' : 'text-zinc-400']"/>
-            </button>
+            </button> -->
 
-            <button>
+            <!-- <button>
                 <ul class=" flex m-12 text-[30px] text-pink-400">
                     <li class="mr-2 ml-4 ">
                         <router-link to="/about" >  <fa :icon="[ 'fab', 'twitter' ]"/>
@@ -57,11 +69,12 @@
                         <router-link to="/" ><fa  icon='clock' /> </router-link>
                     </li>
                 </ul>
-            </button>
+            </button> -->
 
         
-      </div>
-
+      <!-- </div> -->
+      <TapBar/>
+        <FooterMobile/>
     </main>
 
 </div>
@@ -73,13 +86,17 @@
 
 import PageLoader from './components/PageLoader.vue'
 import ProgressBar from './components/ProgressBar.vue';
+import TapBar from './components/TapBar.vue';
+import FooterMobile from './components/FooterMobile.vue';
 
 
 export default {
     name: 'app',
     components: {
         PageLoader,
-        ProgressBar
+        ProgressBar,
+        FooterMobile,
+        TapBar,
     },
     data(){
         return{
@@ -134,7 +151,7 @@ export default {
         text-align: center;
     }
 
-    .fade-enter-active, .fade-leave-active {
+.fade-enter-active, .fade-leave-active {
   transition: opacity .5s;
 }
 .fade-enter, .fade-leave-to {
@@ -144,7 +161,7 @@ export default {
 .router-link-active{
     transition: all .5s linear;
     color: green;
-    font-size: 35px;
+    font-size: 15px;
     
 }
 

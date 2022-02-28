@@ -1,0 +1,33 @@
+{   
+    "time": 
+    {   "updated": "Feb 10, 2022 11:36:00 UTC", 
+        "updatedISO": "2022-02-10T11:36:00+00:00", 
+        "updateduk": "Feb 10, 2022 at 11:36 GMT" 
+    }, 
+    "disclaimer": "This data was produced from articles", 
+    "chartName": "features", 
+    "features": 
+    [
+        { 
+        "id":1,
+        "titre": "titre1",
+        "image": "burgers.jpg",
+        "paragraphe":"test",
+        "button":"plus"
+        },
+        {  
+        "id":2,
+        "titre": "Lolita",
+        "image": "pizza.jpg",
+        "paragraphe":"Collection femme - Chic et décontractée",
+        "button":"75€"
+        }, 
+        { 
+        "id":3,
+        "titre": "Magenta",
+        "image": "festive.jpg",
+        "paragraphe":"Accessoires - Sac et chaussures",
+        "button":"150€"
+        } 
+    ]
+}

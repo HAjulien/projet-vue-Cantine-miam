@@ -1,109 +1,13 @@
-<template>
-<div class="test">
-  <div id="app">
-        <swiper :pagination="pagination" :modules="modules" class="mySwiper">
-          <swiper-slide> <img src="../assets/accueil2.jpg" alt=""> </swiper-slide>
-          <swiper-slide><img src="../assets/accueil3.jpg" alt=""></swiper-slide>
-          <swiper-slide> <img src="../assets/cafe.jpg" alt=""> </swiper-slide>
-          <swiper-slide> <img src="../assets/burger.jpg" alt=""> </swiper-slide>
-          <swiper-slide> <img src="../assets/ChefDELLORE.png" alt=""> </swiper-slide>
-          <swiper-slide> <img src="../assets/PageAccueil2.png" alt=""> </swiper-slide>
-        </swiper>
-  </div>
-</div>
+/<template>
+  
 </template>
+
 <script>
-// Import Swiper Vue.js components
-import { Swiper, SwiperSlide } from "swiper/vue";
-
-// Import Swiper styles
-import "swiper/css";
-
-import "swiper/css/pagination";
-
-
-// import required modules
-import { Pagination } from "swiper";
-
 export default {
-  components: {
-    Swiper,
-    SwiperSlide,
-  },
-  setup() {
-    return {
-      pagination: {
-        clickable: true,
-      },
-      modules: [Pagination],
-    };
-  },
-      mounted () {
-        this.$el.addEventListener('scroll', function(){
-            let scrollTop = this.$el.scrollTop;
-            let clientHeight = this.$el.clientHeight;
-            let scrollHeight = this.$el.scrollHeight;
 
-            let scrollPercent = Math.round((scrollTop) / (scrollHeight - clientHeight) * 100);
-
-            this.$emit('progressUpdate', scrollPercent);
-        }.bind(this));
-    },
-};
+}
 </script>
 
-<style scoped>
-
-.test{
-  width: 100vw;
-  flex: 1 1 100%;
-  max-height: calc(100vh - 75px);
-  overflow: scroll;
-  overflow-x: hidden;
-}
-
-#app { 
-  height: 92vh;
-  background: #eee;
-  font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
-  font-size: 14px;
-  color: #000;
-  margin: 0;
-  padding: 0;
-}
-
-.swiper {
-  width: 100%;
-  height: 100%;
-}
-
-.swiper-slide {
-  text-align: center;
-  font-size: 18px;
-  background: #fff;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.swiper-slide img {
-  display: block;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
-</style>
-
 <style>
-
-.swiper-pagination-bullet {
-  width: 20px;
-  height: 20px;
-}
-
-.swiper-pagination-bullet-active {
-  color: #fff;
-  background: #007aff;
-}
 
 </style>

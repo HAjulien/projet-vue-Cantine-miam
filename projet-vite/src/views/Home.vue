@@ -1,30 +1,7 @@
 /<template>
   <div id="app"> 
-        <div >
-            <div class="test text-center">
-                <transition name="bounce">
-                    <p v-show="isActive" >
-                            test
-                            <button 
-                            class=" button text-white font-bold py-2 px-4 rounded"
-                            @click=" isActive = !isActive"
-                            :class="[isActive ? 'bg-pink-500' : 'bg-pink-500']"
-                            >x
-                            </button>
-
-                    </p>
-                </transition>
-            </div>
-            <button 
-            class=" button text-white font-bold py-2 px-4 rounded"
-            @click="isActive = !isActive"
-            :class="[isActive ? 'bg-pink-500' : 'bg-lime-500']"
-            >{{ isActive ? 'x' : 'menu' }}
-            </button>
-        </div>
-        <h2>tret</h2>
-
-        <Post/>
+       
+        <Carousel />
         <Post/>
   </div>
 
@@ -33,19 +10,18 @@
 
 <script>
 import Post from '../components/Post.vue';
+import Carousel from '../components/Carousel.vue';
 
 export default {
   name:'home',
     components:{
         Post,
+        Carousel,
     },
     data() {
 
         return {
-            isActive:false,
             progress:0,
-
-
         }
     },
     mounted () {
@@ -69,7 +45,7 @@ export default {
     #app{
         width: 100vw;
         flex: 1 1 100%;
-        max-height: calc(100vh - 80px);
+        max-height: calc(93vh - 80px);
         overflow: scroll;
         overflow-x: hidden;
     }
