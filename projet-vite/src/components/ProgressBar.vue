@@ -1,5 +1,5 @@
 /<template>
-  <div class="progress-bar dark:bg-gray-700">
+  <div class="progress-bar dark:bg-gray-700 bg-gray-200">
       <div :class="(progress == 100) ? 'progress-inner complete' : 'progress-inner'" 
            :style="`width: ${progress}%`">
           <span :class="(progress > 50) ? 'white' : ''"> {{ progress }}% </span>
@@ -18,13 +18,12 @@ export default {
     .progress-bar{
         width: 100%;
         height: 15px;
-        background-color: #fff;
         position: relative;
         transition: all 1s ease-in-out;
     }
     .progress-inner{
         height: 100%;
-        background-image: linear-gradient(to right, #ED008D, #2484E2);
+        background-image: linear-gradient(to right, #16eb16, #2484E2);
     }
 
     span{
