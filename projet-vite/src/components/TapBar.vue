@@ -5,15 +5,17 @@
       <router-link to="/" class="text-center block " >click&collect </router-link>
     </li>
     <li class="flex-1 ">
-      <router-link to="/about" class="text-center block  " > Horaires</router-link>
+      <router-link to="/about" class="text-center block  " > 
+      <fa :style="{ height: '35px'}" icon="clock" />
+      </router-link>
     </li>
     <li class="flex-1">
       <div class="text-center block  " > 
 
         <button 
-        class=" button text-white font-bold py-2 px-4 rounded"
+        class=" button text-white font-bold py-2 px-4 rounded-full"
         @click="isActive = !isActive"
-        :class="[isActive ? 'bg-pink-500' : 'bg-lime-500']"
+        :class="[isActive ? 'bg-pink-500' : 'bg-gray-400']"
         >{{ isActive ? 'x' : 'menu' }}
         </button>
         <transition name="fade">
