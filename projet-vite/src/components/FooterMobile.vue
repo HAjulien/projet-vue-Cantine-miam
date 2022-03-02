@@ -8,7 +8,7 @@
             </a>
  </li>
             <li><a href="https://www.instagram.com" target="_blank" @click=" icon2 = !icon2">
-            <fa :style="{ height: '40px'}" :icon="[ 'fab', 'instagram' ]" :class="[icon2 ? 'text-violet-700' : 'text-stone-700']"/>
+            <fa :style="{ height: '40px'}" :icon="[ 'fab', 'instagram' ]" :class="[icon2 ? 'text-violet-700' : 'text-stone-400']"/>
             </a>
  </li>
             <li><a href="https://twitter.com" target="_blank" @click=" icon3 = !icon3">
