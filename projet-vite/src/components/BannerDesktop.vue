@@ -224,7 +224,7 @@ export default {
       }
     }
 
-    @media screen and (max-width:768.1px){
+    @media screen and (max-width:767.9px){
         #pageDesktop{
           display: none;
         }

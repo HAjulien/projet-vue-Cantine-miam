@@ -47,7 +47,7 @@ export default {
 
 @media screen and (max-width: 768px){
     #app{
-            max-height:calc( 93vh - 75px );
+            max-height:calc( 94vh - 75px );
     }
 
 }

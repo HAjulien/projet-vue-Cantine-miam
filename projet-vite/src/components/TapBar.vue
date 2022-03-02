@@ -54,6 +54,7 @@ export default {
 
 
   .navigation{
+    position: sticky;
     width: 100vw;
     z-index: 10;
   }
