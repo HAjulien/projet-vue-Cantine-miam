@@ -54,8 +54,6 @@ export default {
 
 
   .navigation{
-    position: sticky;
-    bottom: 0%;
     width: 100vw;
     z-index: 10;
   }
@@ -76,10 +74,9 @@ export default {
   opacity: 0;
 }
   
-a.router-link-active{
+.router-link-active{
     color: $green;
     font-weight: 800;
-    font-size: 20px;
     transition: all .5s ease-in-out;
 }
 </style>
