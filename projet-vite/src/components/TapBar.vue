@@ -78,6 +78,6 @@ export default {
 .router-link-active{
     color: $green;
     font-weight: 800;
-    transition: all .5s ease-in-out;
+    transition: all .3s linear;
 }
 </style>

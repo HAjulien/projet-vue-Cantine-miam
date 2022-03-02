@@ -5,9 +5,9 @@
   
   <div class=" card md:width-[45vw] cards flex md:inline-flex space-x-6 m-2 mb-7 dark:bg-gray-500  inline-block	border-solid border-2 bg-gray-200	">
     <div class="shadow-md">
-      <div class="p-4">
+      <div class="p-4 text-lg">
         <h1 class="mt-3 text-2xl text-center font-bold my-2 dark:text-black">{{title}}</h1>
-        <p class="text-gray-800 mb-2 indent-5  dark:text-slate-200">{{ paragraphe }}</p>
+        <p class="text-gray-800 mb-2 indent-5 dark:text-slate-200">{{ paragraphe }}</p>
         
         <div class="flex justify-between items-center mt-4 pb-2">
           <span class="mb-2 text-gray-800 font-bold dark:text-slate-200">Découvrir: </span>
