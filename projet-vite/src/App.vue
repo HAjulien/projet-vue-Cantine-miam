@@ -9,7 +9,11 @@
         <HeaderDesktop/>
         <BannerDesktop/>
         <div>
-            <router-view @progressUpdate="setProgress" />
+            <router-view @progressUpdate="setProgress"  v-slot="{ Component }">
+                <transition name="route" mode="out-in">
+                    <component :is="Component"></component>
+                 </transition>
+            </router-view>
         </div>  
         <ProgressBar :progress='progress'/>
         <TapBar/>
@@ -78,11 +82,20 @@ export default {
     }
 
 
-    .fade-enter-active, .fade-leave-active {
-    transition: opacity .5s;
-    }
-    .fade-enter, .fade-leave-to {
+
+    .route-enter-from{
     opacity: 0;
+    transform: translateX(200px);
+    }
+    .route-enter-active{
+    transition: all .3s ease-out;
+    }
+    .route-leave-to{
+    opacity: 0;
+    transform: translateX(-200px);
+    }
+    .route-leave-active{
+    transition: all .3s ease-in;
     }
 
 @media screen and (min-width:766px){

@@ -26,7 +26,7 @@
             :class="[isActive ? 'bg-pink-500' : 'bg-pink-500']"
             >x
             </button>
-              test
+               <router-link to="/" @click=" isActive = !isActive">Home</router-link >
           </div>
         </transition>
           </div>
@@ -69,12 +69,26 @@ export default {
 
 
 .fade-enter-active, .fade-leave-active {
-  transition: opacity 1s;
+  transition: opacity .5s;
 }
 .fade-enter, .fade-leave-to {
   opacity: 0;
 }
-  
+
+.fade-enter-from{
+opacity: 0;
+}
+
+
+
+
+
+
+
+
+
+
+
 .router-link-active{
     color: $green;
     font-weight: 800;
