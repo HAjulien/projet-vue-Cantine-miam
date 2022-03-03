@@ -1,6 +1,6 @@
 <template>
     <button
-    @click="isDark = !isDark"
+    @click="toggleDarkMode"
     >
         <div>
                 <transition name="fade" mode="out-in">
@@ -31,6 +31,11 @@ export default {
 
         }
     },
+    methods: {
+        toggleDarkMode() {
+            this.isDark = !this.isDark;
+        }
+    }
 
 }
 </script>
