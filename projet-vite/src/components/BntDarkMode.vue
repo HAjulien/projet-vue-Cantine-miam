@@ -34,9 +34,8 @@ export default {
     methods: {
         toggleDarkMode() {
             this.isDark = !this.isDark;
-        }
+        },
     }
-
 }
 </script>
 
