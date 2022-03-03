@@ -26,14 +26,15 @@
 export default {
     name:'BtnDarkMode',
     data(){
+        let isDark = localStorage.getItem('darkMode') == 'true'
         return{
-        isDark: false,
-
-        }
+            isDark,
+        }   
     },
     methods: {
         toggleDarkMode() {
             this.isDark = !this.isDark;
+            localStorage.setItem('darkMode', this.isDark);
         },
     }
 }
