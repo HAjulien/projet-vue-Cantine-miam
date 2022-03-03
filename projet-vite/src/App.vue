@@ -4,7 +4,7 @@
 
     <PageLoader/> 
 
-    <main "toogleDarkMode">
+    <main :class="isDark ? 'dark' : ''">
         <HeaderMobile/>
         <HeaderDesktop/>
         <BannerDesktop/>
