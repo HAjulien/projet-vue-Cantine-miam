@@ -1,7 +1,7 @@
 <template>
     <footer class="footerMobile px-2 bg-gray-200 dark:bg-gray-700 dark:text-slate-100  ">
 
-        <p class="text-center"> nous suivre sur :</p>
+        <p class="text-center text-xl m-3" > nous suivre sur :</p>
         <ul class=" flex justify-around">
             <li><a href="https://www.facebook.com" target="_blank " @click=" icon1 = !icon1">
             <fa :style="{ height: '40px'}" :icon="[ 'fab', 'facebook' ]" :class="[icon1 ? 'text-blue-800' : 'text-blue-300']"/>
@@ -18,7 +18,7 @@
             <fa :style="{ height: '40px'}" :icon="[ 'fab', 'youtube' ]" :class="[icon4 ? 'text-red-600' : 'text-amber-600']"/>
             </a> </li>
         </ul>
-        <p class="text-center">CANTINE MIAM tous droits réservés, 2022</p>
+        <p class="text-center mt-4">CANTINE MIAM tous droits réservés, 2022</p>
 
         
 

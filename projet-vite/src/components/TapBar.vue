@@ -13,10 +13,16 @@
       <div class="text-center block  " > 
 
         <button 
-        class=" button text-white font-bold py-2 px-4 rounded-full"
+        class=" button text-white font-bold py-2 px-4 rounded-2xl dark:bg-gray-400"
         @click="isActive = !isActive"
-        :class="[isActive ? 'bg-pink-500' : 'bg-gray-400']"
-        >{{ isActive ? 'x' : 'menu' }}
+        :class="['bg-gray-200']"
+        >
+          <div class="space-y-2">
+            <div class="w-6 h-0.5 bg-black"></div>
+            <div class="w-6 h-0.5 bg-black"></div>
+            <div class="w-6 h-0.5 bg-black"></div>
+          </div>
+
         </button>
         <transition name="fade">
           <div v-show="isActive" class="menu " @click=" isActive = !isActive" >

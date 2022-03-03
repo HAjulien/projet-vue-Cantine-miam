@@ -7,11 +7,11 @@
     <div class="shadow-md rounded-xl">
       <div class="p-4 text-lg">
         <h1 class="mt-3 text-2xl text-center font-bold my-2 dark:text-black">{{title}}</h1>
-        <p class="text-gray-800 mb-2 indent-5 dark:text-slate-200">{{ paragraphe }}</p>
+        <p class="text-gray-800 mb-6 mt-8  indent-5 dark:text-slate-200">{{ paragraphe }}</p>
         
         <div class="flex justify-between items-center mt-4 pb-2">
           <span class="mb-2 text-gray-800 font-bold dark:text-slate-200">Découvrir: </span>
-          <button class="p-1 pl-2 pr-2 bg-transparent border-2 border-green-600 text-green-500  rounded-lg hover:bg-green-600 hover:text-gray-200 focus:border-4 focus:border-green-300">{{ button }} </button>
+          <button class=" mb-3 p-1 pl-2 pr-2 bg-transparent border-2 border-green-600 text-green-500  rounded-lg hover:bg-green-600 hover:text-gray-200 focus:border-4 focus:border-green-300">{{ button }} </button>
         </div> 
         <img v-bind:src="'src/assets/images/' + image" />
 
