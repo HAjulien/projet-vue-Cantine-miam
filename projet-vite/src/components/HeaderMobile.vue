@@ -1,6 +1,6 @@
 <template>
     <header class=" md:hidden lg:hidden headerMobile flex justify-between items-center px-2 dark:bg-gray-700 bg-gray-200	 h-16">
-        <img src="../assets/images/logo.png" class="w-24 h-10" />
+        <router-link to="/" ><img src="../assets/images/logo.png" class="w-24 h-10" /> </router-link> 
         <div class=" flex justify-around items-center w-32">
             <BtnDarkMode/>
             <router-link to="" class=" flex items-center ml-3 ">

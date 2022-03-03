@@ -14,7 +14,7 @@
             <li><a href="https://twitter.com" target="_blank" @click=" icon3 = !icon3">
             <fa :style="{ height: '40px'}" :icon="[ 'fab', 'twitter' ]" :class="[icon3 ? 'text-sky-400' : 'text-zinc-400']"/>
             </a> </li>
-            <li><a href="https://twitter.com" target="_blank" @click=" icon4 = !icon4">
+            <li><a href="https://youtube.com" target="_blank" @click=" icon4 = !icon4">
             <fa :style="{ height: '40px'}" :icon="[ 'fab', 'youtube' ]" :class="[icon4 ? 'text-red-600' : 'text-amber-600']"/>
             </a> </li>
         </ul>

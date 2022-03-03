@@ -19,14 +19,14 @@
         >{{ isActive ? 'x' : 'menu' }}
         </button>
         <transition name="fade">
-          <div v-show="isActive" class="test block" >
+          <div v-show="isActive" class="test block" @click=" isActive = !isActive" >
             <button 
-            class=" button text-white font-bold py-2 px-4 rounded block m-auto mt-6 mb-6	"
-            @click=" isActive = !isActive"
-            :class="[isActive ? 'bg-pink-500' : 'bg-pink-500']"
+            class=" button text-white bold py-2 px-4 rounded-full block m-auto mt-6 mb-6 h-12	w-12 text-2xl"
+            @click=" !isActive"
+            :class="['bg-pink-500']"
             >x
             </button>
-               <router-link to="/" @click=" isActive = !isActive">Home</router-link >
+               <router-link to="/" @click="!isActive" class="text-3xl ">Accueil</router-link >
           </div>
         </transition>
           </div>
@@ -60,11 +60,12 @@ export default {
   }
 .test{
     position: fixed;
-    background-color: aqua;
     top: 0;
     left: 0;
     right: 0;
     bottom: 0;
+    background-color: rgba(0, 0, 0, 0.473);
+    backdrop-filter: blur(5px);
 }
 
 
