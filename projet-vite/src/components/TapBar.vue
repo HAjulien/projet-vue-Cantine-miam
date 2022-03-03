@@ -19,14 +19,19 @@
         >{{ isActive ? 'x' : 'menu' }}
         </button>
         <transition name="fade">
-          <div v-show="isActive" class="test block" @click=" isActive = !isActive" >
+          <div v-show="isActive" class="menu " @click=" isActive = !isActive" >
             <button 
-            class=" button text-white bold py-2 px-4 rounded-full block m-auto mt-6 mb-6 h-12	w-12 text-2xl"
+            class=" button text-white bold py-2 px-4 rounded-full block m-auto mt-12 h-12	w-12 text-2xl"
             @click=" !isActive"
             :class="['bg-pink-500']"
             >x
             </button>
-               <router-link to="/" @click="!isActive" class="text-3xl ">Accueil</router-link >
+              <ul class="h-full flex flex-col justify-start items-center mt-10 ">
+                <li class="mb-10 links"
+                 v-for="linkmenu in linksMenu" v-bind:key="linkmenu.id ">
+                  <router-link :to="{path:linkmenu.chemin}" @click="!isActive" class="text-3xl ">{{ linkmenu.page }}</router-link >
+                </li>
+              </ul>
           </div>
         </transition>
           </div>
@@ -44,6 +49,15 @@ export default {
 
         return {
             isActive:false,
+            linksMenu: [
+              {chemin:'/', page:"Accueil", id: 1},
+              {chemin:'/menu', page: "Menu/tarif", id: 2},
+              {chemin:'/about', page: "l'équipe", id: 3},
+              {chemin:'/collect', page: "Click/Collect", id: 4},
+              {chemin:'/cafe', page: "Câfé", id: 5},
+              {chemin:'/horaire', page: "Horaire/lieu", id: 6},
+              {chemin:'/contact', page: "Contact", id: 7},
+            ],
 
         }
     },
@@ -58,16 +72,19 @@ export default {
     width: 100vw;
     z-index: 10;
   }
-.test{
+.menu{
     position: fixed;
     top: 0;
     left: 0;
     right: 0;
     bottom: 0;
-    background-color: rgba(0, 0, 0, 0.473);
-    backdrop-filter: blur(5px);
+    background-color: rgba(0, 0, 0, 0.65);
+    backdrop-filter: blur(11px);
 }
 
+.links{
+    color: $principale;
+}
 
 .fade-enter-active, .fade-leave-active {
   transition: opacity .5s;
