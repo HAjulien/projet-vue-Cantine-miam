@@ -1,14 +1,19 @@
 <template>
 
-  <ul class=" md:hidden navigation flex items-center justify-between bg-gray-700 text-white dark:bg-gray-200 dark:text-gray-700  p-1" >
-    <li class="flex-1 ">
-      <router-link to="/" class=" flex items-center justify-center leading-none	 " >
-        click &<br/> collect 
+  <ul class=" md:hidden navigation flex items-center justify-between bg-gray-800 text-gray-200 dark:bg-gray-200 dark:text-gray-800 dark: p-1	" >
+    <li class="flex-1 border-r-2  border-amber-500 h-full flex items-center justify-center">
+      <router-link to="/a" class=" flex  " > 
+        <fa :style="{ height: '28px'}" icon="coffee" />
       </router-link>
     </li>
-    <li class="flex-1 ">
+    <li class="flex-1  border-r-2 border-amber-500 h-full flex items-center justify-center ">
       <router-link to="/about" class=" flex items-center justify-center  " > 
-        <fa :style="{ height: '35px'}" icon="clock" />
+        <fa :style="{ height: '28px'}" icon="clock" />
+      </router-link>
+    </li>
+    <li class="flex-1  border-r-2 border-amber-500 h-full flex items-center justify-center ">
+      <router-link to="/" class=" flex items-center justify-center leading-none text-sm	 " >
+        click &<br/> collect 
       </router-link>
     </li>
     <li class="flex-1">
@@ -99,7 +104,7 @@ export default {
 }
 
 .fade-enter-active, .fade-leave-active {
-  transition: opacity .5s;
+  transition: opacity .4s;
 }
 .fade-enter, .fade-leave-to {
   opacity: 0;
@@ -112,7 +117,7 @@ opacity: 0;
 .router-link-active{
     color: $green;
     font-weight: 700;
-    transform: scale(1.1);
+    transform: scale(1.2);
     transition: all .3s ease-in-out;
 }
 
