@@ -112,7 +112,6 @@ opacity: 0;
 .router-link-active{
     color: $green;
     font-weight: 700;
-    transform: scale(1.1);
     transition: all .3s ease-in-out;
 }
 

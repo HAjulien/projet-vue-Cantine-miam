@@ -3,7 +3,7 @@
 
 <!-- component -->
   
-  <div class=" card md:width-[45vw] cards flex md:inline-flex space-x-6 m-2 mb-7 dark:bg-gray-500  inline-block	border-solid border-2 bg-gray-200	rounded-xl">
+  <div class=" card md:width-[45vw] cards flex md:inline-flex space-x-6 m-2 mb-12 dark:bg-gray-500  inline-block	border-solid border-2 bg-gray-200	rounded-xl">
     <div class="shadow-md rounded-xl">
       <div class="p-4 text-lg">
         <h1 class="mt-3 text-2xl text-center font-extrabold my-2 dark:text-black">{{title}}</h1>

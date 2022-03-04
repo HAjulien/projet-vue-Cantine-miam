@@ -1,7 +1,7 @@
 /<template>
 <div>
 
-    <div class="mt-16 md:flex">
+    <div class="mt-12 md:flex">
         <Feature v-for="(feature, index) in features" :key="index" :title="feature.title" :image="feature.image" :paragraphe="feature.paragraphe" :button="feature.button" :chemin="feature.chemin" />
     </div>
 
