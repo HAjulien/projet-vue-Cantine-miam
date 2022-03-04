@@ -71,6 +71,11 @@ export default {
         box-sizing: border-box;
     }
 
+    ::selection{
+    color: $principale;
+    background-color: #040404;
+    }
+
     body{
         font-family: 'montseratt', sans-serif;
 
