@@ -52,7 +52,7 @@ export default {
 
 .swiper {
   width: 100%;
-  height: 83vh;
+  height: calc( 100vh - 120px );
 }
 
 .swiper-slide {

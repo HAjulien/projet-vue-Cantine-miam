@@ -16,7 +16,7 @@
       <div class="text-center block  " > 
         
         <button 
-        class=" button text-white font-bold py-2 px-4 rounded-2xl dark:bg-gray-400"
+        class=" py-2 px-4 rounded-2xl dark:bg-gray-400"
         @click="isActive = !isActive"
         :class="['bg-gray-200']"
         >
@@ -80,6 +80,7 @@ export default {
 
   .navigation{
     position: sticky;
+    height: 45px;
     width: 100vw;
     z-index: 10;
   }
@@ -108,19 +109,12 @@ export default {
 opacity: 0;
 }
 
-
-
-
-
-
-
-
-
-
-
 .router-link-active{
     color: $green;
-    font-weight: 800;
-    transition: all .3s linear;
+    font-weight: 700;
+    transform: scale(1.1);
+    transition: all .3s ease-in-out;
 }
+
+
 </style>
