@@ -32,13 +32,13 @@
             <button 
             class=" button text-white bold py-2 px-4 rounded-full block m-auto mt-12 h-12	w-12 text-2xl"
             @click=" !isActive"
-            :class="['bg-pink-500']"
+            :class="['bg-pink-500 text-4xl flex items-center justify-center pb-3']"
             >x
             </button>
               <ul class="h-full flex flex-col justify-start items-center mt-10 ">
                 <li class="mb-10 links"
                  v-for="linkmenu in linksMenu" v-bind:key="linkmenu.id ">
-                  <router-link :to="{path:linkmenu.chemin}" @click="!isActive" class="text-3xl ">{{ linkmenu.page }}</router-link >
+                  <router-link :to="{path:linkmenu.chemin}" @click="!isActive" class="text-2xl ">{{ linkmenu.page }}</router-link >
                 </li>
               </ul>
           </div>
