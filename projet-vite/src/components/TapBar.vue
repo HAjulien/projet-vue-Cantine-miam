@@ -7,20 +7,20 @@
       </router-link>
     </li>
     <li class="flex-1 ">
-      <router-link to="/about" class="text-center block  " > 
+      <router-link to="/about" class=" flex items-center justify-center  " > 
         <fa :style="{ height: '35px'}" icon="clock" />
       </router-link>
     </li>
     <li class="flex-1">
 
-      <div class="text-center block  " > 
+      <div class="flex items-center justify-center  " > 
         
         <button 
-        class=" py-2 px-4 rounded-2xl dark:bg-gray-400"
+        class=" py-2 px-4  rounded-full dark:bg-gray-400"
         @click="isActive = !isActive"
         :class="['bg-gray-200']"
         >
-          <div class="space-y-2">
+          <div class="space-y-2 w-3  flex flex-col items-center justify-center ">
             <div class="w-6 h-0.5 bg-black"></div>
             <div class="w-6 h-0.5 bg-black"></div>
             <div class="w-6 h-0.5 bg-black"></div>
@@ -80,7 +80,7 @@ export default {
 
   .navigation{
     position: sticky;
-    height: 45px;
+    height: 50px;
     width: 100vw;
     z-index: 10;
   }
