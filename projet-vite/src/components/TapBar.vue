@@ -2,7 +2,7 @@
 
   <ul class=" md:hidden navigation flex items-center justify-between bg-gray-700 text-white dark:bg-gray-200 dark:text-gray-700  p-1" >
     <li class="flex-1 ">
-      <router-link to="/" class="text-center block " >
+      <router-link to="/" class=" flex items-center justify-center " >
         click&collect 
       </router-link>
     </li>
