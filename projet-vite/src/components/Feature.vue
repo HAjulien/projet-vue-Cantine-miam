@@ -11,7 +11,11 @@
         
         <div class="flex justify-between items-center mt-4 pb-2">
           <span class="mb-2 text-gray-800 font-bold dark:text-slate-200">Découvrir: </span>
-          <button class=" mb-3 p-1 pl-2 pr-2 bg-transparent border-2 border-green-600 text-green-500  rounded-lg hover:bg-green-600 hover:text-gray-200 focus:border-4 focus:border-green-300">{{ button }} </button>
+           <router-link :to="{path: chemin }" >
+            <button class=" mb-3 p-1 pl-2 pr-2 bg-transparent border-2 border-green-600 text-green-500  rounded-lg hover:bg-green-600 hover:text-gray-200 focus:border-4 focus:border-green-300">
+            {{ button }}
+            </button>
+          </router-link>  
         </div> 
         <img v-bind:src="'src/assets/images/' + image" />
 
@@ -31,6 +35,7 @@ export default {
       image:String,
       paragraphe:String,
       button:String,
+      chemin:String,
 
     }
 }

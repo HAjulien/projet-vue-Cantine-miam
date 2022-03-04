@@ -23,7 +23,6 @@ export default {
     data() {
 
         return {
-            progress:0,
 
         }
     },
@@ -57,37 +56,6 @@ export default {
         flex: 1 1 100%;
         overflow: scroll;
         overflow-x: hidden;
-    }
-
-    .button{
-        width: 120px;
-        height: 50px;
-        text-align: center;
-        transition: all .4s linear;
-    }
-
-
-
-    .bounce-enter-active {
-    animation: bounce-in .5s;
-    }
-    .bounce-leave-active {
-    animation: bounce-in .5s reverse;
-    }
-    @keyframes bounce-in {
-    0% {
-        transform: scale(0);
-    }
-    50% {
-        transform: scale(1.5);
-    }
-    100% {
-        transform: scale(1);
-    }
-
-    }
-    h2{
-        color: $blue;
     }
 
 </style>

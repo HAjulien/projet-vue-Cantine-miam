@@ -14,21 +14,26 @@
         "title": "Un nouveau départ.",
         "image": "burgers.jpg",
         "paragraphe":"l’Afpa de Créteil est fier de vous annoncer l’ouverture de la nouvelle Cantine Miam. Il nous aura fallu plus de 4 mois pour rénover entièrement la salle et les cuisines. C’est le chef Michael Dellore qui sera aux commandes de l’établissement.",
-        "button":"Notre équipe"
+        "button":"Notre équipe",
+        "chemin":"/about"
         },
         {  
         "id":2,
         "title": "Nous n'utilisons que des produits frais!",
         "image": "pizza.jpg",
         "paragraphe":"C’est l’engagement de notre chef. Pour cela, nous pouvons compter sur nos dizaines de partenaires agriculteurs, éleveurs et pécheurs de notre région. Que des produits de saisons issus du développement durable, pour des plats frais, sans pesticides et écologique.",
-        "button":"Commander"
+        "button":"Commander",
+        "chemin":"/"
+
         }, 
         { 
         "id":3,
         "title": "Recettes inspirées par les saveurs du monde.",
         "image": "festive.jpg",
         "paragraphe":"Fini les plats de cuisine sans surprise! Le chef Dollore s’est inspiré de ses nombreux voyages à travers le monde pour vous offrir une explosion de saveurs dans votre assiette. Faite lui confiance pour vous régaler chaque jour. Bonne appétit!!!!",
-        "button":"Menu"
+        "button":"Menu",
+        "chemin":"/about"
+
         }
     ]
 }
