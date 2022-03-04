@@ -2,16 +2,19 @@
 
   <ul class=" md:hidden navigation flex items-center justify-between bg-gray-700 text-white dark:bg-gray-200 dark:text-gray-700  p-1" >
     <li class="flex-1 ">
-      <router-link to="/" class="text-center block " >click&collect </router-link>
+      <router-link to="/" class="text-center block " >
+        click&collect 
+      </router-link>
     </li>
     <li class="flex-1 ">
       <router-link to="/about" class="text-center block  " > 
-      <fa :style="{ height: '35px'}" icon="clock" />
+        <fa :style="{ height: '35px'}" icon="clock" />
       </router-link>
     </li>
     <li class="flex-1">
-      <div class="text-center block  " > 
 
+      <div class="text-center block  " > 
+        
         <button 
         class=" button text-white font-bold py-2 px-4 rounded-2xl dark:bg-gray-400"
         @click="isActive = !isActive"
@@ -22,8 +25,8 @@
             <div class="w-6 h-0.5 bg-black"></div>
             <div class="w-6 h-0.5 bg-black"></div>
           </div>
-
         </button>
+
         <transition name="fade">
           <div v-show="isActive" class="menu " @click=" isActive = !isActive" >
             <button 
@@ -40,7 +43,9 @@
               </ul>
           </div>
         </transition>
-          </div>
+
+        </div>
+
     </li>
 
   </ul>
