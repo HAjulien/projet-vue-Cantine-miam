@@ -16,14 +16,14 @@
       <div class="flex items-center justify-center  " > 
         
         <button 
-        class=" py-2 px-4  rounded-full dark:bg-gray-400"
+        class=" py-2 px-4  rounded-full "
         @click="isActive = !isActive"
-        :class="['bg-gray-200']"
+        :class="[isActive ? 'bg-pink-500'  : 'bg-gray-200 dark:bg-gray-700']"
         >
-          <div class="space-y-2 w-3  flex flex-col items-center justify-center ">
-            <div class="w-6 h-0.5 bg-black"></div>
-            <div class="w-6 h-0.5 bg-black"></div>
-            <div class="w-6 h-0.5 bg-black"></div>
+          <div class="space-y-2 w-3  flex flex-col items-center justify-center  ">
+            <div class="w-6 h-0.5 bg-black dark:bg-gray-200"></div>
+            <div class="w-6 h-0.5 bg-black dark:bg-gray-200"></div>
+            <div class="w-6 h-0.5 bg-black dark:bg-gray-200"></div>
           </div>
         </button>
 
