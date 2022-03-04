@@ -2,8 +2,8 @@
 
   <ul class=" md:hidden navigation flex items-center justify-between bg-gray-700 text-white dark:bg-gray-200 dark:text-gray-700  p-1" >
     <li class="flex-1 ">
-      <router-link to="/" class=" flex items-center justify-center " >
-        click&collect 
+      <router-link to="/" class=" flex items-center justify-center leading-none	 " >
+        click &<br/> collect 
       </router-link>
     </li>
     <li class="flex-1 ">
@@ -112,6 +112,7 @@ opacity: 0;
 .router-link-active{
     color: $green;
     font-weight: 700;
+    transform: scale(1.1);
     transition: all .3s ease-in-out;
 }
 
