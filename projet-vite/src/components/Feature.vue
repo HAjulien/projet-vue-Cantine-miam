@@ -3,11 +3,11 @@
 
 <!-- component -->
   
-  <div class=" card md:width-[45vw] cards flex md:inline-flex space-x-6 m-2 mb-12 dark:bg-gray-500  inline-block	border-solid border-2 bg-gray-200	rounded-xl  hover:bg-gray-100 hover:border-4 hover:border-amber-300 	">
+  <div class=" card md:width-[45vw] cards flex md:inline-flex space-x-6 m-2 mb-12 dark:bg-gray-500  inline-block	border-solid border-2 bg-gray-100	rounded-xl  hover:border-4 hover:border-amber-300 	">
     <div class="shadow-md rounded-xl ">
       <div class="p-4 text-lg">
         <h1 class="mt-3 text-2xl flex items-center justify-center text-center md:h-28 font-extrabold my-2 dark:text-black">{{title}}</h1>
-        <p class="text-gray-800 mb-6 mt-8  indent-5 dark:text-slate-200">{{ paragraphe }}</p>
+        <p class="text-gray-900 mb-6 mt-8  indent-5 dark:text-slate-200">{{ paragraphe }}</p>
         
         <div class="flex justify-between items-center mt-4 mb-7 pb-2">
           <span class="mb-2 text-gray-800 font-bold dark:text-slate-200">Découvrir: </span>
