@@ -1,11 +1,11 @@
 <template>
 <div>
         <header class=" md:hidden lg:hidden headerMobile flex justify-between items-center px-2 dark:bg-gray-700 bg-gray-200">
-            <router-link to="/" ><img src="../assets/images/logo.png" class="w-24 h-10" /> </router-link> 
-            <div class=" flex justify-around items-center w-32">
+            <router-link to="/" ><img src="../assets/images/logo.png" class="w-24 h-10 ml-3" /> </router-link> 
+            <div class=" flex justify-around items-center w-32 mr-3">
                 <BtnDarkMode/>
-                <button class=" flex items-center ml-3 " v-on:click="toggleModale">
-                                <fa :style="{height: '24px', color: '#097770', }"   icon='user' />
+                <button class=" flex items-center ml-6 " v-on:click="toggleModale">
+                                <fa :style="{height: '35px', color: '#097770', }"   icon='user' />
                 </button>
             </div>
         </header>

@@ -5,7 +5,7 @@
 
         <div class="modale card">
             <button class="btn-modale"  v-on:click="toggleModale">X</button>
-            <h2>contenu de la modale</h2>
+            
 
         </div>
 
@@ -46,10 +46,10 @@ export default {
     .modale{
         background-color: #fff;
         position: fixed;
-        top: 20%;
+        top: 10%;
         z-index: 1;
-        height: 200px;
-        width: 200px;
+        height: 40vh;
+        width: 80vw;
     }
     .btn-modale{
         background-color: blue;
