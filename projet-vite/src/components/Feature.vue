@@ -11,8 +11,8 @@
         
         <div class="flex justify-between items-center mt-4 mb-7 pb-2">
           <span class="mb-2 text-gray-800 font-bold dark:text-slate-200">Découvrir: </span>
-           <router-link :to="{path: chemin }" >
-            <button class=" mb-3 p-1 pl-2 pr-2 bg-transparent border-2 border-green-600 text-green-500  rounded-lg hover:bg-green-600 hover:text-gray-200 focus:border-4 focus:border-green-300">
+           <router-link :to="{path: chemin }" class="router" >
+            <button class=" mb-3 min-w-[120px] p-1 pl-2 pr-2 bg-transparent border-2 border-green-600 text-green-500  rounded-lg hover:bg-green-600 hover:text-gray-200 focus:border-4 focus:border-green-300">
             {{ button }}
             </button>
           </router-link>  
@@ -59,12 +59,31 @@ export default {
 
 }
 
-@media screen and (min-width:766px) and (max-width:1300px) {
+@media screen and (min-width:766px) and (max-width:939px) {
+  p{
+    height: 330px;
+  }
+  span{
+    display: none;
+  }
+  .router{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+  button{
+    width: 150px;
+  }
+
+}
+@media screen and (min-width:940px) and (max-width:1300px) {
   p{
     height: 250px;
   }
 
 }
+
 
 @media screen and (min-width:1301px) {
   p{
