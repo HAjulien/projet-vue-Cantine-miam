@@ -19,7 +19,7 @@ export default {
         width: 100%;
         height: 15px;
         position: relative;
-        transition: all 1s ease-in-out;
+        transition: all .3s ease-in-out;
     }
     .progress-inner{
         height: 100%;

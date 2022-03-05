@@ -45,5 +45,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-   
+footer{
+    transition: all .2s;
+}
 </style>

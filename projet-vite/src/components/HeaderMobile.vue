@@ -9,7 +9,9 @@
                 </button>
             </div>
         </header>
-        <ProfileModale :revele="revele" :toggleModale="toggleModale"></ProfileModale>
+        <transition name="slide">
+            <ProfileModale :revele="revele" :toggleModale="toggleModale"></ProfileModale>
+        </transition >
 </div>
 </template>
 
@@ -42,5 +44,21 @@ export default {
 <style>
     header{
         height: 60px;
+        transition: all .3s ease-in-out;
+    }
+
+    .slide-enter-from{
+    opacity: 0;
+    transform: translateY(-250px);
+    }
+    .slide-enter-active{
+    transition: all .3s ease-out;
+    }
+    .slide-leave-to{
+    opacity: 0;
+    transform: translateY(-250px);
+    }
+    .slide-leave-active{
+    transition: all .2s ease-in;
     }
 </style>

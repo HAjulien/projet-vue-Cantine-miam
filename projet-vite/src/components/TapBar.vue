@@ -88,6 +88,7 @@ export default {
     height: 50px;
     width: 100vw;
     z-index: 10;
+    transition: all .3s linear;
   }
 .menu{
     position: fixed;

@@ -63,17 +63,17 @@ export default {
     /* images de fond qui vont se succéder  */
     .un {
       background-image: url(../assets/images/burgers.jpg);
-      animation: thirdappear 3s 7s;
+      animation: thirdappear 2s 4s;
     }
 
     .deux {
       background-image: url(../assets/images/pizza.jpg);
-      animation: Secondappear 3s 4s;
+      animation: Secondappear 2s 2s;
     }
 
     .trois {
       background-image: url(../assets/images/festive.jpg);
-      animation: firstappear 4s;
+      animation: firstappear 2s;
     }
 
     /* conteneur des textes dans image */

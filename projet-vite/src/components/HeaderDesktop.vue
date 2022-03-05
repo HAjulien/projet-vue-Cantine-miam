@@ -56,14 +56,13 @@ export default {
     .router-link {
       display: flex;
       justify-content: center;
-      margin-top: 7px;
-      font-size: .9rem;
+      margin-top: 9px;
     }
 
     .router-link:hover {
       color: #cda673;
+      transform: scale(1.2);
       transition: all .3s ease-in-out;
-      transform: scale(1.3);
     }
 
    

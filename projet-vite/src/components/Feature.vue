@@ -12,7 +12,7 @@
         <div class="flex justify-between items-center mt-4 mb-7 pb-2">
           <span class="mb-2 text-gray-800 font-bold dark:text-slate-200">Découvrir: </span>
            <router-link :to="{path: chemin }" class="router" >
-            <button class=" mb-3 min-w-[120px] p-1 pl-2 pr-2 bg-transparent border-2 border-green-600 text-green-500  rounded-lg hover:bg-green-600 hover:text-gray-200 focus:border-4 focus:border-green-300">
+            <button class=" mb-3 min-w-[120px] p-1 pl-2 pr-2 bg-transparent border-2 border-green-600 dark:border-green-300 text-green-600 dark:text-green-100  rounded-lg hover:bg-green-600 dark:hover:bg-green-300 hover:text-gray-200 dark:hover:text-black focus:border-4 focus:border-green-300">
             {{ button }}
             </button>
           </router-link>  
@@ -43,10 +43,14 @@ export default {
 <style lang="scss" scoped>
 
 .card{
-  transition: all .2s linear;
+  transition: all .3s linear;
 }
 .card:hover{
   transition: all .2s linear;  
+}
+
+button{
+  transition: all .3s linear;  
 }
 
 
@@ -71,6 +75,7 @@ export default {
     display: flex;
     justify-content: center;
     align-items: center;
+    transition: all .3s ease-in-out;
 }
   button{
     width: 150px;
