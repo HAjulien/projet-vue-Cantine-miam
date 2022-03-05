@@ -4,7 +4,7 @@
 
     <PageLoader/> 
 
-    <main :class="isDark ? 'dark' : ''">
+    <main :class="dark ? 'dark' : 'light'">
         <HeaderMobile/>
         <HeaderDesktop/>
         <BannerDesktop/>
@@ -26,7 +26,7 @@
 
 
 <script>
-
+import { mapGetters } from 'vuex';
 import PageLoader from './components/PageLoader.vue'
 import HeaderMobile from './components/HeaderMobile.vue'
 import HeaderDesktop from './components/HeaderDesktop.vue'
@@ -50,7 +50,6 @@ export default {
     data(){
         return{
         progress:0,
-        isDark: false,
 
         }
     },
@@ -58,7 +57,10 @@ export default {
         setProgress (progress) {
             this.progress = progress;
         },
-    }
+    },
+    computed: {
+      ...mapGetters(['dark']),
+    },
 
 }
 </script>

@@ -4,7 +4,7 @@
     >
         <div>
                 <transition name="fade" mode="out-in">
-        <div  v-if="isDark" class=" bg-amber-300	shadow-inner  rounded-xl flex h-8 items-center w-20 justify-evenly">
+        <div  v-if="dark" class=" bg-amber-300	shadow-inner  rounded-xl flex h-8 items-center w-20 justify-evenly">
             <span class="text-xs font-bold text-white"> JOUR </span>
             <div class="w-6 h-6 bg-white rounded-full flex justify-center items-center">
                 <fa :style="{height: '16px', color:'yellow'}" icon='sun' />
@@ -23,21 +23,39 @@
 </template>
 
 <script>
-export default {
-    name:'BtnDarkMode',
-    data(){
-        let isDark = localStorage.getItem('darkMode') == 'true'
-        return{
-            isDark,
-        }   
+  import { mapGetters, mapMutations } from 'vuex';
+
+  export default {
+    computed: {
+      ...mapGetters(['dark']),
     },
+
+    mounted() {
+      if (localStorage.theme === undefined) {
+        if (
+          window.matchMedia &&
+          window.matchMedia('(prefers-color-scheme: dark)')
+            .matches
+        ) {
+          localStorage.theme = 'dark';
+          this.SET_DARK(true);
+        } else {
+          localStorage.theme = 'light';
+        }
+      } else {
+        this.SET_DARK(localStorage.theme === 'dark');
+      }
+    },
+
     methods: {
-        toggleDarkMode() {
-            this.isDark = !this.isDark;
-            localStorage.setItem('darkMode', this.isDark);
-        },
-    }
-}
+      ...mapMutations(['SET_DARK']),
+
+      toggleDarkMode() {
+        this.SET_DARK(!this.dark);
+        localStorage.theme = this.dark ? 'dark' : 'light';
+      },
+    },
+  };
 </script>
 
 <style>

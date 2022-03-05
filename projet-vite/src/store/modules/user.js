@@ -1,17 +1,15 @@
 export default{
     state: () => ({
-        name: 'Buster'
+        dark: 'false'
     }),
-    getters: {},
+    getters: {
+        dark: (state) => state.dark,
+    },
     mutations: {
-        SET_NAME(state, payload) {
-            state.name = payload
+        SET_DARK(state, bool) {
+            state.dark = bool
         }
     },
-    actions: {
-        saveName( { commit }, data) {
-            commit('SET_NAME', data)
-        },
-    },
+    actions: {},
 
 }
