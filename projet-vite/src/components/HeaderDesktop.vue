@@ -1,9 +1,9 @@
 <template>
-    <header class="headerDesktop ">
-        <img src="../assets/images/logo.png" alt="Logo"  class="w-17 h-6 lg:h-8 lg:ml-3 " >
+    <header class="headerDesktop px-3">
+        
 <!-- menu grand format tablette  -->
         <nav class="menuDesktop  ">
-            <ul class="menuLiens">
+            <ul class="menuLiens flex ">
                 <li class="menuLien "> <router-link to="/" class="router-link" >ACCUEIL</router-link> </li>
                         <li class="menuLien "> <router-link to="/" class="router-link" >MENU/TARIF</router-link> </li>
                 <li class="menuLien "> <router-link to="/" class="router-link" >L'équipe</router-link> </li>
@@ -13,12 +13,18 @@
                 <li class="menuLien "> <router-link to="/" class="router-link" >CONTACT</router-link> </li>
             </ul>
         </nav>
+        <BtnDarkMode/>
+
     </header> 
 </template>
 
 <script>
+import BtnDarkMode from './BntDarkMode.vue';
 export default {
-    name:'HeaderDesktop'
+    name:'HeaderDesktop',
+    components:{
+      BtnDarkMode,
+    }
 }
 </script>
 
@@ -50,7 +56,7 @@ export default {
     .router-link {
       display: flex;
       justify-content: center;
-      align-content: center;
+      margin-top: 7px;
       font-size: .9rem;
     }
 
