@@ -1,13 +1,21 @@
 <template>
   <div id="carousel" class="md:hidden">
         <swiper :pagination="pagination" :modules="modules" class="mySwiper">
-          <swiper-slide> <img src="../assets/images/accueil1.jpg" alt=""> </swiper-slide>
-          <swiper-slide><img src="../assets/images/accueil2.jpg" alt=""></swiper-slide>
-          <swiper-slide> <img src="../assets/images/accueil3.jpg" alt=""> </swiper-slide>
+
+          <swiper-slide> 
+            <img src="../assets/images/accueil1.jpg" alt="">
+            <h1>Cantime MiaM</h1>
+           </swiper-slide>
+          <swiper-slide>
+            <img src="../assets/images/accueil2.jpg" alt="">
+            <span>Cantime MiaM</span>
+          </swiper-slide>
+          <swiper-slide> 
+            <img src="../assets/images/accueil3.jpg" alt=""> 
+            <span>Cantime MiaM</span>            
+          </swiper-slide>
 
         </swiper>
-
-        <h1>Cantime MiaM</h1>
   </div>
 </template>
 <script>
@@ -59,9 +67,7 @@ export default {
 }
 
 .swiper-slide {
-  text-align: center;
   font-size: 18px;
-  background: #fff;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -73,7 +79,7 @@ export default {
   height: 100%;
   object-fit: cover;
 }
-h1{
+span, h1{
   display: block;
   position: absolute;
   top: 10%;
@@ -90,17 +96,34 @@ h1{
 }
 </style>
 
-<style>
+<style lang="scss">
 
 .swiper-pagination-bullet {
   width: 20px;
-  height: 20px;
-  
+  height: 20px; 
+  background-color: rgba(255, 255, 255, 0.7);
+  border: 3px solid  rgba(255, 255, 255, 0.6);
+  opacity: 1;
+   
 }
 
 .swiper-pagination-bullet-active {
-  color: #fff;
-  background: #007aff;
+  transform: scale(1.1);
+}
+
+.swiper-pagination-bullet-active:nth-child(3) {
+  background-color: #cda673b0;
+  border: 3px solid #6d522f,
+}
+.swiper-pagination-bullet-active:nth-child(2) {
+  background-color:  #097770b0;
+  border: 3px solid #034d48,
+
+}
+.swiper-pagination-bullet-active:nth-child(1) {
+  background-color: rgba(208, 211, 18, 0.7);
+  border: 3px solid  rgb(191, 224, 45);
+
 }
 
 </style>
