@@ -6,6 +6,8 @@
           <swiper-slide> <img src="../assets/images/accueil3.jpg" alt=""> </swiper-slide>
 
         </swiper>
+
+        <h1>Cantime MiaM</h1>
   </div>
 </template>
 <script>
@@ -42,6 +44,7 @@ export default {
 
 
 #carousel { 
+  position: relative;
   background: #eee;
   font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
   font-size: 14px;
@@ -69,6 +72,21 @@ export default {
   width: 100%;
   height: 100%;
   object-fit: cover;
+}
+h1{
+  display: block;
+  position: absolute;
+  top: 10%;
+  left: 50%;
+  min-width: 280px;
+  background-color: rgba(255, 255, 255, 0.8);
+  padding: 5px 15px;
+  border-radius: 30px ;
+  font-size: 2rem;
+  text-align: center;
+  transform: translateX(-50%);
+  z-index: 1;
+
 }
 </style>
 
