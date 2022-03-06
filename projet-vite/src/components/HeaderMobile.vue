@@ -61,7 +61,7 @@ export default {
 
 header{
     height: 60px;
-    transition: all .3s ease-in-out;
+    transition: all .5s ease-in-out;
 }
 
 
