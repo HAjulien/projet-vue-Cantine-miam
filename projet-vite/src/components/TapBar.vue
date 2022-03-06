@@ -26,9 +26,19 @@
         :class="[isActive ? 'bg-pink-500'  : 'bg-gray-200 dark:bg-gray-700']"
         >
           <div class="space-y-2 w-3  flex flex-col items-center justify-center  ">
-            <div class="w-6 h-0.5 bg-black dark:bg-gray-200"></div>
-            <div class="w-6 h-0.5 bg-black dark:bg-gray-200"></div>
-            <div class="w-6 h-0.5 bg-black dark:bg-gray-200"></div>
+            <div class="w-6 h-0.5 bg-black dark:bg-gray-200"
+                 :style="[!isActive ? ''  : 'transform: translateY(12px) rotate(45deg)', 'transition: all 0.3s ease-in-out']"
+            ></div>
+
+
+            <div class="w-6 h-0.5 bg-black dark:bg-gray-200"
+                 :style="[!isActive ? ''  : 'width: 0', 'transition: all 0.2s ease-in-out']"
+
+            ></div>
+            <div class="w-6 h-0.5 bg-black dark:bg-gray-200"
+                 :style="[!isActive ? ''  : 'transform: translateY(-8px) rotate(-45deg)', 'transition: all 0.2s ease-in-out']"
+            
+            ></div>
           </div>
         </button>
 
@@ -105,14 +115,17 @@ export default {
 }
 
 .fade-enter-active, .fade-leave-active {
-  transition: opacity .4s;
+  transition: .3s .1s ;
 }
 .fade-enter, .fade-leave-to {
   opacity: 0;
+  transition: .3s ;
+
 }
 
 .fade-enter-from{
 opacity: 0;
+
 }
 
 .router-link-active{
