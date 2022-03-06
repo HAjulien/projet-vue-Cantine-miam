@@ -2,19 +2,12 @@
   <div id="carousel" class="md:hidden">
         <swiper :pagination="pagination" :modules="modules" class="mySwiper">
 
-          <swiper-slide> 
-            <img src="../assets/images/accueil1.jpg" alt="">
-            <h1>Cantime MiaM</h1>
-           </swiper-slide>
-          <swiper-slide>
-            <img src="../assets/images/accueil2.jpg" alt="">
-            <span>Cantime MiaM</span>
-          </swiper-slide>
-          <swiper-slide> 
-            <img src="../assets/images/accueil3.jpg" alt=""> 
-            <span>Cantime MiaM</span>            
-          </swiper-slide>
+          <swiper-slide
+ v-for="contenu in contenuCarousel" v-bind:key="contenu.id" > 
 
+            <img v-bind:src="'src/assets/images/' + contenu.image"/>
+            <h1>{{ contenu.titre }}</h1>
+          </swiper-slide>
         </swiper>
   </div>
 </template>
@@ -35,6 +28,16 @@ export default {
   components: {
     Swiper,
     SwiperSlide,
+  },
+  data() {
+    return {
+       contenuCarousel: [
+         {image:'accueil1.jpg', titre:"Cantine Miam", id: 1},
+         {image:'accueil2.jpg', titre:"Cantine Miam", id: 2},
+         {image:'accueil3.jpg', titre:"Cantine Miam", id: 3},
+       ]
+
+    }
   },
   setup() {
     return {
