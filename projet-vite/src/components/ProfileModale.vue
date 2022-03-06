@@ -26,12 +26,14 @@
 
                     <div class="flex justify-between">
                         <div class="flex items-start">
+
                             <div class="flex items-center h-5">
                                 <input id="remember" aria-describedby="remember" type="checkbox" class="w-4 h-4 bg-gray-50 rounded border border-gray-300 focus:ring-3 focus:ring-blue-300 dark:bg-gray-600 dark:border-gray-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800" required>
                             </div>
                             <div class="ml-3 text-sm">
-                            <label for="remember" class="font-medium text-gray-900 dark:text-gray-300">Remember me</label>
+                                <label for="remember" class="font-medium text-gray-900 dark:text-gray-300">Remember me</label>
                             </div>
+
                         </div>
                         <a href="#" class="text-sm text-blue-700 hover:underline dark:text-blue-500">Lost Password?</a>
                     </div>
@@ -51,42 +53,42 @@
 <script>
 export default {
     name:'ProfileModale',
-    props: ['revele', 'toggleModale']
-
-
+    props: ['revele', 'toggleModale'],
 }
+
 </script>
 
 <style lang="scss" scoped>
 
-    .bloc-modale{
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        position: fixed;
-        top: 0;
-        left: 0;
-        bottom: 0;
-        right: 0;
-        z-index: 20;
-    }
+.bloc-modale{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    z-index: 20;
+}
 
-    .overlay {
-        background-color: rgba(0, 0, 0, 0.5);
-        position: fixed;
-        top: 0;
-        left: 0;
-        bottom: 0;
-        right: 0;
-    }
-    .modale{
-        background-color: #fff;
-        position: fixed;
-        top: 10%;
-        z-index: 1;
-        width: 80vw;
-        max-width: 600px;
-    }
+.overlay {
+    background-color: rgba(0, 0, 0, 0.5);
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+}
+
+.modale{
+    background-color: #fff;
+    position: fixed;
+    top: 10%;
+    z-index: 1;
+    width: 80vw;
+    max-width: 600px;
+}
 
     
 </style>

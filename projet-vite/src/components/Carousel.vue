@@ -1,14 +1,16 @@
 <template>
   <div id="carousel" class="md:hidden">
-        <swiper :pagination="pagination" :modules="modules" class="mySwiper">
+    <swiper :pagination="pagination" :modules="modules" class="mySwiper">
 
-          <swiper-slide
- v-for="contenu in contenuCarousel" v-bind:key="contenu.id" > 
-            <img v-bind:src="'src/assets/images/' + contenu.image"/>
-            <h1>{{ contenu.titre }}</h1>
-          </swiper-slide>
+      <swiper-slide
+      v-for="contenu in contenuCarousel" v-bind:key="contenu.id" > 
 
-        </swiper>
+        <img v-bind:src="'src/assets/images/' + contenu.image"/>
+        <h1>{{ contenu.titre }}</h1>
+        
+      </swiper-slide>
+
+    </swiper>
   </div>
 </template>
 
