@@ -52,7 +52,7 @@ export default {
 };
 </script>
 
-<style scoped>
+<style lang="scss" scoped>
 
 
 #carousel { 
@@ -89,9 +89,10 @@ span, h1{
   top: 10%;
   left: 50%;
   min-width: 280px;
-  background-color: rgba(255, 255, 255, 0.8);
   padding: 5px 15px;
   border-radius: 30px ;
+  background-color: rgba(255, 255, 255, 0.95);
+  color: $principale;
   font-size: 2rem;
   text-align: center;
   transform: translateX(-50%);

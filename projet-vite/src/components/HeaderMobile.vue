@@ -1,7 +1,12 @@
 <template>
 <div>
         <header class=" md:hidden lg:hidden headerMobile flex justify-between items-center px-2 dark:bg-gray-700 bg-gray-200">
-            <router-link to="/" ><img src="../assets/images/logo.png" class="w-24 h-10 ml-3" /> </router-link> 
+                <router-link to="/" >
+            <transition name="fade" mode="out-in">
+                    <img src="../assets/images/logo.png" class="  w-24 h-10 ml-3" v-if="!dark" /> 
+                    <img src="../assets/images/logoSecondaire.png" class="  w-24 h-10 ml-3" v-else /> 
+            </transition>
+                </router-link> 
             <div class=" flex justify-around items-center w-32 mr-3">
                 <BtnDarkMode/>
                 <button class=" flex items-center ml-6 " v-on:click="toggleModale">
@@ -18,6 +23,8 @@
 <script>
 import BtnDarkMode from './BntDarkMode.vue';
 import ProfileModale from './ProfileModale.vue';
+import { mapGetters } from 'vuex';
+
 
 export default {
     name:'HeaderMobile',
@@ -36,6 +43,9 @@ export default {
         toggleModale: function(){
             this.revele = !this.revele
         }
+    },
+    computed: {
+      ...mapGetters(['dark']),
     },
 
 }
@@ -60,5 +70,15 @@ export default {
     }
     .slide-leave-active{
     transition: all .2s ease-in;
+    }
+
+    .fade-enter-active, .fade-leave-active {
+    transition: opacity .3s;
+    }
+    .fade-enter, .fade-leave-to {
+    opacity: 0;
+    }
+    .fade-enter-from{
+    opacity: 0;
     }
 </style>
