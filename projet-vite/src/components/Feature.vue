@@ -19,7 +19,7 @@
           </router-link>  
         </div> 
 
-          <img v-bind:src="'src/assets/images/' + image" class="mb-3"/>
+          <img v-bind:src="'src/assets/images/' + image" class="mb-3 rounded-xl"/>
         </div>
       </div>
 
