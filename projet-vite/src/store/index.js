@@ -1,9 +1,9 @@
 import { createStore } from 'vuex'
-import user from '../store/modules/user'
+import darkMode from './modules/darkMode'
 
 const store = createStore({
     modules: {
-        user, 
+        darkMode, 
     }
 })
 

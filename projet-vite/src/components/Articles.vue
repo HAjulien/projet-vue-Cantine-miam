@@ -1,0 +1,75 @@
+/<template>
+<div>
+
+    <div class="mt-12 md:flex">
+        <Feature v-for="(feature, index) in features" :key="index" :title="feature.title" :image="feature.image" :paragraphe="feature.paragraphe" :button="feature.button" :chemin="feature.chemin" />
+    </div>
+
+    <div class="sm:flex sm:flex-col md:flex-row article lg:h-[400px] rounded-xl shadow-md m-2  border-2 p-4 mb-8  bg-gray-100 dark:bg-gray-500 text-lg  hover:border-4 hover:border-amber-300 ">
+
+        <div class="md:px-10 sm:px-5 rounded-xl flex-1">
+            <h2 class="text-center font-extrabold text-2xl my-2 dark:text-black">long established</h2>
+            <p class="text-gray-800 indent-5 mb-8 mt-6 md:mb-6 dark:text-slate-200">It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that....</p> 
+        </div>
+
+        <div class="video md:w-[750px] flex-1">
+            <iframe src="https://www.youtube.com/embed/skBGJ6OQTOQ" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen class="m-auto"
+            ></iframe>
+        </div>
+        
+    </div>
+
+</div>
+</template>
+
+<script>
+import axios from "axios";
+import Feature from "./Feature.vue";
+
+export default {
+    name:'Articles',
+    components:{
+        Feature,
+    },
+    data () {
+        return{
+            features: [],
+
+        }
+    },
+    created () {
+        axios
+        .get("http://localhost:3000/features.json")
+        .then (response => (this.features = response.data.features))
+    },
+}
+</script>
+
+<style>
+
+    .article{
+    transition: all .2s linear;
+    }
+    .article:hover{
+    transition: all .2s linear;
+    }
+
+
+
+    iframe{
+        min-width: 350px;
+        width: 100%;
+        max-width: 600px;
+        height: 350px;
+    }
+
+@media screen and (max-width:426px){
+    iframe{
+        min-width: 200px;
+        height: 190px;
+    }
+
+}
+
+
+</style>
