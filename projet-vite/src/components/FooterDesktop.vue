@@ -4,7 +4,6 @@
     <ul class="flex justify-around items-center icone mx-0.5 mb-2">
         <li
         v-for="icone in icones" v-bind:key="icone.id ">              
-
             <a :href="icone.href" target="_blank " @click=" icone.number = !icone.number">
                 <fa :style="{ height: '40px'}" :icon="[ 'fab', icone.fa ]" :class="[icone.number ? icone.color1 : icone.color2 ]"/>
             </a>       
