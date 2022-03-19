@@ -6,7 +6,13 @@
 
     <main :class="dark ? 'dark' : 'light'">
         <HeaderMobile/>
-        <HeaderDesktop/>
+
+        <div class="headerDesktop"
+        :class="{ 'is-hidden': !showHeader }"
+        >
+            <HeaderDesktop/>
+        </div>
+
         <BannerDesktop/>
         <div>
             <router-view @progressUpdate="setProgress"  v-slot="{ Component }">
@@ -50,17 +56,42 @@ export default {
     data(){
         return{
         progress:0,
+        showHeader: 'true',
+        lastScrollPosition: 0,
+        scrollOffset: 40,
 
         }
     },
+
+    computed: {
+      ...mapGetters(['dark']),   
+    },
+
+    mounted() {
+    this.lastScrollPosition = window.pageYOffset
+    window.addEventListener('scroll', this.onScroll)
+    },
+    beforeDestroy() {
+        window.removeEventListener('scroll', this.onScroll)
+    },
+
     methods: {
         setProgress (progress) {
             this.progress = progress;
         },
+            // Toggle if navigation is shown or hidden
+        onScroll() {
+        if (window.pageYOffset < 0) {
+            return
+        }
+        if (Math.abs(window.pageYOffset - this.lastScrollPosition) < this.scrollOffset) {
+            return
+        }
+        this.showHeader = window.pageYOffset < this.lastScrollPosition
+        this.lastScrollPosition = window.pageYOffset
+        },
     },
-    computed: {
-      ...mapGetters(['dark']),
-    },
+    
 
 }
 </script>
@@ -80,15 +111,12 @@ export default {
 
     body{
         font-family: 'montseratt', sans-serif;
-
     }
     main{
         display: flex;
         flex-direction: column;
         overflow: hidden;
     }
-
-
 
     .route-enter-from{
     opacity: 0;
@@ -128,6 +156,20 @@ export default {
     background-color: #edca82;
     border-radius: 20px;
     border: 4px solid #a9c0a6;
+    }
+
+    .headerDesktop {
+    position: fixed;
+    height: 45px;
+    width: 100vw;
+    transition: transform 200ms linear;
+    z-index: 100;
+    }
+
+    .headerDesktop.is-hidden {
+    transform: translateY(-100%);
+    transition: transform 200ms linear;
+
     }
 }
 

@@ -44,6 +44,7 @@ export default {
 
 <style lang="scss" scoped>
 
+
 @media screen and (max-width: 768px){
     #app{
             max-height:calc( 100vh - 125px );

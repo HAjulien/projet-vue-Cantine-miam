@@ -39,7 +39,7 @@ export default {
   justify-content: space-between;
   position: fixed;
   top: 0;
-  height: 37px;
+  height: 45px;
   width: 100%;
   color: #f8f8f8;
   text-transform: lowercase;
