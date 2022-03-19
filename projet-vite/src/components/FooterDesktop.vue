@@ -2,11 +2,35 @@
 <footer class=" bg-gray-200 dark:bg-gray-700 dark:text-slate-100 ">
 
     <ul class="flex justify-around items-center icone mx-0.5 mb-2">
+<<<<<<< HEAD
         <li
         v-for="icone in icones" v-bind:key="icone.id ">              
             <a :href="icone.href" target="_blank " @click=" icone.number = !icone.number">
                 <fa :style="{ height: '40px'}" :icon="[ 'fab', icone.fa ]" :class="[icone.number ? icone.color1 : icone.color2 ]"/>
+=======
+        <li>
+            <a href="https://www.facebook.com" target="_blank " @click=" icon1 = !icon1">
+                <fa :style="{ height: '40px'}" :icon="[ 'fab', 'facebook' ]" :class="[icon1 ? 'text-blue-800' : 'text-blue-300']"/>
+>>>>>>> parent of 02892092 (rendu footerDesktop dynamique)
             </a>       
+        </li>
+
+        <li>
+            <a href="https://www.instagram.com" target="_blank" @click=" icon2 = !icon2">
+                <fa :style="{ height: '40px'}" :icon="[ 'fab', 'instagram' ]" :class="[icon2 ? 'text-violet-700' : 'text-stone-400']"/>
+            </a>
+        </li>
+
+        <li>
+            <a href="https://twitter.com" target="_blank" @click=" icon3 = !icon3">
+                <fa :style="{ height: '40px'}" :icon="[ 'fab', 'twitter' ]" :class="[icon3 ? 'text-sky-400' : 'text-zinc-400']"/>
+            </a> 
+        </li>
+
+        <li>
+            <a href="https://youtube.com" target="_blank" @click=" icon4 = !icon4">
+                <fa :style="{ height: '40px'}" :icon="[ 'fab', 'youtube' ]" :class="[icon4 ? 'text-red-600' : 'text-amber-600']"/>
+            </a> 
         </li>
     </ul>
 
@@ -69,8 +93,11 @@ export default {
         icon2: true,
         icon3: true,
         icon4: true,
+<<<<<<< HEAD
         icones:[
         ],
+=======
+>>>>>>> parent of 02892092 (rendu footerDesktop dynamique)
         infos: [
             {list:"Nos mesures d'hygiène", id:1},
             {list:"Comment les menu sont élaborés?", id:2},
