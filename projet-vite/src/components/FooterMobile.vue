@@ -4,31 +4,13 @@
         <p class="text-center text-xl m-3" > nous suivre sur :</p>
 
         <ul class=" flex justify-around">
+            <li
+            v-for="icone in icones" v-bind:key="icone.id ">              
 
-            <li>
-                <a href="https://www.facebook.com" target="_blank " @click=" icon1 = !icon1">
-                    <fa :style="{ height: '40px'}" :icon="[ 'fab', 'facebook' ]" :class="[icon1 ? 'text-blue-800' : 'text-blue-300']"/>
+                <a :href="icone.href" target="_blank " @click=" icone.number = !icone.number">
+                    <fa :style="{ height: '40px'}" :icon="[ 'fab', icone.fa ]" :class="[icone.number ? icone.color1 : icone.color2 ]"/>
                 </a>       
             </li>
-
-            <li>
-                <a href="https://www.instagram.com" target="_blank" @click=" icon2 = !icon2">
-                    <fa :style="{ height: '40px'}" :icon="[ 'fab', 'instagram' ]" :class="[icon2 ? 'text-violet-700' : 'text-stone-400']"/>
-                </a>
-            </li>
-
-            <li>
-                <a href="https://twitter.com" target="_blank" @click=" icon3 = !icon3">
-                    <fa :style="{ height: '40px'}" :icon="[ 'fab', 'twitter' ]" :class="[icon3 ? 'text-sky-400' : 'text-zinc-400']"/>
-                </a> 
-            </li>
-
-            <li>
-                <a href="https://youtube.com" target="_blank" @click=" icon4 = !icon4">
-                    <fa :style="{ height: '40px'}" :icon="[ 'fab', 'youtube' ]" :class="[icon4 ? 'text-red-600' : 'text-amber-600']"/>
-                </a> 
-            </li>
-
         </ul>
 
         <p class="text-center mt-4">CANTINE MIAM tous droits réservés, 2022</p>
@@ -47,8 +29,12 @@ export default {
         icon2: true,
         icon3: true,
         icon4: true,
-        progress:0,
-
+        icones:[
+            {href: 'https://www.facebook.com', fa: 'facebook', number:'icon1' , color1:'text-blue-800', color2:'text-blue-300', id:1},
+            {href: 'https://www.instagram.com', fa: 'instagram', number:'icon2' , color1:'text-violet-700', color2:'text-stone-400', id:2},
+            {href: 'https://www.twitter.com', fa: 'twitter', number:'icon3' , color1:'text-sky-400', color2:'text-zinc-400', id:3},
+            {href: 'https://www.youtube.com', fa: 'youtube', number:'icon4' , color1:'text-red-600', color2:'text-amber-600', id:4},
+        ],
         }
     },
 }
