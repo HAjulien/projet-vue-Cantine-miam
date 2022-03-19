@@ -1,0 +1,52 @@
+{   
+    "time": 
+    {   "updated": "Feb 10, 2022 11:36:00 UTC", 
+        "updatedISO": "2022-02-10T11:36:00+00:00", 
+        "updateduk": "Feb 10, 2022 at 11:36 GMT" 
+    }, 
+    "disclaimer": "This data was produced from articles", 
+    "chartName": "icones",
+
+    "icones": 
+    [
+        { 
+        "id":1,
+        "href": "https://www.facebook.com",
+        "fa": "facebook",
+        "number":"icon1" ,
+        "color1":"text-blue-800",
+        "color2":"text-blue-300"
+        },
+
+        {  
+        
+        "id":2,
+        "href": "https://www.instagram.com",
+        "fa": "instagram",
+        "number":"icon2" ,
+        "color1":"text-violet-700",
+        "color2":"text-stone-400"
+
+        }, 
+        {  
+        
+        "id":3,
+        "href": "https://www.twitter.com",
+        "fa": "twitter",
+        "number":"icon3" ,
+        "color1":"text-sky-400",
+        "color2":"text-zinc-400"
+
+        }, 
+        {  
+        
+        "id":4,
+        "href": "https://www.youtube.com",
+        "fa": "youtube",
+        "number":"icon4" ,
+        "color1":"text-red-600",
+        "color2":"text-amber-600"
+
+        }
+    ]
+}

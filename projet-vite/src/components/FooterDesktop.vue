@@ -60,6 +60,7 @@
 
 <script>
 import { mapGetters } from 'vuex';
+import axios from "axios";
 
 export default {
     name: 'FooterDesktop',
@@ -70,10 +71,6 @@ export default {
         icon3: true,
         icon4: true,
         icones:[
-            {href: 'https://www.facebook.com', fa: 'facebook', number:'icon1' , color1:'text-blue-800', color2:'text-blue-300', id:1},
-            {href: 'https://www.instagram.com', fa: 'instagram', number:'icon2' , color1:'text-violet-700', color2:'text-stone-400', id:2},
-            {href: 'https://www.twitter.com', fa: 'twitter', number:'icon3' , color1:'text-sky-400', color2:'text-zinc-400', id:3},
-            {href: 'https://www.youtube.com', fa: 'youtube', number:'icon4' , color1:'text-red-600', color2:'text-amber-600', id:4},
         ],
         infos: [
             {list:"Nos mesures d'hygiène", id:1},
@@ -87,6 +84,11 @@ export default {
 
     computed: {
       ...mapGetters(['dark']),
+    },
+    created () {
+        axios
+        .get("http://localhost:3000/icones.json")
+        .then (response => (this.icones = response.data.icones))
     },
 
 }
