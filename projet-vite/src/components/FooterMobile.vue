@@ -1,5 +1,5 @@
 <template>
-    <footer class="footerMobile px-2 bg-gray-200 dark:bg-gray-700 dark:text-slate-100  ">
+    <footer class="footerMobile md:hidden px-2 bg-gray-200 dark:bg-gray-700 dark:text-slate-100  ">
 
         <p class="text-center text-xl m-3" > nous suivre sur :</p>
 

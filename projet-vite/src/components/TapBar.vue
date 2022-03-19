@@ -20,6 +20,7 @@
     </li>
 
     <li class="flex-1">
+<!-- menu burger 3div pour les barres du burger -->
       <div class="flex items-center justify-center  " > 
         
         <button 
@@ -49,7 +50,7 @@
 
         <transition name="fade">
           <div v-show="isActive" class="menu " @click=" isActive = !isActive" >
-
+<!-- button x pour retirer menu   -->
             <button 
             class=" button text-white bold py-2 px-4 rounded-full block m-auto mt-12 h-12	w-12 text-2xl"
             @click=" !isActive"
@@ -120,7 +121,7 @@ export default {
 }
 
 .links{
-  color: $principale;
+  color: #f8f8f8;
 }
 
 

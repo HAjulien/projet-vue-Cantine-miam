@@ -22,6 +22,7 @@
         <ProgressBar :progress='progress'/>
         <TapBar/>
         <FooterMobile/>
+        <FooterDesktop/>
     </main>
 
 </div>
@@ -37,6 +38,7 @@ import HeaderDesktop from './components/HeaderDesktop.vue'
 import ProgressBar from './components/ProgressBar.vue';
 import TapBar from './components/TapBar.vue';
 import FooterMobile from './components/FooterMobile.vue';
+import FooterDesktop from './components/FooterDesktop.vue';
 
 
 export default {
@@ -46,15 +48,16 @@ export default {
         HeaderMobile,
         HeaderDesktop,
         ProgressBar,
-        FooterMobile,
         TapBar,
+        FooterMobile,
+        FooterDesktop,
     },
     data(){
         return{
         progress:0,
         showHeader: 'true',
         lastScrollPosition: 0,
-        scrollOffset: 40,
+        scrollOffset: 20,
 
         }
     },
