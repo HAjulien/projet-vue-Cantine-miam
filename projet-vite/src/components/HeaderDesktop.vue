@@ -77,7 +77,7 @@ export default {
   content: "";
   display: block;
   margin: auto;
-  height: 4px;
+  height: 2px;
   margin-top: 5px;
   background-color: #cda673;
   transition: all .3s ease-in-out;
@@ -86,7 +86,7 @@ export default {
 /* barre qui apparait sous menu lors d'un hover */
 
 .menuLien:hover::after {
-  transform: scale(0.8);
+  transform: scale(1);
   transition: all .3s ease-in-out;
 }
 

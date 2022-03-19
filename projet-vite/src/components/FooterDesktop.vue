@@ -37,7 +37,7 @@
                 <h3 class="font-bold mb-4">Plus d'information:</h3>
                 <li
                 v-for="info in infos" v-bind:key="info.id ">              
-                    <a href="#">    {{ info.list }}  </a>
+                    <a :href="info.href">    {{ info.list }}  </a>
                 </li>
             </ul>
         </div>
@@ -60,10 +60,10 @@ export default {
         return{
 
         infos: [
-            {list:"Nos mesures d'hygiène", id:1},
-            {list:"Comment les menu sont élaborés?", id:2},
-            {list:"Notre engagement sur développement durable", id:3},
-            {list:"Notre politique de confidentialité", id:4},
+            {href:'#', list:"Nos mesures d'hygiène", id:1},
+            {href:'#', list:"Comment les menu sont élaborés?", id:2},
+            {href:'#', list:"Notre engagement sur développement durable", id:3},
+            {href:'#', list:"Notre politique de confidentialité", id:4},
         ],
         }
 
