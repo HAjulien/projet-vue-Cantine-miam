@@ -2,6 +2,7 @@
 
 <div class="app ">
 
+<<<<<<< Updated upstream
     <PageLoader/>  
     <main :class="isDark ? 'dark' : ''">
         <header class="dark:bg-lime-300">
@@ -29,6 +30,16 @@
 
         </header>
         <ProgressBar :progress='progress'/>
+=======
+    <!-- <PageLoader/>  -->
+
+    <main :class="dark ? 'dark' : 'light'">
+        <HeaderMobile/>
+        <HeaderDesktop
+        :class=" {'is-hidden': !showHeader}"
+        />
+        <BannerDesktop/>
+>>>>>>> Stashed changes
         <div>
             <router-view  @progressUpdate="setProgress" />
         </div>  
@@ -70,7 +81,11 @@
 
 
 <script>
+<<<<<<< Updated upstream
 
+=======
+import { mapGetters, mapMutations } from 'vuex';
+>>>>>>> Stashed changes
 import PageLoader from './components/PageLoader.vue'
 import ProgressBar from './components/ProgressBar.vue';
 
@@ -89,14 +104,42 @@ export default {
         icon3: true,
         icon4: true,
         progress:0,
-
         }
     },
+
+    mounted() {
+        this.lastScrollPosition = window.pageYOffset
+        window.addEventListener('scroll', this.onScroll)
+        },
+    beforeDestroy() {
+        window.removeEventListener('scroll', this.onScroll)
+    },
+    
+     computed: {
+        ...mapGetters(['dark', 'showHeader']),
+    },
+
     methods: {
         setProgress (progress) {
             this.progress = progress;
         },
+<<<<<<< Updated upstream
     }
+=======
+
+        onScroll() {
+            if (window.pageYOffset < 0) {
+            return
+            }
+            if (Math.abs(window.pageYOffset - this.lastScrollPosition) < this.scrollOffset) {
+            return
+            }
+            this.showHeader = window.pageYOffset < this.lastScrollPosition
+            this.lastScrollPosition = window.pageYOffset
+        },
+    ...mapMutations(['SET_SHOWHEADER']),
+    },
+>>>>>>> Stashed changes
 
 }
 </script>
