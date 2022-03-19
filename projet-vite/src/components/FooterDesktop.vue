@@ -63,10 +63,10 @@
         <div class="flex flex-col items-center justify-center flex-1 ">
             <ul  class="flex flex-col items-center justify-start "> 
                 <h3 class="font-bold mb-4">Plus d'information:</h3>
-                <li>Nos mesures d'hygiène</li>
-                <li>Comment les menu sont élaborés? </li>
-                <li>Notre engagement sur développement durable </li>
-                <li>Notre politique de confidentialité </li>
+                <li
+                v-for="info in infos" v-bind:key="info.id ">              
+                    <a href="#">    {{ info.list }}  </a>
+                </li>
             </ul>
         </div>
 
@@ -85,7 +85,14 @@ export default {
         icon2: true,
         icon3: true,
         icon4: true,
+        infos: [
+            {list:"Nos mesures d'hygiène", id:1},
+            {list:"Comment les menu sont élaborés?", id:2},
+            {list:"Notre engagement sur développement durable", id:3},
+            {list:"Notre politique de confidentialité", id:4},
+        ],
         }
+
     },
 
     computed: {
@@ -110,10 +117,25 @@ li{
     border-bottom: 3px solid $green;
     border-top: 3px solid $green;
     padding: 5px;
+    transition: all .2s ease-in-out;
 }
 
 .icone li:first-child{
     border-left: 3px solid $green;
+}
+
+.icone li:hover{
+    background-color: $principale;
+    transition: all .2s ease-in-out;
+}
+
+a{
+    transition: all .2s ease-in-out;
+}
+
+a:hover{
+    color: $principale;
+    transition: all .2s ease-in-out;
 }
 
 @media screen and (max-width: 767.9px){
