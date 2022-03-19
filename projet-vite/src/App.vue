@@ -12,8 +12,6 @@
         >
             <HeaderDesktop/>
         </div>
-
-        <BannerDesktop/>
         <div>
             <router-view @progressUpdate="setProgress"  v-slot="{ Component }">
                 <transition name="route" mode="out-in">
@@ -36,7 +34,6 @@ import { mapGetters } from 'vuex';
 import PageLoader from './components/PageLoader.vue'
 import HeaderMobile from './components/HeaderMobile.vue'
 import HeaderDesktop from './components/HeaderDesktop.vue'
-import BannerDesktop from './components/BannerDesktop.vue'
 import ProgressBar from './components/ProgressBar.vue';
 import TapBar from './components/TapBar.vue';
 import FooterMobile from './components/FooterMobile.vue';
@@ -48,7 +45,6 @@ export default {
         PageLoader,
         HeaderMobile,
         HeaderDesktop,
-        BannerDesktop,
         ProgressBar,
         FooterMobile,
         TapBar,
@@ -171,6 +167,7 @@ export default {
     transition: transform 200ms linear;
 
     }
+    
 }
 
 </style>

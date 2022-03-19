@@ -9,7 +9,7 @@
           <li class="menuLien "> <router-link to="/" class="router-link" >MENU/TARIF</router-link> </li>
           <li class="menuLien "> <router-link to="/" class="router-link" >L'équipe</router-link> </li>
           <li class="menuLien "> <router-link to="/" class="router-link" >CLICK/COLLECT</router-link> </li>
-          <li class="menuLien "> <router-link to="/" class="router-link" >CAFÉ</router-link> </li>
+          <li class="menuLien "> <router-link to="/about" class="router-link" >CAFÉ</router-link> </li>
           <li class="menuLien "> <router-link to="/" class="router-link" >HORAIRE/LIEU</router-link> </li>
           <li class="menuLien "> <router-link to="/" class="router-link" >CONTACT</router-link> </li>
         </ul>

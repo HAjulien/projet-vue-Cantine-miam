@@ -1,6 +1,7 @@
 /<template>
   <div id="app" class="dark:bg-gray-600"> 
-       
+        <BannerDesktop/>
+
         <Carousel/>
         <Articles/>
   </div>
@@ -9,16 +10,18 @@
 </template>
 
 <script>
-import Feature from '../components/Feature.vue';
+import BannerDesktop from '../components/BannerDesktop.vue';
 import Carousel from '../components/Carousel.vue';
 import Articles from '../components/Articles.vue';
+import Feature from '../components/Feature.vue';
 
 export default {
   name:'home',
     components:{
-        Feature,
+        BannerDesktop,
         Carousel,
         Articles,
+        Feature,
     },
     data() {
 
