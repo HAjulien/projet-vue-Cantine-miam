@@ -1,40 +1,46 @@
 <template>
-<footer class=" bg-gray-200 dark:bg-gray-700 dark:text-slate-100 ">
+<footer class=" bg-gray-200 dark:bg-gray-700 dark:text-slate-100  ">
 
    <ReseauxSociaux/>
 
-    <div class="flex justify-around items-center ">
+    <div class="flex justify-around items-center  m-1 border border-black  h-64 dark:border-white">
 
-        <div class="flex flex-col justify-start flex-1 p-4">
+        <div class="flex flex-col justify-center flex-1 p-4 border-r border-black h-full dark:border-white">
 
             <Logo/>
 
             <p class="my-4">
-                We are an award-winning creative agency, dedicated to the best result in web design, promotion, business consulting, and marketing.
+                Notre but est de mettre à l'honneur les produits régionaux tout en respectant notre planète. Venez redécouvrir la cantine. 
             </p>
             <span>©  2022 Cantime MIAM - tous droits réservés.</span>
 
-        </div>
+        </div >
 
-        <div class="flex flex-col items-center justify-start flex-1">
-            <h3 class="font-bold mb-4">Nous contacter: </h3>
-            <address  class="flex flex-col items-center justify-center">
-                <p> 9 rue Seguin 94 000 Créteil </p>
-                <p> Bâtiment 4, 2eme étage</p>
+        <div class="flex flex-col items-center justify-center flex-1  h-full">
+            <h3 class="font-bold mb-4 underline underline-offset-4 underline underline-offset-4 decoration-4 decoration-[#cda673]">Nous contacter: </h3>
+
+            <address class="my-2">
+                <a href="https://www.bing.com/maps?osid=5525163d-5616-491e-b390-5aa3aff32eef&cp=48.786822~2.430701&lvl=16&v=2&sV=2&form=S00027" target="_blank" class="flex flex-col items-center justify-center"> 
+                    <p> 9 rue Seguin 94 000 Créteil </p>
+                    <p> Bâtiment 4, 2eme étage</p>
+                </a>
             </address>
+
             <div class="flex flex-col items-center justify-center">
                 <h4>téléphone: </h4>
                 <a href="tel=+33100000000"  >  01 00 00 00 00</a>
             </div>
+
             <div class="flex flex-col items-center justify-center">
                 <h4>email:</h4>
                 <a href="mailto:cantinemiam@gmail.com" > cantinemiam@gmail.com</a>
             </div>
+            
         </div>
 
-        <div class="flex flex-col items-center justify-center flex-1 ">
+        <div class="flex flex-col items-center justify-center flex-1 h-full border-l border-black dark:border-white">
             <ul  class="flex flex-col items-center justify-start "> 
-                <h3 class="font-bold mb-4">Plus d'information:</h3>
+                <h3 class="font-bold mb-4 underline underline-offset-4 underline underline-offset-4 decoration-4 decoration-[#cda673]">Plus d'information:</h3>
                 <li
                 v-for="info in infos" v-bind:key="info.id ">              
                     <a :href="info.href">    {{ info.list }}  </a>
@@ -62,7 +68,7 @@ export default {
         infos: [
             {href:'#', list:"Nos mesures d'hygiène", id:1},
             {href:'#', list:"Comment les menu sont élaborés?", id:2},
-            {href:'#', list:"Notre engagement sur développement durable", id:3},
+            {href:'#', list:"Notre engagement sur le développement durable", id:3},
             {href:'#', list:"Notre politique de confidentialité", id:4},
         ],
         }
