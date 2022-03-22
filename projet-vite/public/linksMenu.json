@@ -1,0 +1,57 @@
+{   
+    "time": 
+    {   "updated": "Feb 10, 2022 11:36:00 UTC", 
+        "updatedISO": "2022-02-10T11:36:00+00:00", 
+        "updateduk": "Feb 10, 2022 at 11:36 GMT" 
+    }, 
+    "disclaimer": "This data was produced from articles", 
+    "chartName": "linksMenu",
+    
+    "linksMenu": 
+    [
+        { 
+        "id":1,
+        "chemin":"/",
+        "page":"Accueil"
+
+        },
+        { 
+        "id":2,
+        "chemin":"/menu",
+        "page":"Menu/tarif"
+
+        },
+        { 
+        "id":3,
+        "chemin":"/about",
+        "page":"l'équipe"
+
+        },
+        { 
+        "id":4,
+        "chemin":"/collect",
+        "page":"Click/Collect"
+
+        },
+        { 
+        "id":5,
+        "chemin":"/cafe",
+        "page":"Câfé"
+
+        },
+        { 
+        "id":6,
+        "chemin":"/horaire",
+        "page":"Horaire/lieu"
+
+        },
+        { 
+        "id":7,
+        "chemin":"/contact",
+        "page":"Contact"
+
+        }
+
+        
+    ]
+}

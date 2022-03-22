@@ -5,13 +5,10 @@
       <nav class="menuDesktop  ">
 
         <ul class="menuLiens flex ">
-          <li class="menuLien "> <router-link to="/" class="router-link" >ACCUEIL</router-link> </li>
-          <li class="menuLien "> <router-link to="/" class="router-link" >MENU/TARIF</router-link> </li>
-          <li class="menuLien "> <router-link to="/" class="router-link" >L'équipe</router-link> </li>
-          <li class="menuLien "> <router-link to="/" class="router-link" >CLICK/COLLECT</router-link> </li>
-          <li class="menuLien "> <router-link to="/about" class="router-link" >CAFÉ</router-link> </li>
-          <li class="menuLien "> <router-link to="/" class="router-link" >HORAIRE/LIEU</router-link> </li>
-          <li class="menuLien "> <router-link to="/" class="router-link" >CONTACT</router-link> </li>
+          <li class="menuLien "
+          v-for="linkmenu in linksMenu" v-bind:key="linkmenu.id ">
+            <router-link :to="{path:linkmenu.chemin}" class="router-link" >{{ linkmenu.page }}</router-link> 
+          </li>
         </ul>
 
       </nav>
@@ -22,12 +19,29 @@
 
 <script>
 import BtnDarkMode from './BntDarkMode.vue';
+import axios from 'axios';
 
 export default {
   name:'HeaderDesktop',
   components:{
     BtnDarkMode,
-  }
+  },
+  props:{
+    id:Number,
+    chemin:String,
+    page:String,
+  },
+  data() {
+    return{
+      linksMenu: [],
+
+    }
+  },
+  created () {
+    axios
+    .get("http://localhost:3000/linksMenu.json")
+    .then (response => (this.linksMenu = response.data.linksMenu))
+    },
 }
 </script>
 
@@ -61,11 +75,14 @@ export default {
   display: flex;
   justify-content: center;
   margin-top: 9px;
+  text-transform: uppercase;
+  transform: scale(.8);
+  transition: all .3s ease-in-out;
 }
 
 .router-link:hover {
   color: #cda673;
-  transform: scale(1.2);
+  transform: scale(1.1);
   transition: all .3s ease-in-out;
 }
 

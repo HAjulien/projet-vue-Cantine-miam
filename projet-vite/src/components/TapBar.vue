@@ -78,24 +78,28 @@
 </template>
 
 <script>
+import axios from 'axios'
 
 export default {
   name: 'Tapbar',
+  props:{
+    id:Number,
+    chemin:String,
+    page:String,
+  },
 
   data() {
     return {
       isActive:false,
-      linksMenu: [
-        {chemin:'/', page:"Accueil", id: 1},
-        {chemin:'/menu', page: "Menu/tarif", id: 2},
-        {chemin:'/about', page: "l'équipe", id: 3},
-        {chemin:'/collect', page: "Click/Collect", id: 4},
-        {chemin:'/cafe', page: "Câfé", id: 5},
-        {chemin:'/horaire', page: "Horaire/lieu", id: 6},
-        {chemin:'/contact', page: "Contact", id: 7},
-      ],
+      linksMenu: [],
     }
   },
+
+  created () {
+    axios
+    .get("http://localhost:3000/linksMenu.json")
+    .then (response => (this.linksMenu = response.data.linksMenu))
+    },
 }
 </script>
 
