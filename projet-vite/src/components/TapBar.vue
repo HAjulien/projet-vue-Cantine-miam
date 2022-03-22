@@ -30,11 +30,9 @@
         >
           <div class="space-y-2 w-3  flex flex-col items-center justify-center  ">
 
-
             <div class="w-6 h-0.5 bg-black dark:bg-gray-200"
                  :style="[!isActive ? ''  : 'transform: translateY(12px) rotate(45deg)', 'transition: all 0.3s ease-in-out']">
             </div>
-
 
             <div class="w-6 h-0.5 bg-black dark:bg-gray-200"
                  :style="[!isActive ? ''  : 'width: 0', 'transition: all 0.2s ease-in-out']">
@@ -43,7 +41,6 @@
             <div class="w-6 h-0.5 bg-black dark:bg-gray-200"
                  :style="[!isActive ? ''  : 'transform: translateY(-8px) rotate(-45deg)', 'transition: all 0.2s ease-in-out']">
             </div>
-
 
           </div>
         </button>
@@ -61,10 +58,8 @@
 
             <ul class="h-full flex flex-col justify-start items-center mt-10 ">
               <li class="mb-10 links"
-                  v-for="linkmenu in linksMenu" v-bind:key="linkmenu.id ">
-
+              v-for="linkmenu in linksMenu" v-bind:key="linkmenu.id ">
                 <router-link :to="{path:linkmenu.chemin}" @click="!isActive" class="text-2xl ">{{ linkmenu.page }}</router-link >
-                
               </li>
             </ul>
 
