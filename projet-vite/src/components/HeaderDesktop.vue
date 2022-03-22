@@ -3,15 +3,14 @@
       
 <!-- menu grand format tablette  -->
       <nav class="menuDesktop  ">
-
         <ul class="menuLiens flex ">
           <li class="menuLien "
           v-for="linkmenu in linksMenu" v-bind:key="linkmenu.id ">
             <router-link :to="{path:linkmenu.chemin}" class="router-link" >{{ linkmenu.page }}</router-link> 
           </li>
         </ul>
-
       </nav>
+      
       <BtnDarkMode/>
 
   </header> 

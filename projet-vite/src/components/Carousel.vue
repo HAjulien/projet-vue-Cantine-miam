@@ -6,7 +6,7 @@
       v-for="contenu in contenuCarousel" v-bind:key="contenu.id" > 
 
         <img v-bind:src="'src/assets/images/' + contenu.image"/>
-        <h1>{{ contenu.titre }}</h1>
+        <h1>Cantine Miam</h1>
         
       </swiper-slide>
 
@@ -27,21 +27,14 @@ import "swiper/css/pagination";
 // import required modules
 import { Pagination } from "swiper";
 
+import axios from 'axios';
+
 export default {
   components: {
     Swiper,
     SwiperSlide,
   },
-  data() {
-    return {
-       contenuCarousel: [
-         {image:'accueil1.jpg', titre:"Cantine Miam", id: 1},
-         {image:'accueil2.jpg', titre:"Cantine Miam", id: 2},
-         {image:'accueil3.jpg', titre:"Cantine Miam", id: 3},
-       ]
 
-    }
-  },
   setup() {
     return {
       pagination: {
@@ -49,6 +42,17 @@ export default {
       },
       modules: [Pagination],
     };
+  },
+  
+  data() {
+    return {
+       contenuCarousel: []
+    }
+  },
+  created () {
+    axios
+    .get("http://localhost:3000/contenuCarousel.json")
+    .then (response => (this.contenuCarousel = response.data.contenuCarousel))
   },
 
 };

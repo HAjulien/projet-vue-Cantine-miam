@@ -1,0 +1,26 @@
+{   
+    "time": 
+    {   "updated": "Feb 10, 2022 11:36:00 UTC", 
+        "updatedISO": "2022-02-10T11:36:00+00:00", 
+        "updateduk": "Feb 10, 2022 at 11:36 GMT" 
+    }, 
+    "disclaimer": "This data was produced from articles", 
+    "chartName": "contenuCarousel",
+    
+    "contenuCarousel": 
+    [
+        { 
+        "id":1,
+        "image": "accueil1.jpg"
+        },
+        { 
+        "id":2,
+        "image": "accueil2.jpg"
+        },
+        { 
+        "id":3,
+        "image": "accueil3.jpg"
+        }
+
+    ]
+}
