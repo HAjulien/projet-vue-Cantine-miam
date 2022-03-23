@@ -10,8 +10,12 @@
           </li>
         </ul>
       </nav>
-      
-      <BtnDarkMode/>
+      <div class=" flex justify-around items-center w-32 mr-3">
+          <BtnDarkMode/>
+          <button class=" flex items-center ml-6 ">
+              <fa :style="{height: '35px', color: '#cda673', }"   icon='user' />
+          </button>
+      </div>
 
   </header> 
 </template>

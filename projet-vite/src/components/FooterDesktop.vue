@@ -43,7 +43,7 @@
                 <h3 class="font-bold mb-4 underline underline-offset-4 underline underline-offset-4 decoration-4 decoration-[#cda673]">Plus d'information:</h3>
                 <li
                 v-for="info in infos" v-bind:key="info.id ">              
-                    <a :href="info.href">    {{ info.list }}  </a>
+                    <router-link :to="{path:info.chemin}">    {{ info.list }}  </router-link>
                 </li>
             </ul>
         </div>
@@ -66,10 +66,10 @@ export default {
         return{
 
         infos: [
-            {href:'#', list:"Nos mesures d'hygiène", id:1},
-            {href:'#', list:"Comment les menu sont élaborés?", id:2},
-            {href:'#', list:"Notre engagement sur le développement durable", id:3},
-            {href:'#', list:"Notre politique de confidentialité", id:4},
+            {chemin:'#', list:"Nos mesures d'hygiène", id:1},
+            {chemin:'#', list:"Comment les menu sont élaborés?", id:2},
+            {chemin:'#', list:"Notre engagement sur le développement durable", id:3},
+            {chemin:'#', list:"Notre politique de confidentialité", id:4},
         ],
         }
 

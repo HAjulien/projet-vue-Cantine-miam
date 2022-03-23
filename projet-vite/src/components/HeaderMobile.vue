@@ -7,7 +7,7 @@
 
             <div class=" flex justify-around items-center w-32 mr-3">
                 <BtnDarkMode/>
-                <button class=" flex items-center ml-6 " v-on:click="toggleModale">
+                <button class=" flex items-center ml-6 " @click="toggleModale">
                     <fa :style="{height: '35px', color: '#097770', }"   icon='user' />
                 </button>
             </div>
