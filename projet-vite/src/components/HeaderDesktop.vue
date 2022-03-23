@@ -1,10 +1,10 @@
 <template>
-  <header class="headerDesktop px-3">
+  <header class="px-3">
       
 <!-- menu grand format tablette  -->
-      <nav class="menuDesktop  ">
-        <ul class="menuLiens flex ">
-          <li class="menuLien "
+      <nav>
+        <ul>
+          <li
           v-for="linkmenu in linksMenu" v-bind:key="linkmenu.id ">
             <router-link :to="{path:linkmenu.chemin}" class="router-link" >{{ linkmenu.page }}</router-link> 
           </li>
@@ -46,7 +46,7 @@ export default {
 
 <style scoped>
 
-.headerDesktop {
+header {
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -60,12 +60,12 @@ export default {
   z-index: 2;
 }
     
-.menuDesktop {
+nav {
   top: 10%;
 
 }
 
-.menuLien {
+li {
   display: inline-block;
   width: 10vw;
 }
@@ -85,11 +85,11 @@ export default {
   transition: all .3s ease-in-out;
 }
 
-.menuLien:not(:last-child) {
+li:not(:last-child) {
   border-right: 2px solid #cda673;
 }
 
-.menuLien::after {
+li::after {
   content: "";
   display: block;
   margin: auto;
@@ -101,14 +101,14 @@ export default {
 }
 /* barre qui apparait sous menu lors d'un hover */
 
-.menuLien:hover::after {
+li:hover::after {
   transform: scale(1);
   transition: all .3s ease-in-out;
 }
 
 
 @media screen and (max-width:767.6px){
-  .headerDesktop{
+  header{
     display: none;
   }
 }
@@ -117,11 +117,11 @@ export default {
 
  /* on change les tailles des case du menu */
 /* petites case pour accueil/cafe/equipe/contact */
-  .menuLien:nth-child(odd){
+  li:nth-child(odd){
       width: 10vw;
   }
 /* grande cases pour les autres */
-  .menuLien:nth-child(even){
+  li:nth-child(even){
       width: 15vw;
   }
 }
