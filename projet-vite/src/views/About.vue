@@ -1,5 +1,6 @@
 /<template>
 <div id="app">
+    <Pencarte/>
      <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Odio laboriosam asperiores ut culpa soluta nobis veniam quos, placeat recusandae impedit quaerat quisquam, repudiandae id. Atque adipisci voluptatum repellat maiores pariatur.</p>
      <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Odio laboriosam asperiores ut culpa soluta nobis veniam quos, placeat recusandae impedit quaerat quisquam, repudiandae id. Atque adipisci voluptatum repellat maiores pariatur.</p>
      <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Odio laboriosam asperiores ut culpa soluta nobis veniam quos, placeat recusandae impedit quaerat quisquam, repudiandae id. Atque adipisci voluptatum repellat maiores pariatur.</p>
@@ -25,10 +26,12 @@
 </template>
 
 <script>
+import Pencarte from '../components/pencarteOuverture.vue'
+
 export default {
   name:'about',
     components:{
-
+        Pencarte,
     },
     data() {
 
