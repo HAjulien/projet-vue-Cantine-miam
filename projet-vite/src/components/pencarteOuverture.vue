@@ -12,17 +12,25 @@ export default {
     data() {
 
         return {
-     open_lunch_hour : 10,
-     open_lunch_minute : 50,
+            open_lunch_hour : 10,
+            open_lunch_minute : 50,
 
-     close_lunch_hour : 14,
-     close_lunch_minute : 10, 
+            close_lunch_hour : 14,
+            close_lunch_minute : 10, 
 
-     open_diner_hour : 17, 
-     open_diner_minute : 40,
+            open_diner_hour : 17, 
+            open_diner_minute : 40,
 
-     close_diner_hour : 21, 
-     close_diner_minute: 16,
+            close_diner_hour : 21, 
+            close_diner_minute: 16,
+
+            jour_travail_1: 1,
+            jour_travail_2: 2,
+            jour_travail_3: 3,
+            jour_travail_4: 4,
+            jour_travail_5: 5,
+
+            jours_travail: [ this.jour_travail_1, this.jour_travail_2, this.jour_travail_3, this.jour_travail_4, this.jour_travail_5 ]
         }
     },
    mounted () {
@@ -42,8 +50,7 @@ export default {
         const pencarte = document.getElementById("pencarte");
 
 
-            if ( day > 0 && day <= 5 ) 
-                //lundi mardi mercredi jeudi vendredi
+            if ( this.jours_travail.indexOf(day) === 1 ) 
                 {
 
                     if (horaire_user >= 0 && horaire_user < open_lunch){
@@ -58,19 +65,13 @@ export default {
                     else if ( horaire_user >= open_diner && horaire_user < close_diner){
                         pencarte.innerHTML = "la cantine est ouverte jusqu'à " + this.close_diner_hour + " h " + this.close_diner_minute + ".";
                     }
-                    // lundi mardi mercredi et jeudi apres service soir
-                    else if ( day + 1 <= 5) {
-                        pencarte.innerHTML = "la cantine réouvre demain à " + this.open_lunch_hour  + " h " + this.open_lunch_minute + ".";
-                    }
-                    // pour vendredi soir
                     else{
-                        pencarte.innerHTML = "la cantine est fermé pour le week-end." 
+                        pencarte.innerHTML = "la cantine est fermée pour ce soir." 
                     }
 
                 }
-            // pour jour 6 et 0 
             else{
-                pencarte.innerHTML = 'nous sommes fermé le week-end';
+                pencarte.innerHTML = 'nous sommes fermés aujourd\'hui.';
             };
 
 
