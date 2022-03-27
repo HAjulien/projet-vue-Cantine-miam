@@ -29,11 +29,14 @@ export default {
             jour_travail_3: 3,
             jour_travail_4: 4,
             jour_travail_5: 5,
+            jour_travail_6: null,
+            jour_travail_7: null,
 
-            jours_travail: [ this.jour_travail_1, this.jour_travail_2, this.jour_travail_3, this.jour_travail_4, this.jour_travail_5 ]
         }
     },
    mounted () {
+       
+        let jours_travail = [this.jour_travail_1, this.jour_travail_2 ,this.jour_travail_3, this.jour_travail_4, this.jour_travail_5, this.jour_travail_6, this.jour_travail_7 ];
 
         let open_lunch = ( this.open_lunch_hour * 60 ) + this.open_lunch_minute;
         let close_lunch = ( this.close_lunch_hour * 60 ) + this.close_lunch_minute;
@@ -50,7 +53,7 @@ export default {
         const pencarte = document.getElementById("pencarte");
 
 
-            if ( this.jours_travail.indexOf(day) === 1 ) 
+            if ( jours_travail.includes(day) === true) 
                 {
 
                     if (horaire_user >= 0 && horaire_user < open_lunch){
