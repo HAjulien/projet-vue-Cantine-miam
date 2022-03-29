@@ -38,11 +38,13 @@ export default {
        
         let jours_travail = [this.jour_travail_1, this.jour_travail_2 ,this.jour_travail_3, this.jour_travail_4, this.jour_travail_5, this.jour_travail_6, this.jour_travail_7 ];
 
+        //converti heure et minute en un nombre que l'on peut comparer avec l'heure du visiteur let horaire_user
         let open_lunch= ( this.open_lunch_hour * 60 ) + this.open_lunch_minute;
         let close_lunch = ( this.close_lunch_hour * 60 ) + this.close_lunch_minute;
         let open_diner = ( this.open_diner_hour * 60 ) + this.open_diner_minute;
         let close_diner =  ( this.close_diner_hour * 60 ) + this.close_diner_minute;
 
+        //recuperer le jour (entre 0 et 6) et l'heure du visiteur que l'on converti en un nombre
         const date = new Date();
         let day = date.getDay();
 
@@ -50,49 +52,55 @@ export default {
         let hour = date.getHours();
         let horaire_user = ( hour*60 ) + minute;
 
+        //pour modifier le contenu de la pencarte
         const pencarte = document.getElementById("pencarte");
 
-             if ( jours_travail.includes(day) === false) {
-                 pencarte.innerHTML = "la cantine est fermée  aujourd'hui." 
-             } 
-
-            function horaire( debutMidi, finMidi ,debutSoir,finSoir, heureMidi , minuteMidi, heureFinMidi, minuteFinMidi,heureSoir,minuteSoir,heureFinSoir ,minuteFinSoir){
-            if ( jours_travail[0] == 1) 
-                {
-
-                    if (horaire_user >= 0 && horaire_user < debutMidi){
+            function horaire( open_lunch, close_lunch ,open_diner,close_diner, heureMidi , minuteMidi, heureFinMidi, minuteFinMidi,heureSoir,minuteSoir,heureFinSoir ,minuteFinSoir){
+                    //quand la cantine n'ouvre pas le matin 0 equivaut à null
+                    if ( horaire_user < open_diner && close_lunch == 0 && open_diner !== 0 ) {
+                        pencarte.innerHTML = "la cantine n'ouvre que le soir à partir de " + heureSoir +"h"+ minuteSoir +".";
+                    }
+                    else if (horaire_user >= 0 && horaire_user <  open_lunch){
                         pencarte.innerHTML = "la cantine ouvre à " + heureMidi + " h " + minuteMidi + ".";
                     }
-                    else if ( horaire_user >= debutMidi && horaire_user < finMidi) {
+                    else if ( horaire_user >=  open_lunch && horaire_user < close_lunch) {
                         pencarte.innerHTML = "la cantine est ouverte jusqu'à " + heureFinMidi + " h " + minuteFinMidi + ".";
                     }
-                    else if (horaire_user >=  finMidi && horaire_user < debutSoir ) {
+                    else if ( horaire_user > close_lunch && open_diner == 0 ) {
+                        pencarte.innerHTML = "la cantine n'ouvre pas ce soir.";
+                    }
+                    else if (horaire_user >=  close_lunch && horaire_user < open_diner ) {
                         pencarte.innerHTML = "la cantine réouvre à " + heureSoir + " h " + minuteSoir + ".";
                     }
-                    else if ( horaire_user >= debutSoir && horaire_user < finSoir){
+                    else if ( horaire_user >= open_diner && horaire_user < close_diner){
                         pencarte.innerHTML = "la cantine est ouverte jusqu'à " + heureFinSoir + " h " + minuteFinSoir + ".";
                     }
                     else{
                         pencarte.innerHTML = "la cantine est fermée pour ce soir." 
                     }
-                
-
+            
                 };
-        };
-        horaire(
-        open_lunch,
-        close_lunch,
-        open_diner,
-        close_diner,
-        this.open_lunch_hour,
-        this.open_lunch_minute,
-        this.close_lunch_hour,
-        this.close_lunch_minute,
-        this.open_diner_hour,
-        this.open_diner_minute,
-        this.close_diner_hour,
-        this.close_diner_minute,
-        );
+
+        
+
+         if ( jours_travail.includes(day) === false) {
+             pencarte.innerHTML = "la cantine est fermée  aujourd'hui." 
+         }else{
+            horaire(
+            open_lunch,
+            close_lunch,
+            open_diner,
+            close_diner,
+            this.open_lunch_hour,
+            this.open_lunch_minute,
+            this.close_lunch_hour,
+            this.close_lunch_minute,
+            this.open_diner_hour,
+            this.open_diner_minute,
+            this.close_diner_hour,
+            this.close_diner_minute,
+            );
+         }
 
 
     },
