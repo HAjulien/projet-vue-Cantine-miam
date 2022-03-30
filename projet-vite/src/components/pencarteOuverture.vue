@@ -24,29 +24,21 @@ export default {
             close_diner_hour : 21, 
             close_diner_minute: 16,
 
-            jour_travail_1: 1,
-            jour_travail_2: 2,
-            jour_travail_3: 3,
-            jour_travail_4: 4,
-            jour_travail_5: 5,
-            jour_travail_6: null,
-            jour_travail_7: null,
+            travail: true,
 
         }
     },
    mounted () {
        
-        let jours_travail = [this.jour_travail_1, this.jour_travail_2 ,this.jour_travail_3, this.jour_travail_4, this.jour_travail_5, this.jour_travail_6, this.jour_travail_7 ];
-
         //converti heure et minute en un nombre que l'on peut comparer avec l'heure du visiteur let horaire_user
         let open_lunch= ( this.open_lunch_hour * 60 ) + this.open_lunch_minute;
         let close_lunch = ( this.close_lunch_hour * 60 ) + this.close_lunch_minute;
         let open_diner = ( this.open_diner_hour * 60 ) + this.open_diner_minute;
         let close_diner =  ( this.close_diner_hour * 60 ) + this.close_diner_minute;
 
-        //recuperer le jour (entre 0 et 6) et l'heure du visiteur que l'on converti en un nombre
-        const date = new Date();
-        let day = date.getDay();
+        //recuperer le jour (entre 0 et 6) pas besoin avec sql et l'heure du visiteur que l'on converti en un nombre
+        // let day = date.getDay();
+         const date = new Date();
 
         let minute = date.getMinutes();
         let hour = date.getHours();
@@ -83,8 +75,8 @@ export default {
 
         
 
-         if ( jours_travail.includes(day) === false) {
-             pencarte.innerHTML = "la cantine est fermée  aujourd'hui." 
+         if ( this.travail == false) {
+             pencarte.innerHTML = "la cantine est fermée aujourd'hui." 
          }else{
             horaire(
             open_lunch,
