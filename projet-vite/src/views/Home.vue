@@ -23,7 +23,6 @@ export default {
     data() {
 
         return {
-
         }
     },
     mounted () {
@@ -37,7 +36,10 @@ export default {
             this.$emit('progressUpdate', scrollPercent);
         }.bind(this));
     },
-
+    beforeUnmount() {
+        this.scrollPercent = 0;
+        this.$emit('progressUpdate', this.scrollPercent);
+    },
 }
 
 </script>

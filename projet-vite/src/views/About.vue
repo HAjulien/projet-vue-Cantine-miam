@@ -44,10 +44,15 @@ export default {
             let clientHeight = this.$el.clientHeight;
             let scrollHeight = this.$el.scrollHeight;
 
-            let scrollPercent = Math.round((scrollTop) / (scrollHeight - clientHeight) * 100);
+             let scrollPercent = Math.round((scrollTop) / (scrollHeight - clientHeight) * 100);
 
             this.$emit('progressUpdate', scrollPercent);
         }.bind(this));
+    },
+    beforeUnmount() {
+
+        this.scrollPercent = 0;
+        this.$emit('progressUpdate', this.scrollPercent);
     },
 
 }
