@@ -1,6 +1,7 @@
 /<template>
 <div id="app">
     <Pencarte/>
+    <InputNumber template="XX XX XX XX XX" />
      <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Odio laboriosam asperiores ut culpa soluta nobis veniam quos, placeat recusandae impedit quaerat quisquam, repudiandae id. Atque adipisci voluptatum repellat maiores pariatur.</p>
      <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Odio laboriosam asperiores ut culpa soluta nobis veniam quos, placeat recusandae impedit quaerat quisquam, repudiandae id. Atque adipisci voluptatum repellat maiores pariatur.</p>
      <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Odio laboriosam asperiores ut culpa soluta nobis veniam quos, placeat recusandae impedit quaerat quisquam, repudiandae id. Atque adipisci voluptatum repellat maiores pariatur.</p>
@@ -27,6 +28,7 @@
 
 <script>
 import Pencarte from '../components/pencarteOuverture.vue'
+import InputNumber from '../components/InputNumber.vue'
 import ProgressBar from '../mixins/ProgressBar'
 
 export default {
@@ -34,6 +36,7 @@ export default {
   mixins: [ProgressBar],
     components:{
         Pencarte,
+        InputNumber,
     },
     data() {
 
