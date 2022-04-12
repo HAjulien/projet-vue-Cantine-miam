@@ -1,13 +1,15 @@
+@ -0,0 +1,80 @@
 <template>
   <div>
     <ul>
       <li @click="rate(star)" v-for="star in maxStars" :key="star.stars" 
-      class="inline test" >
-        <div
-        class="star"
+      class="inline" >
+        <fa 
+        icon="star"
+        class="h-5"
         :style="[star <= stars ? 'color:gold'  : 'color:gray']"
 
-        ></div>
+        />
       </li>
     </ul>
         <form action="">
@@ -73,31 +75,7 @@ export default {
 </script>
 
 <style scoped>
-
 #critique{
   border: 2px solid black;
 }
-
-.star{
-
-  height: 20px;
-  width: 20px;
-  display: inline-flex;
-  margin: 5px;
-}
-
-
-.test:nth-child(odd){
-  background-color: rgb(224, 42, 42);
-   clip-path: polygon(100% 0%, 100% 70%, 71% 91%, 82% 57%, 52% 35%, 89% 35%);
-
-
-}
-
-.test:nth-child(even){
-  background-color: rgb(104, 15, 15);
-  clip-path: polygon(0% 0%, 11% 35%, 48% 35%, 18% 57%, 29% 91%, 0% 70%);
-
-}
-
 </style>
