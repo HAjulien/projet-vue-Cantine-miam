@@ -24,27 +24,30 @@
       <div class="flex items-center justify-center  " > 
         
         <button 
-        class=" py-2 px-4  rounded-full "
         @click="isActive = !isActive"
+        class=" py-2 px-4  rounded-full "
         :class="[isActive ? 'bg-pink-500'  : 'bg-gray-200 dark:bg-gray-700']"
         >
           <div class="space-y-2 w-3  flex flex-col items-center justify-center  ">
-
+            
             <div class="w-6 h-0.5 bg-black dark:bg-gray-200"
-                 :style="[!isActive ? ''  : 'transform: translateY(12px) rotate(45deg)', 'transition: all 0.3s ease-in-out']">
+            :style="[!isActive ? ''  : 'transform: translateY(12px) rotate(45deg)', 'transition: all 0.3s ease-in-out']">
+            
             </div>
-
+            
             <div class="w-6 h-0.5 bg-black dark:bg-gray-200"
-                 :style="[!isActive ? ''  : 'width: 0', 'transition: all 0.2s ease-in-out']">
+            :style="[!isActive ? ''  : 'width: 0', 'transition: all 0.2s ease-in-out']">
+            
             </div>
-
+            
             <div class="w-6 h-0.5 bg-black dark:bg-gray-200"
-                 :style="[!isActive ? ''  : 'transform: translateY(-8px) rotate(-45deg)', 'transition: all 0.2s ease-in-out']">
+            :style="[!isActive ? ''  : 'transform: translateY(-8px) rotate(-45deg)', 'transition: all 0.2s ease-in-out']">
+            
             </div>
-
+            
           </div>
         </button>
-
+        
         <transition name="fade">
           <div v-show="isActive" class="menu " @click=" isActive = !isActive" >
 <!-- button x pour retirer menu   -->
@@ -55,7 +58,7 @@
             >
               x
             </button>
-
+            
             <ul class="h-full flex flex-col justify-start items-center mt-10 ">
               <li class="mb-10 links"
               v-for="linkmenu in linksMenu" v-bind:key="linkmenu.id ">
@@ -137,10 +140,10 @@ opacity: 0;
 
 
 .router-link-active{
-    color: $principale;
-    font-weight: 700;
-    transform: scale(1.2);
-    transition: all .3s ease-in-out;
+  color: $principale;
+  font-weight: 700;
+  transform: scale(1.2);
+  transition: all .3s ease-in-out;
 }
 
 

@@ -46,7 +46,7 @@ export default {
   
   data() {
     return {
-       contenuCarousel: []
+      contenuCarousel: []
     }
   },
   created () {
@@ -115,7 +115,6 @@ span, h1{
   background-color: rgba(255, 255, 255, 0.7);
   border: 3px solid  rgba(255, 255, 255, 0.6);
   opacity: 1;
-   
 }
 
 .swiper-pagination-bullet-active {
