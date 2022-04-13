@@ -82,7 +82,7 @@ export default {
           this.comment("Moyen &#128578", "#FA824C")
         break;
         case 3.5:
-          this.comment("C'est Bon &#128516", "#FA824C")
+          this.comment("C'est pas mal &#128516", "#FA824C")
         break;
         
         case 4:

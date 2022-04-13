@@ -13,7 +13,7 @@ import { mapGetters } from 'vuex';
 export default
 {
     computed: {
-      ...mapGetters(['dark']),
+    ...mapGetters(['dark']),
     },
 }
 </script>
