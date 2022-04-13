@@ -7,17 +7,18 @@
       :style="[halfStar <= halfStars ? 'backgroundColor:gold'  : 'backgroundColor:gray']"
       ></div>
     </div>
-    <div>
-    <form action="" v-show="isActive" >
-      <p ref="avis" class="text-center text-12" ></p>
-      <input type="hidden" name="note" id="note" v-model="note"> 
-      <textarea  name="critique" id="critique" cols="30" rows="8" placeholder="Votre avis nous intéresse "></textarea>
-      <div class="flex item-center justify-center">
-        <button type="submit" class="px-3"> envoyer</button>
-        <button type="reset" @click="annuler()" > annuler</button>
-      </div>
-    </form> 
-    </div>
+
+    <transition  name="formulaire" mode="out-in" >
+      <form action="" v-show="isActive"  method="">
+        <p ref="avis" class="avis" ></p>
+        <input type="hidden" name="note" id="note" v-model="note"> 
+        <textarea  name="critique" id="critique" cols="30" rows="8" placeholder="Votre avis nous intéresse "></textarea>
+        <div class="flex item-center justify-center">
+          <button type="submit" class="px-3"> envoyer</button>
+          <button type="reset" @click="annuler()" > annuler</button>
+        </div>
+      </form> 
+    </transition>
 
   </div>
 </template>
@@ -43,8 +44,9 @@ export default {
         this.note = this.halfStars *0.5
       }
     },
-    comment(comment){
+    comment(comment, color){
       this.$refs.avis.innerHTML = comment;
+      this.$refs.avis.style.backgroundColor = color;
     },
     annuler(){
       this.isActive = false;
@@ -56,42 +58,42 @@ export default {
     halfStars(){
       switch(this.note){
         case 0:
-          this.comment("immangeable &#129326")
+          this.comment("immangeable &#129326", "#9A031E")
         break;
         case 0.5:
-          this.comment("affreux &#128565");
+          this.comment("affreux &#128565", "#9A031E");
         break;
         
         case 1:
-          this.comment("C'est pas bon!!! &#128545");
+          this.comment("C'est pas bon!!! &#128545","#F45B69");
         break;
         case 1.5:
-          this.comment("C'est pas bon!!! &#128544 ");
+          this.comment("C'est pas bon!!! &#128544 ", "#F45B69");
         break;
         
         case 2:
-          this.comment("Peux mieux faire! &#128580 ")
+          this.comment("Peux mieux faire! &#128580 ", "#128544")
         break;
         case 2.5:
-          this.comment("Peux mieux faire! &#128580 ")
+          this.comment("Peux mieux faire! &#128580 ", "#128544")
         break;
         
         case 3:
-          this.comment("Moyen &#128578")
+          this.comment("Moyen &#128578", "#FA824C")
         break;
         case 3.5:
-          this.comment("C'est Bon &#128516")
+          this.comment("C'est Bon &#128516", "#FA824C")
         break;
         
         case 4:
-          this.comment("C'est Bon!  &#128516 ")
+          this.comment("C'est Bon!  &#128516 ","#FB8B24")
         break;
         case 4.5:
-          this.comment("C'est très Bon!!! &#128525")
+          this.comment("C'est très Bon!!! &#128525", "#FB8B24")
         break;
         
         case 5:
-          this.comment("C'est excellent!!! &#129321")
+          this.comment("C'est excellent!!! &#129321","#FB8B24")
         break;
       }
     }
@@ -129,11 +131,22 @@ export default {
     border-radius: 15px;
   }
 
+  .avis{
+    width: 90%;
+    text-align: center;
+    margin: auto;
+    padding: 8px;
+    color: white;
+    font-size: 22px;
+    border-radius: 20px;
+    border: 2px solid #f8f8f8;
+  }
   textarea{
     margin: 10px 5%;
     width: 90%;
     padding: 3px 10px;
     background-color: #F8F1AE;
+    font-size: 20px;
     outline: none !important;
     border: 3px solid $green; 
     border-radius: 10px;
@@ -195,5 +208,21 @@ export default {
     }
   }
 
+
+
+    .formulaire-enter-from{
+    opacity: 0;
+    transform: scale(0);
+    }
+    .formulaire-enter-active{
+    transition: all .4s ease-out;
+    }
+    .formulaire-leave-to{
+    opacity: 0;
+    transform: scale(1);
+    }
+    .formulaire-leave-active{
+    transition: all .4s ease-in;
+    }
 
 </style>

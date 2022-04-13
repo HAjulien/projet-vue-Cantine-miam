@@ -16,7 +16,7 @@
             <router-view @progressUpdate="setProgress"  v-slot="{ Component }">
                 <transition name="route" mode="out-in">
                     <component :is="Component"></component>
-                 </transition>
+                </transition>
             </router-view>
         </div>  
         <ProgressBar :progress='progress'/>
@@ -63,7 +63,7 @@ export default {
     },
 
     computed: {
-      ...mapGetters(['dark']),   
+    ...mapGetters(['dark']),   
     },
 
     mounted() {
