@@ -34,8 +34,8 @@ import Rating from '../components/Rating.vue'
 import ProgressBar from '../mixins/ProgressBar'
 
 export default {
-  name:'about',
-  mixins: [ProgressBar],
+    name:'about',
+    mixins: [ProgressBar],
     components:{
         Pencarte,
         InputNumber,
