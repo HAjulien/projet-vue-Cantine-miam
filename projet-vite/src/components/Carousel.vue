@@ -1,6 +1,13 @@
 <template>
   <div id="carousel" class="md:hidden">
-    <swiper :pagination="pagination" :modules="modules" class="mySwiper">
+    <swiper 
+    :pagination="pagination" 
+    :modules="modules" 
+    :autoplay="{
+      delay: 3000,
+      disableOnInteraction: false,
+    }"
+    class="mySwiper">
 
       <swiper-slide
       v-for="contenu in contenuCarousel" v-bind:key="contenu.id" > 
@@ -25,7 +32,7 @@ import "swiper/css/pagination";
 
 
 // import required modules
-import { Pagination } from "swiper";
+import { Pagination, Autoplay } from "swiper";
 
 import axios from 'axios';
 
@@ -40,7 +47,7 @@ export default {
       pagination: {
         clickable: true,
       },
-      modules: [Pagination],
+      modules: [Pagination, Autoplay],
     };
   },
   
