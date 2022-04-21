@@ -5,7 +5,7 @@
 
 <script>
 export default {
-  name:'pencarte',
+    name:'pencarte',
     components:{
 
     },
@@ -28,8 +28,8 @@ export default {
 
         }
     },
-   mounted () {
-       
+    mounted () {
+
         //converti heure et minute en un nombre que l'on peut comparer avec l'heure du visiteur let horaire_user
         let open_lunch= ( this.open_lunch_hour * 60 ) + this.open_lunch_minute;
         let close_lunch = ( this.close_lunch_hour * 60 ) + this.close_lunch_minute;
@@ -38,7 +38,7 @@ export default {
 
         //recuperer le jour (entre 0 et 6) pas besoin avec sql et l'heure du visiteur que l'on converti en un nombre
         // let day = date.getDay();
-         const date = new Date();
+        const date = new Date();
 
         let minute = date.getMinutes();
         let hour = date.getHours();
@@ -75,9 +75,9 @@ export default {
 
         
 
-         if ( this.travail == false) {
-             pencarte.innerHTML = "la cantine est fermée aujourd'hui." 
-         }else{
+        if ( this.travail == false) {
+            pencarte.innerHTML = "la cantine est fermée aujourd'hui." 
+        }else{
             horaire(
             open_lunch,
             close_lunch,
@@ -92,7 +92,7 @@ export default {
             this.close_diner_hour,
             this.close_diner_minute,
             );
-         }
+        }
 
 
     },
