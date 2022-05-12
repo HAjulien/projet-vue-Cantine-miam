@@ -12,7 +12,7 @@
         <div class="flex justify-between items-center mt-4 mb-7 pb-2">
           <span class="mb-2 text-gray-800 font-bold dark:text-slate-200">Découvrir: </span>
           
-           <router-link :to="{path: chemin }" class="router" >
+          <router-link :to="{path: chemin }" class="router" >
             <button class=" mb-3 min-w-[120px] p-1 pl-2 pr-2 bg-transparent border-2 border-green-600 dark:border-green-300 text-green-600 dark:text-green-100  rounded-lg hover:bg-green-600 dark:hover:bg-green-300 hover:text-gray-200 dark:hover:text-black focus:border-4 focus:border-green-300">
               {{ button }}
             </button>
