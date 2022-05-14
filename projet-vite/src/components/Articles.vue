@@ -4,7 +4,6 @@
     <div class="mt-12 md:flex">
         <Feature v-for="(feature, index) in features" :key="index" :title="feature.title" :image="feature.image" :paragraphe="feature.paragraphe" :button="feature.button" :chemin="feature.chemin" />
     </div>
-
     <div class="sm:flex sm:flex-col md:flex-row article lg:h-[400px] rounded-xl shadow-md m-2  border-2 p-4 mb-8  bg-gray-100 dark:bg-gray-500 text-lg  hover:border-4 hover:border-amber-300 ">
 
         <div class="md:px-10 sm:px-5 rounded-xl flex-1">
@@ -45,7 +44,7 @@ export default {
 }
 </script>
 
-<style>
+<style >
 
     .article{
     transition: all .2s linear;
@@ -61,6 +60,56 @@ export default {
         width: 100%;
         max-width: 600px;
         height: 350px;
+    }
+
+/* bulle information sur abbr afpa */
+
+/* on crée le span bubble pour bien positionner before */
+    #bubble{
+        position: relative;
+        text-decoration: underline;
+        cursor: help;
+    }
+/* pour montrer que l'on peut se renseigner sur sigle afpa */
+    p [title]::after{
+        content: "?";
+        display: inline-block;
+        position: absolute;
+        bottom: 30%;
+        left: 80%;
+        text-indent: 0px;
+        font-size: .9rem;
+        font-weight: bolder;
+        color: #097770;
+        transition: all .4s ease-in-out;
+    }
+/* bulle information qui apparait lors d'un hover */
+        p [title]::before{
+        position: absolute;
+        display: flex;
+        content: "Agence nationale pour la Formation Professionnelle des Adultes";
+        bottom: 110%;
+        left: 30%;
+        width: 180px;
+        height: 55px;
+        padding: 5px;
+        text-align: center;
+        font-size: .75rem;
+        line-height: 15px;
+        text-indent: 0;
+        background-color: #097770ea;
+        color: #FFFFFF;
+        border-radius: 10px;
+        opacity: 0;
+        transition: all .4s ease-in-out;
+    }
+    p [title]:hover::before{
+        opacity: 1;
+        transition: all .4s ease-in-out;
+    }
+    p [title]:hover:after{
+        opacity: 0;
+        transition: all .4s ease-in-out;
     }
 
 @media screen and (max-width:426px){
