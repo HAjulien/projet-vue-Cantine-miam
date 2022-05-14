@@ -21,7 +21,7 @@
         "id":2,
         "title": "Nous n'utilisons que des produits frais!",
         "image": "pizza.jpg",
-        "paragraphe":"C’est l’engagement de notre chef. Pour cela, nous pouvons compter sur nos dizaines de partenaires agriculteurs, éleveurs et pécheurs de notre région. Que des produits de saisons issus du développement durable, pour des plats frais, sans pesticides et écologique.",
+        "paragraphe":"C’est l’engagement de notre chef. Pour cela,nous pouvons compter sur nos dizaines de partenaires agriculteurs, éleveurs et pécheurs de notre région.  <span id='bubble'><abbr title=''> Que des produits de saisons issus du développement durable </abbr> </span>, pour des plats frais, sans pesticides et écologique.",
         "button":"Commander",
         "chemin":"/"
 
@@ -30,7 +30,7 @@
         "id":3,
         "title": "Recettes inspirées par les saveurs du monde.",
         "image": "festive.jpg",
-        "paragraphe":"Fini les plats de cuisine sans surprise! Le chef Dollore s’est inspiré de ses nombreux voyages à travers le monde pour vous offrir une explosion de saveurs dans votre assiette. Faite lui confiance pour vous régaler chaque jour. Bonne appétit!!!!",
+        "paragraphe":" <span id='bubble'><abbr title=''>Fini les plats de cuisine sans surprise! </abbr> </span> Le chef Dollore s’est inspiré de ses nombreux voyages à travers le monde pour vous offrir une explosion de saveurs dans votre assiette. Faite lui confiance pour vous régaler chaque jour. Bonne appétit!!!!",
         "button":"Menu",
         "chemin":"/about"
 

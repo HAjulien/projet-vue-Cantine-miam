@@ -33,27 +33,34 @@ export default {
     data () {
         return{
             features: [],
-
         }
     },
     created () {
         axios
         .get("http://localhost:3000/features.json")
         .then (response => (this.features = response.data.features))
+        const infoBubble = 'Agence nationale pour la Formation Professionnelle des Adultes'
+        document.documentElement.style.setProperty("--text", JSON.stringify(infoBubble))
     },
+    beforeUpdate() {
+                console.log(this.features[1])
+                alert("before update")
+    },
+
 }
 </script>
 
 <style >
 
+    :root{
+        --text: 'reussite';
+    }
     .article{
     transition: all .2s linear;
     }
     .article:hover{
     transition: all .2s linear;
     }
-
-
 
     iframe{
         min-width: 350px;
@@ -65,6 +72,7 @@ export default {
 /* bulle information sur abbr afpa */
 
 /* on crée le span bubble pour bien positionner before */
+
     #bubble{
         position: relative;
         text-decoration: underline;
@@ -75,19 +83,19 @@ export default {
         content: "?";
         display: inline-block;
         position: absolute;
-        bottom: 30%;
+        bottom: 70%;
         left: 80%;
         text-indent: 0px;
         font-size: .9rem;
         font-weight: bolder;
-        color: #097770;
+        color: #097770; 
         transition: all .4s ease-in-out;
     }
 /* bulle information qui apparait lors d'un hover */
         p [title]::before{
         position: absolute;
         display: flex;
-        content: "Agence nationale pour la Formation Professionnelle des Adultes";
+        content: var(--text); 
         bottom: 110%;
         left: 30%;
         width: 180px;
