@@ -22,10 +22,11 @@
 
 <script>
 import BtnDarkMode from './BntDarkMode.vue';
-import axios from 'axios';
+import  Menu from '../mixins/Menu';
 
 export default {
   name:'HeaderDesktop',
+  mixins: [Menu],
   components:{
     BtnDarkMode,
   },
@@ -34,17 +35,6 @@ export default {
     chemin:String,
     page:String,
   },
-  data() {
-    return{
-      linksMenu: [],
-
-    }
-  },
-  created () {
-    axios
-    .get("http://localhost:3000/linksMenu.json")
-    .then (response => (this.linksMenu = response.data.linksMenu))
-    },
 }
 </script>
 

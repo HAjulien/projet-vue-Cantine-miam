@@ -76,10 +76,11 @@
 </template>
 
 <script>
-import axios from 'axios'
+import  Menu from '../mixins/Menu';
 
 export default {
   name: 'Tapbar',
+  mixins: [Menu],
   props:{
     id:Number,
     chemin:String,
@@ -89,15 +90,9 @@ export default {
   data() {
     return {
       isActive:false,
-      linksMenu: [],
     }
   },
 
-  created () {
-    axios
-    .get("http://localhost:3000/linksMenu.json")
-    .then (response => (this.linksMenu = response.data.linksMenu))
-    },
 }
 </script>
 
