@@ -8,7 +8,7 @@
 
         <div class="md:px-10 sm:px-5 rounded-xl flex-1">
             <h2 class="text-center font-extrabold text-2xl my-2 dark:text-black">long established</h2>
-            <p class="text-gray-800 indent-5 mb-8 mt-6 md:mb-6 dark:text-slate-200">It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that....</p> 
+            <p class="text-gray-800 indent-5 mb-8 mt-6 md:mb-6 dark:text-slate-200">test API is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that....</p> 
         </div>
 
         <div class="video md:w-[750px] flex-1">
