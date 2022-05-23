@@ -37,7 +37,7 @@ export default {
     },
     created () {
         axios
-        .get("http://localhost:3000/features.json")
+        .get("https://cantine-miam.herokuapp.com/api/features")
         .then (response => (this.features = response.data.features))
         const infoBubble = 'Agence nationale pour la Formation Professionnelle des Adultes'
         document.documentElement.style.setProperty("--text", JSON.stringify(infoBubble))
