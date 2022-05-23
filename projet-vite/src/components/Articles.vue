@@ -42,10 +42,7 @@ export default {
         const infoBubble = 'Agence nationale pour la Formation Professionnelle des Adultes'
         document.documentElement.style.setProperty("--text", JSON.stringify(infoBubble))
     },
-    beforeUpdate() {
-                console.log(this.features[1])
-                alert("before update")
-    },
+
 
 }
 </script>
