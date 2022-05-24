@@ -7,7 +7,7 @@
       <div class="p-4 text-lg">
 
         <h1 class="mt-3 text-2xl flex items-center justify-center text-center md:h-28 font-extrabold my-2 dark:text-black">{{title}}</h1>
-        <p class="text-gray-900 mb-6 mt-8  indent-5 dark:text-slate-200" v-html="paragraphe.substring(0,800)+'...'"></p>
+        <p class="text-gray-900 mb-6 mt-8  indent-5 dark:text-slate-200" v-html="paragraphe.substring(0,8000)+'...'"></p>
 
         <div class="flex justify-between items-center mt-4 mb-7 pb-2">
           <span class="mb-2 text-gray-800 font-bold dark:text-slate-200">Découvrir: </span>
