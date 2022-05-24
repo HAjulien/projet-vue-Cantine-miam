@@ -20,6 +20,7 @@
         </div> 
 
           <!-- <img v-bind:src="'src/assets/images/' + image" class="mb-3 rounded-xl"/> -->
+          <img :src="image" alt="">
         </div>
       </div>
 
