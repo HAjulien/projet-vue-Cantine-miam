@@ -102,6 +102,9 @@ export default {
         padding: 0;
         box-sizing: border-box;
     }
+    input, textarea, button, select,a{
+        -webkit-tap-highlight-color: rgba(0,0,0,0);
+    }
 
     ::selection{
     color: $principale;
