@@ -12,8 +12,9 @@
       <swiper-slide
       v-for="contenu in contenuCarousel" v-bind:key="contenu.id" > 
 
-        <img v-bind:src="'src/assets/images/' + contenu.image"/>
-        <h1>Cantine Miam</h1>
+        <!-- <img v-bind:src="'src/assets/images/' + contenu.image" /> -->
+        <img :src="contenu.image" :alt="contenu.descriptionImage">
+        <h1>cantine miam</h1>
         
       </swiper-slide>
 
@@ -58,10 +59,10 @@ export default {
   },
   created () {
     axios
-    .get("http://localhost:3000/contenuCarousel.json")
-    .then (response => (this.contenuCarousel = response.data.contenuCarousel))
-  },
+      .get("https://cantinemiam.herokuapp.com/api/image_carousels?page=1")
+      .then (response => (this.contenuCarousel = response.data["hydra:member"]))
 
+  },
 };
 </script>
 
@@ -80,7 +81,7 @@ export default {
 
 .swiper {
   width: 100%;
-  height: calc( 100vh - 125px );
+  height: calc( 100vh - 175px );
 }
 
 .swiper-slide {
