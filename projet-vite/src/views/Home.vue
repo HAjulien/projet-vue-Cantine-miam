@@ -1,9 +1,9 @@
 /<template>
-  <div id="app" class="dark:bg-gray-600"> 
+    <div id="app" class="dark:bg-gray-600"> 
         <BannerDesktop/>
         <Carousel/>
         <Articles/>
-  </div>
+    </div>
 
 
 </template>
