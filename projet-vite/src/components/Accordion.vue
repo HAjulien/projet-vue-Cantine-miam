@@ -55,7 +55,7 @@ export default {
 @import url('https://fonts.googleapis.com/css2?family=Satisfy&display=swap');
 .titreEquipe{
     font-family: 'Satisfy', cursive;
-    -webkit-text-stroke-width: 0.01px;
+    -webkit-text-stroke-width: 0.5px;
     -webkit-text-stroke-color: rgb(14, 231, 97);
 }
 .soustitreEquipe{
