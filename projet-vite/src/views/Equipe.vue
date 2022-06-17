@@ -1,5 +1,5 @@
 <template>
-    <div class="bg-gray-200 ">
+    <div id="app" class="bg-gray-200 ">
         <Accordion v-for="(equipe, index) in equipes" :key="index" :nom="equipe.nom" :prenom="equipe.prenom" :surnom="equipe.surnom"  :image="equipe.image" :contenu="equipe.contenu"  />
     </div>
 </template>
