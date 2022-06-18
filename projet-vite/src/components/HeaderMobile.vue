@@ -1,7 +1,7 @@
 <template>
     <div>
 
-        <header class=" md:hidden lg:hidden headerMobile flex justify-between items-center px-2 dark:bg-gray-700 bg-gray-200">
+        <header class=" md:hidden lg:hidden headerMobile flex justify-between items-center px-2 dark:bg-gray-700 bg-gray-300">
             
             <Logo/>
 

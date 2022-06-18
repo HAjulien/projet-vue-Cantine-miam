@@ -2,10 +2,11 @@
     <div class="dark:bg-gray-600 py-4 ">
         <h2 
         class=" soustitreEquipe  lg:w-[50%] lg:m-auto lg:mb-4 lg:mt-16
-        bg-red-300/[.40] px-2 py-4 w-[80%] m-auto  mb-4 
-        text-red-500 text-4xl text-center  lg:text-5xl
-        rounded-lg" >
-            {{surnom}}
+        px-2 py-4 w-[80%] m-auto  mb-4 
+        text-4xl text-center lg:text-5xl
+        rounded-lg" 
+        :style="{ backgroundColor: bgcolor +'40', color: colorSurnom, textStrokeColor: colorSurnomContour }">
+            {{surnom}} 
         </h2>
         <div class="relative cursor-pointer w-[80%] m-auto  lg:w-[40%] lg:m-auto "
         @click=" isOpen = !isOpen "
@@ -13,8 +14,10 @@
             <h1 class=" titreEquipe absolute
             top-[40%] left-4 w-36 
             font-extrabold text-3xl md:text-7xl leading-[40px]
-            translate-y-[-50%] ">
-                {{prenom}} {{nom}}
+            translate-y-[-50%] "
+            :style="{ color: colorNom , textStrokeColor: colorNomContour}"
+            >
+            <span class="tracking-wider"> {{prenom}} </span> {{nom}} 
             </h1>
             <img v-bind:src="image" alt="" class="rounded-xl  w-[90wv]"
             >
@@ -41,6 +44,11 @@ export default {
         surnom: String,
         image: String,
         contenu: String,
+        bgcolor: String,
+        colorSurnom: String,
+        colorSurnomContour: String,
+        colorNom: String,
+        colorNomContour: String,
     },
 
     data() {
@@ -56,12 +64,10 @@ export default {
 .titreEquipe{
     font-family: 'Satisfy', cursive;
     -webkit-text-stroke-width: 0.5px;
-    -webkit-text-stroke-color: rgb(14, 231, 97);
 }
 .soustitreEquipe{
     font-family: 'Satisfy', cursive;
     -webkit-text-stroke-width: 1.6px;
-    -webkit-text-stroke-color: rgb(0, 0, 0);
 }
 
 </style>
