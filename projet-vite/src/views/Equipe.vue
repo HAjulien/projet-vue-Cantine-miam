@@ -1,6 +1,6 @@
 <template>
     <div id="app" class="bg-gray-200 ">
-        <Accordion v-for="(equipe, index) in equipes" :key="index" :nom="equipe.nom" :prenom="equipe.prenom" :surnom="equipe.surnom"  :image="equipe.image" :contenu="equipe.contenu" :bgcolor="equipe.bgcolor" :colorSurnom="equipe.colorSurnom" :colorSurnomContour="equipe.colorSurnomContour" :colorNom="equipe.colorNom" :colorNomContour="equipe.colorNomContour"  />
+        <Accordion v-for="(equipe, index) in equipes" :key="index" :nom="equipe.nom" :prenom="equipe.prenom" :surnom="equipe.surnom"  :image="equipe.image" :description="equipe.imageDescription" :contenu="equipe.contenu" :bgcolor="equipe.bgcolor" :colorSurnom="equipe.colorSurnom" :colorSurnomContour="equipe.colorSurnomContour" :colorNom="equipe.colorNom" :colorNomContour="equipe.colorNomContour"  />
     </div>
 </template>
 

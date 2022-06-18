@@ -1,4 +1,4 @@
-/<template>
+<template>
 <div id="app">
     <Pencarte/>
     <Rating :grade="0" :maxHalfStars="10" />

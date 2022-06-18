@@ -6,10 +6,14 @@
     <div class="shadow-md rounded-xl ">
       <div class="p-4 text-lg">
 
-        <h1 class="mt-3 text-2xl flex items-center justify-center text-center md:h-28 font-extrabold my-2 dark:text-black">{{title}}</h1>
+        <h1 class="mt-3 text-2xl flex items-center justify-center text-center md:h-28 font-extrabold my-2 dark:text-black">{{title}} </h1>
+
+        <!-- <img v-bind:src="'src/assets/images/' + image" class="mb-3 rounded-xl"/> -->
+        <img :src="image" alt="" class="md:h-64 mx-auto rounded-lg "  >
+
         <p class="text-gray-900 mb-6 mt-8  indent-5 dark:text-slate-200" v-html="paragraphe.substring(0,8000)+'...'"></p>
 
-        <div class="flex justify-between items-center mt-4 mb-7 pb-2">
+        <div class="flex justify-between items-center mt-4  pb-2">
           <span class="mb-2 text-gray-800 font-bold dark:text-slate-200">Découvrir: </span>
           
           <router-link :to="{path: chemin }" class="router" >
@@ -17,14 +21,11 @@
               {{ button }}
             </button>
           </router-link>  
-        </div> 
-
-          <!-- <img v-bind:src="'src/assets/images/' + image" class="mb-3 rounded-xl"/> -->
-          <img :src="image" alt="">
-        </div>
+        </div > 
       </div>
-
     </div>
+
+  </div>
 
 </template>
 
@@ -69,7 +70,7 @@ button{
 
 @media screen and (min-width:766px) and (max-width:939px) {
   p{
-    height: 330px;
+    height: 250px;
   }
   span{
     display: none;
@@ -88,7 +89,7 @@ button{
 }
 @media screen and (min-width:940px) and (max-width:1300px) {
   p{
-    height: 250px;
+    height: 200px;
   }
 
 }
@@ -96,7 +97,7 @@ button{
 
 @media screen and (min-width:1301px) {
   p{
-    height: 200px;
+    height: 180px;
   }
 
 }
