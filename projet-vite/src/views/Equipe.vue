@@ -1,6 +1,9 @@
 <template>
-    <div id="app" class="bg-gray-200 ">
-        <Accordion v-for="(equipe, index) in equipes" :key="index" :nom="equipe.nom" :prenom="equipe.prenom" :surnom="equipe.surnom"  :image="equipe.image" :description="equipe.imageDescription" :contenu="equipe.contenu" :bgcolor="equipe.bgcolor" :colorSurnom="equipe.colorSurnom" :colorSurnomContour="equipe.colorSurnomContour" :colorNom="equipe.colorNom" :colorNomContour="equipe.colorNomContour"  />
+    <div id="app" class="bg-gray-200 dark:bg-gray-800 ">
+        <div class="lg:py-2 py-3 px-3 lg:w-[60%]
+        bg-slate-100 mx-auto dark:bg-gray-700 ">
+            <Accordion v-for="(equipe, index) in equipes" :key="index" :nom="equipe.nom" :prenom="equipe.prenom" :surnom="equipe.surnom"  :image="equipe.image" :description="equipe.imageDescription" :contenu="equipe.contenu" :bgcolor="equipe.bgcolor" :colorSurnom="equipe.colorSurnom" :colorSurnomContour="equipe.colorSurnomContour" :colorNom="equipe.colorNom" :colorNomContour="equipe.colorNomContour"  />
+        </div>
     </div>
 </template>
 

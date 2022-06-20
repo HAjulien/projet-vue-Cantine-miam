@@ -1,5 +1,5 @@
 /<template>
-    <div id="app" class="dark:bg-gray-600"> 
+    <div id="app" class="dark:bg-gray-800"> 
         <BannerDesktop/>
 <Suspense>
     <template #default>

@@ -1,14 +1,14 @@
 <template>
-    <div class="dark:bg-gray-600 py-4 ">
+    <div class="py-4 ">
         <h2 
-        class=" soustitreEquipe  lg:w-[40%] lg:m-auto lg:mb-4 lg:mt-16
+        class=" soustitreEquipe  lg:w-[70%] lg:m-auto lg:mb-4 lg:mt-8
         px-2 py-4 w-[80%] m-auto  mb-4 
         text-4xl text-center lg:text-5xl
         rounded-lg" 
         :style="{ backgroundColor: bgcolor +'40', color: colorSurnom, textStrokeColor: colorSurnomContour }">
             {{surnom}} 
         </h2>
-        <div class="relative cursor-pointer w-[80%] m-auto  lg:w-[40%] lg:m-auto "
+        <div class="relative cursor-pointer w-[80%] m-auto  lg:w-[70%] lg:m-auto "
         @click=" isOpen = !isOpen "
         >
             <h1 class=" titreEquipe absolute
@@ -24,9 +24,9 @@
         </div>
 
         <div :class=" isOpen ? 'd-block' : 'hidden'"
-            class=" w-[95vw] m-auto mt-[-100px] p-4 pt-[120px]  lg:w-[40%] lg:m-auto lg:mt-[0px] lg:pt-12 lg:p-12 lg:mt-4
-            bg-gray-100 dark:bg-gray-500 dark:text-gray-200  lg:text-xl
-            border-2 border-indigo-600 rounded-lg"
+            class=" w-[95vw] m-auto mt-[-100px] p-4 pt-[120px]  lg:w-[70%] lg:m-auto lg:mt-[0px] lg:pt-12 lg:p-12 lg:mt-4
+            bg-gray-100 dark:bg-gray-600 dark:text-gray-50  lg:text-xl
+            border-2 border-indigo-600 rounded-lg  dark:border-indigo-200"
         
         >
 
