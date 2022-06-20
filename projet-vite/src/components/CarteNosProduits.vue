@@ -1,8 +1,10 @@
 <template>
         <div class=" inline-block w-[46%] mx-[2%]  lg:w-[23%] my-16 lg:mx-[1%] relative 
-        bg-slate-300 dark:bg-gray-600 
+        bg-slate-50 dark:bg-gray-600 
         rounded-lg
-        ">
+        "
+        :style="{border:`3px solid ${bgcolor}` }"    
+        >
             <img :src="image" :alt="altImage" class="w-[80%]  h-[120px] lg:h-[200px] my-3 m-auto rounded-lg
             absolute top-[-30%] left-[10%]
             ">
