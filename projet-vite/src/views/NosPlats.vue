@@ -35,6 +35,7 @@
                         border-2 border-[#A40E4C] rounded
                         ">            
                 <button @click="pre()" v-if=" total > 12" > PRECEDENT </button>
+                <span v-if=" total > 12" > {{numPageActuel}} / {{numPageFin}} </span>
                 <button @click="next()" v-if=" total > 12"  > SUIVANT </button>
             </div>
         </div>
@@ -59,11 +60,19 @@ export default {
             pagination: [],
             categories:[],
             total:[],
-
         }
     },
-
-
+    computed: {
+            // un accesseur (getter) calculé
+            numPageActuel: function () {
+             // `this` pointe sur l'instance vm  str.substring(1, 3)
+            return this.pagination["@id"].substring(19)
+            },
+            numPageFin: function () {
+             // `this` pointe sur l'instance vm  str.substring(1, 3)
+            return this.pagination["hydra:last"].substring(19)
+            }
+    },
     created () {
         axios
         .get("https://cantinemiam.herokuapp.com/api/produits")
@@ -85,12 +94,18 @@ export default {
         axios
         .get("https://cantinemiam.herokuapp.com" + this.pagination["hydra:next"])
         .then (response => (this.produits = response.data["hydra:member"]))
+        axios
+        .get("https://cantinemiam.herokuapp.com" + this.pagination["hydra:next"])
+        .then (response => (this.pagination = response.data["hydra:view"]))
         },
         pre(){
         //console.log("https://cantinemiam.herokuapp.com" + this.pagination["hydra:first"]);
         axios
         .get("https://cantinemiam.herokuapp.com" + this.pagination["hydra:first"])
         .then (response => (this.produits = response.data["hydra:member"]))
+        axios
+        .get("https://cantinemiam.herokuapp.com" + this.pagination["hydra:first"])
+        .then (response => (this.pagination = response.data["hydra:view"]))
         },
         categorychoose(){
             var select = document.getElementById('category');
