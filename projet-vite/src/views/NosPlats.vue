@@ -11,7 +11,7 @@
                         ">
                 <div>
                     <label for="category"></label>
-                    <select id="category"  @change="categorychoose()" 
+                    <select id="category"  @change="categorychoix()" 
                     class="text-gray-700 text-center
                     py-1.5 rounded px-2
                     border-2 border-[#A40E4C] outline-0	
@@ -21,6 +21,12 @@
                         <option v-for="(category, indexCate) in categories" :key="indexCate"  :value="category.id">{{category.nom}}</option>
                     </select>
                 </div>
+                <span v-if="(numPageActuel * 12) < total">
+                    {{numPageActuel * 12 }} / {{total}} 
+                </span>
+                <span v-else>
+                        {{total}} / {{total}}
+                </span>
                 <span class=" md:w-32 block px-3
                 md:text-lg text-amber-400 py-1 text-center	
                 bg-gray-700 rounded-2xl
@@ -33,10 +39,12 @@
             <div class="flex items-center md:justify-between justify-around 
                         h-20 md:w-[95%] mx-auto lg:mb-12 md: md:px-12
                         border-2 border-[#A40E4C] rounded
-                        ">            
-                <button @click="pre()" v-if=" total > 12" > PRECEDENT </button>
-                <span v-if=" total > 12" > {{numPageActuel}} / {{numPageFin}} </span>
-                <button @click="next()" v-if=" total > 12"  > SUIVANT </button>
+                        "
+            v-if=" total > 12"
+            >            
+                <button @click="precedent()" > PRECEDENT </button>
+                <span> {{numPageActuel}} / {{numPageFin}} </span>
+                <button @click="next()" > SUIVANT </button>
             </div>
         </div>
     </div>
@@ -65,12 +73,12 @@ export default {
     computed: {
             // un accesseur (getter) calculé
             numPageActuel: function () {
-             // `this` pointe sur l'instance vm  str.substring(1, 3)
-            return this.pagination["@id"].substring(19)
+             // `this` pointe sur l'instance vm 
+            return parseInt(this.pagination["@id"].substring(19))
             },
             numPageFin: function () {
-             // `this` pointe sur l'instance vm  str.substring(1, 3)
-            return this.pagination["hydra:last"].substring(19)
+             // `this` pointe sur l'instance vm 
+            return parseInt(this.pagination["hydra:last"].substring(19))
             }
     },
     created () {
@@ -80,7 +88,7 @@ export default {
         axios
         .get("https://cantinemiam.herokuapp.com/api/produits")
         .then (response => (this.total = response.data["hydra:totalItems"]))
-        console.log(this.total);
+        //console.log(this.total);
         axios
         .get("https://cantinemiam.herokuapp.com/api/categories")
         .then (response => (this.categories = response.data["hydra:member"]))
@@ -89,8 +97,8 @@ export default {
         .then (response => (this.pagination = response.data["hydra:view"]))
     },
     methods: {
-        next(){
-        console.log("https://cantinemiam.herokuapp.com" + this.pagination["hydra:next"]);
+        suivant(){
+        console.log("https://cantinemiam.herokuapp.com" + this.pagination["hydra:suivant"]);
         axios
         .get("https://cantinemiam.herokuapp.com" + this.pagination["hydra:next"])
         .then (response => (this.produits = response.data["hydra:member"]))
@@ -98,7 +106,7 @@ export default {
         .get("https://cantinemiam.herokuapp.com" + this.pagination["hydra:next"])
         .then (response => (this.pagination = response.data["hydra:view"]))
         },
-        pre(){
+        precedent(){
         //console.log("https://cantinemiam.herokuapp.com" + this.pagination["hydra:first"]);
         axios
         .get("https://cantinemiam.herokuapp.com" + this.pagination["hydra:first"])
@@ -107,7 +115,7 @@ export default {
         .get("https://cantinemiam.herokuapp.com" + this.pagination["hydra:first"])
         .then (response => (this.pagination = response.data["hydra:view"]))
         },
-        categorychoose(){
+        categorychoix(){
             var select = document.getElementById('category');
             var value = select.options[select.selectedIndex].value;
             //console.log("https://cantinemiam.herokuapp.com/api/produits?page=1&category.id=" + value);
@@ -117,7 +125,7 @@ export default {
             axios
             .get("https://cantinemiam.herokuapp.com/api/produits?page=1&category.id=" + value)
             .then (response => (this.total = response.data["hydra:totalItems"]))            
-            },
+        },
     },  
 }
 </script>
