@@ -21,30 +21,33 @@
                         <option v-for="(category, indexCate) in categories" :key="indexCate"  :value="category.id">{{category.nom}}</option>
                     </select>
                 </div>
-                <span v-if="(numPageActuel * 12) < total">
-                    {{numPageActuel * 12 }} / {{total}} 
+                <span v-if="(numPageActuel == 1 && total > nombreProduitParPage )">
+                    1 - {{numPageActuel * nombreProduitParPage}} 
+                </span>
+                <span v-else-if=" (numPageActuel + 1) * nombreProduitParPage < total ">
+                    {{numPageActuel * nombreProduitParPage + 1}} - {{(numPageActuel + 1)* nombreProduitParPage}}
                 </span>
                 <span v-else>
-                        {{total}} / {{total}}
+                    {{((numPageActuel - 1) * nombreProduitParPage) + 1}} - {{total}}
                 </span>
                 <span class=" md:w-32 block px-3
                 md:text-lg text-amber-400 py-1 text-center	
                 bg-gray-700 rounded-2xl
                 dark:text-gray-700 dark:bg-amber-400
                 ">
-                    {{total}} produits
+                    {{total}} produit<span v-if="total > 1" >s</span>
                 </span>
             </div>
-            <CarteNosProduits v-for="(produit, index) in produits" :key="index" :nom="produit.nom" :image="produit.image" :altImage="produit.altImage" :prixAchat="produit.prixAchat" :category="produit.category.nom"  :notes="produit.critiques" :bgcolor="produit.category.couleur" />
+                <CarteNosProduits v-for="(produit, index) in produits" :key="index" :id="produit.id" :nom="produit.nom" :image="produit.image" :altImage="produit.altImage" :prixAchat="produit.prixAchat" :category="produit.category.nom"  :notes="produit.critiques" :bgcolor="produit.category.couleur" />
             <div class="flex items-center md:justify-between justify-around 
                         h-20 md:w-[95%] mx-auto lg:mb-12 md: md:px-12
                         border-2 border-[#A40E4C] rounded
                         "
-            v-if=" total > 12"
+            v-if=" total > nombreProduitParPage"
             >            
                 <button @click="precedent()" > PRECEDENT </button>
                 <span> {{numPageActuel}} / {{numPageFin}} </span>
-                <button @click="next()" > SUIVANT </button>
+                <button @click="suivant()" > SUIVANT </button>
             </div>
         </div>
     </div>
@@ -68,6 +71,7 @@ export default {
             pagination: [],
             categories:[],
             total:[],
+            nombreProduitParPage: 12
         }
     },
     computed: {
@@ -124,7 +128,7 @@ export default {
             .then (response => (this.produits = response.data["hydra:member"]))
             axios
             .get("https://cantinemiam.herokuapp.com/api/produits?page=1&category.id=" + value)
-            .then (response => (this.total = response.data["hydra:totalItems"]))            
+            .then (response => (this.total = response.data["hydra:totalItems"]))
         },
     },  
 }

@@ -1,4 +1,5 @@
 <template>
+    <router-link :to="'/platDetail/' + id">
         <div class=" inline-block w-[46%] mx-[2%]  lg:w-[23%] my-16 lg:mx-[1%] relative 
         bg-slate-50 dark:bg-gray-600 
         rounded-lg
@@ -34,6 +35,7 @@
                 </div>
             </div>
         </div>
+    </router-link>
 </template>
 
 <script>
@@ -41,6 +43,7 @@
 export default {
     name:'carteNosProduits',
     props: {
+        id: Number,
         nom: String,
         image: String,
         altImage: String,
