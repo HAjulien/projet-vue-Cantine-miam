@@ -1,10 +1,14 @@
 <template>
-    <div id="app">
-        
-            <div class="py-4 w-[96%] lg:w-[90%] min-h-[200vh]  bg-slate-100 mx-auto ">
-                <h1>tous nos produits</h1>
-                <CarteNosProduits v-for="(produit, index) in produits" :key="index" :nom="produit.nom" :image="produit.image" :altImage="produit.altImage" :prixAchat="produit.prixAchat" :category="produit.category.nom"  :notes="produit.critiques"  />
-            </div>
+
+    <div id="app">    
+        <div class="lg:py-12 py-3 px-3 lg:w-[90%] min-h-[200vh]  bg-slate-100 mx-auto ">
+            <button @click="pre()"  > PRECEDENT </button>
+            <span>.................</span>
+            <button @click="next()"  > SUIVANT </button>
+            <h1 class="py-2 lg:pb-20 pb-8 text-center text-3xl">tous nos produits</h1>
+            <CarteNosProduits v-for="(produit, index) in produits" :key="index" :nom="produit.nom" :image="produit.image" :altImage="produit.altImage" :prixAchat="produit.prixAchat" :category="produit.category.nom"  :notes="produit.critiques" :bgcolor="produit.category.couleur" />
+
+        </div>
     </div>
 </template>
 
@@ -23,15 +27,34 @@ export default {
     data() {
         return {
             produits: [],
+            pagination: [],
 
         }
     },
 
+
     created () {
         axios
-        .get("https://cantinemiam.herokuapp.com/api/produits?page=1")
+        .get("https://cantinemiam.herokuapp.com/api/produits")
         .then (response => (this.produits = response.data["hydra:member"]))
+        axios
+        .get("https://cantinemiam.herokuapp.com/api/produits")
+        .then (response => (this.pagination = response.data["hydra:view"]))
     },
+    methods: {
+        next(){
+        console.log("https://cantinemiam.herokuapp.com" + this.pagination["hydra:next"]);
+        axios
+        .get("https://cantinemiam.herokuapp.com" + this.pagination["hydra:next"])
+        .then (response => (this.produits = response.data["hydra:member"]))
+        },
+        pre(){
+        console.log("https://cantinemiam.herokuapp.com" + this.pagination["hydra:first"]);
+        axios
+        .get("https://cantinemiam.herokuapp.com" + this.pagination["hydra:first"])
+        .then (response => (this.produits = response.data["hydra:member"]))
+        }
+    },  
 }
 </script>
 
