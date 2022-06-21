@@ -64,13 +64,11 @@
 
 <script>
 
-import ProgressBar from '../mixins/ProgressBar'
 import CarteNosProduits from '../components/CarteNosProduits.vue'
 import axios from 'axios';
 
 export default {
     name:'nosPlats',
-    mixins: [ProgressBar],
     components:{
         CarteNosProduits,
     },
@@ -179,10 +177,5 @@ export default {
 
     }
 
-    @media screen and (max-width: 768px){
-        #app{
-                max-height:calc( 100vh - 180px );
-        }
 
-    }
 </style>
