@@ -38,16 +38,24 @@
                     {{total}} produit<span v-if="total > 1" >s</span>
                 </span>
             </div>
-                <CarteNosProduits v-for="(produit, index) in produits" :key="index" :id="produit.id" :nom="produit.nom" :image="produit.image" :altImage="produit.altImage" :prixAchat="produit.prixAchat" :category="produit.category.nom"  :notes="produit.critiques" :bgcolor="produit.category.couleur" />
+                <CarteNosProduits v-for="(produit, index) in produits" :key="index" :id="produit.id" :nom="produit.nom" :image="produit.image" :altImage="produit.altImage" :prixAchat="produit.prixAchat" :category="produit.category.nom"  :critiques="produit.critiques" :bgcolor="produit.category.couleur" />
             <div class="flex items-center md:justify-between justify-around 
                         h-20 md:w-[95%] mx-auto lg:mb-12 md: md:px-12
                         border-2 border-[#A40E4C] rounded
                         "
             v-if=" total > nombreProduitParPage"
             >            
-                <button @click="precedent()" > PRECEDENT </button>
+                <div>
+                    <button @click="premierePage()" v-if="numPageActuel > 1 "> 1ER PAGE </button>
+                    <span v-else> </span>
+                    <button @click="precedent()" v-if="numPageActuel > 2 "> PRÉCÉDENT </button>
+                    <span v-else> </span>
+                </div>
+
                 <span> {{numPageActuel}} / {{numPageFin}} </span>
-                <button @click="suivant()" > SUIVANT </button>
+
+                <button @click="suivant()"  v-if=" numPageActuel < numPageFin " > SUIVANT </button>
+                <span v-else> </span>
             </div>
         </div>
     </div>
@@ -71,19 +79,27 @@ export default {
             pagination: [],
             categories:[],
             total:[],
-            nombreProduitParPage: 12
+            nombreProduitParPage: 12,
         }
     },
     computed: {
             // un accesseur (getter) calculé
             numPageActuel: function () {
-             // `this` pointe sur l'instance vm 
-            return parseInt(this.pagination["@id"].substring(19))
+                if (this.pagination["@id"]){
+                // `this` pointe sur l'instance vm 
+                return parseInt(this.pagination["@id"].substring(19))
+            }
             },
             numPageFin: function () {
-             // `this` pointe sur l'instance vm 
-            return parseInt(this.pagination["hydra:last"].substring(19))
-            }
+                if (this.pagination["hydra:last"]){
+                return parseInt(this.pagination["hydra:last"].substring(19))
+                }
+            },
+            numPagePrecedente: function () {
+                if (this.pagination["hydra:previous"]){
+                return parseInt(this.pagination["hydra:previous"].substring(19))
+                }
+            },
     },
     created () {
         axios
@@ -102,7 +118,7 @@ export default {
     },
     methods: {
         suivant(){
-        console.log("https://cantinemiam.herokuapp.com" + this.pagination["hydra:suivant"]);
+        console.log("https://cantinemiam.herokuapp.com" + this.pagination["hydra:next"]);
         axios
         .get("https://cantinemiam.herokuapp.com" + this.pagination["hydra:next"])
         .then (response => (this.produits = response.data["hydra:member"]))
@@ -111,6 +127,15 @@ export default {
         .then (response => (this.pagination = response.data["hydra:view"]))
         },
         precedent(){
+        console.log("https://cantinemiam.herokuapp.com" + this.pagination["hydra:previous"]);
+        axios
+        .get("https://cantinemiam.herokuapp.com" + this.pagination["hydra:previous"])
+        .then (response => (this.produits = response.data["hydra:member"]))
+        axios
+        .get("https://cantinemiam.herokuapp.com" + this.pagination["hydra:previous"])
+        .then (response => (this.pagination = response.data["hydra:view"]))
+        },
+        premierePage(){
         //console.log("https://cantinemiam.herokuapp.com" + this.pagination["hydra:first"]);
         axios
         .get("https://cantinemiam.herokuapp.com" + this.pagination["hydra:first"])

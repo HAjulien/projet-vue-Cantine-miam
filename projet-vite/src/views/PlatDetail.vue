@@ -1,7 +1,13 @@
 <template>
     <div>
         <p class="pt-32">test detail plat</p>
-        <h1> {{produit}} </h1>
+        <h1> {{produit.nom}} </h1>
+        <p  v-for="(critique, index) in produit.critiques" :key="index">
+                {{critique.utilisateur.pseudo}}
+                {{critique.note}}
+                {{critique.createAt.substring(0 , 10)}}
+                {{critique.createAt.substring(11 , 19)}}
+        </p>
     </div>
 </template>
 
@@ -24,7 +30,8 @@ export default {
         .then(response => (this.produit = response.data));
 
         console.log(this.produit);
-    },    
+    }, 
+
 }
 </script>
 
