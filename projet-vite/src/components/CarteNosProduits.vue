@@ -43,7 +43,7 @@
             "
             v-else>
 
-            <span v-for= "n in 5" :key="n" class="text-gray-500"> <fa :style="{ height: '23px'}" icon="star"/> </span> 
+            <span v-for= "n in 5" :key="n" class="text-gray-500 dark:text-black"> <fa :style="{ height: '23px'}" icon="star"/> </span> 
             </h3>
 
             <div class="lg:pt-[160px] pt-[130px] ">

@@ -3,13 +3,15 @@
     <div id="app" class="dark:bg-gray-800 " >    
         <div class="lg:py-12 py-3 px-3 lg:w-[90%] min-h-[200vh] bg-slate-100 mx-auto 
         dark:bg-gray-700  dark:text-gray-100 "
-        id="haut">
+        id="top"
+        >
 
-            <h1 class=" py-6 text-center text-3xl"> Nos produits</h1>
+            <h1 class=" py-6 text-center text-3xl" > Nos produits</h1>
             <div class="flex items-center md:justify-between justify-around 
                         h-20 md:w-[95%] mx-auto lg:mb-12 md: md:px-12
                         border-2 border-[#A40E4C] rounded
-                        ">
+                        "
+                        >
                 <div>
                     <label for="category"></label>
                     <select id="category"  @change="categorychoix()" 
@@ -47,15 +49,15 @@
             v-if=" total > nombreProduitParPage"
             >            
                 <div>
-                    <a href="#haut" @click="premierePage()" v-if="numPageActuel > 1 "> 1ER PAGE </a>
+                    <a href="#top" @click="premierePage()" v-if="numPageActuel > 1 "> 1ER PAGE </a>
                     <span v-else> </span>
-                    <a href="#haut" @click="precedent()" v-if="numPageActuel > 2 "> PRÉCÉDENT </a>
+                    <a href="#top" @click="precedent()" v-if="numPageActuel > 2 "> PRÉCÉDENT </a>
                     <span v-else> </span>
                 </div>
 
                 <span> {{numPageActuel}} / {{numPageFin}} </span>
 
-                <a href="#haut" @click="suivant()"  v-if=" numPageActuel < numPageFin " > SUIVANT </a>
+                <a href="#top" @click="suivant(), test() "  v-if=" numPageActuel < numPageFin " > SUIVANT </a>
                 <span v-else> </span>
             </div>
         </div>
@@ -66,9 +68,13 @@
 
 import CarteNosProduits from '../components/CarteNosProduits.vue'
 import axios from 'axios';
+import ProgressBar from '../mixins/ProgressBar';
+
+
 
 export default {
     name:'nosPlats',
+    mixins: [ProgressBar],
     components:{
         CarteNosProduits,
     },
@@ -123,8 +129,7 @@ export default {
         .then (response => (this.produits = response.data["hydra:member"]))
         axios
         .get("https://cantinemiam.herokuapp.com" + this.pagination["hydra:next"])
-        .then (response => (this.pagination = response.data["hydra:view"]))
-        
+        .then (response => (this.pagination = response.data["hydra:view"]))        
         },
         precedent(){
         //console.log("https://cantinemiam.herokuapp.com" + this.pagination["hydra:previous"]);
@@ -165,17 +170,19 @@ export default {
         width: 100vw;
         flex: 1 1 100%;
         overflow: scroll;
-        overflow-x: hidden;
-        
+        overflow-x: hidden;   
+    }
+
+    @media screen and (max-width: 768px){
+        #app{
+                max-height:calc( 100vh - 180px );
+        }
     }
 
     @media screen and (min-width: 768px){
-
         #app{
             padding: 50px 0;
         }
-
     }
-
 
 </style>

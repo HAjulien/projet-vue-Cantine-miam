@@ -4,7 +4,7 @@
 
     <PageLoader/> 
 
-    <main :class="dark ? 'dark' : 'light'">
+    <main :class="dark ? 'dark' : 'light'" >
         <HeaderMobile/>
 
         <div class="headerDesktop"
