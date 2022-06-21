@@ -12,7 +12,6 @@ export default {
         }.bind(this));
     },
     beforeUnmount() {
-
         this.scrollPercent = 0;
         this.$emit('progressUpdate', this.scrollPercent);
     },
