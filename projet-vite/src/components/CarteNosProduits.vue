@@ -29,13 +29,14 @@
             pb-4 top-[130px] lg:top-[180px]  left-0 right-0
             "
             v-if=" moyenneNote > 0">
-                <span class="text-amber-300" v-for="(note, index) in (Math.floor(moyenneNote))" :key="index">
+                <span class="text-amber-300" v-for="(note, index) in (noteMoyenneTronque)" :key="index">
                 <fa :style="{ height: '23px'}" icon="star" />
                 </span>
-                <span  class="text-amber-300" v-if="moyenneNote - Math.floor(moyenneNote) >= 0.5 " >
+                <span  class="text-amber-300" v-if="moyenneNote - noteMoyenneTronque >= 0.5 " >
                 <fa :style="{ height: '23px'}" icon="star-half" />
                 </span>
-                <!-- {{moyenneNote}} / 5 -->
+                <span class="text-xs block"> {{moyenneNote}} / 5 </span>
+
             </h3>
 
             <h3 class="text-center text-xl absolute
@@ -80,11 +81,18 @@ export default {
     },
     created() {
         for(let i = 0; i < this.critiques.length; i++){
-            if (this.critiques[i].note ) { this.moyenneNote += this.critiques[i].note / this.critiques.length }
+            if (this.critiques[i].note )
+            {
+                this.moyenneNote += this.critiques[i].note / this.critiques.length
+            }
             // console.log(this.critiques[i].note);
-            // this.moyenneNote += note
         }
     },
+    computed:{
+        noteMoyenneTronque: function(){
+            return Math.floor(this.moyenneNote)
+        }
+    }
 
     
 

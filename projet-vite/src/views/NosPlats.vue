@@ -57,7 +57,7 @@
 
                 <span> {{numPageActuel}} / {{numPageFin}} </span>
 
-                <a href="#top" @click="suivant(), test() "  v-if=" numPageActuel < numPageFin " > SUIVANT </a>
+                <a href="#top" @click="suivant()"  v-if=" numPageActuel < numPageFin " > SUIVANT </a>
                 <span v-else> </span>
             </div>
         </div>
@@ -90,10 +90,18 @@ export default {
     computed: {
             // un accesseur (getter) calculé
             numPageActuel: function () {
-                if (this.pagination["@id"]){
-                // `this` pointe sur l'instance vm 
-                return parseInt(this.pagination["@id"].substring(19))
-            }
+                if (this.pagination["@id"] && this.total > 12 )
+                {
+                    // `this` pointe sur l'instance vm 
+                    return parseInt(this.pagination["@id"].substring(19,20))
+                }else if(this.total > 120)
+                {
+                    return parseInt(this.pagination["@id"].substring(19,21))
+                }else if(this.total > 1200){
+                    return parseInt(this.pagination["@id"].substring(19,22))
+                }else{
+                    return 1
+                }
             },
             numPageFin: function () {
                 if (this.pagination["hydra:last"]){
