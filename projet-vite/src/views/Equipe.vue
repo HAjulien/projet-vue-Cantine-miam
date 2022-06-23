@@ -47,14 +47,14 @@ export default {
     @media screen and (min-width: 768px){
 
         #app{
-            margin-top: 50px;
+            padding-top: 50px;
         }
 
     }
 
     @media screen and (max-width: 768px){
         #app{
-                max-height:calc( 100vh - 180px );
+                max-height:calc( 100vh - 165px );
         }
 
     }

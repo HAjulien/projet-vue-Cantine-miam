@@ -1,6 +1,6 @@
 <template>
 
-<div class="app">
+<div class="app dark:bg-grey-700">
 
     <PageLoader/> 
 
@@ -87,6 +87,7 @@ export default {
             return
         }
         this.showHeader = window.pageYOffset < this.lastScrollPosition
+        //console.log(this.showHeader);
         this.lastScrollPosition = window.pageYOffset
         },
     },
@@ -162,7 +163,7 @@ export default {
 
     .headerDesktop {
     position: fixed;
-    height: 45px;
+    height: 40px;
     width: 100vw;
     transition: transform 200ms linear;
     z-index: 100;

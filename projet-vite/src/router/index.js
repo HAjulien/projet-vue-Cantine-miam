@@ -4,6 +4,7 @@ import About from '/src/views/About.vue'
 import Equipe from '/src/views/Equipe.vue' 
 import NosPlats from '/src/views/NosPlats.vue' 
 import PlatDetail from '/src/views/PlatDetail.vue' 
+import Inscription from '/src/views/Inscription.vue' 
 
 const routes = [
     {
@@ -30,6 +31,11 @@ const routes = [
         path: '/platDetail/:id',
         name: PlatDetail,
         component: PlatDetail,
+    },
+    {
+        path: '/inscription',
+        name: Inscription,
+        component: Inscription,
     },
     
 ]

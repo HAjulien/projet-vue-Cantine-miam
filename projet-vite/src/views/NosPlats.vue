@@ -14,7 +14,7 @@
                         >
                 <div>
                     <label for="category"></label>
-                    <select id="category"  @change="categorychoix()" 
+                    <select id="category" v-model="selectionCategorie"  @change="categorychoix()" 
                     class="text-gray-700 text-center
                     py-1.5 rounded px-2
                     border-2 border-[#A40E4C] outline-0	
@@ -25,7 +25,7 @@
                     </select>
                 </div>
                 <span v-if="(numPageActuel == 1 && total > nombreProduitParPage )">
-                    1 - {{numPageActuel * nombreProduitParPage}} 
+                    1 - {{numPageActuel * nombreProduitParPage}}   
                 </span>
                 <span v-else-if=" (numPageActuel + 1) * nombreProduitParPage < total ">
                     {{numPageActuel * nombreProduitParPage + 1}} - {{(numPageActuel + 1)* nombreProduitParPage}}
@@ -80,25 +80,24 @@ export default {
     },
     data() {
         return {
+            selectionCategorie:"",
             produits: [],
             pagination: [],
             categories:[],
             total:[],
             nombreProduitParPage: 12,
+            lienAPI: "https://cantinemiam.herokuapp.com"
         }
     },
     computed: {
-            // un accesseur (getter) calculé
+            // un accesseur (getter) calculé on récupére le nombre de la page et transforme en nombre
             numPageActuel: function () {
-                if (this.pagination["@id"] && this.total > 12 )
-                {
-                    // `this` pointe sur l'instance vm 
-                    return parseInt(this.pagination["@id"].substring(19,20))
-                }else if(this.total > 120)
-                {
-                    return parseInt(this.pagination["@id"].substring(19,21))
-                }else if(this.total > 1200){
+                if (this.pagination["@id"] && this.total > ( this.nombreProduitParPage * 100 ) ){ 
                     return parseInt(this.pagination["@id"].substring(19,22))
+                }else if(this.total > ( this.nombreProduitParPage * 10 )){
+                    return parseInt(this.pagination["@id"].substring(19,21))
+                }else if(this.total > ( this.nombreProduitParPage )){
+                    return parseInt(this.pagination["@id"].substring(19,20))
                 }else{
                     return 1
                 }
@@ -116,56 +115,57 @@ export default {
     },
     created () {
         axios
-        .get("https://cantinemiam.herokuapp.com/api/produits")
+        .get( this.lienAPI + "/api/produits")
         .then (response => (this.produits = response.data["hydra:member"]))
         axios
-        .get("https://cantinemiam.herokuapp.com/api/produits")
+        .get( this.lienAPI + "/api/produits")
         .then (response => (this.total = response.data["hydra:totalItems"]))
         //console.log(this.total);
         axios
-        .get("https://cantinemiam.herokuapp.com/api/categories")
+        .get( this.lienAPI + "/api/categories")
         .then (response => (this.categories = response.data["hydra:member"]))
         axios
-        .get("https://cantinemiam.herokuapp.com/api/produits")
+        .get( this.lienAPI + "/api/produits")
         .then (response => (this.pagination = response.data["hydra:view"]))
     },
     methods: {
         suivant(){
-        //console.log("https://cantinemiam.herokuapp.com" + this.pagination["hydra:next"]);
-        axios
-        .get("https://cantinemiam.herokuapp.com" + this.pagination["hydra:next"])
-        .then (response => (this.produits = response.data["hydra:member"]))
-        axios
-        .get("https://cantinemiam.herokuapp.com" + this.pagination["hydra:next"])
-        .then (response => (this.pagination = response.data["hydra:view"]))        
-        },
-        precedent(){
-        //console.log("https://cantinemiam.herokuapp.com" + this.pagination["hydra:previous"]);
-        axios
-        .get("https://cantinemiam.herokuapp.com" + this.pagination["hydra:previous"])
-        .then (response => (this.produits = response.data["hydra:member"]))
-        axios
-        .get("https://cantinemiam.herokuapp.com" + this.pagination["hydra:previous"])
-        .then (response => (this.pagination = response.data["hydra:view"]))
-        },
-        premierePage(){
-        //console.log("https://cantinemiam.herokuapp.com" + this.pagination["hydra:first"]);
-        axios
-        .get("https://cantinemiam.herokuapp.com" + this.pagination["hydra:first"])
-        .then (response => (this.produits = response.data["hydra:member"]))
-        axios
-        .get("https://cantinemiam.herokuapp.com" + this.pagination["hydra:first"])
-        .then (response => (this.pagination = response.data["hydra:view"]))
-        },
-        categorychoix(){
-            const select = document.getElementById('category');
-            const value = select.options[select.selectedIndex].value;
-            //console.log("https://cantinemiam.herokuapp.com/api/produits?page=1&category.id=" + value);
+            //console.log(this.lienAPI + this.pagination["hydra:next"]);
             axios
-            .get("https://cantinemiam.herokuapp.com/api/produits?page=1&category.id=" + value)
+            .get(this.lienAPI + this.pagination["hydra:next"])
             .then (response => (this.produits = response.data["hydra:member"]))
             axios
-            .get("https://cantinemiam.herokuapp.com/api/produits?page=1&category.id=" + value)
+            .get(this.lienAPI + this.pagination["hydra:next"])
+            .then (response => (this.pagination = response.data["hydra:view"]))        
+        },
+        precedent(){
+            //console.log(this.lienAPI + this.pagination["hydra:previous"]);
+            axios
+            .get(this.lienAPI + this.pagination["hydra:previous"])
+            .then (response => (this.produits = response.data["hydra:member"]))
+            axios
+            .get(this.lienAPI + this.pagination["hydra:previous"])
+            .then (response => (this.pagination = response.data["hydra:view"]))
+        },
+            premierePage(){
+            //console.log(this.lienAPI + this.pagination["hydra:first"]);
+            axios
+            .get(this.lienAPI + this.pagination["hydra:first"])
+            .then (response => (this.produits = response.data["hydra:member"]))
+            axios
+            .get(this.lienAPI + this.pagination["hydra:first"])
+            .then (response => (this.pagination = response.data["hydra:view"]))
+        },
+        categorychoix(){
+            //v-model permet de recuperer la value et de la mettre dans une data
+            //const select = document.getElementById('category');
+            //const value = select.options[select.selectedIndex].value;
+            //console.log(this.lienAPI + "/api/produits?page=1&category.id=" + value);
+            axios
+            .get(this.lienAPI + "/api/produits?page=1&category.id=" + this.selectionCategorie)
+            .then (response => (this.produits = response.data["hydra:member"]))
+            axios
+            .get(this.lienAPI + "/api/produits?page=1&category.id=" + this.selectionCategorie)
             .then (response => (this.total = response.data["hydra:totalItems"]))
         },
     },  
@@ -183,7 +183,7 @@ export default {
 
     @media screen and (max-width: 768px){
         #app{
-                max-height:calc( 100vh - 180px );
+            max-height:calc( 100vh - 165px );
         }
     }
 

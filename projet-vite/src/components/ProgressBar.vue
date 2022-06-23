@@ -1,5 +1,5 @@
 /<template>
-    <div class=" md:hidden progress-bar dark:bg-gray-700 bg-gray-200">
+    <div class=" md:hidden progress-bar dark:bg-gray-800 bg-gray-100">
 
     <div :class="(progress == 100) ? 'progress-inner complete' : 'progress-inner'" 
         :style="`width: ${progress}%`"

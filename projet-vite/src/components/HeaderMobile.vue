@@ -1,14 +1,14 @@
 <template>
     <div>
 
-        <header class=" md:hidden lg:hidden headerMobile flex justify-between items-center px-2 dark:bg-gray-700 bg-gray-300">
+        <header class=" md:hidden lg:hidden headerMobile flex justify-between items-center px-2 dark:bg-gray-800 bg-gray-300">
             
             <Logo/>
 
             <div class=" flex justify-around items-center w-32 mr-3">
                 <BtnDarkMode/>
                 <button class=" flex items-center ml-6 " @click="toggleModale">
-                    <fa :style="{height: '35px', color: '#097770', }"   icon='user' />
+                    <fa :style="{height: '30px', color: '#097770', }"   icon='user' />
                 </button>
             </div>
             
@@ -54,7 +54,7 @@ export default {
 <style>
 
 header{
-    height: 60px;
+    height: 45px;
     transition: all .5s ease-in-out;
 }
 
