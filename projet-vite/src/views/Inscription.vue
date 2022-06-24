@@ -2,7 +2,7 @@
     <div class="inscription">
         <div class="portableImage md:hidden">
             <div class="portable  md:hidden"></div>
-            <h1 class="text-center mt-20 mb-4 md:my-6" >S'inscrire</h1>
+            <h1 class="text-center mt-20 mb-4 md:my-6" >S' enregistrer </h1>
             <div class="form" @submit.prevent="submit">    
                 <form class="mt-12" action="">
                     <BaseInput
@@ -22,8 +22,10 @@
                     />
                     <BaseInput
                     v-model="form.password"
-                    label= "Mot de Passe "
+                    label= "mot de passe"
+                    :indication= verificationPassword
                     type= "password"
+
                     />
                     <BaseInput
                     v-model="form.telephone"
@@ -31,7 +33,7 @@
                     type= "Number"
                     />
                     <div class="flex items-center justify-around">
-                        <input type="submit" value="Valider" class="px-5 py-1.5 button bg-emerald-500/70 text-slate-100  hover:bg-emerald-800 hover:scale-110 hover:duration-300 duration-300"
+                        <input type="submit" value="Valider" class=" valider px-5 py-1.5 button bg-emerald-500/70 text-slate-100  hover:bg-emerald-800 hover:scale-110 hover:duration-300 duration-300"
                         />
                         <router-link to="/">
                             <input type="reset" value="annuler" class="px-5 py-1.5 button bg-red-500/70 hover:bg-red-600 hover:scale-110 text-slate-100  hover:duration-300 duration-300"/>
@@ -70,6 +72,31 @@ export default {
         submit(){
             this.register(this.form)
         },
+    },
+    computed: {
+        verificationPassword: function(){
+            let password = this.form.password;
+            let valider = document.querySelector(".valider")
+            var hasNumber = /\d/; 
+            
+            if(password.length == 0){
+                return
+            }
+            else if(password.length > 0 && password.length < 7){
+                valider.classList.add("bg-sky-600")
+                valider.classList.add("-z-10")
+                return "mot de passe trop court"
+            }else if(password === password.toLowerCase()){
+                return "doit contenir au moins 1 Majuscule"
+            }
+            else if(hasNumber.test(password) == false){
+                return "doit contenir au moins 1 chiffre"
+            }
+            else {
+                valider.classList.remove("bg-sky-600")
+                valider.classList.remove("-z-10")
+            }
+        }
     },
 
 }
@@ -164,8 +191,8 @@ export default {
         width: 95%;
         margin: auto;
         background: rgba(128,208,147,0.2);
-        -webkit-backdrop-filter: blur(4px);
-        backdrop-filter: blur(4px);
+        -webkit-backdrop-filter: blur(3px);
+        backdrop-filter: blur(3px);
         border: 2px solid rgba(24, 37, 27, 0.2);
         border-radius: 6px;
     }
