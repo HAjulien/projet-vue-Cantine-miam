@@ -2,7 +2,7 @@
     <div class="inscription">
         <div class="portableImage md:hidden">
             <div class="portable  md:hidden"></div>
-            <h1 class="text-center mt-20 mb-4 md:my-6" >S' enregistrer </h1>
+            <h1 class="text-center mt-20 mb-4 md:my-6" >S' inscrire </h1>
             <div class="form" @submit.prevent="submit">    
                 <form class="mt-12" action="">
                     <BaseInput
@@ -48,8 +48,10 @@
 <script>
 import { mapActions } from 'vuex';
 import BaseInput from '../components/BaseInput.vue' ;
+import VerificationPassword from '../mixins/VerificationPassword'
 
 export default {
+    mixins: [VerificationPassword],
     name:'inscription',
     components:{
         BaseInput,
@@ -72,31 +74,6 @@ export default {
         submit(){
             this.register(this.form)
         },
-    },
-    computed: {
-        verificationPassword: function(){
-            let password = this.form.password;
-            let valider = document.querySelector(".valider")
-            var hasNumber = /\d/; 
-            
-            if(password.length == 0){
-                return
-            }
-            else if(password.length > 0 && password.length < 7){
-                valider.classList.add("bg-sky-600")
-                valider.classList.add("-z-10")
-                return "mot de passe trop court"
-            }else if(password === password.toLowerCase()){
-                return "doit contenir au moins 1 Majuscule"
-            }
-            else if(hasNumber.test(password) == false){
-                return "doit contenir au moins 1 chiffre"
-            }
-            else {
-                valider.classList.remove("bg-sky-600")
-                valider.classList.remove("-z-10")
-            }
-        }
     },
 
 }
