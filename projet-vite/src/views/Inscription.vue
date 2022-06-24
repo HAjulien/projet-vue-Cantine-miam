@@ -3,11 +3,36 @@
         <div class="portableImage md:hidden">
             <div class="portable  md:hidden"></div>
             <h1 class="text-center mt-20 mb-4 md:my-6" >S'inscrire</h1>
-            <div class="form">    
-                <form class="mt-12" action="" method="POST">
-                    <BaseInput/>
+            <div class="form" @submit.prevent="submit">    
+                <form class="mt-12" action="">
+                    <BaseInput
+                    v-model="form.email"
+                    label= "Email"
+                    type= "email"
+                    />
+                    <BaseInput
+                    v-model="form.pseudo"
+                    label= "pseudo"
+                    type= "text"
+                    />
+                    <BaseInput
+                    v-model="form.identifiantAfpa"
+                    label= "identifiantAfpa (9 chiffre)"
+                    type= "Number"
+                    />
+                    <BaseInput
+                    v-model="form.password"
+                    label= "Mot de Passe "
+                    type= "password"
+                    />
+                    <BaseInput
+                    v-model="form.telephone"
+                    label= "n° téléphone (facultative)"
+                    type= "Number"
+                    />
                     <div class="flex items-center justify-around">
-                        <input type="submit" value="Valider" class="px-5 py-1.5 button bg-emerald-500/70 text-slate-100  hover:bg-emerald-800 hover:scale-110 hover:duration-300 duration-300"/>
+                        <input type="submit" value="Valider" class="px-5 py-1.5 button bg-emerald-500/70 text-slate-100  hover:bg-emerald-800 hover:scale-110 hover:duration-300 duration-300"
+                        />
                         <router-link to="/">
                             <input type="reset" value="annuler" class="px-5 py-1.5 button bg-red-500/70 hover:bg-red-600 hover:scale-110 text-slate-100  hover:duration-300 duration-300"/>
                         </router-link>
@@ -19,6 +44,7 @@
 </template>
 
 <script>
+import { mapActions } from 'vuex';
 import BaseInput from '../components/BaseInput.vue' ;
 
 export default {
@@ -28,8 +54,24 @@ export default {
     },
     data() {
         return {
+            form: {
+                email: '',
+                pseudo: '',
+                identifiantAfpa: '',
+                password: '',
+                telephone: '',
+            }
         }
     },
+    methods: {
+        ...mapActions({
+            register: 'auth/register',
+        }),
+        submit(){
+            this.register(this.form)
+        },
+    },
+
 }
 </script>
 

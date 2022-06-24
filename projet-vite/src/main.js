@@ -7,8 +7,9 @@ import App from './App.vue';
 import router from './router';
 import store from './store';
 import './index.css';
+import axios from 'axios';
 
-
+axios.defaults.baseURL = "http://localhost:8000/api" 
 
 library.add(faUser, faCoffee, faClock, faMoon, faSun, faYoutube, faTwitter, faInstagram, faFacebook, faStar, faStarHalf)
 

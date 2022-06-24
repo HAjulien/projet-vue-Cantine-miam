@@ -50,7 +50,7 @@
             <div class="lg:pt-[160px] pt-[130px] ">
 
                 <div class="flex justify-between items-center px-1 lg:pt-16 pt-[40px] pb-4 lg:px-4 text-xs lg:text-base">
-                    <span v-if="critiques.length > 1"  class="py-1 lg:px-3 px-2 bg-sky-500 rounded-3xl text-zinc-100 "> {{critiques.length}} avis</span>
+                    <span v-if="critiques.length >= 1"  class="py-1 lg:px-3 px-2 bg-sky-500 rounded-3xl text-zinc-100 "> {{critiques.length}} avis</span>
                     <span v-else  class="py-1 lg:px-3 px-2 bg-sky-500 rounded-3xl text-zinc-100"> 0 avis</span>
                     <span class="py-1 px-3 bg-emerald-300 rounded-3xl text-zinc-700 ">{{prixAchat}}€ </span> 
                 </div>
