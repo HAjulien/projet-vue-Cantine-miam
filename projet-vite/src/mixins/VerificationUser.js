@@ -94,4 +94,14 @@ export default {
             }
         }
     },
+    watch: {
+        //quand on efface tout le champs newValue est undefined
+        verificationTelephone(newValue) {
+            let valider = document.querySelector(".valider")
+            if(newValue === undefined){
+                valider.classList.remove("bg-sky-600")
+                valider.classList.remove("-z-10")
+            }
+        }
+    }
 };
