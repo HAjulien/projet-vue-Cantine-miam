@@ -6,23 +6,27 @@
             <div class="form" @submit.prevent="submit">    
                 <form class="mt-12" action="">
                     <BaseInput
+                    required
                     v-model="form.email"
                     label= "Email"
                     :indication= verificationEmail
                     type= "email"
                     />
                     <BaseInput
+                    required
                     v-model="form.pseudo"
                     label= "pseudo"
                     type= "text"
                     />
                     <BaseInput
+                    required
                     v-model="form.identifiantAfpa"
                     label= "identifiantAfpa (9 chiffre)"
                     :indication= verificationAfpa
                     type= "Number"
                     />
                     <BaseInput
+                    required
                     v-model="form.password"
                     label= "mot de passe"
                     :indication= verificationPassword
@@ -35,8 +39,8 @@
                     label= "n° téléphone (facultative)"
                     type= "Number"
                     />
-                    <div class="flex items-center justify-around">
-                        <input type="submit" value="Valider" class=" valider px-5 py-1.5 button bg-emerald-500/70 text-slate-100  hover:bg-emerald-800 hover:scale-110 hover:duration-300 duration-300 -z-10 "
+                    <div class="flex items-center justify-around mb-4">
+                        <input type="submit" value="Valider" class=" valider px-5 py-1.5 button bg-emerald-500 text-slate-100  hover:bg-emerald-800 hover:scale-110 hover:duration-300 duration-300 -z-10 "
                         />
                         <router-link to="/">
                             <input type="reset" value="annuler" class="px-5 py-1.5 button bg-red-500/70 hover:bg-red-600 hover:scale-110 text-slate-100  hover:duration-300 duration-300"/>

@@ -28,7 +28,7 @@ export default {
             let identifiantAfpa = this.form.identifiantAfpa;
             let afpaString = identifiantAfpa.toString();
             let valider = document.querySelector(".valider")
-            let onlyNumber = /^\d+$/;
+            var onlyNumber = /^\d+$/;
 
             if(afpaString.length == 0){
                 return
@@ -51,17 +51,17 @@ export default {
             let telephone = this.form.telephone;
             let telephoneString = telephone.toString();
             let valider = document.querySelector(".valider")
-            let onlyNumber = /0[0-9]{9}/;
+            var onlyNumber = /^[0].*/;
 
             if(telephoneString.length == 0){
                 return
             }
             else if(onlyNumber.test(telephoneString) == false){
-                valider.classList.add("bg-sky-600")
-                valider.classList.add("-z-10")
                 return "doit Débuter par 0 "
             }
             else if(telephoneString.length != 10){
+                valider.classList.add("bg-sky-600")
+                valider.classList.add("-z-10")
                 return "10 chiffre uniquement sans espace"
             }
             else {
