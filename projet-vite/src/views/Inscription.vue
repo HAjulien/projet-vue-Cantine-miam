@@ -8,6 +8,7 @@
                     <BaseInput
                     v-model="form.email"
                     label= "Email"
+                    :indication= verificationEmail
                     type= "email"
                     />
                     <BaseInput
@@ -18,6 +19,7 @@
                     <BaseInput
                     v-model="form.identifiantAfpa"
                     label= "identifiantAfpa (9 chiffre)"
+                    :indication= verificationAfpa
                     type= "Number"
                     />
                     <BaseInput
@@ -29,11 +31,12 @@
                     />
                     <BaseInput
                     v-model="form.telephone"
+                    :indication= verificationTelephone
                     label= "n° téléphone (facultative)"
                     type= "Number"
                     />
                     <div class="flex items-center justify-around">
-                        <input type="submit" value="Valider" class=" valider px-5 py-1.5 button bg-emerald-500/70 text-slate-100  hover:bg-emerald-800 hover:scale-110 hover:duration-300 duration-300"
+                        <input type="submit" value="Valider" class=" valider px-5 py-1.5 button bg-emerald-500/70 text-slate-100  hover:bg-emerald-800 hover:scale-110 hover:duration-300 duration-300 -z-10 "
                         />
                         <router-link to="/">
                             <input type="reset" value="annuler" class="px-5 py-1.5 button bg-red-500/70 hover:bg-red-600 hover:scale-110 text-slate-100  hover:duration-300 duration-300"/>
@@ -48,10 +51,10 @@
 <script>
 import { mapActions } from 'vuex';
 import BaseInput from '../components/BaseInput.vue' ;
-import VerificationPassword from '../mixins/VerificationPassword'
+import VerificationUser from '../mixins/VerificationUser'
 
 export default {
-    mixins: [VerificationPassword],
+    mixins: [VerificationUser],
     name:'inscription',
     components:{
         BaseInput,
