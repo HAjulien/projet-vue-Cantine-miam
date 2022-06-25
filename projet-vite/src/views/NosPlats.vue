@@ -49,15 +49,15 @@
             v-if=" total > nombreProduitParPage"
             >            
                 <div>
-                    <a href="#top" @click="premierePage()" v-if="numPageActuel > 1 "> 1ER PAGE </a>
+                    <button @click="premierePage()" v-if="numPageActuel > 1 "> 1ER PAGE </button>
                     <span v-else> </span>
-                    <a href="#top" @click="precedent()" v-if="numPageActuel > 2 "> PRÉCÉDENT </a>
+                    <button @click="precedent()" v-if="numPageActuel > 2 "> PRÉCÉDENT </button>
                     <span v-else> </span>
                 </div>
 
                 <span> {{numPageActuel}} / {{numPageFin}} </span>
 
-                <a href="#top" @click="suivant()"  v-if=" numPageActuel < numPageFin " > SUIVANT </a>
+                <button @click="suivant()"  v-if=" numPageActuel < numPageFin " > SUIVANT </button>
                 <span v-else> </span>
             </div>
         </div>
@@ -130,6 +130,8 @@ export default {
     },
     methods: {
         suivant(){
+            this.$el.scrollTo(0,0)
+            window.scrollTo(0,0);
             //console.log(this.lienAPI + this.pagination["hydra:next"]);
             axios
             .get(this.lienAPI + this.pagination["hydra:next"])
@@ -139,6 +141,8 @@ export default {
             .then (response => (this.pagination = response.data["hydra:view"]))        
         },
         precedent(){
+            this.$el.scrollTo(0,0)
+            window.scrollTo(0,0);
             //console.log(this.lienAPI + this.pagination["hydra:previous"]);
             axios
             .get(this.lienAPI + this.pagination["hydra:previous"])
@@ -148,6 +152,8 @@ export default {
             .then (response => (this.pagination = response.data["hydra:view"]))
         },
             premierePage(){
+            this.$el.scrollTo(0,0)
+            window.scrollTo(0,0);
             //console.log(this.lienAPI + this.pagination["hydra:first"]);
             axios
             .get(this.lienAPI + this.pagination["hydra:first"])
@@ -161,6 +167,8 @@ export default {
             //const select = document.getElementById('category');
             //const value = select.options[select.selectedIndex].value;
             //console.log(this.lienAPI + "/api/produits?page=1&category.id=" + value);
+            this.$el.scrollTo(0,0)
+            window.scrollTo(0,0);
             axios
             .get(this.lienAPI + "/api/produits?page=1&category.id=" + this.selectionCategorie)
             .then (response => (this.produits = response.data["hydra:member"]))

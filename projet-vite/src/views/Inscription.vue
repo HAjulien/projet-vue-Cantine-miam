@@ -27,6 +27,7 @@
                     />
                     <BaseInput
                     required
+
                     v-model="form.password"
                     label= "mot de passe"
                     :indication= verificationPassword

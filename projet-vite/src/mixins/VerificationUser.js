@@ -11,16 +11,13 @@ export default {
                 return
             }
             else if(email.length > 0 && email.length < 10){
-                valider.classList.add("bg-sky-600")
-                valider.classList.add("-z-10")
                 return "Au moins 8 caractères"
             }
             else if(validEmailRegex.test(email) == false){
                 return "format email invalide"
             }
             else {
-                valider.classList.remove("bg-sky-600")
-                valider.classList.remove("-z-10")
+                return
             }
         },
 
@@ -34,16 +31,13 @@ export default {
                 return
             }
             else if(afpaString.length != 9){
-                valider.classList.add("bg-sky-600")
-                valider.classList.add("-z-10")
                 return "9 chiffre uniquement"
             }
             else if(onlyNumber.test(afpaString) == false){
                 return "format invalide"
             }
             else {
-                valider.classList.remove("bg-sky-600")
-                valider.classList.remove("-z-10")
+                return
             }
         },
 
@@ -60,13 +54,10 @@ export default {
                 return "doit Débuter par 0 "
             }
             else if(telephoneString.length != 10){
-                valider.classList.add("bg-sky-600")
-                valider.classList.add("-z-10")
                 return "10 chiffre uniquement sans espace"
             }
             else {
-                valider.classList.remove("bg-sky-600")
-                valider.classList.remove("-z-10")
+                return
             }
         },
 
@@ -79,8 +70,6 @@ export default {
                 return
             }
             else if(password.length > 0 && password.length < 8){
-                valider.classList.add("bg-sky-600")
-                valider.classList.add("-z-10")
                 return "Au moins 8 caractères"
             }else if(password === password.toLowerCase()){
                 return "doit contenir au moins 1 majuscule"
@@ -89,19 +78,17 @@ export default {
                 return "doit contenir au moins 1 chiffre"
             }
             else {
-                valider.classList.remove("bg-sky-600")
-                valider.classList.remove("-z-10")
+
             }
         }
     },
-    watch: {
-        //quand on efface tout le champs newValue est undefined
-        verificationTelephone(newValue) {
-            let valider = document.querySelector(".valider")
-            if(newValue === undefined){
-                valider.classList.remove("bg-sky-600")
-                valider.classList.remove("-z-10")
-            }
-        }
-    }
+    // watch: {
+    //     //quand on efface tout le champs newValue est undefined
+    //     verificationTelephone(newValue) {
+    //         let valider = document.querySelector(".valider")
+    //         if(newValue === undefined){
+
+    //         }
+    //     }
+    // }
 };

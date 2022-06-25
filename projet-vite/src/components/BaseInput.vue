@@ -2,6 +2,7 @@
 <div class="relative">
     <div class="relative">
         <input  name="email" type="text" class="peer h-10 w-[90%] mx-[5%] mb-9 p-3 bg-slate-100/40 border-b-[3px] border-emerald-900 text-gray-900 placeholder-transparent focus:outline-none focus:border-emerald-600 " 
+        required
         :placeholder="label"
         v-bind="$attrs"
         :value="modelValue"
