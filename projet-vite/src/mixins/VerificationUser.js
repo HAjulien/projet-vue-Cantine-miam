@@ -3,7 +3,7 @@ export default {
     computed: {
 
         verificationEmail: function(){
-            var validRegex = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
+            var validEmailRegex = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
             let email = this.form.email;
             let valider = document.querySelector(".valider")
 
@@ -15,7 +15,7 @@ export default {
                 valider.classList.add("-z-10")
                 return "Au moins 8 caractères"
             }
-            else if(validRegex.test(email) == false){
+            else if(validEmailRegex.test(email) == false){
                 return "format email invalide"
             }
             else {
@@ -56,13 +56,13 @@ export default {
             if(telephoneString.length == 0){
                 return
             }
-            else if(telephoneString.length != 10){
+            else if(onlyNumber.test(telephoneString) == false){
                 valider.classList.add("bg-sky-600")
                 valider.classList.add("-z-10")
-                return "10 chiffre uniquement sans espace"
-            }
-            else if(onlyNumber.test(telephoneString) == false){
                 return "doit Débuter par 0 "
+            }
+            else if(telephoneString.length != 10){
+                return "10 chiffre uniquement sans espace"
             }
             else {
                 valider.classList.remove("bg-sky-600")
@@ -78,7 +78,7 @@ export default {
             if(password.length == 0){
                 return
             }
-            else if(password.length > 0 && password.length < 7){
+            else if(password.length > 0 && password.length < 8){
                 valider.classList.add("bg-sky-600")
                 valider.classList.add("-z-10")
                 return "Au moins 8 caractères"
