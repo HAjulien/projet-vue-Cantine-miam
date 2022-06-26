@@ -3,7 +3,6 @@
     <div id="app" class="dark:bg-gray-800 " >    
         <div class="lg:py-12 py-3 px-3 lg:w-[90%] min-h-[200vh] bg-slate-100 mx-auto 
         dark:bg-gray-700  dark:text-gray-100 "
-        id="top"
         >
 
             <h1 class=" py-6 text-center text-3xl" > Nos produits</h1>
@@ -94,9 +93,9 @@ export default {
             numPageActuel: function () {
                 if (this.pagination["@id"] && this.total > ( this.nombreProduitParPage * 100 ) ){ 
                     return parseInt(this.pagination["@id"].substring(19,22))
-                }else if(this.total > ( this.nombreProduitParPage * 10 )){
+                }else if(this.total >= ( this.nombreProduitParPage * 10 )){
                     return parseInt(this.pagination["@id"].substring(19,21))
-                }else if(this.total > ( this.nombreProduitParPage )){
+                }else if(this.total > this.nombreProduitParPage ){
                     return parseInt(this.pagination["@id"].substring(19,20))
                 }else{
                     return 1
