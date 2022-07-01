@@ -15,11 +15,11 @@
                     <label for="category"></label>
                     <select id="category" v-model="selectionCategorie"  @change="categorychoix()" 
                     class="text-gray-700 text-center
-                    py-1.5 rounded px-2
+                    py-1.5 rounded
                     border-2 border-[#A40E4C] outline-0	
                     
                     ">
-                        <option value="">Tous les produits</option>
+                        <option value="">Nos produits</option>
                         <option v-for="(category, indexCate) in categories" :key="indexCate"  :value="category.id">{{category.nom}}</option>
                     </select>
                 </div>
@@ -33,7 +33,7 @@
                     {{((numPageActuel - 1) * nombreProduitParPage) + 1}} - {{total}}
                 </span>
                 <span class=" md:w-32 block px-3
-                md:text-lg text-amber-400 py-1 text-center	
+                md:text-lg text-sm text-amber-400 py-1 text-center	
                 bg-gray-700 rounded-2xl
                 dark:text-gray-700 dark:bg-amber-400
                 ">
@@ -91,15 +91,17 @@ export default {
     computed: {
             // un accesseur (getter) calculé on récupére le nombre de la page et transforme en nombre
             numPageActuel: function () {
-                if (this.pagination["@id"] && this.total > ( this.nombreProduitParPage * 100 ) ){ 
-                    return parseInt(this.pagination["@id"].substring(19,22))
-                }else if(this.total >= ( this.nombreProduitParPage * 10 )){
-                    return parseInt(this.pagination["@id"].substring(19,21))
-                }else if(this.total > this.nombreProduitParPage ){
-                    return parseInt(this.pagination["@id"].substring(19,20))
-                }else{
-                    return 1
-                }
+                if(this.pagination["@id"]){
+                    if (this.total > ( this.nombreProduitParPage * 100 ) ){ 
+                        return parseInt(this.pagination["@id"].substring(19,22))
+                    }else if(this.total >= ( this.nombreProduitParPage * 10 )){
+                        return parseInt(this.pagination["@id"].substring(19,21))
+                    }else if(this.total > this.nombreProduitParPage ){
+                        return parseInt(this.pagination["@id"].substring(19,20))
+                    }else{
+                        return 1
+                    }
+                }    
             },
             numPageFin: function () {
                 if (this.pagination["hydra:last"]){

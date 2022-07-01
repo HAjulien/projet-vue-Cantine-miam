@@ -1,8 +1,7 @@
 <template>
 <div class="relative">
     <div class="relative">
-        <input  name="email" type="text" class="peer h-10 w-[90%] mx-[5%] mb-9 p-3 bg-slate-100/40 border-b-[3px] border-emerald-900 text-gray-900 placeholder-transparent focus:outline-none focus:border-emerald-600 " 
-        required
+        <input  name="email" type="text" class="peer h-10 w-[90%] mx-[5%] mb-9 p-3 bg-slate-100/40 border-b-[3px] border-emerald-900 text-gray-900 placeholder-transparent focus:outline-none focus:border-amber-300 focus:border-b-[4px]  " 
         :placeholder="label"
         v-bind="$attrs"
         :value="modelValue"
@@ -41,6 +40,25 @@ export default {
 
 </script>
 
-<style>
+<style style lang="scss">
+    
+/* Firefox */
+input[type=number] {
+    -moz-appearance: textfield;
+}
+
+/* Chrome */
+input::-webkit-inner-spin-button,
+input::-webkit-outer-spin-button { 
+	-webkit-appearance: none;
+	margin:0;
+}
+
+/* Opéra*/
+input::-o-inner-spin-button,
+input::-o-outer-spin-button { 
+	-o-appearance: none;
+	margin:0
+}
 
 </style>

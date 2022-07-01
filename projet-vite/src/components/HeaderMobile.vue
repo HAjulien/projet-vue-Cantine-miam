@@ -2,14 +2,18 @@
     <div>
 
         <header class=" md:hidden lg:hidden headerMobile flex justify-between items-center px-2 dark:bg-gray-800 bg-gray-300">
-            
             <Logo/>
 
-            <div class=" flex justify-around items-center w-32 mr-3">
+            <div class=" flex justify-around items-center ">
                 <BtnDarkMode/>
-                <button class=" flex items-center ml-6 " @click="toggleModale">
+                
+                <button class=" flex items-center ml-6" @click="toggleModale" v-if=" user == '' ">
                     <fa :style="{height: '30px', color: '#097770', }"   icon='user' />
                 </button>
+                <span class="px-3 text-xs dark:text-slate-200 text-center"  v-if=" user != '' "> bonjour <br> {{user[4]}}</span>
+                <span class=" border rounded border-black dark:border-slate-200 py-0.5  px-1" @click="logout"  v-if=" user != '' ">
+                    <fa :style="{height: '23px', color: '#097770', }"   icon='sign-out' />                    
+                </span>
             </div>
             
         </header>
@@ -32,6 +36,7 @@ export default {
     data() {
         return {
             revele :false,
+            user: "",
         }
     },
 
@@ -44,9 +49,24 @@ export default {
     methods: {
         toggleModale: function(){
             this.revele = !this.revele
+        },
+        logout: function(){
+            this.user ='',
+            localStorage.removeItem('token')
+            localStorage.removeItem('user')
         }
     },
-
+    mounted() {
+        if (localStorage.getItem('user')) {
+            let userLocalStrorage = JSON.parse(localStorage.getItem('user'));
+            let userObjet = JSON.parse(userLocalStrorage.user);
+            //console.log(userObjet);
+            //console.log(Object.values(userObjet));
+            //on transforme l'objet en tableau
+            this.user = Object.values(userObjet);
+            console.log(this.user);
+        }
+    },
 
 }
 </script>

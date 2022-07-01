@@ -1,6 +1,6 @@
 <template>
     <div class="inscription">
-        <div class="portableImage md:hidden">
+        <div class="portableImage md:w-1/2 lg:w-[35vw]">
             <div class="portable  md:hidden"></div>
             <h1 class="text-center mt-20 mb-4 md:my-6" >S' inscrire </h1>
             <div class="form" @submit.prevent="submit">    
@@ -27,7 +27,6 @@
                     />
                     <BaseInput
                     required
-
                     v-model="form.password"
                     label= "mot de passe"
                     :indication= verificationPassword
@@ -41,15 +40,21 @@
                     type= "Number"
                     />
                     <div class="flex items-center justify-around mb-4">
-                        <input type="submit" value="Valider" class=" valider px-5 py-1.5 button bg-emerald-500 text-slate-100  hover:bg-emerald-800 hover:scale-110 hover:duration-300 duration-300 -z-10 "
-                        />
-                        <router-link to="/">
-                            <input type="reset" value="annuler" class="px-5 py-1.5 button bg-red-500/70 hover:bg-red-600 hover:scale-110 text-slate-100  hover:duration-300 duration-300"/>
-                        </router-link>
+                        <input type="submit" value="Valider" class=" valider px-5 py-1.5 button bg-emerald-500 text-slate-100  hover:bg-emerald-800 hover:scale-110 hover:duration-300 duration-300 "/>
+                        <input type="reset" value="annuler" @click="retour" class="px-5 py-1.5 button bg-red-500/70 hover:bg-red-600 hover:scale-110 text-slate-100  hover:duration-300 duration-300"/>
                     </div>
                 </form>    
             </div>
+        </div>
+        <div class="imageDesktop md:ml-[50vw] lg:ml-[35vw]">
+            <p>test</p>
         </div>    
+        <div 
+        class="absolute top-[20%] translate-y-[-50%] left-2 right-2 bg-emerald-400/95 text-center text-2xl z-[150] p-5 rounded-lg"
+        :class="[isLoading ? '' : 'hidden']"
+        >
+            <p>traitement en cours: veillez patientez</p>
+        </div>
     </div>
 </template>
 
@@ -72,16 +77,66 @@ export default {
                 identifiantAfpa: '',
                 password: '',
                 telephone: '',
-            }
+            },
+            isLoading: false,
         }
     },
+        computed: {
+
+        verificationAfpa: function(){
+            let identifiantAfpa = this.form.identifiantAfpa;
+            let afpaString = identifiantAfpa.toString();
+            var onlyNumber = /^\d+$/;
+
+            if(afpaString.length == 0){
+                return
+            }
+            else if(afpaString.length != 9){
+                return "9 chiffre uniquement"
+            }
+            else if(onlyNumber.test(afpaString) == false){
+                return "format invalide"
+            }
+            else {
+                return
+            }
+        },
+
+        verificationTelephone: function(){
+            let telephone = this.form.telephone;
+            let telephoneString = telephone.toString();
+            var onlyNumber = /^[0].*/;
+
+            if(telephoneString.length == 0){
+                return
+            }
+            else if(onlyNumber.test(telephoneString) == false){
+                return "doit Débuter par 0 "
+            }
+            else if(telephoneString.length != 10){
+                return "10 chiffre uniquement sans espace"
+            }
+            else {
+                return
+            }
+        },
+
+    },
+
     methods: {
         ...mapActions({
             register: 'auth/register',
+            login: 'auth/login',
         }),
-        submit(){
-            this.register(this.form)
+        async submit(){
+            this.isLoading = true
+            await this.register(this.form)
+            await this.login(this.form)
+            location.href = '/';
         },
+        retour(){
+            this.$router.go(-1)
+        }
     },
 
 }
@@ -91,10 +146,11 @@ export default {
 
 
     .inscription, .portableImage{
-        background-image: linear-gradient(to left bottom, #fcf7ff, #faf3fb, #f8eff7, #f5ecf2, #f3e8ee);
         @include absolutePosition(0, 0, 0, 0);
         z-index: 100;
-    }
+        background-image: linear-gradient(to left bottom, #f9f871, #86d683, #26a992, #127884, #2f4858);
+        }
+        
     .portableImage{
         background-image: url("https://c8.alamy.com/compfr/2cfdepn/vue-de-dessus-d-un-delicieux-plat-appetissant-avec-du-poisson-et-des-oignons-bagues-garnies-de-feuilles-de-basilic-frais-et-de-toasts-servis-sur-plaque-blanche-2cfdepn.jpg");
         background-size: cover;
@@ -193,4 +249,36 @@ export default {
             calc( 100% - var(--bord)) 100%, 
             0 100%  );
     }
+
+
+    @media screen and(min-width: 768px) {
+
+
+        .portableImage{
+        background-image: none;
+        }
+        .form{
+            background: none;
+            -webkit-backdrop-filter: none;
+            backdrop-filter: none;
+            max-width: 420px;
+            border: 5px solid rgb(255, 255, 255);
+        }
+        .imageDesktop{
+            position: relative;
+            min-height: 100vh;
+            background-image: url("https://th.bing.com/th/id/R.bbb63a5450b8de5ffe6c6abedeb2f7c4?rik=AoKi58eVPTf12g&pid=ImgRaw&r=0");
+            background-size: cover;
+            background-position: center;
+            clip-path: polygon(100% 0%, 100% 56%, 100% 100%, 12% 100%, 0% 50%, 12% 0%);
+
+        }
+        .imageDesktop::before{
+            content: '';
+            @include absolutePosition(0, 0, 0, 0);
+            background-color: rgba(0,0,0,0.5);
+
+        }
+    }
+    
 </style>

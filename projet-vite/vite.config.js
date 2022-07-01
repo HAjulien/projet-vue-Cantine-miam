@@ -8,7 +8,7 @@ export default defineConfig({
     preprocessorOptions: {
       scss: {
         additionalData: `@import "./src/scss/_variables";
-                         @import "./src/scss/_mixins";       
+                        @import "./src/scss/_mixins";       
         `
       }
     }

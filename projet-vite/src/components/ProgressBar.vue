@@ -6,7 +6,7 @@
         v-if="progress > 0"
         >
 
-        <span :class="(progress > 50) ? 'white' : '' "> {{ progress }}% </span>
+        <span :class="(progress > 50) ? 'white' : '' " > {{ progress }}% </span>
         
     </div>
 
