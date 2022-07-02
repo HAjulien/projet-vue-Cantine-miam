@@ -10,11 +10,21 @@
           </li>
         </ul>
       </nav>
-      <div class=" flex justify-around items-center w-32 mr-3">
+      <div class=" flex justify-around items-center mr-3">
           <BtnDarkMode/>
-          <button class=" flex items-center ml-6 ">
+          <button class=" flex items-center ml-6 " v-if=" user == '' ">
               <fa :style="{height: '35px', color: '#cda673', }"   icon='user' />
           </button>
+          <span class="px-3 text-slate-200 text-center mx-4 border-2 border-amber-400 rounded cursor-pointer md:text-xs md:py-1 lg:text-base 
+          hover:bg-amber-400 hover:text-slate-700 duration-300	hover:duration-300"
+          v-if=" user != '' ">
+          bonjour  {{user[4]}}
+          </span>
+          <span class=" border rounded border-slade-100 border-2 dark:border-slate-200 cursor-pointer py-0.5 px-1.5 
+          hover:bg-amber-400 duration-300	hover:duration-300"
+          @click="logout"  v-if=" user != '' ">
+              <fa :style="{height: '23px', color: '#097770', }"   icon='sign-out' />                    
+          </span>
       </div>
 
   </header> 
@@ -23,10 +33,11 @@
 <script>
 import BtnDarkMode from './BntDarkMode.vue';
 import  Menu from '../mixins/Menu';
+import Login_logout from '../mixins/Login_logout';
 
 export default {
   name:'HeaderDesktop',
-  mixins: [Menu],
+  mixins: [Menu, Login_logout], 
   components:{
     BtnDarkMode,
   },
@@ -34,6 +45,11 @@ export default {
     id:Number,
     chemin:String,
     page:String,
+  },
+  data() {
+      return {
+          revele :false,
+      }
   },
 }
 </script>
@@ -112,12 +128,21 @@ li:hover::after {
  /* on change les tailles des case du menu */
 /* petites case pour accueil/cafe/equipe/contact */
   li:nth-child(odd){
-      width: 10vw;
+      width: 8vw;
   }
 /* grande cases pour les autres */
   li:nth-child(even){
-      width: 15vw;
+      width: 13vw;
   }
+  li{
+    font-size: 0.9rem;
+  }
+  li:hover::after {
+    transform: scale(0);
+  }
+.router-link:hover {
+  transform: scale(0.9);
+}
 }
   
 </style>

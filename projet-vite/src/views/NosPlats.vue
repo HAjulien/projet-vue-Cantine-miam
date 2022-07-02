@@ -4,8 +4,8 @@
         <div class="lg:py-12 py-3 px-3 lg:w-[90%] min-h-[200vh] bg-slate-100 mx-auto 
         dark:bg-gray-700  dark:text-gray-100 "
         >
-
             <h1 class=" py-6 text-center text-3xl" > Nos produits</h1>
+            
             <div class="flex items-center md:justify-between justify-around 
                         h-20 md:w-[95%] mx-auto lg:mb-12 md: md:px-12
                         border-2 border-[#A40E4C] rounded

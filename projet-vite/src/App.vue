@@ -163,7 +163,7 @@ export default {
 
     .headerDesktop {
     position: fixed;
-    height: 40px;
+    height: 45px;
     width: 100vw;
     transition: transform 200ms linear;
     z-index: 100;

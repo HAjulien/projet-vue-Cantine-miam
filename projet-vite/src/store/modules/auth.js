@@ -36,11 +36,12 @@ export default {
 
     actions: {
         async login({dispatch}, credentials){
-
             let response = await axios.post('/login', credentials)
             .catch((e)=>{
                 console.log(e);
                 alert("identifiants invalides")
+                location.reload()
+
 
             })
 

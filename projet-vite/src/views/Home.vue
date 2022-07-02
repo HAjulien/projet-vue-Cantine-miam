@@ -1,14 +1,7 @@
 /<template>
     <div id="app" class="dark:bg-gray-800"> 
         <BannerDesktop/>
-<Suspense>
-    <template #default>
         <Carousel/>
-    </template>
-    <template #fallback>
-        Loading...
-    </template>
-</Suspense>
         <Articles/>
     </div>
 

@@ -2,7 +2,7 @@
     <div class="inscription">
         <div class="portableImage md:w-1/2 lg:w-[35vw]">
             <div class="portable  md:hidden"></div>
-            <h1 class="text-center mt-20 mb-4 md:my-6" >S' inscrire </h1>
+            <h1 class="text-center mt-20 mb-4 md:my-6" >Inscription </h1>
             <div class="form" @submit.prevent="submit">    
                 <form class="mt-12" action="">
                     <BaseInput
@@ -47,7 +47,15 @@
             </div>
         </div>
         <div class="imageDesktop md:ml-[50vw] lg:ml-[35vw]">
-            <p>test</p>
+            <div class="information text-center">
+                <h1 class=" my-4 "> Avantages</h1>
+                <ul class=" mx-4 min-h-[250px] flex flex-col justify-around  text-slate-200 font-bold">
+                    <li>Accumuler des points de fidélités pour acheter des plats</li>
+                    <li>1€ = 2 points de fidélités</li>
+                    <li>Commander sur le site pour récupérer votre commande</li>
+                    <li>Donner votre avis sur nos plats </li>
+                </ul>
+            </div>
         </div>    
         <div 
         class="absolute top-[20%] translate-y-[-50%] left-2 right-2 bg-emerald-400/95 text-center text-2xl z-[150] p-5 rounded-lg"
@@ -278,6 +286,23 @@ export default {
             @include absolutePosition(0, 0, 0, 0);
             background-color: rgba(0,0,0,0.5);
 
+        }
+        .information{
+            @include absolutePosition(1%, 5%, 50%, 25%);
+            background: rgba(128,208,147,0.2);
+            -webkit-backdrop-filter: blur(3px);
+            backdrop-filter: blur(3px);
+            border: 2px solid rgba(24, 37, 27, 0.2);
+            border-radius: 6px;
+
+        }
+        ul li{
+            padding: 5px;
+            margin: 10px;
+            background: rgba(158, 118, 130, 0.9);
+            color: #E4FDE1;
+            border: 3px solid rgba(255, 255, 255, 0.7);
+            border-radius: 8px;
         }
     }
     
