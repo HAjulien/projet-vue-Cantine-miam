@@ -1,6 +1,6 @@
 <template>
     <div>
-        <p class="pt-32">test detail plat</p>
+        <p class="lg:pt-32">test detail plat</p>
         <h1> {{produit.nom}} </h1>
         <p  v-for="(critique, index) in produit.critiques" :key="index">
                 {{critique.utilisateur.pseudo}}
@@ -8,6 +8,7 @@
                 {{critique.createAt.substring(0 , 10)}}
                 {{critique.createAt.substring(11 , 19)}}
         </p>
+                <span>{{id}}</span>
     </div>
 </template>
 
@@ -28,8 +29,6 @@ export default {
         .get("https://cantinemiam.herokuapp.com/api/produits/" + this.id )
         //.then (response => (this.produit= response))
         .then(response => (this.produit = response.data));
-
-        console.log(this.produit);
     }, 
 
 }
