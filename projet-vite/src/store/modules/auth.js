@@ -36,10 +36,10 @@ export default {
 
     actions: {
         async login({dispatch}, credentials){
-            let response = await axios.post('/login', credentials)
+            let response = await axios.post('https://cantinemiam.herokuapp.com/api/login', credentials)
             .catch((e)=>{
                 console.log(e);
-                alert("identifiants invalides")
+                //alert("identifiants invalides")
                 location.reload()
 
 
@@ -57,7 +57,7 @@ export default {
             }
 
             try {
-                let response = await axios.get('/profile', {
+                let response = await axios.get('https://cantinemiam.herokuapp.com/api/profile', {
 
                     headers: {
                         'Authorization': 'Bearer ' + token
@@ -75,7 +75,7 @@ export default {
         },
 
         async register(_, form){
-            await axios.post('/register', form)
+            await axios.post('https://cantinemiam.herokuapp.com/api/register', form)
             .catch((e)=>{
                 console.log(e);
             })
