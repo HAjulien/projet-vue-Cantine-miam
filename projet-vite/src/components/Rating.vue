@@ -9,30 +9,38 @@
     </div>
 
     <transition  name="formulaire" mode="out-in" >
-      <form action="" v-show="isActive"  method="">
+      <form action="" v-show="isActive"  @submit.prevent="submit"  method="">
         <p ref="avis" class="avis" ></p>
         <input type="hidden" name="note" id="note" v-model="note"> 
-        <textarea  name="critique" id="critique" cols="30" rows="8" placeholder="Votre avis nous intéresse "></textarea>
+        <textarea  name="critique" id="critique" v-model="contenu" cols="30" rows="8" placeholder="Votre avis nous intéresse "> </textarea>
         <div class="flex item-center justify-center">
           <button type="submit" class="px-3"> envoyer</button>
           <button type="reset" @click="annuler()" > annuler</button>
         </div>
       </form> 
     </transition>
+      <p>{{id}} et {{user[0]}} et {{note}} et {{contenu}} </p>
 
   </div>
 </template>
 
 <script>
+import Login_logout from '../mixins/Login_logout';
+import axios from 'axios';
+
 export default {
   name: 'Rating',
-  props: ['grade', 'maxHalfStars' , ],
+  mixins: [Login_logout], 
+  props: ['grade', 'maxHalfStars' ],
 
   data() {
     return {
       halfStars : this.grade,
       note:0,
       isActive: false,
+      id:this.$route.params.id,
+      contenu:""
+
     }
   },
 
@@ -42,6 +50,7 @@ export default {
       if(typeof halfStar === 'number' && halfStar <= this.maxHalfStars && halfStar >= 0){
         this.halfStars = this.halfStars === halfStar ? halfStar - 1 : halfStar
         this.note = this.halfStars *0.5
+        console.log(this.user[0]);
       }
     },
     comment(comment, color){
@@ -51,6 +60,27 @@ export default {
     annuler(){
       this.isActive = false;
       this.halfStars = 0;
+    },
+    submit(){
+      console.log(this.token);
+      axios.post('https://cantinemiam.herokuapp.com/api/critiques', {
+        note: this.note,
+        contenu: this.contenu,
+        produit: "/api/produits/" + this.id,
+      },{
+        headers: {
+          'Authorization': 'Bearer ' + this.token
+        }
+      })
+      .then(function (response) {
+        console.log(response);
+        location.reload();
+
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
+      
     }
   },
 

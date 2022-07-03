@@ -3,6 +3,7 @@ export default {
     data() {
         return {
             user: "",
+            token: ""
         }
     },
 
@@ -25,6 +26,10 @@ export default {
             //on transforme l'objet en tableau
             this.user = Object.values(userObjet);
             console.log(this.user);
+        }
+        if (localStorage.getItem('token')) {
+            this.token = localStorage.getItem('token');
+            //console.log(this.token);
         }
     },
 }

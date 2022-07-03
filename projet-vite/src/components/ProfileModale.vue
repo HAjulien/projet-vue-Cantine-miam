@@ -3,8 +3,8 @@
 
         <div class="overlay" v-on:click="toggleModale"></div>
 
-        <div class="modale card dark:bg-gray-700 rounded-xl lg:hidden ">
-            <div class="relative bg-gray-200 rounded-xl dark:bg-gray-700">
+        <div class="modale card rounded-xl lg:hidden ">
+            <div class="relative bg-gray-300/70 rounded-xl dark:bg-gray-700">
                 <div class="flex justify-end p-2">
                     <button   v-on:click="toggleModale" type="button" class=" close z-10 text-gray-200 bg-red-500 hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm p-1.5 ml-auto inline-flex items-center dark:hover:bg-gray-800 dark:hover:text-white" data-modal-toggle="authentication-modal">
                         <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd"></path></svg>  
@@ -13,27 +13,37 @@
 
                 <form class="px-6 pb-4 space-y-6 sm:pb-6 xl:pb-8 mt-[250px]" action="POST"  @submit.prevent="submit">
                     <div>
-                        <label for="email" class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300"> email </label>
-                        <input type="email" name="email" id="email" class="bg-white border border-gray-300 text-emerald-800 text-sm rounded-lg focus:ring-blue-500 focus:outline-amber-400 block w-full p-2.5 dark:bg-white dark:border-gray-500 dark:placeholder-gray-400 " placeholder="name@company.com"
-                        v-model="form.email"
-                        >
-                        <span v-if="verificationEmail" class="text-gray-100 bg-red-500 px-3 rounded transition-all text-sm"> {{verificationEmail}} </span>
+                        <label for="email" class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">Email</label>
+                        <div class="flex  justify-center pr-2 items-center pr-2 rounded-lg bg-white text-emerald-800 focus-within:border-amber-400 focus-within:border-2">
+                            <span class="w-[45px] py-2 pl-[12px] border-r-2 rounded-tl-[6.5px] bg-gray-600 rounded-bl-[6.5px] border-black text-gray-200 dark:bg-white dark:text-gray-600">
+                                <fa :style="{ height: '20px'}" icon="user" />
+                            </span>
+                            <input type="email" name="email" id="email" placeholder="email@gmail.com" class="ml-[14px] w-[60%] text-sm py-2.5 grow outline-0"
+                            required
+                            v-model="form.email"
+                            >
+                        </div>
+                        <span v-if="verificationEmail" class="text-gray-100 bg-red-500 px-3 rounded transition-all text-sm"> {{verificationEmail}} 
+                        </span>
                     </div>
 
                     <div>
-                            <label for="password" class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">Mot de passe</label>
-                            <div class="flex justify-between border px-2 rounded-lg bg-white text-emerald-800 focus-within:border-amber-400 focus-within:border-2">
-                                <input :type="passwordTypeField" name="password" id="password" placeholder="••••••••" class=" text-sm  py-2.5  outline-0"
-                                required
-                                v-model="form.password"
-                                >
-                                <button @click.prevent="changeVisibilite(), isHidden = !isHidden " type="password" v-if="isHidden == true">
-                                    <fa :style="{ height: '20px'}" icon="eye-slash" />
-                                </button>
-                                <button @click.prevent="changeVisibilite(), isHidden = !isHidden" type="password" v-if="isHidden == false ">
-                                    <fa :style="{ height: '20px'}" icon="eye" />
-                                </button>
-                            </div>
+                        <label for="password" class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">Mot de passe</label>
+                        <div class="flex justify-center pr-2 items-center  pr-2 rounded-lg bg-white text-emerald-800 focus-within:border-amber-400 focus-within:border-2">
+                            <span class="w-[45px] py-2 pl-[12px] border-r-2 rounded-tl-[6.5px] rounded-bl-[6.5px] border-black text-gray-200 bg-gray-600 dark:bg-white dark:text-gray-600">
+                                <fa :style="{ height: '20px'}" icon="lock" />
+                            </span>
+                            <input :type="passwordTypeField" name="password" id="password" placeholder="••••••••" class="ml-[14px] w-[60%] text-sm py-2.5 grow outline-0"
+                            required
+                            v-model="form.password"
+                            >
+                            <button @click.prevent="changeVisibilite(), isHidden = !isHidden " type="password" v-if="isHidden == true">
+                                <fa :style="{ height: '20px'}" icon="eye-slash" />
+                            </button>
+                            <button @click.prevent="changeVisibilite(), isHidden = !isHidden" type="password" v-if="isHidden == false ">
+                                <fa :style="{ height: '20px'}" icon="eye" />
+                            </button>
+                        </div>
                         <span v-if="verificationPassword" class=" text-gray-100 bg-red-500 px-1  rounded transition-all text-sm"> {{verificationPassword}} </span>
                     </div>
 
@@ -110,21 +120,14 @@ export default {
     display: flex;
     justify-content: center;
     align-items: center;
-    position: fixed;
-    top: 0;
-    left: 0;
-    bottom: 0;
-    right: 0;
+    @include absolutePosition(0, 0, 0, 0);
     z-index: 20;
 }
 
 .overlay {
     background-color: rgba(0, 0, 0, 0.5);
-    position: fixed;
-    top: 0;
-    left: 0;
-    bottom: 0;
-    right: 0;
+    @include absolutePosition(0, 0, 0, 0);
+
 }
 
 .modale{
