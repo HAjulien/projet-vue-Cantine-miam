@@ -98,11 +98,17 @@ export default {
             login: 'auth/login',
         }),
         async submit(){
-            this.isAttempt = true
-            await this.login(this.form)
-            this.isAttempt = false
-            this.isSuccess = true
-            location.reload()
+            try {
+                this.isAttempt = true
+                await this.login(this.form)
+                this.isAttempt = false
+                this.isSuccess = true
+                location.reload()
+            }
+            catch (e) {
+                this.isAttempt = false
+
+            }
         },
         changeVisibilite(){
             this.passwordTypeField = this.passwordTypeField === "password" ? "text": "password";

@@ -2,7 +2,7 @@
 <div class="xl:w-[80%] mt-6 m-auto">
 
     <div class=" md:flex w-[100%] m-auto">
-        <Feature v-for="(feature, index) in features" :key="index" :title="feature.title" :image="feature.image" :paragraphe="feature.paragraphe" :button="feature.buton" :chemin="feature.chemin" />
+        <Feature v-for="(feature, index) in features" :key="index" :title="feature.title" :image="feature.image" :paragraphe="feature.paragraphe" :button="feature.buton" :chemin="feature.chemin" :altImage="feature.altImage" />
     </div>
     
     <div class="sm:flex sm:flex-col md:flex-row article lg:h-[400px] rounded-xl shadow-md m-2  border-2 p-4 mb-8  bg-gray-100 dark:bg-gray-600 text-lg  hover:border-4 hover:border-amber-300 ">

@@ -27,7 +27,7 @@ export default {
             var hasNumber = /\d/; 
             
             if(password.length == 0){
-                return
+                return "Au moins 1 MAJ, 1 MIN,1 chiffre"
             }
             else if(password.length > 0 && password.length < 8){
                 return "Au moins 8 caractères"

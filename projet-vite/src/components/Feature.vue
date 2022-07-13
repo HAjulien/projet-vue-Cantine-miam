@@ -9,7 +9,7 @@
         <h1 class=" text-2xl flex items-center justify-center text-center md:h-24 font-extrabold my-2 dark:text-black">{{title}} </h1>
 
         <!-- <img v-bind:src="'src/assets/images/' + image" class="mb-3 rounded-xl"/> -->
-        <img :src="image" alt="" class="md:h-56 mx-auto rounded-lg "  >
+        <img :src="image" :alt="altImage" class="md:h-56 mx-auto rounded-lg "  >
 
         <p class="text-gray-900 mb-6 mt-8  indent-5 dark:text-slate-100" v-html="paragraphe.substring(0,8000)+'...'"></p>
 
@@ -37,6 +37,7 @@ export default {
 
     title:String,
     image:String,
+    altImage:String,
     paragraphe:String,
     button:String,
     chemin:String,

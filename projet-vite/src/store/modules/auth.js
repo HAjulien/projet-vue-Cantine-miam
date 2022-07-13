@@ -46,7 +46,7 @@ export default {
             .catch((e)=>{
                 console.log(e);
                 alert("identifiants invalides")
-                location.reload()
+                //location.reload()
 
 
             })
@@ -73,8 +73,8 @@ export default {
                 //commit('setUser', JSON.parse(response.data))                
 
             } catch(e){
-                commit('setUser', "erreur")
-                commit('setToken', "erreur")
+                commit('setUser', "")
+                commit('setToken', "")
                 
                 
             }
