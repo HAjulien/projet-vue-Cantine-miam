@@ -35,7 +35,7 @@
                 <span  class="text-amber-300" v-if="moyenneNote - noteMoyenneTronque >= 0.5 " >
                 <fa :style="{ height: '23px'}" icon="star-half" />
                 </span>
-                <span class="text-xs block"> {{moyenneNote}} / 5 </span>
+                <span class="text-xs block"> {{noteMoyenneArrondie}} / 5 </span>
 
             </h3>
 
@@ -91,6 +91,21 @@ export default {
     computed:{
         noteMoyenneTronque: function(){
             return Math.floor(this.moyenneNote)
+        },
+        noteMoyenneArrondie: function(){
+            return Math.round(this.moyenneNote * 10) /10
+        },
+    },
+    // on reinitialise pour modifier note et etoile lors d'une requette axios
+    updated() {
+        this.critiques.note = null
+        this.moyenneNote = 0
+        for(let i = 0; i < this.critiques.length; i++){
+            if (this.critiques[i].note )
+            {
+                this.moyenneNote += this.critiques[i].note / this.critiques.length
+            }
+            // console.log(this.critiques[i].note);
         }
     }
 

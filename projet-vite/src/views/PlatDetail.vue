@@ -7,35 +7,44 @@
         > {{produit.nom}} </h1>
 
         <div class="flex items-center justify-around my-4" >
-            <p  v-if="nbMaxCritiques > 0"  class=" text-4xl text-amber-400"  >
-                {{moyenneNote}} <fa :style="{ height: '33px'}" icon="star" />
+            <p  v-if="nbMaxCritiques > 0"  class=" text-4xl text-amber-400 flex grow"  >
+                {{noteMoyenneArrondie}} <fa :style="{ height: '33px'}" icon="star" />
                 
             </p> 
-            <ul v-if="nbMaxCritiques > 0">
-                <li class="jauge"
-                :style="{width: `calc(( ${note0} / ${nbMaxCritiques} ) * 180px)`}">
-                
-                {{note0}}
-                </li> 
-                <li class="jauge"
-                :style="{width: `calc(( ${note1} / ${nbMaxCritiques} ) * 180px)`}">
-                
-                    {{note1}} 
-                </li> 
-                <li class="jauge"
-                :style="{width: `calc(( ${note2} / ${nbMaxCritiques} ) * 180px)`}">
-                    {{note2}}  
-                </li> 
-                <li class="jauge"
-                :style="{width: `calc(( ${note3} / ${nbMaxCritiques} ) * 180px)`}">
-                    {{note3}}  
-                </li> 
-                <li class="jauge"
-                :style="{width: `calc(( ${note4} / ${nbMaxCritiques} ) * 180px)`}"
-                >
-                    {{note4}}  
-                </li> 
-            </ul>
+            <div class="flex grow">
+                <ul v-if="nbMaxCritiques > 0">
+                    <li class="jauge"
+                    :style="{width: `calc(( ${note0} / ${nbMaxCritiques} ) * 180px)`}">
+                    
+                    {{note0}}
+                    </li> 
+                    <li class="jauge"
+                    :style="{width: `calc(( ${note1} / ${nbMaxCritiques} ) * 180px)`}">
+                    
+                        {{note1}} 
+                    </li> 
+                    <li class="jauge"
+                    :style="{width: `calc(( ${note2} / ${nbMaxCritiques} ) * 180px)`}">
+                        {{note2}}  
+                    </li> 
+                    <li class="jauge"
+                    :style="{width: `calc(( ${note3} / ${nbMaxCritiques} ) * 180px)`}">
+                        {{note3}}  
+                    </li> 
+                    <li class="jauge"
+                    :style="{width: `calc(( ${note4} / ${nbMaxCritiques} ) * 180px)`}"
+                    >
+                        {{note4}}  
+                    </li> 
+                </ul>
+                <ul>
+                    <li class="jaugeValeur">0 à 1</li>
+                    <li class="jaugeValeur">1 à 2</li>
+                    <li class="jaugeValeur">2 à 3</li>
+                    <li class="jaugeValeur">3 à 4</li>
+                    <li class="jaugeValeur">4 à 5</li>
+                </ul>
+            </div>
         </div>
         <article class="lg:w-[80%] mt-8 m-auto lg:flex lg:flex-row p-2 border-2 rounded-lg"
         :style="{border:`3px solid ${produit.category.couleur}` }"
@@ -141,6 +150,11 @@ export default {
         this.nbMaxCritiques = Math.max(this.note0, this.note1, this.note2, this.note3, this.note4)
 
     },
+    computed:{
+    noteMoyenneArrondie: function(){
+        return Math.round(this.moyenneNote * 10) /10
+    },
+},
 
 
     
@@ -162,7 +176,6 @@ export default {
         font-size: 22px;
         font-weight: 700;
         color: $principale;
-
     }
     .jauge::before{
         content: '';
@@ -174,7 +187,17 @@ export default {
         border-radius: 6px;
         width: 180px;
         z-index: -1;
-
+    }
+    .jaugeValeur{
+        position: relative;
+        text-decoration: none;
+        margin: 8px 0;
+        margin-left: 5px;
+        height: 30px;
+        font-size: 15px;
+        font-size: 20px;
+        font-weight: 600;
+        color: $green;
     }
 
 </style>

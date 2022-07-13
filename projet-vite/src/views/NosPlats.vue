@@ -139,7 +139,8 @@ export default {
             .then (response => (this.produits = response.data["hydra:member"]))
             axios
             .get(this.lienAPI + this.pagination["hydra:next"])
-            .then (response => (this.pagination = response.data["hydra:view"]))        
+            .then (response => (this.pagination = response.data["hydra:view"]))
+            
         },
         precedent(){
             this.$el.scrollTo(0,0)
