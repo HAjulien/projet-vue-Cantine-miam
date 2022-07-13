@@ -19,7 +19,6 @@
         </div>
       </form> 
     </transition>
-      <p>{{id}} et {{user[0]}} et {{note}} et {{contenu}} </p>
 
   </div>
 </template>
@@ -62,7 +61,6 @@ export default {
       this.halfStars = 0;
     },
     submit(){
-      console.log(this.token);
       axios.post('https://cantinemiam.herokuapp.com/api/critiques', {
         note: this.note,
         contenu: this.contenu,

@@ -6,13 +6,12 @@
         :style="{textDecorationColor: `${produit.category.couleur}`, color: `${produit.category.couleur}`}"
         > {{produit.nom}} </h1>
 
-        <div class="flex items-center justify-around my-4" >
-            <p  v-if="nbMaxCritiques > 0"  class=" text-4xl text-amber-400 flex grow"  >
-                {{noteMoyenneArrondie}} <fa :style="{ height: '33px'}" icon="star" />
-                
-            </p> 
-            <div class="flex grow">
-                <ul v-if="nbMaxCritiques > 0">
+        <div class="flex items-center justify-around my-4 m-auto" >
+            <p  v-if="nbMaxCritiques > 0"  class=" text-4xl text-amber-400 flex grow justify-center"  >
+                {{noteMoyenneArrondie}} <fa :style="{ height: '33px'}" icon="star" />           
+            </p>
+            <div class="flex justify-center grow"  v-if="nbMaxCritiques > 0">
+                <ul>
                     <li class="jauge"
                     :style="{width: `calc(( ${note0} / ${nbMaxCritiques} ) * 180px)`}">
                     
@@ -46,23 +45,29 @@
                 </ul>
             </div>
         </div>
-        <article class="lg:w-[80%] mt-8 m-auto lg:flex lg:flex-row p-2 border-2 rounded-lg"
+        <article class="lg:w-[80%] mt-8 lg:flex lg:flex-row mx-2 lg:m-auto border-2 rounded-lg"
         :style="{border:`3px solid ${produit.category.couleur}` }"
         >
-                <img :src="produit.image" :alt="produit.altImage" class="h-64 w-72 m-auto rounded-lg" >
+                <img :src="produit.image" :alt="produit.altImage" class="h-64 w-72 m-auto lg:m-2 rounded-lg" >
                 <p v-html=" produit.description"
                 class="p-4"
                 ></p>
         </article>
 
+        <div v-if=" user[0] && !userCritique[0]" class=" py-3 justify-center items-center"> 
+            <p class=" text-center text-2xl ">Note:</p>
+            <Rating :grade="0" :maxHalfStars="10"/>
+        </div>  
         <h2  class="lg:mt-[65px] text-center text-3xl  font-bold my-8"> Les critiques ({{ produit.critiques.length}}) </h2>
-        <article class="lg:w-[80%] m-auto mb-12" v-for="(critique, index) in produit.critiques" :key="index">
-                <p class=" flex justify-between px-8">
-                    <span>{{critique.utilisateur.pseudo}}</span>
+        <article class="lg:w-[80%] mx-2 lg:m-auto lg:mb-6 mb-12 border border-black rounded" v-for="(critique, index) in produit.critiques" :key="index" >
+                <p  class=" flex justify-between px-2 lg:px-8 py-4 border-b-2 border-black"
+
+                >
+                    <span class="font-bold">{{critique.utilisateur.pseudo}}</span>
                     <span> le {{critique.createAt.substring(0 , 10)}} à {{critique.createAt.substring(11 , 16)}}</span>
                 </p>
-                <p class=" min-h-[150px] lg:flex items-center my-4">
-                    <span  class="lg:p-16 p-4  text-4xl block text-center  font-bold"
+                <p class="  lg:flex items-center m-2">
+                    <span  class="lg:p-12  text-4xl block text-center  font-bold"
                 :class="critique.note < 2 ? 'text-red-500' : critique.note >=4 ? 'text-emerald-500' : 'text-amber-500'"
                     >{{critique.note}}
                     </span>
@@ -71,18 +76,6 @@
         </article>
 
 
-
-
-
-                <span>{{id}} ET {{user[0]}}</span>
-                <!-- <p> {{critique[0]}}</p>                 -->
-                <div v-if="critique[0]"> 
-                    <p>id du commentaire est {{critique[0].id}} c'est dynamique je peux le cibler pour modifier ou le supprimer </p>
-                    {{critique[0].note}}  {{critique[0].contenu}}
-                </div>                
-                <div v-if="!critique[0] && user[0]"> 
-                    <Rating :grade="0" :maxHalfStars="10"/>
-                </div>     
 
     </div>
 </template>
@@ -101,7 +94,7 @@ export default {
         return {
             id:this.$route.params.id,
             produit: [],
-            critique: [],
+            userCritique: [],
             moyenneNote: 0,
             note0: 0,
             note1: 0,
@@ -121,10 +114,10 @@ export default {
     mounted(){
         if(this.user[0]){
             axios
-            .get("https://cantinemiam.herokuapp.com/critiques?page=1&produit=" + this.id + "&utilisateur.id=" + this.user[0] )
-            .then(response => (this.critique = response.data["hydra:member"]));
-            console.log(this.critique);
-            console.log(this.user[0]);
+            .get("https://cantinemiam.herokuapp.com/api/critiques?page=1&produit=" + this.id + "&utilisateur.id=" + this.user[0] )
+            .then(response => (this.userCritique = response.data["hydra:member"]));
+            console.log(this.userCritique);
+            //console.log(this.user[0]);
         }
 
         for(let i = 0; i <  this.produit.critiques.length; i++){
