@@ -73,12 +73,17 @@
 
                     <span> le {{critique.createAt.substring(0 , 10)}} à {{critique.createAt.substring(11 , 16)}}</span>
                 </p>
-                <p class="  lg:flex items-center m-2">
+                <p class="  lg:flex items-center justify-between m-2">
                     <span  class="lg:p-12  text-4xl block text-center  font-bold"
                 :class="critique.note < 2 ? 'text-red-500' : critique.note >=4 ? 'text-emerald-500' : 'text-amber-500'"
                     >{{critique.note}}
                     </span>
                     <span class="p-4">{{critique.contenu}}</span>
+                    <span class="block my-2 text-right  lg:mx-4 "
+                    v-if=" user[0]  == critique.utilisateur.id"
+                    >
+                    <fa :style="{ height: '28px'}" class="cursor-pointer text-red-600" icon="trash" @click="avis()" />
+                    </span>
                 </p>
         </article>
 
@@ -153,13 +158,18 @@ export default {
     computed:{
     noteMoyenneArrondie: function(){
         return Math.round(this.moyenneNote * 10) /10
+        }
     },
-
-},
-
-
-    
-
+    methods: {
+        avis(){
+            axios
+            .delete(`/critiques/${this.id}`, {
+                headers: {
+                    'Authorization': 'Bearer ' + this.token
+                }
+            })
+        }
+    }
 }
 </script>
 
