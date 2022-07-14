@@ -162,12 +162,8 @@ export default {
     },
     methods: {
         avis(){
-            axios
-            .delete(`/critiques/${this.id}`, {
-                headers: {
-                    'Authorization': 'Bearer ' + this.token
-                }
-            })
+            console.log(`/critiques/${this.id}`);
+            
         }
     }
 }
