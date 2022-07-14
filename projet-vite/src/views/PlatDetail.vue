@@ -162,8 +162,21 @@ export default {
     },
     methods: {
         avis(){
-            console.log(`/critiques/${this.id}`);
-            
+            //console.log(this.userCritique[0].id);
+            axios
+            .delete(`https://cantinemiam.herokuapp.com/api/critiques/${this.userCritique[0].id}`, {
+                headers: {
+                    'Authorization': 'Bearer ' + this.token
+                }
+            })
+            .then(function (response) {
+            console.log(response);
+            location.reload();
+
+            })
+            .catch(function (error) {
+                console.log(error);
+            });
         }
     }
 }
