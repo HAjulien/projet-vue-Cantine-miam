@@ -58,12 +58,19 @@
             <p class=" text-center text-2xl ">Note:</p>
             <Rating :grade="0" :maxHalfStars="10"/>
         </div>  
-        <h2  class="lg:mt-[65px] text-center text-3xl  font-bold my-8"> Les critiques ({{ produit.critiques.length}}) </h2>
-        <article class="lg:w-[80%] mx-2 lg:m-auto lg:mb-6 mb-12 border border-black rounded" v-for="(critique, index) in produit.critiques" :key="index" >
-                <p  class=" flex justify-between px-2 lg:px-8 py-4 border-b-2 border-black"
 
+        <div class="critiqueUptade">
+            <h2 v-if="userCritique[0]" > {{userCritique[0].id}} fxbcb</h2>
+
+        </div>
+
+        <h2  class="lg:mt-[65px] text-center text-3xl  font-bold my-8"> Les critiques ({{ produit.critiques.length}}) </h2>
+        <article class="lg:w-[80%] mx-2 lg:m-auto lg:mb-6 mb-12 border-x border-b border-black rounded" v-for="(critique, index) in produit.critiques" :key="index" >
+                <p  class=" flex justify-between px-2 lg:px-8 py-4 border-b-2 border-black"
+                :class=" user[0]  == critique.utilisateur.id ? 'maCritique' : 'border-y'"
                 >
                     <span class="font-bold">{{critique.utilisateur.pseudo}}</span>
+
                     <span> le {{critique.createAt.substring(0 , 10)}} à {{critique.createAt.substring(11 , 16)}}</span>
                 </p>
                 <p class="  lg:flex items-center m-2">
@@ -147,6 +154,7 @@ export default {
     noteMoyenneArrondie: function(){
         return Math.round(this.moyenneNote * 10) /10
     },
+
 },
 
 
@@ -193,5 +201,15 @@ export default {
         color: $green;
     }
 
+    .maCritique{
+        background-color: $green;
+        color: #f8f8f8;
+        border-top: 1px solid black;
+        border-radius: 4px;
+
+        
+        
+    
+    }
 </style>
 
