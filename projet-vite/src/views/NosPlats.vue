@@ -40,7 +40,9 @@
                     {{total}} produit<span v-if="total > 1" >s</span>
                 </span>
             </div>
-                <CarteNosProduits v-for="(produit, index) in produits" :key="index" :id="produit.id" :nom="produit.nom" :image="produit.image" :altImage="produit.altImage" :prixAchat="produit.prixAchat" :category="produit.category.nom"  :critiques="produit.critiques" :bgcolor="produit.category.couleur" />
+
+            <CarteNosProduits v-for="(produit, index) in produits" :key="index" :id="produit.id" :nom="produit.nom" :image="produit.image" :altImage="produit.altImage" :prixAchat="produit.prixAchat" :category="produit.category.nom"  :critiques="produit.critiques" :bgcolor="produit.category.couleur" />
+
             <div class="flex items-center md:justify-between justify-around 
                         h-20 md:w-[95%] mx-auto lg:mb-12 md: md:px-12
                         border-2 border-[#A40E4C] rounded
@@ -61,6 +63,7 @@
             </div>
         </div>
     </div>
+
 </template>
 
 <script>
@@ -68,8 +71,6 @@
 import CarteNosProduits from '../components/CarteNosProduits.vue'
 import axios from 'axios';
 import ProgressBar from '../mixins/ProgressBar';
-
-
 
 export default {
     name:'nosPlats',
@@ -89,30 +90,30 @@ export default {
         }
     },
     computed: {
-            // un accesseur (getter) calculé on récupére le nombre de la page et transforme en nombre
-            numPageActuel: function () {
-                if(this.pagination["@id"]){
-                    if (this.total > ( this.nombreProduitParPage * 100 ) ){ 
-                        return parseInt(this.pagination["@id"].substring(19,22))
-                    }else if(this.total >= ( this.nombreProduitParPage * 10 )){
-                        return parseInt(this.pagination["@id"].substring(19,21))
-                    }else if(this.total > this.nombreProduitParPage ){
-                        return parseInt(this.pagination["@id"].substring(19,20))
-                    }else{
-                        return 1
-                    }
-                }    
-            },
-            numPageFin: function () {
-                if (this.pagination["hydra:last"]){
-                return parseInt(this.pagination["hydra:last"].substring(19))
+        // un accesseur (getter) calculé on récupére le nombre de la page et transforme en nombre
+        numPageActuel: function () {
+            if(this.pagination["@id"]){
+                if (this.total > ( this.nombreProduitParPage * 100 ) ){ 
+                    return parseInt(this.pagination["@id"].substring(19,22))
+                }else if(this.total >= ( this.nombreProduitParPage * 10 )){
+                    return parseInt(this.pagination["@id"].substring(19,21))
+                }else if(this.total > this.nombreProduitParPage ){
+                    return parseInt(this.pagination["@id"].substring(19,20))
+                }else{
+                    return 1
                 }
-            },
-            numPagePrecedente: function () {
-                if (this.pagination["hydra:previous"]){
-                return parseInt(this.pagination["hydra:previous"].substring(19))
-                }
-            },
+            }    
+        },
+        numPageFin: function () {
+            if (this.pagination["hydra:last"]){
+            return parseInt(this.pagination["hydra:last"].substring(19))
+            }
+        },
+        numPagePrecedente: function () {
+            if (this.pagination["hydra:previous"]){
+            return parseInt(this.pagination["hydra:previous"].substring(19))
+            }
+        },
     },
     created () {
         axios

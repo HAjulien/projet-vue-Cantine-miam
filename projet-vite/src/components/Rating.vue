@@ -135,6 +135,7 @@ export default {
     display: inline-flex;
     height: 35px;
     width: 35px;
+    cursor: pointer;
     margin: 0 -0.4px;
     transition: all .2s ease-in;
 

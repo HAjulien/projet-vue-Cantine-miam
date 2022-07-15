@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div id="app" class=" bg-gray-100  dark:bg-gray-700 dark:text-gray-100 ">
 
         <h1
         class="lg:mt-[65px] text-center text-3xl underline underline-offset-4 decoration-4 font-bold"
@@ -8,18 +8,16 @@
 
         <div class="flex items-center justify-around my-4 m-auto" >
             <p  v-if="nbMaxCritiques > 0"  class=" text-4xl text-amber-400 flex grow justify-center"  >
-                {{noteMoyenneArrondie}} <fa :style="{ height: '33px'}" icon="star" />           
+                {{noteMoyenneArrondie}} <fa :style="{ height: '33px'}" icon="star" />
             </p>
             <div class="flex justify-center grow"  v-if="nbMaxCritiques > 0">
                 <ul>
                     <li class="jauge"
                     :style="{width: `calc(( ${note0} / ${nbMaxCritiques} ) * 180px)`}">
-                    
-                    {{note0}}
+                        {{note0}}
                     </li> 
                     <li class="jauge"
                     :style="{width: `calc(( ${note1} / ${nbMaxCritiques} ) * 180px)`}">
-                    
                         {{note1}} 
                     </li> 
                     <li class="jauge"
@@ -31,8 +29,7 @@
                         {{note3}}  
                     </li> 
                     <li class="jauge"
-                    :style="{width: `calc(( ${note4} / ${nbMaxCritiques} ) * 180px)`}"
-                    >
+                    :style="{width: `calc(( ${note4} / ${nbMaxCritiques} ) * 180px)`}">
                         {{note4}}  
                     </li> 
                 </ul>
@@ -45,49 +42,65 @@
                 </ul>
             </div>
         </div>
-        <article class="lg:w-[80%] mt-8 lg:flex lg:flex-row mx-2 lg:m-auto border-2 rounded-lg"
+        <article class="lg:w-[80%] mt-8 lg:flex lg:flex-row mx-2 lg:m-auto border-2 dark:bg-gray-600 rounded-lg"
         :style="{border:`3px solid ${produit.category.couleur}` }"
         >
-                <img :src="produit.image" :alt="produit.altImage" class="h-64 w-72 m-auto lg:m-2 rounded-lg" >
+            <img :src="produit.image" :alt="produit.altImage" class="h-64 w-72 m-auto lg:m-2 rounded-lg" >
+            <div>
                 <p v-html=" produit.description"
                 class="p-4"
-                ></p>
+                >
+                </p>
+                <p class="w-24 mb-4 lg:mt-4 m-auto py-0.5 px-2 text-xl text-center rounded bg-emerald-300 dark:text-black"> {{ produit.prixAchat}} € </p>
+            </div>
         </article>
 
-        <div v-if=" user[0] && !userCritique[0]" class=" py-3 justify-center items-center"> 
-            <p class=" text-center text-2xl ">Note:</p>
+        <div v-if=" user[0] && !userCritique[0]" class=" py-3 justify-center items-center "> 
+            <p class=" text-center text-2xl ">A vous de noter:</p>
             <Rating :grade="0" :maxHalfStars="10"/>
         </div>  
 
-        <div class="critiqueUptade">
-            <h2 v-if="userCritique[0]" > {{userCritique[0].id}} fxbcb</h2>
-
+        <div class="lg:w-[80%] my-6 mx-2 lg:mx-auto p-2 border-2 border-black flex flex-col items-center space-y-3 rounded-xl  dark:bg-gray-600"
+        v-if="userCritique[0]">
+            <h2 class=" text-2xl font-bold"> Ma Critique</h2>
+            <span class=" text-3xl text-amber-400 flex grow justify-center items-center"  >
+                {{userCritique[0].note}} <fa :style="{ height: '25px'}" icon="star" />
+            </span>
+            <p>
+                {{userCritique[0].contenu}}
+            </p>
+            <div class="flex justify-around w-full">
+            <button class="px-2 py-1 bg-amber-300"> Modifier</button>
+            <button class="px-2 py-1 bg-red-400 "> Supprimer</button>
+            </div>
         </div>
 
-        <h2  class="lg:mt-[65px] text-center text-3xl  font-bold my-8"> Les critiques ({{ produit.critiques.length}}) </h2>
-        <article class="lg:w-[80%] mx-2 lg:m-auto lg:mb-6 mb-12 border-x border-b border-black rounded" v-for="(critique, index) in produit.critiques" :key="index" >
-                <p  class=" flex justify-between px-2 lg:px-8 py-4 border-b-2 border-black"
+        <h2 v-if="produit.critiques.length > 0"  class="lg:mt-[65px] text-center text-3xl  font-bold my-8"> Les critiques ({{ produit.critiques.length}}) </h2>
+        <h2 v-else  class="lg:mt-[65px] text-center text-3xl  font-bold my-8"> Aucune critique </h2>
+        <article 
+        class="lg:w-[80%] mx-2 lg:m-auto lg:mb-6 mb-12 border-x border-b border-black dark:border-gray-400 dark:bg-gray-600 rounded"
+        v-for="(critique, index) in critiquesOrderDESC" :key="index">
+                <p  class=" flex justify-between px-2 lg:px-8 py-4 border-b-2 border-black dark:border-gray-400"
                 :class=" user[0]  == critique.utilisateur.id ? 'maCritique' : 'border-y'"
                 >
                     <span class="font-bold">{{critique.utilisateur.pseudo}}</span>
 
-                    <span> le {{critique.createAt.substring(0 , 10)}} à {{critique.createAt.substring(11 , 16)}}</span>
+                    <span> le {{critique.createAt.substring(8 , 10)}}/{{critique.createAt.substring(5 , 7)}}/{{critique.createAt.substring(0 , 4)}}
+                        à {{critique.createAt.substring(11 , 16)}}</span>
                 </p>
-                <p class="  lg:flex items-center justify-between m-2">
+                <div class="  lg:flex items-center justify-between m-2">
                     <span  class="lg:p-12  text-4xl block text-center  font-bold"
-                :class="critique.note < 2 ? 'text-red-500' : critique.note >=4 ? 'text-emerald-500' : 'text-amber-500'"
+                    :class="critique.note < 2 ? 'text-red-500' : critique.note >=4 ? 'text-emerald-500' : 'text-amber-500'"
                     >{{critique.note}}
                     </span>
-                    <span class="p-4">{{critique.contenu}}</span>
+                    <p class="p-4  grow">{{critique.contenu}}</p>
                     <span class="block my-2 text-right  lg:mx-4 "
                     v-if=" user[0]  == critique.utilisateur.id"
                     >
-                    <fa :style="{ height: '28px'}" class="cursor-pointer text-red-600" icon="trash" @click="avis()" />
+                        <fa :style="{ height: '28px'}" class="cursor-pointer text-red-600" icon="trash" @click="avis()" />
                     </span>
-                </p>
+                </div>
         </article>
-
-
 
     </div>
 </template>
@@ -96,11 +109,14 @@
 import axios from 'axios';
 import Login_logout from '../mixins/Login_logout'
 import Rating from '../components/Rating.vue';
+import ProgressBar from '../mixins/ProgressBar';
+
 export default {
     name:'platDetail',
-    mixins: [Login_logout], 
+    mixins: [Login_logout, ProgressBar], 
     components:{
-        Rating
+        Rating,
+
     },
     data() {
         return {
@@ -113,8 +129,7 @@ export default {
             note2: 0,
             note3: 0,
             note4: 0,
-            nbMaxCritiques:0
-
+            nbMaxCritiques:0,
         }
     },
     created () {
@@ -158,6 +173,10 @@ export default {
     computed:{
     noteMoyenneArrondie: function(){
         return Math.round(this.moyenneNote * 10) /10
+        },
+    critiquesOrderDESC: function(){
+        let critiques = this.produit.critiques
+        return critiques.reverse()
         }
     },
     methods: {
@@ -178,12 +197,31 @@ export default {
                 console.log(error);
             });
         }
-    }
+    },
+
 }
 </script>
 
 <style lang="scss" scoped>
-    
+
+    #app{
+        width: 100vw;
+        flex: 1 1 100%;
+        overflow: scroll;
+        overflow-x: hidden;   
+    }
+
+    @media screen and (max-width: 768px){
+        #app{
+            max-height:calc( 100vh - 165px );
+        }
+    }
+
+    @media screen and (min-width: 768px){
+        #app{
+            padding: 50px 0;
+        }
+    }
 
     .jauge{
         position: relative;
@@ -196,6 +234,9 @@ export default {
         font-size: 22px;
         font-weight: 700;
         color: $principale;
+        z-index: 1;
+
+        
     }
     .jauge::before{
         content: '';
@@ -218,6 +259,8 @@ export default {
         font-size: 20px;
         font-weight: 600;
         color: $green;
+        z-index: 1;
+
     }
 
     .maCritique{
@@ -225,10 +268,6 @@ export default {
         color: #f8f8f8;
         border-top: 1px solid black;
         border-radius: 4px;
-
-        
-        
-    
     }
 </style>
 
