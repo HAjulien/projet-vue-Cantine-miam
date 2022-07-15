@@ -9,7 +9,7 @@
     </div>
 
     <transition  name="formulaire" mode="out-in" >
-      <form action="" v-show="isActive"  @submit.prevent="submit"  method="">
+      <form action="" v-show="isActive"  @submit.prevent="submit"  method="POST">
         <p ref="avis" class="avis" ></p>
         <input type="hidden" name="note" id="note" v-model="note"> 
         <textarea  name="critique" id="critique" v-model="contenu" cols="30" rows="8" placeholder="Votre avis nous intéresse "> </textarea>

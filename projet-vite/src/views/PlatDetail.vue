@@ -4,7 +4,8 @@
         <h1
         class="lg:mt-[65px] text-center text-3xl underline underline-offset-4 decoration-4 font-bold"
         :style="{textDecorationColor: `${produit.category.couleur}`, color: `${produit.category.couleur}`}"
-        > {{produit.nom}} </h1>
+        > {{produit.nom}}
+        </h1>
 
         <div class="flex items-center justify-around my-4 m-auto" >
             <p  v-if="nbMaxCritiques > 0"  class=" text-4xl text-amber-400 flex grow justify-center"  >
@@ -34,11 +35,11 @@
                     </li> 
                 </ul>
                 <ul>
-                    <li class="jaugeValeur">0 à 1</li>
-                    <li class="jaugeValeur">1 à 2</li>
-                    <li class="jaugeValeur">2 à 3</li>
-                    <li class="jaugeValeur">3 à 4</li>
-                    <li class="jaugeValeur">4 à 5</li>
+                    <li class="jaugeValeur">0 <fa :style="{ height: '17px'}" icon="star" /> </li>
+                    <li class="jaugeValeur">1 <fa :style="{ height: '17px'}" icon="star" /> </li>
+                    <li class="jaugeValeur">2 <fa :style="{ height: '17px'}" icon="star" /> </li>
+                    <li class="jaugeValeur">3 <fa :style="{ height: '17px'}" icon="star" /> </li>
+                    <li class="jaugeValeur">4 <fa :style="{ height: '17px'}" icon="star" /> </li>
                 </ul>
             </div>
         </div>
@@ -60,8 +61,8 @@
             <Rating :grade="0" :maxHalfStars="10"/>
         </div>  
 
-        <div class="lg:w-[80%] my-6 mx-2 lg:mx-auto p-2 border-2 border-black flex flex-col items-center space-y-3 rounded-xl  dark:bg-gray-600"
-        v-if="userCritique[0]">
+        <div class="lg:w-[80%] my-6 mx-2 relative lg:mx-auto p-2 border-2 border-black flex flex-col items-center space-y-3 rounded-xl  dark:bg-gray-600"
+        v-if="userCritique[0] "  v-show="isHiddenCritique">
             <h2 class=" text-2xl font-bold"> Ma Critique</h2>
             <span class=" text-3xl text-amber-400 flex grow justify-center items-center"  >
                 {{userCritique[0].note}} <fa :style="{ height: '25px'}" icon="star" />
@@ -70,11 +71,24 @@
                 {{userCritique[0].contenu}}
             </p>
             <div class="flex justify-around w-full">
-            <button class="px-2 py-1 bg-amber-300"> Modifier</button>
-            <button class="px-2 py-1 bg-red-400 "> Supprimer</button>
+                <button @click="modifierCritique()" class="px-2 py-1 bg-amber-300"> Modifier</button>
+                <button class="px-2 py-1 bg-red-400 "> Supprimer</button>
             </div>
+
         </div>
 
+        <div v-show="isHidden" class=" py-4">
+            <form action=""    @submit.prevent="submit"  method="POST"
+            class="flex flex-col space-y-4 w-[80%] lg:w-[650px] m-auto border-2 border-black p-4"
+            >
+                <input type="number" name="maNote" id="maNote" v-model="form.note" step="0.5">
+                <textarea  name="maCritique" id="maCritique" v-model="form.contenu" cols="30" rows="8" placeholder="Votre avis nous intéresse "> </textarea>
+                <div class="flex item-center justify-around">
+                    <button type="submit" class="px-2 py-0.5 bg-emerald-400 rounded"> envoyer</button>
+                    <button type="reset" class="px-2 py-0.5 bg-red-400 rounded" @click="annuler()" > annuler</button>
+                </div>
+            </form> 
+        </div>
         <h2 v-if="produit.critiques.length > 0"  class="lg:mt-[65px] text-center text-3xl  font-bold my-8"> Les critiques ({{ produit.critiques.length}}) </h2>
         <h2 v-else  class="lg:mt-[65px] text-center text-3xl  font-bold my-8"> Aucune critique </h2>
         <article 
@@ -130,6 +144,12 @@ export default {
             note3: 0,
             note4: 0,
             nbMaxCritiques:0,
+            isHidden : false,
+            isHiddenCritique : true,
+            form :{
+            note: 0,
+            contenu: "",
+            }
         }
     },
     created () {
@@ -196,8 +216,37 @@ export default {
             .catch(function (error) {
                 console.log(error);
             });
+        },
+        modifierCritique(){
+            let maNote = this.userCritique[0].note
+            let maCritique = this.userCritique[0].contenu
+            console.log(maNote)
+            this.form.note = maNote
+            this.form.contenu = maCritique
+            this.isHiddenCritique = false
+            this.isHidden = true
+        },
+        annuler(){
+            this.isHiddenCritique = true
+            this.isHidden = false
+        },
+        submit(){
+            axios
+            .put(`https://cantinemiam.herokuapp.com/api/critiques/${this.userCritique[0].id}`, this.form, {
+                headers: {
+                    'Authorization': 'Bearer ' + this.token,
+                },
+            })
+            .then(function (response) {
+            console.log(response);
+            location.reload();
+
+            })
+            .catch(function (error) {
+                console.log(error);
+            });
         }
-    },
+    }
 
 }
 </script>
@@ -269,5 +318,6 @@ export default {
         border-top: 1px solid black;
         border-radius: 4px;
     }
+
 </style>
 
