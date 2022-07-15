@@ -8,9 +8,12 @@
         </h1>
 
         <div class="flex items-center justify-around my-4 m-auto" >
-            <p  v-if="nbMaxCritiques > 0"  class=" text-4xl text-amber-400 flex grow justify-center"  >
-                {{noteMoyenneArrondie}} <fa :style="{ height: '33px'}" icon="star" />
-            </p>
+            <div class=" flex flex-col  grow justify-center text-amber-400" >
+                <p  v-if="nbMaxCritiques > 0"  class=" text-4xl  flex grow justify-center"  >
+                    {{noteMoyenneArrondie}} <fa :style="{ height: '33px'}" icon="star" />
+                </p>
+                <span class="text-center text-lg"> ({{ produit.critiques.length}} avis)  </span>
+            </div>
             <div class="flex justify-center grow"  v-if="nbMaxCritiques > 0">
                 <ul>
                     <li class="jauge"
@@ -82,6 +85,7 @@
             class="flex flex-col space-y-4 w-[80%] lg:w-[650px] m-auto border-2 border-black p-4"
             >
                 <input type="number" name="maNote" id="maNote" v-model="form.note" step="0.5">
+                
                 <textarea  name="maCritique" id="maCritique" v-model="form.contenu" cols="30" rows="8" placeholder="Votre avis nous intéresse "> </textarea>
                 <div class="flex item-center justify-around">
                     <button type="submit" class="px-2 py-0.5 bg-emerald-400 rounded"> envoyer</button>
