@@ -148,7 +148,7 @@ export default {
             note2: 0,
             note3: 0,
             note4: 0,
-            nbMaxCritiques:1,
+            nbMaxCritiques:0,
             isHidden : false,
             isHiddenCritique : true,
             form :{
