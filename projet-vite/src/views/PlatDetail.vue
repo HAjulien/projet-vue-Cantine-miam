@@ -7,45 +7,7 @@
         > {{produit.nom}}
         </h1>
 
-        <div class="flex items-center justify-around my-4 m-auto" >
-            <div class=" flex flex-col  grow justify-center text-amber-400" >
-                <p  v-if="nbMaxCritiques > 0"  class=" text-4xl  flex grow justify-center"  >
-                    {{noteMoyenneArrondie}} <fa :style="{ height: '33px'}" icon="star" />
-                </p>
-                <span class="text-center text-lg"> ({{ produit.critiques.length}} avis)  </span>
-            </div>
-            <div class="flex justify-center grow"  v-if="nbMaxCritiques > 0">
-                <ul>
-                    <li class="jauge"
-                    :style="{width: `calc(( ${note0} / ${nbMaxCritiques} ) * 180px)`}">
-                        {{note0}}
-                    </li> 
-                    <li class="jauge"
-                    :style="{width: `calc(( ${note1} / ${nbMaxCritiques} ) * 180px)`}">
-                        {{note1}} 
-                    </li> 
-                    <li class="jauge"
-                    :style="{width: `calc(( ${note2} / ${nbMaxCritiques} ) * 180px)`}">
-                        {{note2}}  
-                    </li> 
-                    <li class="jauge"
-                    :style="{width: `calc(( ${note3} / ${nbMaxCritiques} ) * 180px)`}">
-                        {{note3}}  
-                    </li> 
-                    <li class="jauge"
-                    :style="{width: `calc(( ${note4} / ${nbMaxCritiques} ) * 180px)`}">
-                        {{note4}}  
-                    </li> 
-                </ul>
-                <ul>
-                    <li class="jaugeValeur">0 <fa :style="{ height: '17px'}" icon="star" /> </li>
-                    <li class="jaugeValeur">1 <fa :style="{ height: '17px'}" icon="star" /> </li>
-                    <li class="jaugeValeur">2 <fa :style="{ height: '17px'}" icon="star" /> </li>
-                    <li class="jaugeValeur">3 <fa :style="{ height: '17px'}" icon="star" /> </li>
-                    <li class="jaugeValeur">4 <fa :style="{ height: '17px'}" icon="star" /> </li>
-                </ul>
-            </div>
-        </div>
+        <NoteDetail :produit="produit" />
         
         <article class="lg:w-[80%] mt-8 pt-2 lg:flex lg:flex-row mx-2 lg:m-auto border-2 dark:bg-gray-600 rounded-lg"
         :style="{border:`3px solid ${produit.category.couleur}` }"
@@ -127,14 +89,16 @@
 <script>
 import axios from 'axios';
 import Login_logout from '../mixins/Login_logout'
-import Rating from '../components/Rating.vue';
 import ProgressBar from '../mixins/ProgressBar';
+import Rating from '../components/Rating.vue';
+import NoteDetail from '../components/NoteDetail.vue';
 
 export default {
     name:'platDetail',
     mixins: [Login_logout, ProgressBar], 
     components:{
         Rating,
+        NoteDetail
 
     },
     data() {
@@ -142,13 +106,6 @@ export default {
             id:this.$route.params.id,
             produit: [],
             userCritique: [],
-            moyenneNote: 0,
-            note0: 0,
-            note1: 0,
-            note2: 0,
-            note3: 0,
-            note4: 0,
-            nbMaxCritiques:0,
             isHidden : false,
             isHiddenCritique : true,
             form :{
@@ -171,34 +128,10 @@ export default {
             console.log(this.userCritique);
             //console.log(this.user[0]);
         }
-        for(let i = 0; i <  this.produit.critiques.length; i++){
-            if ( this.produit.critiques[i].note )
-            {
-                this.moyenneNote += this.produit.critiques[i].note / this.produit.critiques.length
-            }
-        }
-        for(let i = 0; i <  this.produit.critiques.length; i++){
-            if ( this.produit.critiques[i].note >= 4 )
-            {
-                this.note4 += 1
-            }else if( this.produit.critiques[i].note >= 3){
-                this.note3 += 1
-            }else if( this.produit.critiques[i].note >= 2){
-                this.note2 += 1
-            }else if( this.produit.critiques[i].note >= 1){
-                this.note1 += 1
-            }else{
-                this.note0 += 1
-            }
-        }
-        this.nbMaxCritiques = Math.max(this.note0, this.note1, this.note2, this.note3, this.note4)  
 
     },
 
     computed:{
-    noteMoyenneArrondie: function(){
-        return Math.round(this.moyenneNote * 10) /10
-        },
     critiquesOrderDESC: function(){
         let critiques = this.produit.critiques
         return critiques.reverse()
@@ -285,46 +218,6 @@ export default {
         #app{
             padding: 50px 0;
         }
-    }
-
-    .jauge{
-        position: relative;
-        text-decoration: none;
-        margin: 8px 0;
-        height: 30px;
-        background-color: $green;
-        border-radius: 6px ;
-        text-align: left;
-        font-size: 22px;
-        font-weight: 700;
-        color: $principale;
-        z-index: 1;
-
-        
-    }
-    .jauge::before{
-        content: '';
-        position: absolute;
-        top: 0;
-        bottom: 0;
-        left: 0;
-        background-color: rgba(0, 128, 0, 0.165);
-        border-radius: 6px;
-        width: 180px;
-        z-index: -1;
-    }
-    .jaugeValeur{
-        position: relative;
-        text-decoration: none;
-        margin: 8px 0;
-        margin-left: 5px;
-        height: 30px;
-        font-size: 15px;
-        font-size: 20px;
-        font-weight: 600;
-        color: $green;
-        z-index: 1;
-
     }
 
     .maCritique{
