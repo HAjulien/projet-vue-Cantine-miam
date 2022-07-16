@@ -172,8 +172,10 @@ export default {
             //console.log(this.user[0]);
         }
 
-        if(this.produit){
-            for(let i = 0; i <  this.produit.critiques.length; i++){
+    },
+    beforeUpdate(){
+        //console.log("test");
+        for(let i = 0; i <  this.produit.critiques.length; i++){
             if ( this.produit.critiques[i].note )
             {
                 this.moyenneNote += this.produit.critiques[i].note / this.produit.critiques.length
@@ -193,9 +195,7 @@ export default {
                 this.note0 += 1
             }
         }
-        this.nbMaxCritiques = Math.max(this.note0, this.note1, this.note2, this.note3, this.note4)
-        }
-
+        this.nbMaxCritiques = Math.max(this.note0, this.note1, this.note2, this.note3, this.note4)    
     },
     computed:{
     noteMoyenneArrondie: function(){
