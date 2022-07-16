@@ -46,7 +46,7 @@
                 </ul>
             </div>
         </div>
-        <article class="lg:w-[80%] mt-8 lg:flex lg:flex-row mx-2 lg:m-auto border-2 dark:bg-gray-600 rounded-lg"
+        <article class="lg:w-[80%] mt-8 pt-2 lg:flex lg:flex-row mx-2 lg:m-auto border-2 dark:bg-gray-600 rounded-lg"
         :style="{border:`3px solid ${produit.category.couleur}` }"
         >
             <img :src="produit.image" :alt="produit.altImage" class="h-64 w-72 m-auto lg:m-2 rounded-lg" >
