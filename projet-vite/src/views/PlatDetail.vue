@@ -74,8 +74,8 @@
                 {{userCritique[0].contenu}}
             </p>
             <div class="flex justify-around w-full">
-                <button @click="modifierCritique()" class="px-2 py-1 bg-amber-300"> Modifier</button>
-                <button class="px-2 py-1 bg-red-400 "> Supprimer</button>
+                <button @click="modifierCritique()" class="px-2 py-1 bg-amber-300 hover:text-slate-200 rounded hover:bg-amber-600 "> Modifier</button>
+                <button @click="avis()" class="px-2 py-1 bg-red-400  rounded hover:bg-red-700 hover:text-slate-100" > Supprimer</button>
             </div>
 
         </div>
@@ -250,7 +250,17 @@ export default {
                 console.log(error);
             });
         }
-    }
+    },
+    watch: {
+        'form.contenu'(newVal, oldVal){
+            if (newVal.length > oldVal.length ) {
+                clearTimeout(this.timeoutId)
+                this.timeoutId = setTimeout(function(){
+                    console.log("test");
+                },1000)
+            }
+        }
+    },
 
 }
 </script>
