@@ -103,6 +103,7 @@ export default {
     },
     data() {
         return {
+            lienAPI: "https://cantinemiam.herokuapp.com/api/",
             id:this.$route.params.id,
             produit: [],
             userCritique: [],
@@ -116,14 +117,14 @@ export default {
     },
     created () {
         axios
-        .get("https://cantinemiam.herokuapp.com/api/produits/" + this.id )
+        .get(this.lienAPI + "produits/" + this.id )
         .then(response => (this.produit = response.data))
 
     }, 
     mounted(){
         if(this.user[0]){
             axios
-            .get("https://cantinemiam.herokuapp.com/api/critiques?page=1&produit=" + this.id + "&utilisateur.id=" + this.user[0] )
+            .get(this.lienAPI + "critiques?page=1&produit=" + this.id + "&utilisateur.id=" + this.user[0] )
             .then(response => (this.userCritique = response.data["hydra:member"]));
             console.log(this.userCritique);
             //console.log(this.user[0]);
@@ -141,7 +142,7 @@ export default {
         avis(){
             //console.log(this.userCritique[0].id);
             axios
-            .delete(`https://cantinemiam.herokuapp.com/api/critiques/${this.userCritique[0].id}`, {
+            .delete(this.lienAPI + `critiques/${this.userCritique[0].id}`, {
                 headers: {
                     'Authorization': 'Bearer ' + this.token
                 }
@@ -170,7 +171,7 @@ export default {
         },
         submit(){
             axios
-            .put(`https://cantinemiam.herokuapp.com/api/critiques/${this.userCritique[0].id}`, this.form, {
+            .put(this.lienAPI + `critiques/${this.userCritique[0].id}`, this.form, {
                 headers: {
                     'Authorization': 'Bearer ' + this.token,
                 },
@@ -185,16 +186,16 @@ export default {
             });
         }
     },
-    watch: {
-        'form.contenu'(newVal, oldVal){
-            if (newVal.length > oldVal.length ) {
-                clearTimeout(this.timeoutId)
-                this.timeoutId = setTimeout(function(){
-                    console.log("test");
-                },1000)
-            }
-        }
-    },
+    // watch: {
+    //     'form.contenu'(newVal, oldVal){
+    //         if (newVal.length > oldVal.length ) {
+    //             clearTimeout(this.timeoutId)
+    //             this.timeoutId = setTimeout(function(){
+    //                 console.log("test");
+    //             },1000)
+    //         }
+    //     }
+    // },
 
 }
 </script>

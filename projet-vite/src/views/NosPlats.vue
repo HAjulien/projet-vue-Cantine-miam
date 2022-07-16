@@ -1,16 +1,24 @@
 <template>
 
-    <div id="app" class="dark:bg-gray-800 " >    
+    <div id="app" class="dark:bg-gray-800 relative" >    
         <div class="lg:py-12 py-3 px-3 lg:w-[90%] min-h-[200vh] bg-slate-100 mx-auto 
         dark:bg-gray-700  dark:text-gray-100 "
         >
             <h1 class=" py-6 text-center text-3xl" > Nos produits</h1>
             
+            <div class="flex items-center  md:space-x-2 justify-around 
+                        h-8 md:w-[450px] mx-auto mb-4 md:px-4
+                        border-2 border-[#A40E4C] rounded  "> 
+                <input type="text" placeholder="Recherche sur tous les produits" v-if="revele"
+                class="w-72 outline-0 bg-gray-100 placeholder:text-slate-800"  v-model="recherche">
+                <span> <fa :style="{height: '20px', color: '#097770'}" icon='search' class="cursor-pointer " @click="toggleModale" /></span>
+            </div>
+            <transition name="slide">
+                <RechercheModale :revele="revele" :toggleModale="toggleModale" :recherche="recherche" />
+            </transition>
             <div class="flex items-center md:justify-between justify-around 
-                        h-20 md:w-[95%] mx-auto lg:mb-12 md: md:px-12
-                        border-2 border-[#A40E4C] rounded
-                        "
-                        >
+                        h-20 md:w-[95%] mx-auto lg:mb-12 md:px-12
+                        border-2 border-[#A40E4C] rounded">
                 <div>
                     <label for="category"></label>
                     <select id="category" v-model="selectionCategorie"  @change="categorychoix()" 
@@ -69,6 +77,7 @@
 <script>
 
 import CarteNosProduits from '../components/CarteNosProduits.vue'
+import RechercheModale from '../components/RechercheModale.vue'
 import axios from 'axios';
 import ProgressBar from '../mixins/ProgressBar';
 
@@ -77,9 +86,12 @@ export default {
     mixins: [ProgressBar],
     components:{
         CarteNosProduits,
+        RechercheModale
     },
     data() {
         return {
+            revele :false,
+            recherche: '',
             selectionCategorie:"",
             produits: [],
             pagination: [],
@@ -179,6 +191,9 @@ export default {
             .get(this.lienAPI + "/api/produits?page=1&category.id=" + this.selectionCategorie)
             .then (response => (this.total = response.data["hydra:totalItems"]))
         },
+        toggleModale: function(){
+            this.revele = !this.revele
+        },
     },  
 }
 </script>
@@ -202,6 +217,21 @@ export default {
         #app{
             padding: 50px 0;
         }
+    }
+
+    .slide-enter-from{
+        opacity: 0;
+        transform: translateX(-250px);
+    }
+    .slide-enter-active{
+        transition: all .3s ease-out;
+    }
+    .slide-leave-to{
+        opacity: 0;
+        transform: translateX(250px);
+    }
+    .slide-leave-active{
+        transition: all .2s ease-in;
     }
 
 </style>
