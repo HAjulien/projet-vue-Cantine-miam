@@ -171,10 +171,6 @@ export default {
             console.log(this.userCritique);
             //console.log(this.user[0]);
         }
-
-    },
-    beforeUpdate(){
-        //console.log("test");
         for(let i = 0; i <  this.produit.critiques.length; i++){
             if ( this.produit.critiques[i].note )
             {
@@ -195,8 +191,10 @@ export default {
                 this.note0 += 1
             }
         }
-        this.nbMaxCritiques = Math.max(this.note0, this.note1, this.note2, this.note3, this.note4)    
+        this.nbMaxCritiques = Math.max(this.note0, this.note1, this.note2, this.note3, this.note4)  
+
     },
+
     computed:{
     noteMoyenneArrondie: function(){
         return Math.round(this.moyenneNote * 10) /10
