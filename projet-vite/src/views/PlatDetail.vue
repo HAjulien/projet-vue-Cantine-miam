@@ -7,45 +7,8 @@
         > {{produit.nom}}
         </h1>
 
-        <div class="flex items-center justify-around my-4 m-auto" >
-            <div class=" flex flex-col  grow justify-center text-amber-400" >
-                <p  v-if="nbMaxCritiques > 0"  class=" text-4xl  flex grow justify-center"  >
-                    {{noteMoyenneArrondie}} <fa :style="{ height: '33px'}" icon="star" />
-                </p>
-                <span class="text-center text-lg"> ({{ produit.critiques.length}} avis)  </span>
-            </div>
-            <div class="flex justify-center grow"  v-if="nbMaxCritiques > 0">
-                <ul>
-                    <li class="jauge"
-                    :style="{width: `calc(( ${note0} / ${nbMaxCritiques} ) * 180px)`}">
-                        {{note0}}
-                    </li> 
-                    <li class="jauge"
-                    :style="{width: `calc(( ${note1} / ${nbMaxCritiques} ) * 180px)`}">
-                        {{note1}} 
-                    </li> 
-                    <li class="jauge"
-                    :style="{width: `calc(( ${note2} / ${nbMaxCritiques} ) * 180px)`}">
-                        {{note2}}  
-                    </li> 
-                    <li class="jauge"
-                    :style="{width: `calc(( ${note3} / ${nbMaxCritiques} ) * 180px)`}">
-                        {{note3}}  
-                    </li> 
-                    <li class="jauge"
-                    :style="{width: `calc(( ${note4} / ${nbMaxCritiques} ) * 180px)`}">
-                        {{note4}}  
-                    </li> 
-                </ul>
-                <ul>
-                    <li class="jaugeValeur">0 <fa :style="{ height: '17px'}" icon="star" /> </li>
-                    <li class="jaugeValeur">1 <fa :style="{ height: '17px'}" icon="star" /> </li>
-                    <li class="jaugeValeur">2 <fa :style="{ height: '17px'}" icon="star" /> </li>
-                    <li class="jaugeValeur">3 <fa :style="{ height: '17px'}" icon="star" /> </li>
-                    <li class="jaugeValeur">4 <fa :style="{ height: '17px'}" icon="star" /> </li>
-                </ul>
-            </div>
-        </div>
+
+
         <article class="lg:w-[80%] mt-8 pt-2 lg:flex lg:flex-row mx-2 lg:m-auto border-2 dark:bg-gray-600 rounded-lg"
         :style="{border:`3px solid ${produit.category.couleur}` }"
         >
@@ -119,7 +82,45 @@
                     </span>
                 </div>
         </article>
-
+        <div class="flex items-center justify-around my-4 m-auto" >
+            <div class=" flex flex-col  grow justify-center text-amber-400" >
+                <p  v-if="nbMaxCritiques > 0"  class=" text-4xl  flex grow justify-center"  >
+                    {{noteMoyenneArrondie}} <fa :style="{ height: '33px'}" icon="star" />
+                </p>
+                <span class="text-center text-lg"> ({{ produit.critiques.length}} avis)  </span>
+            </div>
+            <div class="flex justify-center grow"  v-if="nbMaxCritiques > 0">
+                <ul>
+                    <li class="jauge"
+                    :style="{width: `calc(( ${note0} / ${nbMaxCritiques} ) * 180px)`}">
+                        {{note0}}
+                    </li> 
+                    <li class="jauge"
+                    :style="{width: `calc(( ${note1} / ${nbMaxCritiques} ) * 180px)`}">
+                        {{note1}} 
+                    </li> 
+                    <li class="jauge"
+                    :style="{width: `calc(( ${note2} / ${nbMaxCritiques} ) * 180px)`}">
+                        {{note2}}  
+                    </li> 
+                    <li class="jauge"
+                    :style="{width: `calc(( ${note3} / ${nbMaxCritiques} ) * 180px)`}">
+                        {{note3}}  
+                    </li> 
+                    <li class="jauge"
+                    :style="{width: `calc(( ${note4} / ${nbMaxCritiques} ) * 180px)`}">
+                        {{note4}}  
+                    </li> 
+                </ul>
+                <ul>
+                    <li class="jaugeValeur">0 <fa :style="{ height: '17px'}" icon="star" /> </li>
+                    <li class="jaugeValeur">1 <fa :style="{ height: '17px'}" icon="star" /> </li>
+                    <li class="jaugeValeur">2 <fa :style="{ height: '17px'}" icon="star" /> </li>
+                    <li class="jaugeValeur">3 <fa :style="{ height: '17px'}" icon="star" /> </li>
+                    <li class="jaugeValeur">4 <fa :style="{ height: '17px'}" icon="star" /> </li>
+                </ul>
+            </div>
+        </div>
     </div>
 </template>
 
