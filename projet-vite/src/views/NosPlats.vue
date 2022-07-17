@@ -7,8 +7,10 @@
             <h1 class=" py-6 text-center text-3xl" > Nos produits</h1>
             
             <div class="flex items-center  md:space-x-2 justify-around 
-                        h-8 md:w-[450px] mx-auto mb-4 md:px-4
-                        border-2 border-[#A40E4C] rounded  "> 
+                        h-8  mx-auto mb-4 p-4
+                        border-2 border-[#A40E4C] rounded transition-all "
+            :class="revele == true ? 'md:w-[400px] w-full' : 'w-[30px]'"        
+                        > 
                 <input type="text" placeholder="Recherche sur tous les produits" v-if="revele"
                 class="w-72 outline-0 bg-gray-100 placeholder:text-slate-800"  v-model="recherche">
                 <span> <fa :style="{height: '20px', color: '#097770'}" icon='search' class="cursor-pointer " @click="toggleModale" /></span>

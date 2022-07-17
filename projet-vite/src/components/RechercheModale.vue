@@ -2,8 +2,9 @@
     <div class="bloc-modale lg:w-[70%] my-8 m-auto " v-if="revele">
         
         <div class="loader" v-if="isLoading"></div>
-        <button v-on:click="toggleModale"  class="bg-red-500 w-full h-8 mb-2">FERMER X</button>
+        <button v-on:click="toggleModale"  class="bg-red-500 w-full h-8 mb-2 rounded">FERMER X</button>
         <span v-if="produits.length > 0"> Nombre de résultat : {{produits.length}} </span>
+        <span v-else-if="recherche.length == 0"> Veuillez écrire votre recherche  </span>
         <span v-else>Aucun résultat trouvé </span>
         <article class="rechercheItem" v-for="(produit, index) in produits" :key="index"
         :style="{border:`3px solid ${produit.category.couleur}` }"
@@ -52,9 +53,9 @@ export default {
         }
     }, 
     methods: {
-        AllSearch(){
+        async AllSearch(){
             this.isLoading = true
-            axios
+            await axios
                 .get(`https://cantinemiam.herokuapp.com/api/produits?page=1&nom=${this.search}`)
                 .then(response => (this.produits = response.data["hydra:member"]))
             this.isLoading = false
@@ -71,7 +72,7 @@ export default {
 .bloc-modale{
     position: relative;
     min-height: 400px;
-    z-index: 20;
+    z-index: 10;
     border: 2px solid $principale;
     border-radius: 5px;
 }
@@ -86,6 +87,7 @@ export default {
     @include absolutePosition(0, 0, 0, 0);
     background-color: rgba(0, 0, 0, 0.3);
     border-radius: 5px;
+    transition: all 0.3s ease-in;
     z-index: 10;
 }
 div > span{

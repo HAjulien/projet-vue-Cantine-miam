@@ -131,14 +131,15 @@ export default {
 }
 
 .overlay {
-    background-color: rgba(0, 0, 0, 0.5);
+    background-color: rgba(0, 0, 0, 0.8);
     @include absolutePosition(0, 0, 0, 0);
+    min-height: 1200px;
 
 }
 
 .modale{
     background-color: #fff;
-    position: fixed;
+    position: absolute;
     top: 5%;
     z-index: 1;
     width: 90vw;
@@ -147,8 +148,7 @@ export default {
 
 .modale::before{
     content: '';
-    position: fixed;
-    top: 5%;
+    position: absolute;
     z-index: 1;
     width: 90vw;
     height: 300px;
@@ -160,7 +160,7 @@ export default {
 }    
 .modale::after{
     content: 'Connexion';
-    position: fixed;
+    position: absolute;
     top: 15%;
     left: 50%;
     padding: 5px 30px;
