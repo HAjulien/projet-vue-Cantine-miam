@@ -1,7 +1,7 @@
 <template>
 <footer class=" bg-gray-200 dark:bg-gray-700 dark:text-slate-100  ">
 
-   <ReseauxSociaux/>
+    <ReseauxSociaux/>
 
     <div class="flex justify-around items-center  m-1 border border-black  h-64 dark:border-white">
 

@@ -76,11 +76,11 @@
 </template>
 
 <script>
-import  Menu from '../mixins/Menu';
+import MenuLiens from '../mixins/MenuLiens';
 
 export default {
   name: 'Tapbar',
-  mixins: [Menu],
+  mixins: [MenuLiens],
   props:{
     id:Number,
     chemin:String,

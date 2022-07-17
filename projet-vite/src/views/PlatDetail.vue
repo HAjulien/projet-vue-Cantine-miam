@@ -47,9 +47,9 @@
             <form action=""    @submit.prevent="submit"  method="POST"
             class="flex flex-col space-y-4 w-[80%] lg:w-[650px] m-auto border-2 border-black p-4"
             >
-                <input type="number" name="maNote" id="maNote" v-model="form.note" step="0.5">
+                <input type="number" name="maNote" id="maNote" v-model="form.note" step="0.5" class="dark:bg-gray-600 bg-gray-100  border-2 border-black">
                 
-                <textarea  name="maCritique" id="maCritique" v-model="form.contenu" cols="30" rows="8" placeholder="Votre avis nous intéresse "> </textarea>
+                <textarea  name="maCritique" id="maCritique" v-model="form.contenu" cols="30" rows="8" placeholder="Votre avis nous intéresse " class=" bg-gray-100 dark:bg-gray-600  border-2 border-black p-2"> </textarea>
                 <div class="flex item-center justify-around">
                     <button type="submit" class="px-2 py-0.5 bg-emerald-400 rounded"> envoyer</button>
                     <button type="reset" class="px-2 py-0.5 bg-red-400 rounded" @click="annuler()" > annuler</button>

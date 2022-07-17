@@ -32,12 +32,12 @@
 
 <script>
 import BtnDarkMode from './BntDarkMode.vue';
-import  Menu from '../mixins/Menu';
 import Login_logout from '../mixins/Login_logout';
+import MenuLiens from '../mixins/MenuLiens';
 
 export default {
   name:'HeaderDesktop',
-  mixins: [Menu, Login_logout], 
+  mixins: [MenuLiens, Login_logout], 
   components:{
     BtnDarkMode,
   },

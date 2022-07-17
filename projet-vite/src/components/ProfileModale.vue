@@ -56,13 +56,13 @@
             </div>
         </div>
         <div 
-        class="absolute top-[10%] translate-y-[-50%] left-2 right-2 bg-amber-400/95 text-center text-2xl z-10 p-5 rounded-lg"
+        class="fixed top-[10%] translate-y-[-50%] left-2 right-2 bg-amber-400/95 text-center text-2xl z-10 p-5 rounded-lg"
         :class="[isAttempt ? '' : 'hidden']"
         >
             <p>connexion en cours...</p>
         </div>
         <div 
-        class="absolute top-[10%] translate-y-[-50%] left-2 right-2 bg-emerald-400/95 text-center text-2xl z-10 p-5 rounded-lg"
+        class="fixed top-[10%] translate-y-[-50%] left-2 right-2 bg-emerald-400/95 text-center text-2xl z-10 p-5 rounded-lg"
         :class="[isSuccess ? '' : 'hidden']"
         >
             <p>connexion réussie: nous allons recharger la page</p>
@@ -133,7 +133,7 @@ export default {
 .overlay {
     background-color: rgba(0, 0, 0, 0.8);
     @include absolutePosition(0, 0, 0, 0);
-    min-height: 1200px;
+    min-height: 1000px;
 
 }
 

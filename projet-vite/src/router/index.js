@@ -1,5 +1,6 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import Home from '/src/views/Home.vue'
+import MenuSemaine from '/src/views/MenuSemaine.vue'
 import About from '/src/views/About.vue'
 import Equipe from '/src/views/Equipe.vue' 
 import NosPlats from '/src/views/NosPlats.vue' 
@@ -11,6 +12,11 @@ const routes = [
         path: '/',
         name: Home,
         component: Home,
+    },
+    {
+        path: '/menuSemaine',
+        name: MenuSemaine,
+        component: MenuSemaine,
     },
     {
         path: '/about',
@@ -37,6 +43,7 @@ const routes = [
         name: Inscription,
         component: Inscription,
     },
+
     
 ]
 const router = createRouter({

@@ -7,13 +7,16 @@
             <h1 class=" py-6 text-center text-3xl" > Nos produits</h1>
             
             <div class="flex items-center  md:space-x-2 justify-around 
-                        h-8  mx-auto mb-4 p-4
+                        h-8  mx-auto mb-4 p-4 dark:bg-gray-600
                         border-2 border-[#A40E4C] rounded transition-all "
             :class="revele == true ? 'md:w-[400px] w-full' : 'w-[30px]'"        
                         > 
-                <input type="text" placeholder="Recherche sur tous les produits" v-if="revele"
-                class="w-72 outline-0 bg-gray-100 placeholder:text-slate-800"  v-model="recherche">
-                <span> <fa :style="{height: '20px', color: '#097770'}" icon='search' class="cursor-pointer " @click="toggleModale" /></span>
+                <input type="text" placeholder="Taper votre recherche ici" v-if="revele"
+                class="w-72 outline-0 bg-gray-100 dark:bg-gray-600 dark:placeholder:text-gray-100 placeholder:text-slate-800"  v-model="recherche">
+
+                <span v-if="revele"> <fa :style="{height: '25px'}" icon='close' class="cursor-pointer text-red-500" @click="toggleModale" /></span>
+                <span v-else> <fa :style="{height: '20px', color: '#097770'}" icon='search' class="cursor-pointer " @click="toggleModale" /></span>
+
             </div>
             <transition name="slide">
                 <RechercheModale :revele="revele" :toggleModale="toggleModale" :recherche="recherche" />
