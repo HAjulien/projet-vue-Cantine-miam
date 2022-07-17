@@ -126,7 +126,7 @@ export default {
             axios
             .get(this.lienAPI + "critiques?page=1&produit=" + this.id + "&utilisateur.id=" + this.user[0] )
             .then(response => (this.userCritique = response.data["hydra:member"]));
-            console.log(this.userCritique);
+            //console.log(this.userCritique);
             //console.log(this.user[0]);
         }
 
