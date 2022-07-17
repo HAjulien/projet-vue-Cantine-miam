@@ -1,52 +1,39 @@
 <template>
     <div id="app">
-        <h2 class="text-center text-3xl border-2 border-red-500 w-72 ml-[50vw] translate-x-[-50%] my-6">LES ENTRÉES</h2>
-    <div class="flex items-center justify-center  m-auto">
 
-        <article v-for="(produit, index) in produits" :key="index" >
+        <h2 class="text-center text-3xl border-2 border-[#A40E4C] w-72 ml-[50vw] translate-x-[-50%] my-6">LES ENTRÉES</h2>
+        <div class="md:flex md:items-center md:justify-center  m-auto">
+            <CarteMenuSemaine v-for="(produit, index) in produits" :key="index" :categorie="produit.category.nom" :couleur="produit.category.couleur"  :type="'entrée'"   :image="produit.image" :altImage="produit.altImage" :nom="produit.nom" :prix="produit.prixAchat" :id="produit.id"
+            />
+        </div>
 
-            <div v-if="produit.category.nom == 'entrée'"  class=" p-2 flex flex-col items-center space-y-4  m-2 md:h-[250px] md:mx-6 rounded-lg"
-            :style="{border:`3px solid ${produit.category.couleur}` }"
-            >
-                <img :src="produit.image" :alt="produit.altImage" class="w-40 rounded-lg " >
-                <h3> {{produit.nom}} </h3>
-                <span> {{produit.prixAchat}} </span>
-            </div>
-
-        </article>
-    </div>
-
-
-
-
-
-
-
-        <article v-for="(produit, index) in produits" :key="index" class="my-4 mx-4" >
-            <div v-if="produit.category.nom.includes('plat')">
-            <h2> {{produit.nom}} </h2>
-            <span> {{produit.category.nom}} </span>
-            </div>
-        </article>
-
-        <article v-for="(produit, index) in produits" :key="index" class="my-4 mx-4" >
-            <div v-if="produit.category.nom == 'dessert'">
-            <h2> {{produit.nom}} </h2>
-            <span> {{produit.category.nom}} </span>
-            </div>
-        </article>
+        <h2 class="text-center text-3xl border-2 border-[#A40E4C] w-72 ml-[50vw] translate-x-[-50%] my-6">LES PLATS</h2>
+        <div class="md:flex md:items-center md:justify-center  m-auto">
+            <CarteMenuSemaine v-for="(produit, index) in produits" :key="index" :categorie="produit.category.nom" :couleur="produit.category.couleur"  :type="'plat poisson'"   :image="produit.image" :altImage="produit.altImage" :nom="produit.nom" :prix="produit.prixAchat" :id="produit.id"
+            />         
+            <CarteMenuSemaine v-for="(produit, index) in produits" :key="index" :categorie="produit.category.nom" :couleur="produit.category.couleur"  :type="'plat végétarien'"   :image="produit.image" :altImage="produit.altImage" :nom="produit.nom" :prix="produit.prixAchat" :id="produit.id"
+            />
+            <CarteMenuSemaine v-for="(produit, index) in produits" :key="index" :categorie="produit.category.nom" :couleur="produit.category.couleur"  :type="'plat viande'"   :image="produit.image" :altImage="produit.altImage" :nom="produit.nom" :prix="produit.prixAchat" :id="produit.id"
+            />
+        </div>
+        
+        <h2 class="text-center text-3xl border-2 border-[#A40E4C] w-72 ml-[50vw] translate-x-[-50%] my-6">LES DESSERT</h2>
+        <div class="md:flex md:items-center md:justify-center  m-auto">
+            <CarteMenuSemaine v-for="(produit, index) in produits" :key="index" :categorie="produit.category.nom" :couleur="produit.category.couleur"  :type="'dessert'"   :image="produit.image" :altImage="produit.altImage" :nom="produit.nom" :prix="produit.prixAchat" :id="produit.id"
+            />
+        </div>
         
     </div>
 </template>
 
 <script>
 import axios from 'axios';
-import ProgressBar from '../mixins/ProgressBar';
+import CarteMenuSemaine from '../components/CarteMenuSemaine.vue';
 
 export default {
     name:'menu',
-    mixins: [ProgressBar],
-    component:{
+    components:{
+        CarteMenuSemaine,
     },
     data() {
         return {
