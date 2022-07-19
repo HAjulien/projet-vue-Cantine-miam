@@ -11,7 +11,7 @@
         <!-- <img v-bind:src="'src/assets/images/' + image" class="mb-3 rounded-xl"/> -->
         <img :src="image" :alt="altImage" class="md:h-56 mx-auto rounded-lg "  >
 
-        <p class="text-gray-900 mb-6 mt-8  indent-5 dark:text-slate-100" v-html="paragraphe.substring(0,8000)+'...'"></p>
+        <p class="text-gray-900 mb-6 mt-8  indent-5 dark:text-slate-100" v-html="paragraphe.substring(0,8000)"></p>
 
         <div class="flex justify-between items-center mt-4  pb-2">
           <span class="mb-2 text-gray-800 font-bold dark:text-slate-100">Découvrir: </span>

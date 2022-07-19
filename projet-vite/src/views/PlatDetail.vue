@@ -2,9 +2,9 @@
     <div id="app" class=" bg-gray-100  dark:bg-gray-700 dark:text-gray-100 ">
 
         <h1
-        class="lg:mt-[65px] text-center text-3xl underline underline-offset-4 decoration-4 font-bold"
+        class="lg:mt-[65px] text-center text-3xl underline underline-offset-4 decoration-4 font-bold m-4 leading-relaxed	"
         :style="{textDecorationColor: `${produit.category.couleur}`, color: `${produit.category.couleur}`}"
-        > {{produit.nom}}
+        > {{produit.nom.toUpperCase()}}
         </h1>
 
         <NoteDetail :produit="produit" />
@@ -40,9 +40,7 @@
                 <button @click="modifierCritique()" class="px-2 py-1 bg-amber-300 hover:text-slate-200 rounded hover:bg-amber-600 "> Modifier</button>
                 <button @click="avis()" class="px-2 py-1 bg-red-400  rounded hover:bg-red-700 hover:text-slate-100" > Supprimer</button>
             </div>
-
         </div>
-
         <div v-show="isHidden" class=" py-4">
             <form action=""    @submit.prevent="submit"  method="POST"
             class="flex flex-col space-y-4 w-[80%] lg:w-[650px] m-auto border-2 border-black p-4"
@@ -111,8 +109,8 @@ export default {
             isHiddenCritique : true,
             form :{
             note: 0,
-            contenu: "",
-            }
+            contenu: ""
+            },
         }
     },
     created () {
@@ -169,21 +167,22 @@ export default {
             this.isHiddenCritique = true
             this.isHidden = false
         },
-        submit(){
-            axios
-            .put(this.lienAPI + `critiques/${this.userCritique[0].id}`, this.form, {
-                headers: {
-                    'Authorization': 'Bearer ' + this.token,
-                },
-            })
-            .then(function (response) {
-            console.log(response);
-            location.reload();
-
-            })
-            .catch(function (error) {
+        async submit(){
+            try{
+                await axios
+                .put(this.lienAPI + `critiques/${this.userCritique[0].id}`, this.form, {
+                    headers: {
+                        'Authorization': 'Bearer ' + this.token,
+                    },
+                })
+                .then(function (response) {
+                console.log(response);
+                location.reload();
+                })
+            }
+            catch(error) {
                 console.log(error);
-            });
+            };
         }
     },
     // watch: {

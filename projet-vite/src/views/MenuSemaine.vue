@@ -12,6 +12,7 @@
                 </button>       
             </li>
         </ul>
+                    <h1 class="mt-7 text-center text-xl font-bold italic text-[#A40E4C]"> {{jourChoisi}} </h1>
 
         <div class="relative pt-3">
             <div class="loader" v-if="isLoading" ></div>
@@ -20,7 +21,6 @@
                 <CarteMenuSemaine v-for="(produit, index) in produits" :key="index" :categorie="produit.category.nom" :couleur="produit.category.couleur"  :type="'entrée'"   :image="produit.image" :altImage="produit.altImage" :nom="produit.nom" :prix="produit.prixAchat" :id="produit.id"
                 />
             </div>
-            
             <h2 class="text-center text-3xl border-2 border-[#A40E4C] w-72 ml-[50vw] translate-x-[-50%] my-6 py-2 dark:bg-gray-600">LES PLATS</h2>
             <div class="md:flex md:items-center md:justify-center  m-auto">
                 <CarteMenuSemaine v-for="(produit, index) in produits" :key="index" :categorie="produit.category.nom" :couleur="produit.category.couleur"  :type="'plat poisson'"   :image="produit.image" :altImage="produit.altImage" :nom="produit.nom" :prix="produit.prixAchat" :id="produit.id"
@@ -64,17 +64,18 @@ export default {
                 { id:4, nom:'Jeudi' },
                 { id:5, nom:'Vendredi' },
             ],
-            isLoading: false
+            isLoading: false,
+            jourChoisi: ""
         }
     },
 
     created() {
         this.jourJS = new Date().getDay();
-        //console.log(this.jourJS);
         if(this.jourJS == 0 || this.jourJS == 6){
                 this.jourJS = 1
         }
-        //console.log(this.jourJS);
+        
+
         axios
         .get(`${this.lienAPI}/api/produits?page=1&JourPrevu=${this.jourJS}`)
         .then(response => (this.produits = response.data["hydra:member"]))
@@ -82,10 +83,11 @@ export default {
     },
 
     methods: {
-        async changeJour(param){
-            this.jourJS = param
+        //a l'aide du parem envoiyé par la boucle dans(selection.id) l9
+        async changeJour(id){
+            this.jourJS = id
             this.isLoading = true
-            // console.log(param);
+            // console.log(id);
             // console.log(this.jourJS);
             await axios
             .get(`${this.lienAPI}/api/produits?page=1&JourPrevu=${this.jourJS}`)
@@ -93,8 +95,19 @@ export default {
             //.then(console.log(this.produits))
             this.isLoading = false
 
+        },
 
-        }
+
+    },
+    updated() {
+        let date = new Date()
+        let dayNow = date.getDay()
+        //console.log(dayNow);
+        let dateNombreChoisi = date.getDate() - (dayNow - this.jourJS )
+        let dateChoice = new Date(date.setDate(dateNombreChoisi))
+        //console.log(dateNombreChoisi);
+        //console.log(dateChoice.toLocaleDateString("fr"));
+        this.jourChoisi = dateChoice.toLocaleDateString("fr", { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' })
     },
 
 

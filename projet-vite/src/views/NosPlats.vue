@@ -39,8 +39,8 @@
                 <span v-if="(numPageActuel == 1 && total > nombreProduitParPage )">
                     1 - {{numPageActuel * nombreProduitParPage}}   
                 </span>
-                <span v-else-if=" (numPageActuel + 1) * nombreProduitParPage < total ">
-                    {{numPageActuel * nombreProduitParPage + 1}} - {{(numPageActuel + 1)* nombreProduitParPage}}
+                <span v-else-if=" numPageActuel * nombreProduitParPage < total ">
+                    {{(numPageActuel - 1) * nombreProduitParPage + 1}} - {{numPageActuel * nombreProduitParPage}}
                 </span>
                 <span v-else>
                     {{((numPageActuel - 1) * nombreProduitParPage) + 1}} - {{total}}
@@ -110,12 +110,12 @@ export default {
         // un accesseur (getter) calculé on récupére le nombre de la page et transforme en nombre
         numPageActuel: function () {
             if(this.pagination["@id"]){
-                if (this.total > ( this.nombreProduitParPage * 100 ) ){ 
-                    return parseInt(this.pagination["@id"].substring(19,22))
+                if (this.total >= ( this.nombreProduitParPage * 100 ) ){ 
+                    return parseInt(this.pagination["@id"].slice(-3))
                 }else if(this.total >= ( this.nombreProduitParPage * 10 )){
-                    return parseInt(this.pagination["@id"].substring(19,21))
+                    return parseInt(this.pagination["@id"].slice(-2))
                 }else if(this.total > this.nombreProduitParPage ){
-                    return parseInt(this.pagination["@id"].substring(19,20))
+                    return parseInt(this.pagination["@id"].slice(-1))
                 }else{
                     return 1
                 }
@@ -123,12 +123,12 @@ export default {
         },
         numPageFin: function () {
             if (this.pagination["hydra:last"]){
-            return parseInt(this.pagination["hydra:last"].substring(19))
+            return parseInt(this.pagination["hydra:last"].slice(-1))
             }
         },
         numPagePrecedente: function () {
             if (this.pagination["hydra:previous"]){
-            return parseInt(this.pagination["hydra:previous"].substring(19))
+            return parseInt(this.pagination["hydra:previous"].slice(-1))
             }
         },
     },
@@ -195,6 +195,10 @@ export default {
             axios
             .get(this.lienAPI + "/api/produits?page=1&category.id=" + this.selectionCategorie)
             .then (response => (this.total = response.data["hydra:totalItems"]))
+            axios
+            .get(this.lienAPI + "/api/produits?page=1&category.id=" + this.selectionCategorie)
+            .then (response => (this.pagination = response.data["hydra:view"]))
+
         },
         toggleModale: function(){
             this.revele = !this.revele
