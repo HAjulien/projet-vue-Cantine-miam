@@ -219,12 +219,28 @@ export default {
     .navBouton{
         margin: 0 10px;
         padding: 2px 10px;
-        border: 2px solid #a40e4c;
+        border: 1.5px solid #a40e4c;
         border-radius: 5px;
-        box-shadow: 0px 0px 6px 1.5px #e91281
-;
+        box-shadow: 0px 0px 3px 1.5px #e91281;
+        animation: border-change-color 6s alternate infinite;
     }
 
+    .navBouton:hover{
+        background: #a40e4c;
+        color: #f8f8f8;
+    }
+
+    /* animation */
+    @keyframes border-change-color{
+        0%{border: 1.5px solid #2078dd; box-shadow: 0px 0px 3px 1.5px #062f5f;}
+        15%{border: 1.5px solid #2078dd; box-shadow: 0px 0px 3px 1.5px #062f5f;}
+        25%{border: 1.5px solid #dce316; box-shadow: 0px 0px 3px 1.5px #b9bf08f5;}
+        35%{border: 1.5px solid #dce316; box-shadow: 0px 0px 3px 1.5px #c7cd14f5;}
+        65%{border: 1.5px solid #dd1066; box-shadow: 0px 0px 3px 1.5px #6e0d36;}   
+        75%{border: 1.5px solid #dd1066; box-shadow: 0px 0px 3px 1.5px #6e0d36;}   
+        95%{border: 1.5px solid #a40e4c; box-shadow: 0px 0px 3px 1.5px #e91281;}
+        100%{border: 1.5px solid #a40e4c; box-shadow: 0px 0px 3px 1.5px #e91281;}
+    }
 
     @media screen and (max-width: 768px){
         #app{
