@@ -12,9 +12,10 @@
       </nav>
       <div class=" flex justify-around items-center mr-3">
           <BtnDarkMode/>
-          <button class=" flex items-center ml-6 " v-if=" user == '' ">
+          <button class=" flex items-center ml-6 " v-if=" user == '' " @click="toggleModale">
               <fa :style="{height: '35px', color: '#cda673', }"   icon='user' />
           </button>
+
           <span class="px-3 text-slate-200 text-center mx-4 border-2 border-amber-400 rounded cursor-pointer md:text-xs md:py-1 lg:text-base 
           hover:bg-amber-400 hover:text-slate-700 duration-300	hover:duration-300"
           v-if=" user != '' ">
@@ -27,11 +28,16 @@
           </span>
       </div>
 
+      <transition name="slide">
+        <ProfileModale :revele="revele" :toggleModale="toggleModale"></ProfileModale>
+      </transition >
+
   </header> 
 </template>
 
 <script>
 import BtnDarkMode from './BntDarkMode.vue';
+import ProfileModale from './ProfileModale.vue';
 import Login_logout from '../mixins/Login_logout';
 import MenuLiens from '../mixins/MenuLiens';
 
@@ -40,6 +46,7 @@ export default {
   mixins: [MenuLiens, Login_logout], 
   components:{
     BtnDarkMode,
+    ProfileModale
   },
   props:{
     id:Number,
@@ -50,6 +57,11 @@ export default {
       return {
           revele :false,
       }
+  },
+  methods: {
+    toggleModale: function(){
+        this.revele = !this.revele
+    },
   },
 }
 </script>
@@ -116,6 +128,20 @@ li:hover::after {
   transition: all .3s ease-in-out;
 }
 
+.slide-enter-from{
+  opacity: 0;
+  transform: translateY(-250px);
+}
+.slide-enter-active{
+  transition: all .3s ease-out;
+}
+.slide-leave-to{
+  opacity: 0;
+  transform: translateY(-250px);
+}
+.slide-leave-active{
+  transition: all .2s ease-in;
+}
 
 @media screen and (max-width:767.6px){
   header{

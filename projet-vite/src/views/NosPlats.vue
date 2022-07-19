@@ -63,15 +63,15 @@
             v-if=" total > nombreProduitParPage"
             >            
                 <div>
-                    <button @click="premierePage()" v-if="numPageActuel > 1 "> 1ER PAGE </button>
+                    <button @click="premierePage()" v-if="numPageActuel > 1" class="navBouton">1</button>
                     <span v-else> </span>
-                    <button @click="precedent()" v-if="numPageActuel > 2 "> PRÉCÉDENT </button>
+                    <button @click="precedent()" v-if="numPageActuel > 2 " class="navBouton"> PRÉCÉDENT </button>
                     <span v-else> </span>
                 </div>
 
                 <span> {{numPageActuel}} / {{numPageFin}} </span>
 
-                <button @click="suivant()"  v-if=" numPageActuel < numPageFin " > SUIVANT </button>
+                <button @click="suivant()"  v-if=" numPageActuel < numPageFin " class="navBouton" > SUIVANT </button>
                 <span v-else> </span>
             </div>
         </div>
@@ -215,6 +215,16 @@ export default {
         overflow: scroll;
         overflow-x: hidden;   
     }
+
+    .navBouton{
+        margin: 0 10px;
+        padding: 2px 10px;
+        border: 2px solid #a40e4c;
+        border-radius: 5px;
+        box-shadow: 0px 0px 6px 1.5px #e91281
+;
+    }
+
 
     @media screen and (max-width: 768px){
         #app{

@@ -3,7 +3,7 @@
 
         <div class="overlay" v-on:click="toggleModale"></div>
 
-        <div class="modale card rounded-xl lg:hidden ">
+        <div class="modale card rounded-xl ">
             <div class="relative bg-gray-300/70 rounded-xl dark:bg-gray-700">
                 <div class="flex justify-end p-2">
                     <button   v-on:click="toggleModale" type="button" class=" close z-10 text-gray-200 bg-red-500 hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm p-1.5 ml-auto inline-flex items-center dark:hover:bg-gray-800 dark:hover:text-white" data-modal-toggle="authentication-modal">
@@ -56,13 +56,13 @@
             </div>
         </div>
         <div 
-        class="fixed top-[10%] translate-y-[-50%] left-2 right-2 bg-amber-400/95 text-center text-2xl z-10 p-5 rounded-lg"
+        class="fixed top-[10%] w-full translate-y-[-50%] sm:left-[50%] sm:translate-x-[-50%] max-w-[600px] left-2 right-2 bg-amber-400/95 text-center text-2xl  text-black z-10 p-5 rounded-lg"
         :class="[isAttempt ? '' : 'hidden']"
         >
             <p>connexion en cours...</p>
         </div>
         <div 
-        class="fixed top-[10%] translate-y-[-50%] left-2 right-2 bg-emerald-400/95 text-center text-2xl z-10 p-5 rounded-lg"
+        class="fixed top-[10%] w-full translate-y-[-50%] sm:left-[50%] sm:translate-x-[-50%] max-w-[600px] left-2 right-2 bg-emerald-400/95 text-center text-2xl text-black z-10 p-5 rounded-lg"
         :class="[isSuccess ? '' : 'hidden']"
         >
             <p>connexion réussie: nous allons recharger la page</p>
@@ -143,14 +143,14 @@ export default {
     top: 5%;
     z-index: 1;
     width: 90vw;
-    max-width: 600px;
+    max-width: 450px;
 }
 
 .modale::before{
     content: '';
     position: absolute;
     z-index: 1;
-    width: 90vw;
+    width: 100%;
     height: 300px;
     background-image: url("https://cdn.pixabay.com/photo/2015/10/20/15/26/samos-997876_960_720.jpg");
     background-size: cover;
@@ -182,6 +182,13 @@ input:-webkit-autofill:hover,
 input:-webkit-autofill:focus, 
 input:-webkit-autofill:active  {
     -webkit-box-shadow: 0 0 0 30px white inset !important;
+}
+
+@media screen and (min-width:767px) {
+.modale{
+    margin-top: 50px;
+}
+
 }
 </style>
 

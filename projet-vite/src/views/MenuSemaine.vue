@@ -37,6 +37,19 @@
                 />
             </div>
         </div>
+
+        <ul class="flex justify-center items-center space-x-4 mt-6 flex-wrap">
+            <li
+            v-for="selection in selections" :key="selection.id ">              
+                <button class="border-2 border-amber-300 px-3 py-0.5 rounded flex justify-center my-2 duration-300 dark:bg-gray-600 bg-gray-50
+                lg:text-xl  "
+                :class="selection.id == jourJS ? 'border-emerald-700 dark:border-emerald-700 text-emerald-700 dark:text-emerald-300 w-28 lg:w-44 ' : 'w-20  lg:w-28' "
+                @click="changeJour(selection.id)"
+                >
+                    {{selection.nom}} 
+                </button>       
+            </li>
+        </ul>
         
     </div>
 </template>
@@ -83,9 +96,11 @@ export default {
 },
 
     methods: {
-        //a l'aide du parem envoiyé par la boucle dans(selection.id) l9
+        //a l'aide du parem envoyé par la boucle dans(selection.id) ligne 9
         async changeJour(id){
             this.jourJS = id
+            this.$el.scrollTo(0,0)
+            window.scrollTo(0,0);
             this.isLoading = true
             // console.log(id);
             // console.log(this.jourJS);
@@ -125,7 +140,8 @@ export default {
 
     .loader{
         @include absolutePosition(0,0,0,0);
-        background: rgba(0, 0, 0, 0.502);
+        background: rgba(0, 0, 0, 0.7);
+        min-height: 100vh;
         z-index: 10;
     }
 
