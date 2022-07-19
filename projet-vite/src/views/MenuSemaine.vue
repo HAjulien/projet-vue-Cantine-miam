@@ -69,18 +69,18 @@ export default {
         }
     },
 
-    created() {
+    async created() {
+        this.isLoading = true
         this.jourJS = new Date().getDay();
         if(this.jourJS == 0 || this.jourJS == 6){
                 this.jourJS = 1
         }
-        
-
-        axios
+        await axios
         .get(`${this.lienAPI}/api/produits?page=1&JourPrevu=${this.jourJS}`)
         .then(response => (this.produits = response.data["hydra:member"]))
-        //.then(console.log(this.produits))
-    },
+
+        this.isLoading = false
+},
 
     methods: {
         //a l'aide du parem envoiyé par la boucle dans(selection.id) l9

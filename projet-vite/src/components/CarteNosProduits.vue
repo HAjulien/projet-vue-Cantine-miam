@@ -6,7 +6,7 @@
         "
         :style="{border:`3px solid ${bgcolor}` }"    
         >
-            <img :src="image" :alt="altImage" class="w-[80%]  h-[120px] sm:h-[130px] lg:h-[200px] my-3 m-auto rounded-lg
+            <img :src="image" :alt="altImage" class="w-[80%]  h-[110px] sm:h-[130px] lg:h-[200px] my-3 m-auto rounded-lg
             absolute top-[-30%] left-[10%]
             ">
 
@@ -19,14 +19,14 @@
                 {{category}}
             </span>
 
-            <h2 class="text-center text-xl absolute
-            pb-4 top-[75px] sm:top-[90px] lg:top-[140px]  left-0 right-0
+            <h2 class="text-center sm:text-xl text-lg absolute
+            pb-4 top-[70px] sm:top-[90px] lg:top-[140px]  left-0 right-0
             ">
                 {{nom}}
             </h2 >
 
             <h3 class="text-center text-xl absolute
-            pb-4 top-[130px]  sm:top-[130px] lg:top-[180px]  left-0 right-0
+            pb-4 top-[120px]  sm:top-[130px] lg:top-[180px]  left-0 right-0
             "
             v-if=" moyenneNote > 0">
                 <span class="text-amber-300" v-for="(note, index) in (noteMoyenneTronque)" :key="index">
