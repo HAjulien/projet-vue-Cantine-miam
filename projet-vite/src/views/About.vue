@@ -28,7 +28,7 @@
 </template>
 
 <script>
-import Pencarte from '../components/pencarteOuverture.vue'
+import Pencarte from '../components/PencarteOuverture.vue'
 import InputNumber from '../components/InputNumber.vue'
 import Rating from '../components/Rating.vue'
 import ProgressBar from '../mixins/ProgressBar'

@@ -2,13 +2,13 @@
   <ul class=" md:hidden navigation flex items-center justify-between bg-gray-800 text-gray-200 dark:bg-gray-200 dark:text-gray-800 dark: p-1	" >
 
     <li class="flex-1 border-r-2  border-amber-500 h-full flex items-center justify-center">
-      <router-link to="/a" class=" flex  " > 
+      <router-link to="/menuSemaine" class=" flex  " > 
         <fa :style="{ height: '28px'}" icon="coffee" />
       </router-link>
     </li>
 
     <li class="flex-1  border-r-2 border-amber-500 h-full flex items-center justify-center ">
-      <router-link to="/about" class=" flex items-center justify-center  " > 
+      <router-link to="/horaire" class=" flex items-center justify-center  " > 
         <fa :style="{ height: '28px'}" icon="clock" />
       </router-link>
     </li>

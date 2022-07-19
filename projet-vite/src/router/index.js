@@ -5,6 +5,7 @@ import About from '/src/views/About.vue'
 import Equipe from '/src/views/Equipe.vue' 
 import NosPlats from '/src/views/NosPlats.vue' 
 import PlatDetail from '/src/views/PlatDetail.vue' 
+import Horaire from '/src/views/Horaire.vue'
 import Inscription from '/src/views/Inscription.vue' 
 
 const routes = [
@@ -37,6 +38,11 @@ const routes = [
         path: '/platDetail/:id',
         name: PlatDetail,
         component: PlatDetail,
+    },
+    {
+        path: '/horaire',
+        name: Horaire,
+        component: Horaire,
     },
     {
         path: '/inscription',

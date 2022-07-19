@@ -1,30 +1,27 @@
 <template>
-    <p id="pencarte"></p>
-
+    <p id="pencarte" class="dark:bg-gray-600 bg-gray-50" :class="isOuvert == false ? 'text-red-400 border-red-400': 'text-emerald-600 border-emerald-400' " ></p>
 </template>
 
 <script>
 export default {
     name:'pencarte',
-    components:{
 
-    },
     data() {
 
         return {
-            open_lunch_hour : 10,
-            open_lunch_minute : 50,
+            open_lunch_hour : 11,
+            open_lunch_minute : 30,
 
             close_lunch_hour : 14,
-            close_lunch_minute : 10, 
+            close_lunch_minute : 0, 
 
-            open_diner_hour : 17, 
-            open_diner_minute : 40,
+            open_diner_hour : 18, 
+            open_diner_minute : 0,
 
-            close_diner_hour : 21, 
-            close_diner_minute: 16,
+            close_diner_hour : 19, 
+            close_diner_minute: 30,
 
-            travail: true,
+            isOuvert:true,
 
         }
     },
@@ -36,47 +33,54 @@ export default {
         let open_diner = ( this.open_diner_hour * 60 ) + this.open_diner_minute;
         let close_diner =  ( this.close_diner_hour * 60 ) + this.close_diner_minute;
 
-        //recuperer le jour (entre 0 et 6) pas besoin avec sql et l'heure du visiteur que l'on converti en un nombre
-        // let day = date.getDay();
         const date = new Date();
+        let day = date.getDay();
 
         let minute = date.getMinutes();
         let hour = date.getHours();
         let horaire_user = ( hour*60 ) + minute;
-
+        let self = this
         //pour modifier le contenu de la pencarte
         const pencarte = document.getElementById("pencarte");
 
             function horaire( open_lunch, close_lunch ,open_diner,close_diner, heureMidi , minuteMidi, heureFinMidi, minuteFinMidi,heureSoir,minuteSoir,heureFinSoir ,minuteFinSoir){
                     //quand la cantine n'ouvre pas le matin 0 equivaut à null
                     if ( horaire_user < open_diner && close_lunch == 0 && open_diner !== 0 ) {
-                        pencarte.innerHTML = "la cantine n'ouvre que le soir à partir de " + heureSoir +"h"+ minuteSoir +".";
+                        pencarte.innerHTML = "la cantine n'ouvre que le soir à partir de " + heureSoir +"h"+ minuteSoir +"."
+                        self.isOuvert = false
                     }
                     else if (horaire_user >= 0 && horaire_user <  open_lunch){
-                        pencarte.innerHTML = "la cantine ouvre à " + heureMidi + " h " + minuteMidi + ".";
+                        pencarte.innerHTML = "la cantine ouvre à " + heureMidi + " h " + minuteMidi + "."
+                        self.isOuvert = false
                     }
                     else if ( horaire_user >=  open_lunch && horaire_user < close_lunch) {
-                        pencarte.innerHTML = "la cantine est ouverte jusqu'à " + heureFinMidi + " h " + minuteFinMidi + ".";
+                        pencarte.innerHTML = "la cantine est ouverte jusqu'à " + heureFinMidi + " h " + minuteFinMidi + "."
+                        self.isOuvert = false
                     }
-                    else if ( horaire_user > close_lunch && open_diner == 0 ) {
-                        pencarte.innerHTML = "la cantine n'ouvre pas ce soir.";
+                    else if ( horaire_user > close_lunch && this.day == 5 ) {
+                        pencarte.innerHTML = "la cantine n'ouvre pas ce soir."
+                        self.isOuvert = false;
                     }
                     else if (horaire_user >=  close_lunch && horaire_user < open_diner ) {
-                        pencarte.innerHTML = "la cantine réouvre à " + heureSoir + " h " + minuteSoir + ".";
+                        pencarte.innerHTML = "la cantine réouvre à " + heureSoir + " h " + minuteSoir + "."
+                        self.isOuvert = false;
                     }
                     else if ( horaire_user >= open_diner && horaire_user < close_diner){
-                        pencarte.innerHTML = "la cantine est ouverte jusqu'à " + heureFinSoir + " h " + minuteFinSoir + ".";
+                        pencarte.innerHTML = "la cantine est ouverte jusqu'à " + heureFinSoir + " h " + minuteFinSoir + "."
+                        self.isOuvert = false;
                     }
                     else{
-                        pencarte.innerHTML = "la cantine est fermée pour ce soir." 
+                        pencarte.innerHTML = "la cantine est fermée pour ce soir."
+                        self.isOuvert = false;
                     }
             
                 };
 
         
 
-        if ( this.travail == false) {
+        if ( day == 0 || day == 6) {
             pencarte.innerHTML = "la cantine est fermée aujourd'hui." 
+            this.isOuvert = false
         }else{
             horaire(
             open_lunch,
@@ -92,6 +96,7 @@ export default {
             this.close_diner_hour,
             this.close_diner_minute,
             );
+            console.log(this.isOuvert);
         }
 
 
@@ -101,17 +106,22 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-    #pencarte{
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        width: 350px;
-        height: 80px;
+    p{
         margin: auto;
-        background-color: rgb(185, 151, 109);
-        color: #f8f8f8;
-        border: 3px solid #7cf808;
-        border-radius: 15px;
+        width: 96%;
+        max-width: 450px;
+        padding: 15px 0;
+        text-align: center;
+        font-size: 1.2rem;
+        font-weight: 700;
+        border: 2px solid ;
+
     }
 
+    @media screen and (min-width:780px) {
+        p{
+            font-size: 1.5rem;
+        }
+
+    }
 </style>
