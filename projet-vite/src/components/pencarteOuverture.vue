@@ -57,7 +57,7 @@ export default {
                         pencarte.innerHTML = "la cantine est ouverte jusqu'à " + heureFinMidi + " h " + minuteFinMidi + "."
                         self.isOuvert = true
                     }
-                    else if ( horaire_user > close_lunch && this.day == 5 ) {
+                    else if ( horaire_user > close_lunch && day == 5 ) {
                         pencarte.innerHTML = "la cantine n'ouvre pas ce soir."
                         self.isOuvert = false;
                     }

@@ -1,5 +1,5 @@
 <template>
-    <div id="app" class=" bg-gray-100  dark:bg-gray-700 dark:text-gray-100 ">
+    <div id="app" class=" bg-gray-100  dark:bg-gray-700 dark:text-gray-100 min-h-[90vh]">
 
         <h1
         class="lg:mt-[65px] text-center text-3xl underline underline-offset-4 decoration-4 font-bold m-4 leading-relaxed	"

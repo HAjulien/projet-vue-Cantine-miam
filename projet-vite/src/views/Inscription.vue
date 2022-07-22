@@ -4,7 +4,7 @@
             <div class="portable  md:hidden"></div>
             <h1 class="text-center mt-20 mb-4 md:my-6" >Inscription </h1>
             <div class="form" @submit.prevent="submit">    
-                <form class="mt-12" action="">
+                <form class="mt-12" action="Post">
                     <BaseInput
                     required
                     v-model="form.email"

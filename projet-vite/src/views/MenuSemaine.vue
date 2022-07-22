@@ -91,7 +91,6 @@ export default {
         await axios
         .get(`${this.lienAPI}/api/produits?page=1&JourPrevu=${this.jourJS}`)
         .then(response => (this.produits = response.data["hydra:member"]))
-
         this.isLoading = false
 },
 

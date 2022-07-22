@@ -20,7 +20,7 @@ export default {
         HoraireTableau,
         PencarteOuverture,
         Localisation
-    }
+    },
 
 }
 </script>

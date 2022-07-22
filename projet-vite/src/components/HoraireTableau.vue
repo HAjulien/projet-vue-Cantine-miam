@@ -1,32 +1,41 @@
 <template>
     <table class="bg-gray-50 dark:bg-gray-600">
             <caption>La Cantine Miam vous accueille :</caption>
-            <tr>
-                <th>lundi:</th>
+            <tr
+            :class="day == 1 ? 'text-emerald-500': ''"
+            >
+                <th>lundi :</th>
                 <td>11H30 - 14H00</td>
                 <td>et de</td>
                 <td>18H00 - 19H30</td>
             </tr>
-            <tr>
-                <th>mardi:</th>
+            <tr
+            :class="day == 2 ? 'text-emerald-500': ''"            
+            >
+                <th>mardi :</th>
                 <td>11H30 - 14H00</td>
                 <td>et de</td>
                 <td>18H00 - 19H30</td>
             </tr>
-            <tr>
-                <th>mercredi:</th>
+            <tr
+            :class="day == 3 ? 'text-emerald-500': ''"        >
+                <th>mercredi :</th>
                 <td>11H30 - 14H00</td>
                 <td>et de</td>
                 <td>18H00 - 19H30</td>
             </tr>
-            <tr>
-                <th>jeudi:</th>
+            <tr
+            :class="day == 4 ? 'text-emerald-500': ''"        
+            >
+                <th>jeudi :</th>
                 <td>11H30 - 14H00</td>
                 <td>et de</td>
                 <td>18H00 - 19H30</td>
             </tr>
-            <tr>
-                <th>vendredi:</th>
+            <tr
+            :class="day == 5 ? 'text-emerald-500': ''"        
+            >
+                <th>vendredi :</th>
                 <td colspan="3"> 11H30 - 14H00 </td>
             </tr>
         </table>
@@ -34,7 +43,16 @@
 
 <script>
 export default {
-    name: "HoraireTableau"
+    name: "HoraireTableau",
+    data() {
+        return {
+            day :''
+        }
+    },
+    created() {
+        this.day = new Date().getDay()
+        console.log(this.day);
+    },
 }
 </script>
 
@@ -54,11 +72,16 @@ export default {
     }
 
     th{
+        font-family: "Satisfy", sans-serif;
         text-decoration: underline;
-        font-size: 1.2rem;
+        font-size: 1.4rem;
         font-weight: normal;
         text-align: left;
         padding-left: 10px;
+    }
+
+    th::first-letter{
+        text-transform: uppercase;
     }
 
     td{
