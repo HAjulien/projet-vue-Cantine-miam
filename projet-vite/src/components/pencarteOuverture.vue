@@ -1,5 +1,5 @@
 <template>
-    <p id="pencarte" class="dark:bg-gray-600 bg-gray-50" :class="isOuvert == false ? 'text-red-400 border-red-400': 'text-emerald-600 border-emerald-400' " ></p>
+    <p id="pencarte" class="dark:bg-gray-600 bg-gray-50" :class="isOuvert == true ? 'text-emerald-400 border-emerald-400' : 'text-red-400 boder-red-400'" ></p>
 </template>
 
 <script>
@@ -55,7 +55,7 @@ export default {
                     }
                     else if ( horaire_user >=  open_lunch && horaire_user < close_lunch) {
                         pencarte.innerHTML = "la cantine est ouverte jusqu'à " + heureFinMidi + " h " + minuteFinMidi + "."
-                        self.isOuvert = false
+                        self.isOuvert = true
                     }
                     else if ( horaire_user > close_lunch && this.day == 5 ) {
                         pencarte.innerHTML = "la cantine n'ouvre pas ce soir."
@@ -67,7 +67,7 @@ export default {
                     }
                     else if ( horaire_user >= open_diner && horaire_user < close_diner){
                         pencarte.innerHTML = "la cantine est ouverte jusqu'à " + heureFinSoir + " h " + minuteFinSoir + "."
-                        self.isOuvert = false;
+                        self.isOuvert = true;
                     }
                     else{
                         pencarte.innerHTML = "la cantine est fermée pour ce soir."

@@ -43,7 +43,7 @@ export default {
                     let self = this
                     this.timeoutId = setTimeout(function(){
                         self.search = newVal.trim().split(" ").join("%20"); 
-                        console.log(`http://localhost:8000/api/produits?page=1&nom=${self.search}`);
+                        //console.log(`http://localhost:8000/api/produits?page=1&nom=${self.search}`);
                         self.AllSearch()
                     },1500)
                 }
