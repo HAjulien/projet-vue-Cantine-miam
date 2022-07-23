@@ -1,6 +1,6 @@
 <template>
-    <div class="inscription">
-        <div class="portableImage md:w-1/2 lg:w-[35vw]">
+    <div class="inscription  min-h-[100vh]">
+        <div class="portableImage md:w-1/2 lg:w-[35vw] ">
             <div class="portable  md:hidden"></div>
             <h1 class="text-center mt-20 mb-4 md:my-6" >Inscription </h1>
             <div class="form" @submit.prevent="submit">    
