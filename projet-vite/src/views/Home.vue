@@ -44,7 +44,6 @@ export default {
     
     #app{
         width: 100vw;
-        flex: 1 1 100%;
         overflow: scroll;
         overflow-x: hidden;
     }

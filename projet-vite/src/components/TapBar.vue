@@ -14,7 +14,7 @@
     </li>
 
     <li class="flex-1  border-r-2 border-amber-500 h-full flex items-center justify-center ">
-      <router-link to="/" class=" flex items-center justify-center leading-none text-sm	 " >
+      <router-link to="/click&collect" class=" flex items-center justify-center leading-none text-sm	 " >
         click &<br/> collect 
       </router-link>
     </li>

@@ -203,10 +203,17 @@ export default {
 
     #app{
         width: 100vw;
-        flex: 1 1 100%;
         overflow: scroll;
         overflow-x: hidden;   
     }
+
+    .maCritique{
+        background-color: $green;
+        color: #f8f8f8;
+        border-top: 1px solid black;
+        border-radius: 4px;
+    }
+
 
     @media screen and (max-width: 768px){
         #app{
@@ -219,13 +226,5 @@ export default {
             padding: 50px 0;
         }
     }
-
-    .maCritique{
-        background-color: $green;
-        color: #f8f8f8;
-        border-top: 1px solid black;
-        border-radius: 4px;
-    }
-
 </style>
 

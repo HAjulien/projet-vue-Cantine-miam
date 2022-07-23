@@ -103,7 +103,7 @@ li {
 
 .router-link:hover {
   color: #cda673;
-  transform: scale(1.1);
+  transform: scale(1);
   transition: all .3s ease-in-out;
 }
 
@@ -161,14 +161,17 @@ li:hover::after {
       width: 13vw;
   }
   li{
-    font-size: 0.9rem;
+    font-size: 0.8rem;
   }
   li:hover::after {
     transform: scale(0);
   }
-.router-link:hover {
-  transform: scale(0.9);
-}
+  .router-link:hover {
+    transform: scale(0.9);
+  }
+  .router-link:hover {
+    transform: scale(0.9);
+  }
 }
   
 </style>
