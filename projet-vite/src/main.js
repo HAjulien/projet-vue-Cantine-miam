@@ -11,7 +11,7 @@ import axios from 'axios';
 
 //axios.defaults.baseURL = "http://localhost:8000/api" 
 axios.defaults.baseURL = "https://cantinemiam.herokuapp.com/api" 
-library.add(faUser, faCoffee, faClock, faMoon, faSun, faYoutube, faTwitter, faInstagram, faFacebook, faStar, faStarHalf, faSignOut, faEyeSlash,faEye, faLock, faTrash, faSearch, faClose, faBus, faCar, faTrain, faPhone)
+library.add(faUser, faCoffee, faClock, faMoon, faSun, faYoutube, faTwitter, faInstagram, faFacebook, faStar, faStarHalf, faSignOut, faEyeSlash,faEye, faLock, faTrash, faSearch, faClose, faBus, faCar, faTrain, faPhone,)
 
 createApp(App).component('fa', FontAwesomeIcon).use(router).use(store).mount('#app');
 

@@ -1,6 +1,14 @@
 <template>
     <div id="app" class=" bg-gray-100  dark:bg-gray-700 dark:text-gray-100 min-h-[90vh]">
-
+        <div class="modaleSuppression "  v-if="isSuppress" >
+            <div class="w-[98%] inset-2/4 transition-all translate-x-[-50%] max-w-[700px] h-[400px] max-h-[400px] bg-gray-100 border-4 border-red-500 absolute top-[20%]  dark:bg-gray-500">
+                <h3 class="text-center text-lg mt-[150px]">Voulez vous vraiment supprimer votre commentaire ?</h3>
+                <div class="mt-12 flex items-center justify-around text-xl">
+                    <button @click="supprimerCritique()" class="px-2 py-1 bg-red-400 rounded hover:bg-red-700 hover:text-slate-100" > Supprimer</button>
+                    <button class="px-2 py-1 bg-amber-400 rounded hover:bg-red-700 hover:text-slate-100" @click="isSuppress = false"> annuler</button>
+                </div>
+            </div>
+        </div>
         <h1
         class="lg:mt-[65px] text-center text-3xl underline underline-offset-4 decoration-4 font-bold m-4 leading-relaxed	"
         :style="{textDecorationColor: `${produit.category.couleur}`, color: `${produit.category.couleur}`}"
@@ -38,7 +46,8 @@
             </p>
             <div class="flex justify-around w-full">
                 <button @click="modifierCritique()" class="px-2 py-1 bg-amber-300 hover:text-slate-200 rounded hover:bg-amber-600 "> Modifier</button>
-                <button @click="avis()" class="px-2 py-1 bg-red-400  rounded hover:bg-red-700 hover:text-slate-100" > Supprimer</button>
+                <button @click="isSuppress = true" class="px-2 py-1 bg-red-400  rounded hover:bg-red-700 hover:text-slate-100" > Supprimer</button>
+
             </div>
         </div>
         <div v-show="isHidden" class=" py-4">
@@ -107,6 +116,7 @@ export default {
             userCritique: [],
             isHidden : false,
             isHiddenCritique : true,
+            isSuppress: false,
             form :{
             note: 0,
             contenu: ""
@@ -137,7 +147,7 @@ export default {
         }
     },
     methods: {
-        avis(){
+        supprimerCritique(){
             //console.log(this.userCritique[0].id);
             axios
             .delete(this.lienAPI + `critiques/${this.userCritique[0].id}`, {
@@ -205,6 +215,13 @@ export default {
         width: 100vw;
         overflow: scroll;
         overflow-x: hidden;   
+    }
+
+    .modaleSuppression{
+        position: fixed;
+        width: 100%;
+        height: 100%;
+        z-index: 100;
     }
 
     .maCritique{

@@ -7,7 +7,7 @@
     
     <div class="sm:flex sm:flex-col md:flex-row article lg:h-[400px] rounded-xl shadow-md m-2  border-2 p-4 mb-8  bg-gray-100 dark:bg-gray-600 text-lg  hover:border-4 hover:border-amber-300 ">
 
-        <div class="md:px-10 sm:px-5 rounded-xl flex-1">
+        <div class="md:px-10 sm:px-5 rounded-xl flex-1 dark:bg-gray-600">
             <h2 class="text-center font-extrabold text-2xl my-2 dark:text-black">Des repas équilibrés pour tout le monde</h2>
             <p class="text-gray-800 indent-5 mb-8 mt-6 md:mb-6 dark:text-slate-100">Chez Cantine MIAM nous proposons des repas équilibrés à des prix raisonnables. Vous aurez le choix entre un plat de viande, de poisson ou crudité et un plat entièrement végétariens. Nous vous assurons une grande diversité, chaque jour un menu différent vous sera proposé. Bonne appétit !!!</p> 
         </div>
