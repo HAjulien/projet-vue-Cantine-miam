@@ -5,6 +5,9 @@
 
         <ReseauxSociaux/>
 
+        <router-link to="informations">
+            <p class="text-center text-xl m-3 cursor-pointer underline hover:text-amber-500" > Plus informations :</p>
+        </router-link>
         <p class="text-center mt-4">CANTINE MIAM tous droits réservés, 2022</p>
 
     </footer>
