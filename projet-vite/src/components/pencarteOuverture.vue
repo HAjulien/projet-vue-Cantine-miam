@@ -54,7 +54,7 @@ export default {
                         self.isOuvert = false
                     }
                     else if ( horaire_user >=  open_lunch && horaire_user < close_lunch) {
-                        pencarte.innerHTML = "la cantine est ouverte jusqu'à " + heureFinMidi + " h " + minuteFinMidi + "."
+                        pencarte.innerHTML = "la cantine est ouverte jusqu'à " + heureFinMidi + " h " + minuteFinMidi + "0."
                         self.isOuvert = true
                     }
                     else if ( horaire_user > close_lunch && day == 5 ) {
@@ -62,7 +62,7 @@ export default {
                         self.isOuvert = false;
                     }
                     else if (horaire_user >=  close_lunch && horaire_user < open_diner ) {
-                        pencarte.innerHTML = "la cantine réouvre à " + heureSoir + " h " + minuteSoir + "."
+                        pencarte.innerHTML = "la cantine réouvre à " + heureSoir + " h " + minuteSoir + "0."
                         self.isOuvert = false;
                     }
                     else if ( horaire_user >= open_diner && horaire_user < close_diner){

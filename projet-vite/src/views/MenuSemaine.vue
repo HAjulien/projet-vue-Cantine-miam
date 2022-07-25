@@ -12,10 +12,14 @@
                 </button>       
             </li>
         </ul>
-                    <h1 class="mt-7 text-center text-xl font-bold italic text-[#A40E4C]"> {{jourChoisi}} </h1>
+        <h1 class="mt-7 text-center text-xl font-bold italic text-[#A40E4C]"> {{jourChoisi}} </h1>
 
         <div class="relative pt-3">
-            <div class="loader" v-if="isLoading" ></div>
+
+            <div class="loader" v-if="isLoading" >
+                <Spinner/>
+            </div>
+
             <h2 class="text-center text-3xl border-2 border-[#A40E4C] w-72 ml-[50vw] translate-x-[-50%] my-6 py-2 dark:bg-gray-600">LES ENTRÉES</h2>
             <div class="md:flex md:items-center md:justify-center  m-auto">
                 <CarteMenuSemaine v-for="(produit, index) in produits" :key="index" :categorie="produit.category.nom" :couleur="produit.category.couleur"  :type="'entrée'"   :image="produit.image" :altImage="produit.altImage" :nom="produit.nom" :prix="produit.prixAchat" :id="produit.id"
@@ -58,12 +62,14 @@
 import ProgressBar from '../mixins/ProgressBar'
 import axios from 'axios';
 import CarteMenuSemaine from '../components/CarteMenuSemaine.vue';
+import Spinner from '../components/Spinner.vue'
 
 export default {
     name:'menu',
     mixins: [ProgressBar],
     components:{
         CarteMenuSemaine,
+        Spinner,
     },
     data() {
         return {

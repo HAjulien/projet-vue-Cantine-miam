@@ -1,6 +1,9 @@
 <template>
 
-    <div id="app" class="dark:bg-gray-800 relative" >    
+    <div id="app" class="dark:bg-gray-800 relative" >  
+        <div class="loading" v-if="isLoading">
+            <Spinner/>
+        </div>
         <div class="lg:py-12 py-3 px-3 lg:w-[90%] min-h-[200vh] bg-slate-100 mx-auto 
         dark:bg-gray-700  dark:text-gray-100 "
         >
@@ -80,7 +83,7 @@
 </template>
 
 <script>
-
+import Spinner from '../components/Spinner.vue'
 import CarteNosProduits from '../components/CarteNosProduits.vue'
 import RechercheModale from '../components/RechercheModale.vue'
 import axios from 'axios';
@@ -90,12 +93,14 @@ export default {
     name:'nosPlats',
     mixins: [ProgressBar],
     components:{
+        Spinner,
         CarteNosProduits,
         RechercheModale
     },
     data() {
         return {
             revele :false,
+            isLoading: false,
             recherche: '',
             selectionCategorie:"",
             produits: [],
@@ -132,72 +137,82 @@ export default {
             }
         },
     },
-    created () {
-        axios
+    async created () {
+        this.isLoading = true
+        await axios
         .get( this.lienAPI + "/api/produits")
         .then (response => (this.produits = response.data["hydra:member"]))
-        axios
+        await axios
         .get( this.lienAPI + "/api/produits")
         .then (response => (this.total = response.data["hydra:totalItems"]))
         //console.log(this.total);
-        axios
+        await axios
         .get( this.lienAPI + "/api/categories")
         .then (response => (this.categories = response.data["hydra:member"]))
-        axios
+        await axios
         .get( this.lienAPI + "/api/produits")
         .then (response => (this.pagination = response.data["hydra:view"]))
+        this.isLoading = false
     },
     methods: {
-        suivant(){
+        async suivant(){
+            this.isLoading = true
             this.$el.scrollTo(0,0)
             window.scrollTo(0,0);
             //console.log(this.lienAPI + this.pagination["hydra:next"]);
-            axios
+            await axios
             .get(this.lienAPI + this.pagination["hydra:next"])
             .then (response => (this.produits = response.data["hydra:member"]))
-            axios
+            await axios
             .get(this.lienAPI + this.pagination["hydra:next"])
             .then (response => (this.pagination = response.data["hydra:view"]))
+            this.isLoading = false
             
         },
-        precedent(){
+        async precedent(){
+            this.isLoading = true
             this.$el.scrollTo(0,0)
             window.scrollTo(0,0);
             //console.log(this.lienAPI + this.pagination["hydra:previous"]);
-            axios
+            await axios
             .get(this.lienAPI + this.pagination["hydra:previous"])
             .then (response => (this.produits = response.data["hydra:member"]))
-            axios
+            await axios
             .get(this.lienAPI + this.pagination["hydra:previous"])
             .then (response => (this.pagination = response.data["hydra:view"]))
+            this.isLoading = false
         },
-            premierePage(){
+        async premierePage(){
+            this.isLoading = true
             this.$el.scrollTo(0,0)
             window.scrollTo(0,0);
             //console.log(this.lienAPI + this.pagination["hydra:first"]);
-            axios
+            await axios
             .get(this.lienAPI + this.pagination["hydra:first"])
             .then (response => (this.produits = response.data["hydra:member"]))
-            axios
+            await axios
             .get(this.lienAPI + this.pagination["hydra:first"])
             .then (response => (this.pagination = response.data["hydra:view"]))
+            this.isLoading = false
         },
-        categorychoix(){
+        async categorychoix(){
             //v-model permet de recuperer la value et de la mettre dans une data
             //const select = document.getElementById('category');
             //const value = select.options[select.selectedIndex].value;
             //console.log(this.lienAPI + "/api/produits?page=1&category.id=" + value);
+            this.isLoading = true
             this.$el.scrollTo(0,0)
             window.scrollTo(0,0);
-            axios
+            await axios
             .get(this.lienAPI + "/api/produits?page=1&category.id=" + this.selectionCategorie)
             .then (response => (this.produits = response.data["hydra:member"]))
-            axios
+            await axios
             .get(this.lienAPI + "/api/produits?page=1&category.id=" + this.selectionCategorie)
             .then (response => (this.total = response.data["hydra:totalItems"]))
-            axios
+            await axios
             .get(this.lienAPI + "/api/produits?page=1&category.id=" + this.selectionCategorie)
             .then (response => (this.pagination = response.data["hydra:view"]))
+            this.isLoading = false
 
         },
         toggleModale: function(){
@@ -215,6 +230,11 @@ export default {
         overflow-x: hidden;   
     }
 
+    .loading{
+        @include absolutePosition(0,0,0,0);
+        background-color: rgba(0, 0, 0, 0.9);
+        z-index: 10;
+    }
     .navBouton{
         margin: 0 10px;
         padding: 2px 10px;

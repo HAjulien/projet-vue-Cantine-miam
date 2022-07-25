@@ -1,5 +1,6 @@
 <template>
   <div id="carousel" class="md:hidden">
+
     <swiper 
     :pagination="pagination" 
     :modules="modules" 
@@ -8,7 +9,6 @@
       disableOnInteraction: false,
     }"
     class="mySwiper">
-
       <swiper-slide
       v-for="contenu in contenuCarousel" v-bind:key="contenu.id" > 
 
@@ -17,8 +17,11 @@
         <h1>cantine miam</h1>
         
       </swiper-slide>
-
     </swiper>
+
+    <div class="loading" v-if="isLoading">
+      <Spinner/>
+    </div>
   </div>
 </template>
 
@@ -34,13 +37,14 @@ import "swiper/css/pagination";
 
 // import required modules
 import { Pagination, Autoplay } from "swiper";
-
 import axios from 'axios';
+import Spinner from '../components/Spinner.vue'
 
 export default {
   components: {
     Swiper,
     SwiperSlide,
+    Spinner,
   },
 
   setup() {
@@ -54,13 +58,16 @@ export default {
   
   data() {
     return {
-      contenuCarousel: []
+      contenuCarousel: [],
+      isLoading : false
     }
   },
-  created () {
+  async created () {
+    this.isLoading = true
     axios
       .get("https://cantinemiam.herokuapp.com/api/image_carousels?page=1")
       .then (response => (this.contenuCarousel = response.data["hydra:member"]))
+    this.isLoading = false
 
   },
 };
@@ -77,6 +84,12 @@ export default {
   color: #000;
   margin: 0;
   padding: 0;
+}
+
+.loading{
+    @include absolutePosition(0,0,0,0);
+    background-color: rgba(0, 0, 0, 0.8);
+    z-index: 10;
 }
 
 .swiper {
