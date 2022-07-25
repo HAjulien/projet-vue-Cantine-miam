@@ -85,7 +85,7 @@
                     <span class="block my-2 text-right  lg:mx-4 "
                     v-if=" user[0]  == critique.utilisateur.id"
                     >
-                        <fa :style="{ height: '28px'}" class="cursor-pointer text-red-600" icon="trash" @click="avis()" />
+                        <fa :style="{ height: '28px'}" class="cursor-pointer text-red-600" icon="trash" @click="isSuppress = true" />
                     </span>
                 </div>
         </article>
