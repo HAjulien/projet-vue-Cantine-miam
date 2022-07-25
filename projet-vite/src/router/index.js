@@ -6,6 +6,7 @@ import Click from '/src/views/Click.vue'
 import NosPlats from '/src/views/NosPlats.vue' 
 import PlatDetail from '/src/views/PlatDetail.vue' 
 import Horaire from '/src/views/Horaire.vue'
+import Informations from '/src/views/Informations.vue'
 import Inscription from '/src/views/Inscription.vue' 
 
 const routes = [
@@ -43,6 +44,11 @@ const routes = [
         path: '/horaire',
         name: Horaire,
         component: Horaire,
+    },
+    {
+        path: '/informations',
+        name: Informations,
+        component: Informations,
     },
     {
         path: '/inscription',

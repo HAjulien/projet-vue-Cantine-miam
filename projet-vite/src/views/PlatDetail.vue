@@ -1,7 +1,7 @@
 <template>
     <div id="app" class=" bg-gray-100  dark:bg-gray-700 dark:text-gray-100 min-h-[90vh]">
         <div class="modaleSuppression "  v-if="isSuppress" >
-            <div class="w-[98%] inset-2/4 transition-all translate-x-[-50%] max-w-[700px] h-[400px] max-h-[400px] bg-gray-100 border-4 border-red-500 absolute top-[20%]  dark:bg-gray-500">
+            <div class="w-[98%] inset-2/4 translate-x-[-50%] max-w-[700px] h-[400px] max-h-[400px] bg-gray-100 border-4 border-red-500 absolute top-[20%]  dark:bg-gray-600">
                 <h3 class="text-center text-lg mt-[150px]">Voulez vous vraiment supprimer votre commentaire ?</h3>
                 <div class="mt-12 flex items-center justify-around text-xl">
                     <button @click="supprimerCritique()" class="px-2 py-1 bg-red-400 rounded hover:bg-red-700 hover:text-slate-100" > Supprimer</button>
@@ -69,7 +69,7 @@
         class="lg:w-[80%] mx-2 lg:m-auto lg:mb-6 mb-12 border-x border-b border-black dark:border-gray-400 dark:bg-gray-600 rounded"
         v-for="(critique, index) in critiquesOrderDESC" :key="index">
                 <p  class=" flex justify-between px-2 lg:px-8 py-4 border-b-2 border-black dark:border-gray-400"
-                :class=" user[0]  == critique.utilisateur.id ? 'maCritique' : 'border-y'"
+                :class=" user[0]  == critique.utilisateur.id ? 'maCritique' : ''"
                 >
                     <span class="font-bold">{{critique.utilisateur.pseudo}}</span>
 

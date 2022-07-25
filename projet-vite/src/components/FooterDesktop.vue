@@ -66,10 +66,10 @@ export default {
         return{
 
         infos: [
-            {chemin:'#', list:"Nos mesures d'hygiène", id:1},
-            {chemin:'#', list:"Comment les menu sont élaborés?", id:2},
-            {chemin:'#', list:"Notre engagement sur le développement durable", id:3},
-            {chemin:'#', list:"Notre politique de confidentialité", id:4},
+            {chemin:'/informations', list:"Nos mesures d'hygiène", id:1},
+            {chemin:'/informations', list:"Comment les menu sont élaborés?", id:2},
+            {chemin:'/informations', list:"Notre engagement sur le développement durable", id:3},
+            {chemin:'/informations', list:"Notre politique de confidentialité", id:4},
         ],
         }
 
