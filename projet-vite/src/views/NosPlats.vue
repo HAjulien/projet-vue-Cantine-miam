@@ -17,7 +17,7 @@
                 <input type="text" placeholder="Taper votre recherche ici" v-if="revele"
                 class="w-72 outline-0 bg-gray-100 dark:bg-gray-600 dark:placeholder:text-gray-100 placeholder:text-slate-800"  v-model="recherche">
 
-                <span v-if="revele"> <fa :style="{height: '25px'}" icon='close' class="cursor-pointer text-red-500" @click="toggleModale" /></span>
+                <span v-if="revele"> <fa :style="{height: '25px'}" icon='close' class="cursor-pointer text-red-500" @click="cleanReseach" /></span>
                 <span v-else> <fa :style="{height: '20px', color: '#097770'}" icon='search' class="cursor-pointer " @click="toggleModale" /></span>
 
             </div>
@@ -218,6 +218,10 @@ export default {
         toggleModale: function(){
             this.revele = !this.revele
         },
+        cleanReseach: function(){
+            this.recherche = "";
+            
+        }
     },  
 }
 </script>

@@ -41,12 +41,11 @@ export default {
                 if (newVal.length > oldVal.length && newVal.length > 2 ) {
                     clearTimeout(this.timeoutId)
                     this.produits = [];
-                    let self = this
-                    this.timeoutId = setTimeout(function(){
-                        self.search = newVal.trim().split(" ").join("%20"); 
-                        //console.log(`http://localhost:8000/api/produits?page=1&nom=${self.search}`);
-                        self.AllSearch()
-                    },1500)
+                    this.timeoutId = setTimeout(() =>{
+                        this.search = newVal.trim().split(" ").join("%20"); 
+                        //console.log(`http://localhost:8000/api/produits?page=1&nom=${this.search}`);
+                        this.AllSearch()
+                    },1000)
                 }
             },
             deep: true
@@ -65,25 +64,26 @@ export default {
         arrowNavigation(){
             const resultats = [...document.querySelectorAll('.rechercheItem')]
             let i = 0;
-            let previousIndex = i - 1;
+            if(resultats.length > 0)  resultats[i].classList.add('bg-amber-200');
 
             window.addEventListener('keydown', (e) =>{
                 //console.log(e);
 
-                if(e.key === 'Enter' && previousIndex >= 0) return this.$router.push(`/platDetail/${this.produits[previousIndex].id}`)
+                if(e.key === 'Enter') return this.$router.push(`/platDetail/${this.produits[i].id}`)
                 //console.log(e.key);
 
-                if (e.key === 'ArrowUp' || e.key === 'ArrowDown'){
-                    if(previousIndex >= 1 ) resultats[previousIndex].classList.remove('bg-red-500')
-                    else resultats[0].classList.remove('bg-red-500')
-    
-                    resultats[i].classList.add('bg-red-500')
-                    //console.log(this.produits[i].id);
-                    previousIndex = i;
-                    i++;
+                if (e.key === 'ArrowDown'){
+                    resultats[i].classList.remove('bg-amber-200');
+                    i++
                     if(i >= resultats.length) i = 0;
+                    resultats[i].classList.add('bg-amber-200')
                 }
-
+                if (e.key === 'ArrowUp'){
+                    resultats[i].classList.remove('bg-amber-200');
+                    i--
+                    if(i < 0) i = resultats.length - 1;
+                    resultats[i].classList.add('bg-amber-200')
+                }
             });
         }
     },
