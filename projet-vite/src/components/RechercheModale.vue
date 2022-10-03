@@ -40,6 +40,7 @@ export default {
             handler: function(newVal, oldVal){
                 if (newVal.length > oldVal.length && newVal.length > 2 ) {
                     clearTimeout(this.timeoutId)
+                    this.produits = [];
                     let self = this
                     this.timeoutId = setTimeout(function(){
                         self.search = newVal.trim().split(" ").join("%20"); 
@@ -59,9 +60,32 @@ export default {
                 .get(`https://cantinemiam.herokuapp.com/api/produits?page=1&nom=${this.search}`)
                 .then(response => (this.produits = response.data["hydra:member"]))
             this.isLoading = false
+            this.arrowNavigation()
+        },
+        arrowNavigation(){
+            const resultats = [...document.querySelectorAll('.rechercheItem')]
+            let i = 0;
+            let previousIndex = i - 1;
+
+            window.addEventListener('keydown', (e) =>{
+                //console.log(e);
+
+                if(e.key === 'Enter' && previousIndex >= 0) return this.$router.push(`/platDetail/${this.produits[previousIndex].id}`)
+                //console.log(e.key);
+
+                if (e.key === 'ArrowUp' || e.key === 'ArrowDown'){
+                    if(previousIndex >= 1 ) resultats[previousIndex].classList.remove('bg-red-500')
+                    else resultats[0].classList.remove('bg-red-500')
+    
+                    resultats[i].classList.add('bg-red-500')
+                    //console.log(this.produits[i].id);
+                    previousIndex = i;
+                    i++;
+                    if(i >= resultats.length) i = 0;
+                }
+
+            });
         }
-
-
     },
     
 }
