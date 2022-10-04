@@ -63,23 +63,23 @@ export default {
         },
         arrowNavigation(){
             const resultats = [...document.querySelectorAll('.rechercheItem')]
-            let i = 0;
-            if(resultats.length > 0)  resultats[i].classList.add('bg-amber-200');
+            let i = -1;
 
             window.addEventListener('keydown', (e) =>{
                 //console.log(e);
 
-                if(e.key === 'Enter') return this.$router.push(`/platDetail/${this.produits[i].id}`)
+                if(e.key === 'Enter' && i >= 0) return this.$router.push(`/platDetail/${this.produits[i].id}`)
                 //console.log(e.key);
 
                 if (e.key === 'ArrowDown'){
-                    resultats[i].classList.remove('bg-amber-200');
+                    
+                    if(i >= 0) resultats[i].classList.remove('bg-amber-200');
                     i++
                     if(i >= resultats.length) i = 0;
                     resultats[i].classList.add('bg-amber-200')
                 }
                 if (e.key === 'ArrowUp'){
-                    resultats[i].classList.remove('bg-amber-200');
+                    if(i >= 0) resultats[i].classList.remove('bg-amber-200');
                     i--
                     if(i < 0) i = resultats.length - 1;
                     resultats[i].classList.add('bg-amber-200')
