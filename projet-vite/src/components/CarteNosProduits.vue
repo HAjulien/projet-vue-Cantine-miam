@@ -27,12 +27,8 @@
 
             <h3 class="text-center text-xl absolutepb-4 top-[120px]  sm:top-[130px] lg:top-[180px]  left-0 right-0"
             v-if=" moyenneNote > 0">
-                <span class="text-amber-300" v-for="(note, index) in (noteMoyenneTronque)" :key="index">
-                    <fa :style="{ height: '23px'}" icon="star" />
-                </span>
-                <span class="text-amber-300" v-if="moyenneNote - noteMoyenneTronque >= 0.5 " >
-                    <fa :style="{ height: '23px'}" icon="star-half" />
-                </span>
+                <span class="text-amber-300" v-for="(note, index) in (noteMoyenneTronque)" :key="index"><fa :style="{ height: '23px'}" icon="star" /></span>
+                <span class="text-amber-300" v-if="moyenneNote - noteMoyenneTronque >= 0.5 " ><fa :style="{ height: '23px'}" icon="star-half" /></span>
                 <span class="text-xs block"> {{noteMoyenneArrondie}} / 5 </span>
             </h3>
 
