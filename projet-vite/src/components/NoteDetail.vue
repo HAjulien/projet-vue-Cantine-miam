@@ -60,6 +60,10 @@ export default {
 
 
     created() {
+        
+        const hasNoCritique = Object.keys(this.produit.critiques).length === 0
+        if(hasNoCritique) return null
+
         let sommeAllNotes = 0
         const allNotes = this.produit.critiques.map( critique => {
 
