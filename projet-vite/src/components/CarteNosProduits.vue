@@ -80,13 +80,16 @@ export default {
         }
     },
     created() {
-        for(let i = 0; i < this.critiques.length; i++){
-            if (this.critiques[i].note )
-            {
-                this.moyenneNote += this.critiques[i].note / this.critiques.length
-            }
-            // console.log(this.critiques[i].note);
-        }
+        const hasNoCritique = Object.keys(this.critiques).length === 0
+        if(hasNoCritique) return this.moyenneNote = 0
+
+        const SommeAllNotes = this.critiques
+        .map( critique => critique.note )   //note est obligatoire
+        .reduce((sommeNotes, note) => sommeNotes += note ) 
+
+        this.moyenneNote = SommeAllNotes / this.critiques.length
+
+
     },
     computed:{
         noteMoyenneTronque: function(){
@@ -98,15 +101,15 @@ export default {
     },
     // on reinitialise pour modifier note et etoile lors d'une requette axios
     updated() {
-        this.moyenneNote = 0
-        for(let i = 0; i < this.critiques.length; i++){
-            if (this.critiques[i].note )
-            {
-                this.moyenneNote += this.critiques[i].note / this.critiques.length
-            }
-        }
-    }
+        const hasNoCritique = Object.keys(this.critiques).length === 0
+        if(hasNoCritique) return this.moyenneNote = 0
+        
+        const SommeAllNotes = this.critiques
+        .map( critique => critique.note ) 
+        .reduce((acc, ele) => acc += ele ) 
 
+        this.moyenneNote = SommeAllNotes / this.critiques.length
+    }
     
 
 }

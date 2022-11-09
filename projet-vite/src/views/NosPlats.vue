@@ -139,78 +139,82 @@ export default {
     },
     async created () {
         this.isLoading = true
-        await axios
-        .get( this.lienAPI + "/api/produits")
-        .then (response => (
-            this.produits = response.data["hydra:member"],
-            this.total = response.data["hydra:totalItems"],
-            this.pagination = response.data["hydra:view"]
-        ))
-        await axios
-        .get( this.lienAPI + "/api/categories")
-        .then (response => (this.categories = response.data["hydra:member"]))
-        this.isLoading = false
+        try{
+            const responseProducts = await axios.get( this.lienAPI + "/api/produits")
+            this.produits = responseProducts.data["hydra:member"]
+            this.total = responseProducts.data["hydra:totalItems"]
+            this.pagination = responseProducts.data["hydra:view"]
+
+            const responceCate = await axios.get( this.lienAPI + "/api/categories")
+            this.categories = responceCate.data["hydra:member"]
+            
+        }catch (e) {
+            console.error(e);
+        } finally{
+            this.isLoading = false
+        }
     },
     methods: {
         async suivant(){
             this.isLoading = true
             this.$el.scrollTo(0,0)
             window.scrollTo(0,0);
-            //console.log(this.lienAPI + this.pagination["hydra:next"]);
-            await axios
-            .get(this.lienAPI + this.pagination["hydra:next"])
-            .then (response => (
-                this.produits = response.data["hydra:member"],
-                this.pagination = response.data["hydra:view"]
 
-            ))
-            this.isLoading = false
-            
+            try{
+                const nextProducts = await axios.get(this.lienAPI + this.pagination["hydra:next"])
+                this.produits = nextProducts.data["hydra:member"]
+                this.pagination = nextProducts.data["hydra:view"]
+            }catch (e){
+                console.error(e);
+            }finally {
+                this.isLoading = false
+            }
         },
         async precedent(){
             this.isLoading = true
             this.$el.scrollTo(0,0)
             window.scrollTo(0,0);
-            //console.log(this.lienAPI + this.pagination["hydra:previous"]);
-            await axios
-            .get(this.lienAPI + this.pagination["hydra:previous"])
-            .then (response => (
-                this.produits = response.data["hydra:member"],
-                this.pagination = response.data["hydra:view"]
-            ))
-
-            this.isLoading = false
+            try {
+                const previousProducts =await axios.get(this.lienAPI + this.pagination["hydra:previous"])
+                this.produits = previousProducts.data["hydra:member"]
+                this.pagination = previousProducts.data["hydra:view"]                
+            } catch (e) {
+                console.error(e);
+            } finally{
+                this.isLoading = false
+            }
         },
         async premierePage(){
             this.isLoading = true
             this.$el.scrollTo(0,0)
             window.scrollTo(0,0);
-            //console.log(this.lienAPI + this.pagination["hydra:first"]);
-            await axios
-            .get(this.lienAPI + this.pagination["hydra:first"])
-            .then (response => (
-                this.produits = response.data["hydra:member"],
-                this.pagination = response.data["hydra:view"]
-            ))
-            this.isLoading = false
+            
+            try {
+                const firstPage = await axios.get(this.lienAPI + this.pagination["hydra:first"])
+                this.produits = firstPage.data["hydra:member"]
+                this.pagination = firstPage.data["hydra:view"]                
+            } catch (e) {
+                console.log(e);
+            } finally {
+                this.isLoading = false
+            }
         },
         async categorychoix(){
-            //v-model permet de recuperer la value et de la mettre dans une data
-            //const select = document.getElementById('category');
-            //const value = select.options[select.selectedIndex].value;
-            //console.log(this.lienAPI + "/api/produits?page=1&category.id=" + value);
+
             this.isLoading = true
             this.$el.scrollTo(0,0)
             window.scrollTo(0,0);
-            await axios
-            .get(this.lienAPI + "/api/produits?page=1&category.id=" + this.selectionCategorie)
-            .then (response => (
-                this.produits = response.data["hydra:member"],
-                this.total = response.data["hydra:totalItems"],
-                this.pagination = response.data["hydra:view"]
-            ))
 
-            this.isLoading = false
+            try {
+                const categories = await axios.get(this.lienAPI + "/api/produits?page=1&category.id=" + this.selectionCategorie)
+                this.produits = categories.data["hydra:member"]
+                this.total = categories.data["hydra:totalItems"]
+                this.pagination = categories.data["hydra:view"]
+            } catch (e) {
+                console.log(e);
+            } finally {
+                this.isLoading = false
+            }
 
         },
         toggleModale: function(){
