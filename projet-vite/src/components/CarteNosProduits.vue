@@ -25,16 +25,31 @@
                 {{nom}}
             </h2 >
 
-            <h3 class="text-center text-xl absolutepb-4 top-[120px]  sm:top-[130px] lg:top-[180px]  left-0 right-0"
+            <h3 class="text-center text-xl absolute
+            pb-4 top-[120px]  sm:top-[130px] lg:top-[180px]  left-0 right-0
+            "
             v-if=" moyenneNote > 0">
+<<<<<<< HEAD
                 <span class="text-amber-300" v-for="(note, index) in (noteMoyenneTronque)" :key="index"><fa :style="{ height: '23px'}" icon="star" /></span>
                 <span class="text-amber-300" v-if="moyenneNote - noteMoyenneTronque >= 0.5 " ><fa :style="{ height: '23px'}" icon="star-half" /></span>
+=======
+                <span class="text-amber-300" v-for="(note, index) in (noteMoyenneTronque)" :key="index">
+                <fa :style="{ height: '23px'}" icon="star" />
+                </span>
+                <span  class="text-amber-300" v-if="moyenneNote - noteMoyenneTronque >= 0.5 " >
+                <fa :style="{ height: '23px'}" icon="star-half" />
+                </span>
+>>>>>>> parent of 523f7509 (mise en forme)
                 <span class="text-xs block"> {{noteMoyenneArrondie}} / 5 </span>
+
             </h3>
 
-            <h3 class="text-center text-xl absolute pb-4 top-[130px] lg:top-[180px]  left-0 right-0"
+            <h3 class="text-center text-xl absolute
+            pb-4 top-[130px] lg:top-[180px]  left-0 right-0
+            "
             v-else>
-                <span v-for= "n in 5" :key="n" class="text-gray-500 dark:text-black"> <fa :style="{ height: '23px'}" icon="star"/> </span> 
+
+            <span v-for= "n in 5" :key="n" class="text-gray-500 dark:text-black"> <fa :style="{ height: '23px'}" icon="star"/> </span> 
             </h3>
 
             <div class="lg:pt-[160px] pt-[130px] ">
