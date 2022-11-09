@@ -60,26 +60,25 @@ export default {
 
 
     created() {
-        for(let i = 0; i <  this.produit.critiques.length; i++){
-            if ( this.produit.critiques[i].note )
-            {
-                this.moyenneNote += this.produit.critiques[i].note / this.produit.critiques.length
-            }
-        }
-        for(let i = 0; i <  this.produit.critiques.length; i++){
-            if ( this.produit.critiques[i].note >= 4 )
-            {
-                this.note4 += 1
-            }else if( this.produit.critiques[i].note >= 3){
-                this.note3 += 1
-            }else if( this.produit.critiques[i].note >= 2){
-                this.note2 += 1
-            }else if( this.produit.critiques[i].note >= 1){
-                this.note1 += 1
+        let sommeAllNotes = 0
+        const allNotes = this.produit.critiques.map( critique => {
+
+            sommeAllNotes += critique.note 
+            if (critique.note >= 4 ){
+                this.note4++
+            }else if( critique.note >= 3){
+                this.note3++
+            }else if( critique.note >= 2){
+                this.note2++
+            }else if( critique.note >= 1){
+                this.note1++
             }else{
-                this.note0 += 1
+                this.note0++
             }
-        }
+
+            return critique.note
+        })
+        this.moyenneNote = sommeAllNotes / allNotes.length
         this.nbMaxCritiques = Math.max(this.note0, this.note1, this.note2, this.note3, this.note4)  
     },
     computed: {
