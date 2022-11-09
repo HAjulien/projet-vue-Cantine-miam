@@ -141,17 +141,14 @@ export default {
         this.isLoading = true
         await axios
         .get( this.lienAPI + "/api/produits")
-        .then (response => (this.produits = response.data["hydra:member"]))
-        await axios
-        .get( this.lienAPI + "/api/produits")
-        .then (response => (this.total = response.data["hydra:totalItems"]))
-        //console.log(this.total);
+        .then (response => (
+            this.produits = response.data["hydra:member"],
+            this.total = response.data["hydra:totalItems"],
+            this.pagination = response.data["hydra:view"]
+        ))
         await axios
         .get( this.lienAPI + "/api/categories")
         .then (response => (this.categories = response.data["hydra:member"]))
-        await axios
-        .get( this.lienAPI + "/api/produits")
-        .then (response => (this.pagination = response.data["hydra:view"]))
         this.isLoading = false
     },
     methods: {
@@ -162,10 +159,11 @@ export default {
             //console.log(this.lienAPI + this.pagination["hydra:next"]);
             await axios
             .get(this.lienAPI + this.pagination["hydra:next"])
-            .then (response => (this.produits = response.data["hydra:member"]))
-            await axios
-            .get(this.lienAPI + this.pagination["hydra:next"])
-            .then (response => (this.pagination = response.data["hydra:view"]))
+            .then (response => (
+                this.produits = response.data["hydra:member"],
+                this.pagination = response.data["hydra:view"]
+
+            ))
             this.isLoading = false
             
         },
@@ -176,10 +174,11 @@ export default {
             //console.log(this.lienAPI + this.pagination["hydra:previous"]);
             await axios
             .get(this.lienAPI + this.pagination["hydra:previous"])
-            .then (response => (this.produits = response.data["hydra:member"]))
-            await axios
-            .get(this.lienAPI + this.pagination["hydra:previous"])
-            .then (response => (this.pagination = response.data["hydra:view"]))
+            .then (response => (
+                this.produits = response.data["hydra:member"],
+                this.pagination = response.data["hydra:view"]
+            ))
+
             this.isLoading = false
         },
         async premierePage(){
@@ -189,10 +188,10 @@ export default {
             //console.log(this.lienAPI + this.pagination["hydra:first"]);
             await axios
             .get(this.lienAPI + this.pagination["hydra:first"])
-            .then (response => (this.produits = response.data["hydra:member"]))
-            await axios
-            .get(this.lienAPI + this.pagination["hydra:first"])
-            .then (response => (this.pagination = response.data["hydra:view"]))
+            .then (response => (
+                this.produits = response.data["hydra:member"],
+                this.pagination = response.data["hydra:view"]
+            ))
             this.isLoading = false
         },
         async categorychoix(){
@@ -205,13 +204,12 @@ export default {
             window.scrollTo(0,0);
             await axios
             .get(this.lienAPI + "/api/produits?page=1&category.id=" + this.selectionCategorie)
-            .then (response => (this.produits = response.data["hydra:member"]))
-            await axios
-            .get(this.lienAPI + "/api/produits?page=1&category.id=" + this.selectionCategorie)
-            .then (response => (this.total = response.data["hydra:totalItems"]))
-            await axios
-            .get(this.lienAPI + "/api/produits?page=1&category.id=" + this.selectionCategorie)
-            .then (response => (this.pagination = response.data["hydra:view"]))
+            .then (response => (
+                this.produits = response.data["hydra:member"],
+                this.total = response.data["hydra:totalItems"],
+                this.pagination = response.data["hydra:view"]
+            ))
+
             this.isLoading = false
 
         },
