@@ -30,7 +30,7 @@
             </div>
         </article>
 
-        <div v-if=" user[0] && !userCritique[0]" class=" py-3 justify-center items-center "> 
+        <div v-if=" user && !userCritique[0]" class=" py-3 justify-center items-center "> 
             <p class=" text-center text-2xl ">A vous de noter:</p>
             <Rating :grade="0" :maxHalfStars="10"/>
         </div>  
@@ -69,7 +69,7 @@
         class="lg:w-[80%] mx-2 lg:m-auto lg:mb-6 mb-12 border-x border-b border-black dark:border-gray-400 dark:bg-gray-600 rounded"
         v-for="(critique, index) in critiquesOrderDESC" :key="index">
                 <p  class=" flex justify-between px-2 lg:px-8 py-4 border-b-2 border-black dark:border-gray-400"
-                :class=" user[0]  == critique.utilisateur.id ? 'maCritique' : 'border-y'"
+                :class=" user.id  == critique.utilisateur.id ? 'maCritique' : 'border-y'"
                 >
                     <span class="font-bold">{{critique.utilisateur.pseudo}}</span>
 
@@ -83,7 +83,7 @@
                     </span>
                     <p class="p-4  grow">{{critique.contenu}}</p>
                     <span class="block my-2 text-right  lg:mx-4 "
-                    v-if=" user[0]  == critique.utilisateur.id"
+                    v-if=" user.id  == critique.utilisateur.id"
                     >
                         <fa :style="{ height: '28px'}" class="cursor-pointer text-red-600" icon="trash" @click="isSuppress = true" />
                     </span>
@@ -130,9 +130,10 @@ export default {
 
     }, 
     mounted(){
-        if(this.user[0]){
+        console.log(this.user);
+        if(this.user){
             axios
-            .get(this.lienAPI + "critiques?page=1&produit=" + this.id + "&utilisateur.id=" + this.user[0] )
+            .get(this.lienAPI + "critiques?page=1&produit=" + this.id + "&utilisateur.id=" + this.user.id )
             .then(response => (this.userCritique = response.data["hydra:member"]));
             //console.log(this.userCritique);
             //console.log(this.user[0]);

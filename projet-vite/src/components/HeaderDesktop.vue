@@ -19,9 +19,11 @@
           <span class="px-3 text-slate-200 text-center mx-4 border-2 border-amber-400 rounded cursor-pointer md:text-xs md:py-1 lg:text-base 
           hover:bg-amber-400 hover:text-slate-700 duration-300	hover:duration-300"
           v-if=" user != '' ">
-          bonjour  {{user.pseudo}}
+            <router-link :to="'/profile/' + user.pseudo" >
+              bonjour {{user.pseudo}}
+            </router-link> 
           </span>
-          <span class=" border rounded border-slade-100 border-2 dark:border-slate-200 cursor-pointer py-0.5 px-1.5 
+          <span class=" rounded border-slade-100 border-2 dark:border-slate-200 cursor-pointer py-0.5 px-1.5 
           hover:bg-amber-400 duration-300	hover:duration-300"
           @click="logout"  v-if=" user != '' ">
               <fa :style="{height: '23px', color: '#097770', }"   icon='sign-out' />                    

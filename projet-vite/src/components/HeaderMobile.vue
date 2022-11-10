@@ -10,7 +10,11 @@
                 <button class=" flex items-center ml-6" @click="toggleModale" v-if=" user == '' ">
                     <fa :style="{height: '30px', color: '#097770', }"   icon='user' />
                 </button>
-                <span class="px-3 text-xs dark:text-slate-200 text-center"  v-if=" user != '' "> bonjour <br> {{user.pseudo}}</span>
+                <span class="px-3 text-xs dark:text-slate-200 text-center"  v-if=" user != '' ">
+                    <router-link :to="'/profile/' + user.pseudo" >
+                        bonjour <br> {{user.pseudo}}
+                    </router-link>
+                </span>
                 <span class=" border rounded border-black dark:border-slate-200 py-0.5  px-1" @click="logout"  v-if=" user != '' ">
                     <fa :style="{height: '23px', color: '#097770', }"   icon='sign-out' />                    
                 </span>
