@@ -146,8 +146,8 @@ export default {
             this.total = responseProducts["hydra:totalItems"]
             this.pagination = responseProducts["hydra:view"]
 
-            const responceCate = await axios.get( this.lienAPI + "/api/categories")
-            this.categories = responceCate.data["hydra:member"]
+            const {data : responceCate} = await axios.get( this.lienAPI + "/api/categories")
+            this.categories = responceCate["hydra:member"]
             
         }catch (e) {
             console.error(e);
