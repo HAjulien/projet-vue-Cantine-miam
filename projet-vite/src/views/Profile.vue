@@ -11,18 +11,20 @@
                 <h2 class="text-center text-xl py-2">Mes Informations</h2>
                 <form action="" method="post" @submit.prevent="submit">
 
-                    <div class="flex justify-center my-2">
-                        <label class="w-24 justify-start " for="afpaNumero">N°AFPA</label>
-                        <input class="w-52 pl-2 rounded-sm border-2 border-gray-800" type="text" name="afpaNumero" id="afpaNumero" v-model="user.identifiantAfpa" disabled>
-                    </div>
-                    <div class="flex justify-center">
-                        <label class="w-24 justify-start " for="pseudo">Pseudo</label>
-                        <input class="w-52 pl-2 rounded-sm text-stone-700" type="text" name="pseudo" id="pseudo" v-model="user.pseudo" >
-                    </div>
-                    <div class="flex justify-center my-2">
-                        <label class="w-24 justify-start " for="email">@Email</label>
-                        <input class="w-52 pl-2 rounded-sm text-stone-700" type="text" name="email" id="email" v-model="user.email" >
-                    </div>
+                    <ProfileInput
+                        disabled
+                        v-model="user.identifiantAfpa"
+                        label= "afpaNumero"
+                        type= "text"/>
+                    <ProfileInput
+                        v-model="user.pseudo"
+                        label= "pseudo"
+                        type= "text"/>
+                    <ProfileInput
+                        v-model="user.email"
+                        label= "email"
+                        type= "email"/>
+
                     <div class="flex justify-center my-2">
                         <label class="w-24 justify-start " for="status">Status</label>
 
@@ -31,15 +33,16 @@
 
                     </div>
 
-                    <div class="flex justify-center my-2">
-                        <label class="w-24 justify-start " for="pointsFidelite">points </label>
-                        <input class="w-52 pl-2 rounded-sm border-2 border-gray-800" type="text" name="pointsFidelite" id="pointsFidelite" v-model="user.pointFidelite" disabled>
-                    </div>
-
-                    <div class="flex justify-center my-2">
-                        <label class="w-24 justify-start " for="telephone">N°tel </label>
-                        <input class="w-52 pl-2 rounded-sm text-stone-700" type="text" name="telephone" id="telephone" v-model="user.telephone" maxlength="10" >
-                    </div>
+                    <ProfileInput
+                        disabled
+                        v-model="user.pointFidelite"
+                        label= "points"
+                        type= "number"/>
+                    <ProfileInput
+                        maxlength="10"
+                        v-model="user.telephone"
+                        label= "telephone"
+                        type= "text"/>
 
                     <div class="flex items-center justify-center mb-4">
                         <input type="submit" value="modifier" class=" valider px-3 py-1 button bg-emerald-500 text-slate-100  hover:bg-emerald-800 hover:scale-110 hover:duration-300 duration-300 "/>
@@ -53,11 +56,14 @@
 
 <script>
 import axios from 'axios';
+import ProfileInput from '../components/ProfileInput.vue';
 
 export default {
     
     name:'profile',
-    
+    components:{
+        ProfileInput,
+    },
 
     data() {
         return {
@@ -79,6 +85,7 @@ export default {
                 }
             })
             this.user = JSON.parse(response.data.user)
+            console.log(this.user);
             this.roles =  this.user.roles
             if(this.user.pseudo !== this.$route.params.pseudo) throw new Error('Impossible de trouvé votre profile')
         } catch(e){
@@ -92,7 +99,7 @@ export default {
             const telephone = this.user.telephone
             const email = this.user.email
             const form = {pseudo, telephone, email}
-            //console.log(form);
+            console.log(form);
 
             try{
                 const formData = await axios.put(`/users/${this.user.id}`,form, {
@@ -100,8 +107,9 @@ export default {
                         'Authorization': 'Bearer ' + this.token,
                     },
                 })
+
+                this.$router.push('/profile/' + this.user.pseudo)
                 //console.log(formData);
-                location.reload();
                 
             }
             catch(error) {

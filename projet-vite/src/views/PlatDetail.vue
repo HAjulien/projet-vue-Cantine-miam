@@ -51,7 +51,7 @@
             </div>
         </div>
         <div v-show="isHidden" class=" py-4">
-            <form action=""    @submit.prevent="submit"  method="POST"
+            <form action="" @submit.prevent="submit"  method="POST"
             class="flex flex-col space-y-4 w-[80%] lg:w-[650px] m-auto border-2 border-black p-4"
             >
                 <input type="number" name="maNote" id="maNote" v-model="form.note" step="0.5" class="dark:bg-gray-600 bg-gray-100  border-2 border-black">
@@ -68,26 +68,26 @@
         <article 
         class="lg:w-[80%] mx-2 lg:m-auto lg:mb-6 mb-12 border-x border-b border-black dark:border-gray-400 dark:bg-gray-600 rounded"
         v-for="(critique, index) in critiquesOrderDESC" :key="index">
-                <p  class=" flex justify-between px-2 lg:px-8 py-4 border-b-2 border-black dark:border-gray-400"
-                :class=" user.id  == critique.utilisateur.id ? 'maCritique' : 'border-y'"
-                >
-                    <span class="font-bold">{{critique.utilisateur.pseudo}}</span>
+            <p  class=" flex justify-between px-2 lg:px-8 py-4 border-b-2 border-black dark:border-gray-400"
+            :class=" user.id  == critique.utilisateur.id ? 'maCritique' : 'border-y'"
+            >
+                <span class="font-bold">{{critique.utilisateur.pseudo}}</span>
 
-                    <span> le {{critique.createAt.substring(8 , 10)}}/{{critique.createAt.substring(5 , 7)}}/{{critique.createAt.substring(0 , 4)}}
-                        à {{critique.createAt.substring(11 , 16)}}</span>
-                </p>
-                <div class="  lg:flex items-center justify-between m-2">
-                    <span  class="lg:p-12  text-4xl block text-center  font-bold"
-                    :class="critique.note < 2 ? 'text-red-500' : critique.note >=4 ? 'text-emerald-500' : 'text-amber-500'"
-                    >{{critique.note}}
-                    </span>
-                    <p class="p-4  grow">{{critique.contenu}}</p>
-                    <span class="block my-2 text-right  lg:mx-4 "
-                    v-if=" user.id  == critique.utilisateur.id"
-                    >
-                        <fa :style="{ height: '28px'}" class="cursor-pointer text-red-600" icon="trash" @click="isSuppress = true" />
-                    </span>
-                </div>
+                <span> le {{critique.createAt.substring(8 , 10)}}/{{critique.createAt.substring(5 , 7)}}/{{critique.createAt.substring(0 , 4)}}
+                    à {{critique.createAt.substring(11 , 16)}}</span>
+            </p>
+            <div class="  lg:flex items-center justify-between m-2">
+                <span  class="lg:p-12  text-4xl block text-center  font-bold"
+                :class="critique.note < 2 ? 'text-red-500' : critique.note >=4 ? 'text-emerald-500' : 'text-amber-500'"
+                >{{critique.note}}
+                </span>
+                <p class="p-4  grow">{{critique.contenu}}</p>
+                <span class="block my-2 text-right  lg:mx-4 "
+                v-if=" user.id  == critique.utilisateur.id"
+                >
+                    <fa :style="{ height: '28px'}" class="cursor-pointer text-red-600" icon="trash" @click="isSuppress = true" />
+                </span>
+            </div>
         </article>
 
     </div>
