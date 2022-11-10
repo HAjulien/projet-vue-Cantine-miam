@@ -19,7 +19,7 @@
           <span class="px-3 text-slate-200 text-center mx-4 border-2 border-amber-400 rounded cursor-pointer md:text-xs md:py-1 lg:text-base 
           hover:bg-amber-400 hover:text-slate-700 duration-300	hover:duration-300"
           v-if=" user != '' ">
-          bonjour  {{user[4]}}
+          bonjour  {{user.pseudo}}
           </span>
           <span class=" border rounded border-slade-100 border-2 dark:border-slate-200 cursor-pointer py-0.5 px-1.5 
           hover:bg-amber-400 duration-300	hover:duration-300"

@@ -8,6 +8,7 @@ import PlatDetail from '/src/views/PlatDetail.vue'
 import Horaire from '/src/views/Horaire.vue'
 import Informations from '/src/views/Informations.vue'
 import Inscription from '/src/views/Inscription.vue' 
+import Profile from '/src/views/Profile.vue' 
 
 const routes = [
     {
@@ -54,6 +55,11 @@ const routes = [
         path: '/inscription',
         name: Inscription,
         component: Inscription,
+    },
+    {
+        path: '/profile/:pseudo',
+        name: Profile,
+        component: Profile,
     },
 
     

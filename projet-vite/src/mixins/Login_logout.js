@@ -20,16 +20,10 @@ export default {
     mounted() {
         if (localStorage.getItem('user')) {
             let userLocalStrorage = JSON.parse(localStorage.getItem('user'));
-            let userObjet = JSON.parse(userLocalStrorage.user);
-            //console.log(userObjet);
-            //console.log(Object.values(userObjet));
-            //on transforme l'objet en tableau
-            this.user = Object.values(userObjet);
-            console.log(this.user);
+            this.user = JSON.parse(userLocalStrorage.user);
         }
         if (localStorage.getItem('token')) {
             this.token = localStorage.getItem('token');
-            //console.log(this.token);
         }
     },
 }
