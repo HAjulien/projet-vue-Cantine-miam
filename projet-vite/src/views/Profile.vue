@@ -95,11 +95,9 @@ export default {
     },
     methods: {
         async submit(){
-            const pseudo = this.user.pseudo
-            const telephone = this.user.telephone
-            const email = this.user.email
-            const form = {pseudo, telephone, email}
-            console.log(form);
+
+            const form = {pseudo : this.user.pseudo , telephone: this.user.telephone, email : this.user.email}
+            //console.log(form);
 
             try{
                 const formData = await axios.put(`/users/${this.user.id}`,form, {
