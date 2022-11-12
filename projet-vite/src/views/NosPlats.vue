@@ -140,14 +140,19 @@ export default {
     async created () {
         this.isLoading = true
         try{
-            const {data: responseProducts} = await axios.get( this.lienAPI + "/api/produits")
-            console.log(responseProducts);
-            this.produits = responseProducts["hydra:member"]
-            this.total = responseProducts["hydra:totalItems"]
-            this.pagination = responseProducts["hydra:view"]
+            const responseProducts =  axios.get( this.lienAPI + "/api/produits")
+            const responceCate =  axios.get( this.lienAPI + "/api/categories")
+            
+            const [products, cate] = await Promise.all([
+                responseProducts,
+                responceCate
+            ])
 
-            const {data : responceCate} = await axios.get( this.lienAPI + "/api/categories")
-            this.categories = responceCate["hydra:member"]
+            this.produits = products.data["hydra:member"]
+            this.total = products.data["hydra:totalItems"]
+            this.pagination = products.data["hydra:view"]
+
+            this.categories = cate.data["hydra:member"]
             
         }catch (e) {
             console.error(e);
