@@ -1,7 +1,7 @@
 <template>
 <!-- component -->
   
-  <div class=" card md:width-[45vw] cards  flex md:inline-flex space-x-6 m-2 mb-12 dark:bg-gray-500  inline-block	border-solid border-2 bg-gray-100	rounded-xl  hover:border-4 hover:border-amber-300 	">
+  <div class=" card md:width-[45vw] cards md:inline-flex space-x-6 m-2 mb-12 dark:bg-gray-500  inline-block	border-solid border-2 bg-gray-100	rounded-xl  hover:border-4 hover:border-amber-300 	">
 
     <div class="shadow-md rounded-xl ">
       <div class="p-2 text-lg">
