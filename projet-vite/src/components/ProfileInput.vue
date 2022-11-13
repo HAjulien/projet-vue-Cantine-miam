@@ -1,14 +1,15 @@
 <template>
     <div class="flex justify-center my-2">
         <label 
-        class="w-24 justify-start " 
+        class="w-24 justify-start"
         :for="label">
             {{label}} 
         </label>
 
-        <input class="w-52 pl-2 rounded-sm border-2 border-gray-800" type="text" :name="label" :id="label"
+        <input class=" outline-none w-52 pl-2 rounded-sm border-b-2 border-gray-800 focus:border-amber-400 focus:border-b-4" type="text" :name="label" :id="label"
         v-bind="$attrs"
         :value="modelValue"
+        :class="inputClassTailwind"
         @input="$emit('update:modelValue', $event.target.value)"
         >
     </div>
@@ -26,6 +27,10 @@
             modelValue: {
                 type: [String, Number],
                 default: ''
+            },
+            inputClassTailwind: {
+                type : String,
+                default : ''
             }
         }
     }

@@ -19,17 +19,19 @@
                     <ProfileInput
                         v-model="user.pseudo"
                         label= "pseudo"
-                        type= "text"/>
-                    <ProfileInput
+                        type= "text"
+                        inputClassTailwind= "dark:text-gray-700"/>
+                        <ProfileInput
                         v-model="user.email"
                         label= "email"
-                        type= "email"/>
+                        type= "email"
+                        inputClassTailwind= "dark:text-gray-700"/>
 
                     <div class="flex justify-center my-2">
                         <label class="w-24 justify-start " for="status">Status</label>
 
-                        <input class="w-52 pl-2 rounded-sm border-2 border-gray-800" v-if='roles[0] === "ROLE_ADMIN" || "ROLE_PERSONEL"'  type="text" name="status" id="status" value=" Personnel" disabled>
-                        <input class="w-52 pl-2 rounded-sm border-2 border-gray-800" v-else  type="text" name="status" id="status" value="Etudiant" disabled>
+                        <input class="outline-none w-52 pl-2 rounded-sm border-b-2 border-gray-800" v-if='roles[0] === "ROLE_ADMIN" || "ROLE_PERSONEL"'  type="text" name="status" id="status" value=" Personnel" disabled>
+                        <input class="outline-none w-52 pl-2 rounded-sm border-b-2 border-gray-800" v-else  type="text" name="status" id="status" value="Etudiant" disabled>
 
                     </div>
 
@@ -42,7 +44,8 @@
                         maxlength="10"
                         v-model="user.telephone"
                         label= "telephone"
-                        type= "text"/>
+                        type= "text"
+                        inputClassTailwind= "dark:text-gray-800"/>
 
                     <div class="flex items-center justify-center mb-4">
                         <input type="submit" value="modifier" class=" valider px-3 py-1 button bg-emerald-500 text-slate-100  hover:bg-emerald-800 hover:scale-110 hover:duration-300 duration-300 "/>
