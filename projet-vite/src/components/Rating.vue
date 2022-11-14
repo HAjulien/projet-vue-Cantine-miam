@@ -49,7 +49,6 @@ export default {
       if(typeof halfStar === 'number' && halfStar <= this.maxHalfStars && halfStar >= 0){
         this.halfStars = this.halfStars === halfStar ? halfStar - 1 : halfStar
         this.note = this.halfStars *0.5
-        console.log(this.user[0]);
       }
     },
     comment(comment, color){
