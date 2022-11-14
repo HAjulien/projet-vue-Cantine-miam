@@ -1,5 +1,13 @@
 <template>
     <div id="app" class=" bg-gray-100  dark:bg-gray-700 dark:text-gray-100 min-h-[90vh]">
+
+        <div class="fixed top-[10%] left-[50%] w-[250px] translate-x-[-50%] h-20 
+        z-10 rounded-md border-2 border-amber-300 p-2 "
+        :class="{ 'bg-slate-200': isAttempModif, 'bg-red-400/95': hasErrorModif, 'bg-emerald-300/95' : isSucceedModif }"
+        v-if="isLoading"> 
+            <p class="flex items-center justify-center text-center w-full h-full text-lg" > {{ modifText }} </p>
+        </div>
+
         <div class="modaleSuppression "  v-if="isSuppress" >
             <div class="w-[98%] inset-2/4 translate-x-[-50%] max-w-[700px] h-[400px] max-h-[400px] bg-gray-100 border-4 border-red-500 absolute top-[20%]  dark:bg-gray-600">
                 <h3 class="text-center text-lg mt-[150px]">Voulez vous vraiment supprimer votre commentaire ?</h3>
@@ -10,7 +18,7 @@
             </div>
         </div>
         <h1
-        class="lg:mt-[65px] text-center text-3xl underline underline-offset-4 decoration-4 font-bold m-4 leading-relaxed	"
+        class="lg:mt-[65px] text-center text-3xl underline underline-offset-4 decoration-4 font-bold m-4 leading-relaxed"
         :style="{textDecorationColor: `${produit.category.couleur}`, color: `${produit.category.couleur}`}"
         > {{produit.nom.toUpperCase()}}
         </h1>
@@ -92,13 +100,18 @@ export default {
             id:this.$route.params.id,
             produit: [],
             userCritique: [],
+            isLoading : false,
             isHidden : false,
             isSuppress : false,
             isHiddenCritique : true,
             form :{
             note: 0,
-            contenu: ""
+            contenu: "",
             },
+            modifText : "modification en cours...",
+            isAttempModif: true,
+            hasErrorModif: false,
+            isSucceedModif : false
         }
     },
     created () {
@@ -118,22 +131,39 @@ export default {
     },
 
     methods: {
-        supprimerCritique(){
+        async supprimerCritique(){
+            this.isLoading = true
+            this.modifText = 'demande de suppresion en cours...'
             //console.log(this.userCritique[0].id);
-            axios
-            .delete(this.lienAPI + `critiques/${this.userCritique[0].id}`, {
-                headers: {
-                    'Authorization': 'Bearer ' + this.token
-                }
-            })
-            .then(function (response) {
-            console.log(response);
-            location.reload();
+            try{
+                const deleteCritique = await axios.delete(this.lienAPI + `critiques/${this.userCritique[0].id}`, {
+                    headers: {
+                        'Authorization': 'Bearer ' + this.token
+                    }
+                })
+                if(deleteCritique.status === 204){
+                    this.isAttempModif = false,
+                    this.isSucceedModif = true
+                    this.modifText = 'Suppression réussie'
+                    await new Promise(resolve => setTimeout(resolve, 1200));
+                    location.reload();
+                };
+            }
+            catch(error) {
+                console.error(error);
+                this.isAttempModif = false,
+                this.hasErrorModif = true
+                this.modifText = 'Une erreur est survenue, veuillez réessayer'
+                await new Promise(resolve => setTimeout(resolve, 2000));
 
-            })
-            .catch(function (error) {
-                console.log(error);
-            });
+            } finally {
+                this.isLoading = false
+                this.isAttempModif = true
+                this.isSucceedModif = false
+                this.hasErrorModif = false
+                this.modifText = "modification en cours..."
+
+            }
         },
         setSupress (sendSuppress) {
             this.isSuppress = sendSuppress;
@@ -152,21 +182,36 @@ export default {
             this.isHidden = false
         },
         async submit(){
+            this.isLoading = true
             try{
-                await axios
-                .put(this.lienAPI + `critiques/${this.userCritique[0].id}`, this.form, {
+                const modifyCrit = await axios.put(this.lienAPI + `critiques/${this.userCritique[0].id}`, this.form, {
                     headers: {
                         'Authorization': 'Bearer ' + this.token,
                     },
                 })
-                .then(function (response) {
-                console.log(response);
-                location.reload();
-                })
+                if(modifyCrit.status === 200){
+                    this.isAttempModif = false,
+                    this.isSucceedModif = true
+                    this.modifText = 'Modification confirmer'
+                    await new Promise(resolve => setTimeout(resolve, 1200));
+                    location.reload();
+                };
             }
             catch(error) {
-                console.log(error);
-            };
+                console.error(error);
+                this.isAttempModif = false,
+                this.hasErrorModif = true
+                this.modifText = 'Une erreur est survenue, veuillez réessayer'
+                await new Promise(resolve => setTimeout(resolve, 2000));
+
+            } finally {
+                this.isLoading = false
+                this.isAttempModif = true
+                this.isSucceedModif = false
+                this.hasErrorModif = false
+                this.modifText = "modification en cours..."
+
+            }
         }
     },
     // watch: {
