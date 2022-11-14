@@ -17,7 +17,7 @@
         </div >
 
         <div class="flex flex-col items-center justify-center flex-1  h-full">
-            <h3 class="font-bold mb-4 underline underline-offset-4 underline underline-offset-4 decoration-4 decoration-[#cda673]">Nous contacter: </h3>
+            <h3 class="font-bold mb-4 underline underline-offset-4 decoration-4 decoration-[#cda673]">Nous contacter: </h3>
 
             <address class="my-2">
                 <a href="https://www.bing.com/maps?osid=5525163d-5616-491e-b390-5aa3aff32eef&cp=48.786822~2.430701&lvl=16&v=2&sV=2&form=S00027" target="_blank" class="flex flex-col items-center justify-center"> 
@@ -40,7 +40,7 @@
 
         <div class="flex flex-col items-center justify-center flex-1 h-full border-l border-black dark:border-white">
             <ul  class="flex flex-col items-center justify-start "> 
-                <h3 class="font-bold mb-4 underline underline-offset-4 underline underline-offset-4 decoration-4 decoration-[#cda673]">Plus d'information:</h3>
+                <h3 class="font-bold mb-4 underline underline-offset-4 decoration-4 decoration-[#cda673]">Plus d'information:</h3>
                 <li
                 v-for="info in infos" v-bind:key="info.id ">              
                     <router-link :to="{path:info.chemin}">    {{ info.list }}  </router-link>

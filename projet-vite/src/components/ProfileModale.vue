@@ -14,7 +14,7 @@
                 <form class="px-6 pb-4 space-y-6 sm:pb-6 xl:pb-8 mt-[250px]" action="POST"  @submit.prevent="submit">
                     <div>
                         <label for="email" class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">Email</label>
-                        <div class="flex  justify-center pr-2 items-center pr-2 rounded-lg bg-white text-emerald-800 focus-within:border-amber-400 focus-within:border-2">
+                        <div class="flex  justify-center pr-2 items-center rounded-lg bg-white text-emerald-800 focus-within:border-amber-400 focus-within:border-2">
                             <span class="w-[45px] py-2 pl-[12px] border-r-2 rounded-tl-[6.5px] bg-gray-600 rounded-bl-[6.5px] border-black text-gray-200 dark:bg-white dark:text-gray-600">
                                 <fa :style="{ height: '20px'}" icon="user" />
                             </span>
@@ -29,7 +29,7 @@
 
                     <div>
                         <label for="password" class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">Mot de passe</label>
-                        <div class="flex justify-center pr-2 items-center  pr-2 rounded-lg bg-white text-emerald-800 focus-within:border-amber-400 focus-within:border-2">
+                        <div class="flex justify-center pr-2 items-center rounded-lg bg-white text-emerald-800 focus-within:border-amber-400 focus-within:border-2">
                             <span class="w-[45px] py-2 pl-[12px] border-r-2 rounded-tl-[6.5px] rounded-bl-[6.5px] border-black text-gray-200 bg-gray-600 dark:bg-white dark:text-gray-600">
                                 <fa :style="{ height: '20px'}" icon="lock" />
                             </span>
