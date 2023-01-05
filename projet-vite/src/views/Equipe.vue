@@ -15,7 +15,8 @@
 import Accordion from '../components/Accordion.vue' ;
 import Spinner from '../components/Spinner.vue';
 import ProgressBar from '../mixins/ProgressBar';
-import axios from 'axios';
+//import axios from 'axios';
+import axiosInterceptor from '../axiosInterceptor'
 
 export default {
     name:'equipe',
@@ -34,8 +35,11 @@ export default {
 
     async created () {
         this.isLoading = true
-        await axios
-        .get("https://cantinemiam.herokuapp.com/api/equipes?page=1")
+        // await axios
+        // .get("https://cantinemiam.herokuapp.com/api/equipes?page=1")
+        // .then (response => (this.equipes = response.data["hydra:member"]))
+        
+        await axiosInterceptor.get("/equipes?page=1")
         .then (response => (this.equipes = response.data["hydra:member"]))
         this.isLoading = false
     },
