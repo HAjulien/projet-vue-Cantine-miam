@@ -7,11 +7,14 @@ const axiosInterceptor = axios.create({
 axiosInterceptor.interceptors.request.use(request => {
 
     console.log("on test si interceptor marche")
-    let token = localStorage.getItem(token)
-    
+    let token = localStorage?.getItem('token')
+    console.log(token)
+
     if(token){
+        console.log(`le token est ${token}`)
         request.headers.Authorization = 'Baerer ' +token
     }
+    console.log(request);
     return request
 })
 
